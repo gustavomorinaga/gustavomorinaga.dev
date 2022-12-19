@@ -1,4 +1,9 @@
 {
+	"arrowParens": "avoid",
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"endOfLine": "auto",
+	"semi": true,
 	"useTabs": true,
 	"singleQuote": true,
 	"trailingComma": "none",
