@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import { Button } from 'flowbite-svelte';
 </script>
 
@@ -8,5 +8,5 @@
 </svelte:head>
 
 <section class="grid place-items-center h-screen">
-	<Button>Hello!</Button>
+	<Button on:click={() => console.log('Hello!')}>Hello!</Button>
 </section>
