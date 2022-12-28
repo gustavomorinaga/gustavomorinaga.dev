@@ -1,0 +1,17 @@
+{
+	"recommendations": [
+		"aaron-bond.better-comments",
+		"DavidAnson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"EditorConfig.EditorConfig",
+		"esbenp.prettier-vscode",
+		"formulahendry.auto-complete-tag",
+		"meganrogge.template-string-converter",
+		"mikestead.dotenv",
+		"streetsidesoftware.code-spell-checker",
+		"svelte.svelte-vscode",
+		"usernamehw.errorlens",
+		"vunguyentuan.vscode-postcss",
+		"yzhang.markdown-all-in-one"
+	]
+}
