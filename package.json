@@ -2,6 +2,8 @@
 	"name": "my-app",
 	"version": "0.0.1",
 	"type": "module",
+	"author": "Gustavo Matheus <gustavo.morinaga27@gmail.com>",
+	"description": "Make a description",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -11,7 +13,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.29.0",
@@ -27,10 +30,13 @@
 		"eslint-plugin-svelte3": "4.0.0",
 		"flowbite": "1.5.5",
 		"flowbite-svelte": "0.29.3",
+		"husky": "^8.0.2",
+		"lint-staged": "^13.1.0",
 		"postcss": "8.4.20",
 		"postcss-load-config": "4.0.1",
 		"prettier": "2.8.1",
 		"prettier-plugin-svelte": "2.9.0",
+		"standard-version": "^9.5.0",
 		"svelte": "3.55.0",
 		"svelte-check": "2.10.3",
 		"svelte-preprocess": "5.0.0",

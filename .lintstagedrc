@@ -1,0 +1,3 @@
+{
+	"src/routes/**/*.+(js|ts|svelte)": "pnpm lint && pnpm format"
+}
