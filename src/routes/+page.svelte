@@ -1,5 +1,5 @@
 <script>
-	import { Button } from 'flowbite-svelte';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <svelte:head>
@@ -8,5 +8,5 @@
 </svelte:head>
 
 <section class="grid place-items-center h-screen">
-	<Button on:click={() => console.log('Hello!')}>Hello!</Button>
+	<Button />
 </section>
