@@ -1,5 +1,5 @@
 <script>
-	import Button from '$lib/components/Button.svelte';
+	import Background from '$lib/components/Background.svelte';
 </script>
 
 <svelte:head>
@@ -7,6 +7,12 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="grid place-items-center h-screen">
-	<Button />
-</section>
+<main>
+	<Background />
+</main>
+
+<style lang="scss">
+	main {
+		@apply grid place-items-center h-screen;
+	}
+</style>
