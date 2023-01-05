@@ -1,21 +1,36 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
 	import { fly, slide } from 'svelte/transition';
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Icon } from '$lib/components';
 	import { playlist } from '$lib/database';
 	import { durationFormatter } from '$lib/utils';
+	import { browser } from '$app/environment';
 
 	let track: HTMLAudioElement;
 
+	const INITIAL_STATE = {
+		currentTrack: playlist[0],
+		currentTime: 0,
+		muted: false,
+		volume: 0.1,
+		repeat: false,
+		shuffle: false
+	};
+	let playerStorage = browser
+		? persist(writable(INITIAL_STATE), createLocalStorage(), 'player')
+		: writable(INITIAL_STATE);
+
+	export let currentTrack = $playerStorage.currentTrack;
+	export let currentTime = $playerStorage.currentTime;
+	export let muted = $playerStorage.muted;
+	export let volume = $playerStorage.volume;
+	export let repeat = $playerStorage.repeat;
+	export let shuffle = $playerStorage.shuffle;
 	export let duration = 0;
-	export let currentTime = 0;
-	export let muted = false;
 	export let paused = true;
-	export let currentTrack = playlist[0];
-	export let volume = 0.1;
-	export let repeat = false;
-	export let shuffle = false;
 	export let isLoading = false;
 	export let openPlaylist = false;
 
@@ -27,11 +42,16 @@
 	$: volumeStatus =
 		volume >= 0.5 ? 'high' : volume !== 0 ? 'low' : ('off' as 'high' | 'low' | 'off');
 
+	const saveStorage = () =>
+		($playerStorage = { currentTrack, currentTime, muted, volume, repeat, shuffle });
+
 	const initAudio = () => {
 		track = new Audio(currentTrack.source);
 		track.preload = 'metadata';
+		track.currentTime = currentTime;
 		track.volume = volume;
 		track.muted = muted;
+		track.loop = repeat;
 		track.onloadstart = () => (isLoading = true);
 		track.onloadedmetadata = () => (isLoading = false);
 		track.ondurationchange = () => (duration = track.duration);
@@ -42,6 +62,7 @@
 	const handlePlay = async () => {
 		paused ? await track.play() : track.pause();
 		paused = !paused;
+		paused && saveStorage();
 
 		return paused;
 	};
@@ -51,6 +72,7 @@
 		track.src = currentTrack.source;
 		currentTime = 0;
 		duration = 0;
+		saveStorage();
 
 		await track.play();
 
@@ -67,6 +89,7 @@
 		track.src = currentTrack.source;
 		currentTime = 0;
 		duration = 0;
+		saveStorage();
 
 		!paused && (await track.play());
 
@@ -76,12 +99,14 @@
 	const handleRepeat = () => {
 		repeat = !repeat;
 		track.loop = repeat;
+		saveStorage();
 
 		return repeat;
 	};
 
 	const handleShuffle = () => {
 		shuffle = !shuffle;
+		saveStorage();
 
 		return shuffle;
 	};
@@ -90,6 +115,7 @@
 		const time = Number((event.target as HTMLInputElement).value);
 		currentTime = (time * duration) / 100;
 		track.currentTime = currentTime;
+		saveStorage();
 
 		return currentTime;
 	};
@@ -98,20 +124,32 @@
 		volume = Number((event.target as HTMLInputElement).value) / 100;
 		track.volume = volume;
 
+		if (volume > 0) {
+			muted = false;
+			track.muted = muted;
+		}
+
+		saveStorage();
+
 		return volume;
 	};
 
 	const handleMute = () => {
 		muted = !muted;
 		track.muted = muted;
+		saveStorage();
 
 		return muted;
 	};
+
+	const handleBeforeUnload = () => browser && saveStorage();
 
 	onMount(() => {
 		initAudio();
 	});
 </script>
+
+<svelte:window on:beforeunload={handleBeforeUnload} />
 
 <div class="player" in:fly={{ duration: 1000, y: 100, easing: expoOut }}>
 	<div class="controls">
