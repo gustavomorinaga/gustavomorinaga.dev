@@ -5,24 +5,35 @@
 
 	// --- Three.js ---
 	import * as THREE from 'three';
-	import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-	import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js';
-	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
+	import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+	import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
+	import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
+	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
+	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 
-	let load3DVersion = true;
+	let canvas: HTMLCanvasElement;
+
+	export let isThree = true;
+	export let progress = 0;
+	export let finished = false;
 
 	const loadThree = () => {
+		const loadingManager = new THREE.LoadingManager(
+			() => (finished = true),
+			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100))
+		);
+
+		// Scene
+		const scene = new THREE.Scene();
+
 		// Textures
-		const textureLoader = new THREE.TextureLoader();
+		const textureLoader = new THREE.TextureLoader(loadingManager);
 		const gridTexture = textureLoader.load('images/pngs/grid.png');
 		const terrainTexture = textureLoader.load('images/pngs/displacement.png');
 		const metalnessTexture = textureLoader.load('images/pngs/metalness.png');
 
-		let canvas = document.querySelector('canvas.webgl') as HTMLElement;
-		// Scene
-		const scene = new THREE.Scene();
+		scene.background = new THREE.Color('#000000');
 
 		// Fog
 		const fog = new THREE.Fog('#000000', 1, 2.5);
@@ -90,9 +101,7 @@
 		camera.position.z = 1.1;
 
 		// Renderer
-		const renderer = new THREE.WebGLRenderer({
-			canvas: canvas
-		});
+		const renderer = new THREE.WebGLRenderer({ canvas });
 		renderer.setSize(sizes.width, sizes.height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -106,11 +115,14 @@
 
 		const rgbShiftPass = new ShaderPass(RGBShiftShader);
 		rgbShiftPass.uniforms['amount'].value = 0.0015;
-
 		effectComposer.addPass(rgbShiftPass);
 
 		const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader);
 		effectComposer.addPass(gammaCorrectionPass);
+
+		const filmPass = new FilmPass(0.35, 0.025, 648, 0);
+		filmPass.renderToScreen = true;
+		effectComposer.addPass(filmPass);
 
 		// Event listener to handle screen resize
 		window.addEventListener('resize', () => {
@@ -155,19 +167,55 @@
 		const { tier } = await getGPUTier();
 
 		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
-		load3DVersion = tier > 1;
-		load3DVersion && loadThree();
+		isThree = tier > 1;
+		isThree && loadThree();
 	});
 </script>
 
-{#if load3DVersion}
-	<canvas class="webgl" />
-{:else}
-	<div class="fallback__image" />
-{/if}
+<div class="background__container" class:loading={isThree ? !finished : false}>
+	{#if isThree}
+		<div class="loader">
+			<div class="radial-progress" style="--value:{progress}; --size:5rem; --thickness: 4px;">
+				{progress.toFixed()}%
+			</div>
+		</div>
+
+		<canvas bind:this={canvas} class="webgl" />
+	{:else}
+		<div class="fallback__image" style="--synthwave: url('/images/svgs/synthwave.svg');" />
+	{/if}
+</div>
 
 <style lang="scss">
-	.fallback__image {
-		@apply bg-synthwave bg-center bg-cover bg-no-repeat w-full h-full;
+	.background__container {
+		@apply absolute -z-10 inset-0 w-full h-full;
+
+		&::after {
+			content: '';
+			@apply absolute inset-0 z-0 block bg-black opacity-0 transition-opacity ease-out duration-300;
+		}
+
+		& .loader {
+			& .radial-progress {
+				@apply text-red-500 text-shadow-glow shadow-red-700;
+			}
+		}
+
+		&.loading {
+			@apply z-50 after:opacity-100 after:backdrop-blur-sm;
+
+			& .loader {
+				@apply opacity-100;
+			}
+		}
+
+		& .loader {
+			@apply absolute inset-0 z-10 grid place-items-center opacity-0 transition-opacity ease-out duration-300;
+		}
+
+		& .fallback__image {
+			@apply bg-center bg-cover bg-no-repeat w-full h-full;
+			background-image: var(--synthwave);
+		}
 	}
 </style>
