@@ -1,6 +1,5 @@
-<script lang="ts">
+<script lang="ts" module>
 	import { onMount } from 'svelte';
-
 	import { getGPUTier } from 'detect-gpu';
 
 	// --- Three.js ---
@@ -11,6 +10,7 @@
 	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
 	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
+	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
 
 	let canvas: HTMLCanvasElement;
 
@@ -18,7 +18,7 @@
 	export let progress = 0;
 	export let finished = false;
 
-	const loadThree = () => {
+	const initThree = () => {
 		const loadingManager = new THREE.LoadingManager(
 			() => (finished = true),
 			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100))
@@ -32,16 +32,20 @@
 		const gridTexture = textureLoader.load('images/pngs/grid.png');
 		const terrainTexture = textureLoader.load('images/pngs/displacement.png');
 		const metalnessTexture = textureLoader.load('images/pngs/metalness.png');
+		const universeTexture = textureLoader.load('images/pngs/universe.jpg');
 
-		scene.background = new THREE.Color('#000000');
+		// Background
+		scene.background = universeTexture;
+		scene.backgroundBlurriness = 0.5;
+		scene.backgroundIntensity = 0.1;
 
 		// Fog
-		const fog = new THREE.Fog('#000000', 1, 2.5);
+		let fog = new THREE.Fog(new THREE.Color('#000000'), 0, 2.5);
 		scene.fog = fog;
 
 		// Objects
-		const geometry = new THREE.PlaneGeometry(1, 2, 24, 24);
-		const material = new THREE.MeshStandardMaterial({
+		let geometry = new THREE.PlaneGeometry(1, 2, 24, 24);
+		let material = new THREE.MeshStandardMaterial({
 			map: gridTexture,
 			displacementMap: terrainTexture,
 			displacementScale: 0.4,
@@ -50,12 +54,12 @@
 			roughness: 0.5
 		});
 
-		const plane = new THREE.Mesh(geometry, material);
+		let plane = new THREE.Mesh(geometry, material);
 		plane.rotation.x = -Math.PI * 0.5;
 		plane.position.y = 0.0;
 		plane.position.z = 0.15;
 
-		const plane2 = new THREE.Mesh(geometry, material);
+		let plane2 = new THREE.Mesh(geometry, material);
 		plane2.rotation.x = -Math.PI * 0.5;
 		plane2.position.y = 0.0;
 		plane2.position.z = -1.85;
@@ -65,11 +69,11 @@
 
 		// Light
 		// Ambient Light
-		const ambientLight = new THREE.AmbientLight('#ffffff', 10);
+		let ambientLight = new THREE.AmbientLight('#ffffff', 10);
 		scene.add(ambientLight);
 
 		// Right Spotlight aiming to the left
-		const spotlight = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
+		let spotlight = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
 		spotlight.position.set(0.5, 0.75, 2.2);
 		// Target the spotlight to a specific point to the left of the scene
 		spotlight.target.position.x = -0.25;
@@ -79,7 +83,7 @@
 		scene.add(spotlight.target);
 
 		// Left Spotlight aiming to the right
-		const spotlight2 = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
+		let spotlight2 = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
 		spotlight2.position.set(-0.5, 0.75, 2.2);
 		// Target the spotlight to a specific point to the right side of the scene
 		spotlight2.target.position.x = 0.25;
@@ -95,34 +99,38 @@
 		};
 
 		// Camera
-		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 20);
+		let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 20);
 		camera.position.x = 0;
 		camera.position.y = 0.06;
 		camera.position.z = 1.1;
 
 		// Renderer
-		const renderer = new THREE.WebGLRenderer({ canvas });
+		let renderer = new THREE.WebGLRenderer({ canvas });
 		renderer.setSize(sizes.width, sizes.height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 		// Post Processing
-		const effectComposer = new EffectComposer(renderer);
+		let effectComposer = new EffectComposer(renderer);
 		effectComposer.setSize(sizes.width, sizes.height);
 		effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-		const renderPass = new RenderPass(scene, camera);
+		let renderPass = new RenderPass(scene, camera);
 		effectComposer.addPass(renderPass);
 
-		const rgbShiftPass = new ShaderPass(RGBShiftShader);
+		let rgbShiftPass = new ShaderPass(RGBShiftShader);
 		rgbShiftPass.uniforms['amount'].value = 0.0015;
 		effectComposer.addPass(rgbShiftPass);
 
-		const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader);
+		let gammaCorrectionPass = new ShaderPass(GammaCorrectionShader);
 		effectComposer.addPass(gammaCorrectionPass);
 
-		const filmPass = new FilmPass(0.35, 0.025, 648, 0);
+		let filmPass = new FilmPass(0.35, 0.025, 648, 0);
 		filmPass.renderToScreen = true;
 		effectComposer.addPass(filmPass);
+
+		const vignettePass = new ShaderPass(VignetteShader);
+		vignettePass.uniforms['offset'].value = 1.5;
+		effectComposer.addPass(vignettePass);
 
 		// Event listener to handle screen resize
 		window.addEventListener('resize', () => {
@@ -146,7 +154,7 @@
 		const clock = new THREE.Clock();
 
 		// Animate
-		const tick = () => {
+		const animate = () => {
 			const elapsedTime = clock.getElapsedTime();
 
 			plane.position.z = (elapsedTime * 0.15) % 2;
@@ -156,11 +164,11 @@
 			// renderer.render(scene, camera);
 			effectComposer.render();
 
-			// Call tick again on the next frame
-			window.requestAnimationFrame(tick);
+			// Call animate again on the next frame
+			window.requestAnimationFrame(animate);
 		};
 
-		tick();
+		animate();
 	};
 
 	onMount(async () => {
@@ -168,7 +176,7 @@
 
 		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
 		isThree = tier > 1;
-		isThree && loadThree();
+		isThree && initThree();
 	});
 </script>
 
@@ -188,17 +196,11 @@
 
 <style lang="scss">
 	.background__container {
-		@apply absolute -z-10 inset-0 w-full h-full;
+		@apply fixed -z-10 inset-0 w-full h-full;
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-0 transition-opacity ease-out duration-300;
-		}
-
-		& .loader {
-			& .radial-progress {
-				@apply text-red-500 text-shadow-glow shadow-red-700;
-			}
+			@apply absolute inset-0 z-0 block bg-black opacity-25 transition-all ease-out duration-300;
 		}
 
 		&.loading {
@@ -211,6 +213,10 @@
 
 		& .loader {
 			@apply absolute inset-0 z-10 grid place-items-center opacity-0 transition-opacity ease-out duration-300;
+
+			& .radial-progress {
+				@apply text-red-500 text-shadow-glow shadow-red-700;
+			}
 		}
 
 		& .fallback__image {

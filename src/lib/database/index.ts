@@ -1,3 +1,1 @@
-import playlist from '$lib/database/playlist.json';
-
-export { playlist };
+export { default as playlist } from './playlist.json';
