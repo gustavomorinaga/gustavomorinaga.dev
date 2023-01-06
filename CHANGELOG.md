@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/gustavomorinaga/portfolio/compare/v0.1.0...v0.1.1) (2023-01-06)
+
+
+### Improvements
+
+* inline re-exports ([094564c](https://github.com/gustavomorinaga/portfolio/commit/094564c3258adff9c9a8376f27a89357f17d4edc))
+
 ## 0.1.0 (2023-01-05)
 
 ### Features
