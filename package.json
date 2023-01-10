@@ -5,7 +5,7 @@
 	"author": "Gustavo Matheus <gustavo.morinaga27@gmail.com>",
 	"description": "Make a description",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --open",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
@@ -23,8 +23,10 @@
 	},
 	"devDependencies": {
 		"@fontsource/caveat": "4.5.9",
+		"@fontsource/courier-prime": "^4.5.9",
+		"@fontsource/karla": "^4.5.10",
+		"@fontsource/orbitron": "^4.5.10",
 		"@fontsource/righteous": "4.5.7",
-		"@fontsource/share-tech-mono": "4.5.9",
 		"@iconify/svelte": "3.0.1",
 		"@iconify/types": "2.0.0",
 		"@macfja/svelte-persistent-store": "2.2.1",
@@ -36,6 +38,7 @@
 		"@types/three": "0.147.1",
 		"@typescript-eslint/eslint-plugin": "5.47.1",
 		"@typescript-eslint/parser": "5.47.1",
+		"atropos": "^1.0.2",
 		"autoprefixer": "10.4.13",
 		"cssnano": "5.1.14",
 		"daisyui": "2.46.1",

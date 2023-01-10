@@ -16,6 +16,7 @@
 {#key refresh}
 	{#if !!animations}
 		<div
+			class="transition"
 			in:blur={{ duration: 300, easing: cubicOut }}
 			out:blur={{ duration: 300, easing: cubicIn }}
 		>

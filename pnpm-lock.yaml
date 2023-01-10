@@ -2,8 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@fontsource/caveat': 4.5.9
+  '@fontsource/courier-prime': ^4.5.9
+  '@fontsource/karla': ^4.5.10
+  '@fontsource/orbitron': ^4.5.10
   '@fontsource/righteous': 4.5.7
-  '@fontsource/share-tech-mono': 4.5.9
   '@iconify/svelte': 3.0.1
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1
@@ -15,6 +17,7 @@ specifiers:
   '@types/three': 0.147.1
   '@typescript-eslint/eslint-plugin': 5.47.1
   '@typescript-eslint/parser': 5.47.1
+  atropos: ^1.0.2
   autoprefixer: 10.4.13
   cssnano: 5.1.14
   daisyui: 2.46.1
@@ -45,8 +48,10 @@ specifiers:
 
 devDependencies:
   '@fontsource/caveat': 4.5.9
+  '@fontsource/courier-prime': 4.5.9
+  '@fontsource/karla': 4.5.10
+  '@fontsource/orbitron': 4.5.10
   '@fontsource/righteous': 4.5.7
-  '@fontsource/share-tech-mono': 4.5.9
   '@iconify/svelte': 3.0.1_svelte@3.55.0
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1_svelte@3.55.0
@@ -58,6 +63,7 @@ devDependencies:
   '@types/three': 0.147.1
   '@typescript-eslint/eslint-plugin': 5.47.1_axni7f4fgvh6tlufnh6hwgsifq
   '@typescript-eslint/parser': 5.47.1_iukboom6ndih5an6iafl45j2fe
+  atropos: 1.0.2
   autoprefixer: 10.4.13_postcss@8.4.20
   cssnano: 5.1.14_postcss@8.4.20
   daisyui: 2.46.1_r4gnkvssmvyxmi2wmat5xbx36a
@@ -328,12 +334,20 @@ packages:
     resolution: {integrity: sha512-kFrgwTDWxctBzfQxtoZrP9Vp1duKTc0IYcv+hjmjNiVAQFrCCUyuwuMEO1++jtOvzgUkzNinR/Co/Rna6t8TUA==}
     dev: true
 
-  /@fontsource/righteous/4.5.7:
-    resolution: {integrity: sha512-tIDEC1ygwIGiNPToM1XRRU6YqUdQ8S7NzrYNW1gcE1cN9vU7x7zcgNRy8jALjolgdAWJxM78LnEKDUa7mnOPlw==}
+  /@fontsource/courier-prime/4.5.9:
+    resolution: {integrity: sha512-jN5F/WvA7x1OuaOy2Hr2FzlA3EZizXPGTvjmR5YIb+Hc+SaDUT/ckJy8zbUc8sb6SsS6cIbG+lFDkZRYjJe91Q==}
     dev: true
 
-  /@fontsource/share-tech-mono/4.5.9:
-    resolution: {integrity: sha512-QssoS5JlMHibdbFYlODNDXcZNNcaUFEzJmqP8WcAXwPFUncY1ySwIySMm8Oa5QbZSb0904ZORrKhmdcuMSIjDw==}
+  /@fontsource/karla/4.5.10:
+    resolution: {integrity: sha512-08sXoHX48HZlD7BHbhDdvN/WWmPw/6Ki+UeWc6H6KwxP/zuUyv8zopL2IrFz/ULRsTahQoyxIi+zL4VCz+lVUQ==}
+    dev: true
+
+  /@fontsource/orbitron/4.5.10:
+    resolution: {integrity: sha512-/JCmzgul8FMWiWF0QrPHdOh2SyzDgI7G06wumtCyX886U3/e0rw74gmifLZshFSGwNvGWHicwT5f4OFY5TH1Nw==}
+    dev: true
+
+  /@fontsource/righteous/4.5.7:
+    resolution: {integrity: sha512-tIDEC1ygwIGiNPToM1XRRU6YqUdQ8S7NzrYNW1gcE1cN9vU7x7zcgNRy8jALjolgdAWJxM78LnEKDUa7mnOPlw==}
     dev: true
 
   /@humanwhocodes/config-array/0.11.8:
@@ -862,6 +876,11 @@ packages:
   /astral-regex/2.0.0:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
+    dev: true
+
+  /atropos/1.0.2:
+    resolution: {integrity: sha512-0RqyHfMyIhRXgnHuSQz2LVOE81jtAQ7EZTrF75ngiipklIsxajZ2vD042EXdiIEDs6eEAzfE10k+YhIbNl4/eg==}
+    engines: {node: '>= 12.0.0'}
     dev: true
 
   /autoprefixer/10.4.13_postcss@8.4.20:

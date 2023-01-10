@@ -102,7 +102,7 @@
 		let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 20);
 		camera.position.x = 0;
 		camera.position.y = 0.06;
-		camera.position.z = 1.1;
+		camera.position.z = 1;
 
 		// Renderer
 		let renderer = new THREE.WebGLRenderer({ canvas });
@@ -200,7 +200,7 @@
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-25 transition-all ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-50 transition-all ease-out duration-300;
 		}
 
 		&.loading {

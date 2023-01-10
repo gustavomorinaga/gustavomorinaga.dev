@@ -18,7 +18,9 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				mono: ['Share Tech Mono', 'monospace'],
+				sans: ['Karla', 'sans-serif'],
+				mono: ['Courier Prime', 'monospace'],
+				futuristic: ['Orbitron', 'sans-serif'],
 				retro: ['Righteous', 'cursive'],
 				handwritten: ['Caveat', 'cursive']
 			},
@@ -29,7 +31,8 @@ module.exports = {
 				sm: '0 1px 2px var(--tw-shadow-color)',
 				md: '0 2px 4px var(--tw-shadow-color)',
 				lg: '0 8px 16px var(--tw-shadow-color)',
-				glow: '0 0 0.5rem var(--tw-shadow-color)'
+				glow: '0 0 0.5rem var(--tw-shadow-color)',
+				rgb: '2px 0px 2px rgb(255 0 255 / 50%), -2px 0px 2px rgb(0 255 191 / 50%), 0px 0px 10px rgb(49 122 255)'
 			},
 			animation: {
 				glitch: 'glitch 1s linear infinite'
@@ -77,6 +80,7 @@ module.exports = {
 			{
 				synthwave: {
 					...require('daisyui/src/colors/themes')['[data-theme=synthwave]'],
+					primary: '#ef4444',
 					'--rounded-box': '0rem',
 					'--rounded-btn': '0rem',
 					'--rounded-badge': '0rem'
