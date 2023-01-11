@@ -105,7 +105,7 @@
 				@apply relative hidden sm:flex;
 
 				& > a {
-					@apply relative py-6 px-4 font-futuristic text-white shadow-red-500/50 transition-all ease-in hover:text-red-500 hover:text-shadow-glow;
+					@apply relative py-6 px-4 font-futuristic uppercase text-white shadow-red-500/50 transition-all ease-in hover:text-red-500 hover:text-shadow-glow;
 
 					&::before {
 						content: '';
@@ -159,6 +159,6 @@
 	}
 
 	main {
-		@apply max-w-screen-lg my-0 mx-auto pt-4 px-4 pb-32 overflow-y-auto;
+		@apply max-w-screen-lg my-0 mx-auto pt-4 pb-32 overflow-y-auto;
 	}
 </style>

@@ -169,6 +169,8 @@
 		};
 
 		animate();
+
+		return Promise.resolve(canvas);
 	};
 
 	onMount(async () => {
@@ -176,7 +178,7 @@
 
 		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
 		isThree = tier > 1;
-		isThree && initThree();
+		isThree && (await initThree());
 	});
 </script>
 

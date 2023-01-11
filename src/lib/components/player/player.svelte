@@ -9,7 +9,7 @@
 	import { durationFormatter, getMinDiff } from '$lib/utils';
 	import { browser } from '$app/environment';
 
-	const MAXIMUM_IDLE_MIN = 3;
+	const MAX_IDLE_MINUTES = 3;
 
 	let trackElementRef: HTMLAudioElement;
 
@@ -62,11 +62,13 @@
 		trackElementRef.ondurationchange = () => (duration = trackElementRef.duration);
 		trackElementRef.ontimeupdate = () => (currentTime = trackElementRef.currentTime);
 		trackElementRef.onended = () => handleChangeTrack('next');
+
+		return Promise.resolve(trackElementRef);
 	};
 
 	const handlePlay = async () => {
 		if (paused) {
-			if (getMinDiff(idleTime) >= MAXIMUM_IDLE_MIN) {
+			if (getMinDiff(idleTime) >= MAX_IDLE_MINUTES) {
 				trackElementRef.load();
 				trackElementRef.currentTime = currentTime;
 			}
@@ -166,8 +168,8 @@
 		saveStorage();
 	};
 
-	onMount(() => {
-		initAudio();
+	onMount(async () => {
+		await initAudio();
 	});
 </script>
 
@@ -176,7 +178,7 @@
 {#if showPlayer}
 	<div class="player" in:fly={{ duration: 1000, y: 100, easing: expoOut }}>
 		<div class="player__wrapper">
-			<div class="progress__wrapper" class:loading={isLoading}>
+			<div class="progress__wrapper" class:is__loading={isLoading}>
 				<input
 					class="progress__bar"
 					type="range"
@@ -345,6 +347,8 @@
 {:else}
 	<button
 		class="btn__player"
+		class:playing={!paused}
+		class:is__loading={isLoading}
 		title="Show player"
 		aria-label="Show player"
 		on:click={handleShowPlayer}
@@ -365,19 +369,19 @@
 			& .progress__wrapper {
 				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
 
-				&:not(.loading):hover {
+				&:not(.is__loading):hover {
 					@apply -top-[0.40rem];
 
 					& .progress__bar {
 						@apply h-4;
 
 						&::-webkit-slider-thumb {
-							@apply bg-[hsl(var(--b1))];
+							@apply bg-white;
 						}
 					}
 				}
 
-				&.loading {
+				&.is__loading {
 					@apply opacity-50 pointer-events-none;
 				}
 
@@ -473,6 +477,10 @@
 
 					& .volume {
 						@apply range range-primary range-xs absolute inset-0 w-28 h-4 -rotate-90 origin-center -translate-x-8 translate-y-16;
+
+						&::-webkit-slider-thumb {
+							@apply bg-white;
+						}
 					}
 				}
 
@@ -529,10 +537,47 @@
 	}
 
 	.btn__player {
-		@apply fixed z-40 right-8 bottom-8 btn btn-circle btn-primary shadow-md;
+		@apply fixed z-40 right-8 bottom-8 btn btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
+
+		&::before {
+			content: '';
+			@apply absolute -z-20 -top-4 w-9 h-8 opacity-0 text-primary bg-no-repeat transition-all duration-200 pointer-events-none select-none;
+
+			--c: linear-gradient(currentColor 0 0);
+			background: var(--c) 0% 100%, var(--c) 50% 100%, var(--c) 100% 100%;
+			background-size: 7.2px 100%;
+			background-repeat: no-repeat;
+			animation: bars 1s infinite linear;
+		}
+
+		&.playing {
+			@apply before:opacity-100;
+
+			&.is__loading {
+				@apply before:opacity-0;
+			}
+		}
 	}
 
 	.artwork__overlay {
 		@apply absolute inset-0 grid place-items-center bg-black/75 opacity-0 transition-opacity ease-out;
+	}
+
+	@keyframes bars {
+		20% {
+			background-size: 7.2px 60%, 7.2px 100%, 7.2px 100%;
+		}
+
+		40% {
+			background-size: 7.2px 80%, 7.2px 60%, 7.2px 100%;
+		}
+
+		60% {
+			background-size: 7.2px 100%, 7.2px 80%, 7.2px 60%;
+		}
+
+		80% {
+			background-size: 7.2px 100%, 7.2px 100%, 7.2px 80%;
+		}
 	}
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 
-	export let collection = 'tabler';
+	export let collection: 'tabler' | 'logos' = 'tabler';
 	export let icon = '';
 	export let label = `${icon} icon`;
 	export let ariaHidden = false;

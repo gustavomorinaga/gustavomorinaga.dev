@@ -1,6 +1,14 @@
 const plugin = require('tailwindcss/plugin');
 
-const textShadowPlugin = plugin(function ({ matchUtilities, theme }) {
+const textShadowPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
+	addComponents({
+		'.typewriter': {
+			'@apply inline-flex overflow-hidden border-solid border-primary opacity-50 animate-typing animate-typing':
+				{},
+			borderRightWidth: '0.25rem'
+		}
+	});
+
 	matchUtilities(
 		{
 			'text-shadow': value => ({
@@ -24,6 +32,10 @@ module.exports = {
 				retro: ['Righteous', 'cursive'],
 				handwritten: ['Caveat', 'cursive']
 			},
+			backgroundImage: {
+				'gradient-conic':
+					'linear-gradient(var(--tw-gradient-from), var(--tw-gradient-from)), linear-gradient(var(--tw-gradient-to), var(--tw-gradient-to)), linear-gradient(var(--tw-gradient-from), var(--tw-gradient-from)), linear-gradient(var(--tw-gradient-to), var(--tw-gradient-to));'
+			},
 			boxShadow: {
 				glow: '0 0 0.5rem 0.25rem var(--tw-shadow-color)'
 			},
@@ -35,9 +47,36 @@ module.exports = {
 				rgb: '2px 0px 2px rgb(255 0 255 / 50%), -2px 0px 2px rgb(0 255 191 / 50%), 0px 0px 10px rgb(49 122 255)'
 			},
 			animation: {
-				glitch: 'glitch 1s linear infinite'
+				typing:
+					'typing 3.5s steps(100, end), blink-caret 0.75s ease-out infinite, low-opacity 2s ease-out',
+				glitch: 'glitch 1s linear',
+				'spin-background': 'spin-background 3s linear infinite'
 			},
 			keyframes: {
+				typing: {
+					from: {
+						maxWidth: '0'
+					},
+					to: {
+						maxWidth: '100%'
+					}
+				},
+				'blink-caret': {
+					'from, to': {
+						borderColor: 'transparent'
+					},
+					'50%': {
+						borderColor: 'hsl(var(--p)/var(--tw-border-opacity))'
+					}
+				},
+				'low-opacity': {
+					'0%, 95%': {
+						opacity: 1
+					},
+					to: {
+						opacity: 0.5
+					}
+				},
 				glitch: {
 					'0%': {
 						backgroundPosition: '0 0',
@@ -71,6 +110,11 @@ module.exports = {
 						backgroundPosition: '0 0',
 						filter: 'hue-rotate(360deg)'
 					}
+				},
+				'spin-background': {
+					'100%': {
+						transform: 'rotate(1turn)'
+					}
 				}
 			}
 		}
@@ -81,6 +125,8 @@ module.exports = {
 				synthwave: {
 					...require('daisyui/src/colors/themes')['[data-theme=synthwave]'],
 					primary: '#ef4444',
+					secondary: '#1d2be0',
+					accent: '#f94c0d',
 					'--rounded-box': '0rem',
 					'--rounded-btn': '0rem',
 					'--rounded-badge': '0rem'

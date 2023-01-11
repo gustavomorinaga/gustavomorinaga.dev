@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 @import 'atropos/scss';
+
+code {
+	& span.method {
+		@apply text-accent;
+	}
+}
