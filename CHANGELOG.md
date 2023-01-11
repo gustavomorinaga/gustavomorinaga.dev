@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/gustavomorinaga/portfolio/compare/v0.1.1...v0.1.2) (2023-01-11)
+
+
+### Features
+
+* hero section ([c1baa53](https://github.com/gustavomorinaga/portfolio/commit/c1baa53d0733286fc09710c4bc1b259d1c5a50eb))
+
+
+### Improvements
+
+* improving profile image with atropos ([8fdff4f](https://github.com/gustavomorinaga/portfolio/commit/8fdff4faf03ef11230bbfa5efe5211eba93754cc))
+
 ### [0.1.1](https://github.com/gustavomorinaga/portfolio/compare/v0.1.0...v0.1.1) (2023-01-06)
 
 ### Improvements
