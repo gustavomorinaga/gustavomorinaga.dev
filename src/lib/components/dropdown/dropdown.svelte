@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { cubicIn, cubicOut } from 'svelte/easing';
 
 	let activationRef: HTMLElement;
 	let contentRef: HTMLElement;
@@ -32,7 +33,12 @@
 	</label>
 
 	{#if showContent}
-		<div bind:this={contentRef} class="dropdown__content" in:inTransition out:outTransition>
+		<div
+			bind:this={contentRef}
+			class="dropdown__content"
+			in:inTransition={{ easing: cubicOut }}
+			out:outTransition={{ easing: cubicIn }}
+		>
 			<slot name="content" />
 		</div>
 	{/if}

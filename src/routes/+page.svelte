@@ -143,7 +143,7 @@
 			}
 
 			.socials {
-				@apply flex gap-2;
+				@apply flex gap-2 items-center;
 
 				& .social {
 					&.cta {

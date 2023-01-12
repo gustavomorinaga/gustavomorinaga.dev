@@ -159,6 +159,6 @@
 	}
 
 	main {
-		@apply max-w-screen-lg my-0 mx-auto pt-4 pb-32 overflow-y-auto;
+		@apply max-w-screen-lg my-0 mx-auto pt-4;
 	}
 </style>

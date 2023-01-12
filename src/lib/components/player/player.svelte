@@ -219,7 +219,7 @@
 					aria-label="Shuffle tracks"
 					on:click={handleShuffle}
 				>
-					<Icon icon="arrows-shuffle" small />
+					<Icon icon="arrows-shuffle" size="sm" />
 				</button>
 
 				<button
@@ -228,7 +228,7 @@
 					aria-label="Previous track"
 					on:click={() => handleChangeTrack('prev')}
 				>
-					<Icon icon="player-skip-back" small />
+					<Icon icon="player-skip-back" size="sm" />
 				</button>
 
 				<button
@@ -253,7 +253,7 @@
 					aria-label="Next track"
 					on:click={() => handleChangeTrack('next')}
 				>
-					<Icon icon="player-skip-forward" small />
+					<Icon icon="player-skip-forward" size="sm" />
 				</button>
 
 				<button
@@ -263,7 +263,7 @@
 					aria-label="Repeat track"
 					on:click={handleRepeat}
 				>
-					<Icon icon="repeat" small />
+					<Icon icon="repeat" size="sm" />
 				</button>
 			</div>
 
@@ -273,13 +273,13 @@
 						<input type="checkbox" hidden aria-hidden="true" on:input={handleMute} />
 
 						{#if muted}
-							<Icon icon="volume-off" small />
+							<Icon icon="volume-off" size="sm" />
 						{:else if volumeStatus === 'high'}
-							<Icon icon="volume" small />
+							<Icon icon="volume" size="sm" />
 						{:else if volumeStatus === 'low'}
-							<Icon icon="volume-2" small />
+							<Icon icon="volume-2" size="sm" />
 						{:else if volumeStatus === 'off'}
-							<Icon icon="volume-3" small />
+							<Icon icon="volume-3" size="sm" />
 						{/if}
 					</label>
 
@@ -306,7 +306,7 @@
 					outTransition:slide={{ duration: 300, easing: cubicOut }}
 				>
 					<svelte:fragment slot="button">
-						<Icon icon="playlist" small />
+						<Icon icon="playlist" size="sm" />
 					</svelte:fragment>
 
 					<svelte:fragment slot="content">
@@ -339,7 +339,7 @@
 					aria-label="Hide label"
 					on:click={handleShowPlayer}
 				>
-					<Icon icon="chevron-down" small />
+					<Icon icon="chevron-down" size="sm" />
 				</button>
 			</div>
 		</div>

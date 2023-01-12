@@ -1,5 +1,6 @@
-export interface ISocial {
+import type { IIcon } from './icon';
+
+export interface ISocial extends IIcon {
 	title: string;
-	icon: string;
 	url: string;
 }

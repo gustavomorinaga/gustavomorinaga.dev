@@ -5,6 +5,8 @@
 	import { cubicIn, cubicOut } from 'svelte/easing';
 
 	export let refresh = '/';
+	export let inTransition = blur;
+	export let outTransition = blur;
 
 	let animations = false;
 
@@ -15,11 +17,7 @@
 
 {#key refresh}
 	{#if !!animations}
-		<div
-			class="transition"
-			in:blur={{ duration: 300, easing: cubicOut }}
-			out:blur={{ duration: 300, easing: cubicIn }}
-		>
+		<div in:inTransition={{ easing: cubicOut }} out:outTransition={{ easing: cubicIn }}>
 			<slot />
 		</div>
 	{:else}
