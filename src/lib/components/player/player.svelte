@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser, dev } from '$app/environment';
 	import { env } from '$env/dynamic/public';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -7,12 +8,11 @@
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
 	import { durationFormatter, getMinDiff } from '$lib/utils';
-	import { browser } from '$app/environment';
 	import type { IPlaylist } from '$lib/types';
 
 	export let playlist: IPlaylist[] = [];
 
-	const HOST = env.PUBLIC_NODE_ENV !== 'production' ? env.PUBLIC_CMS_URL : '';
+	const HOST = dev ? env.PUBLIC_CMS_URL : '';
 	const MAX_IDLE_MINUTES = 3;
 	const INITIAL_STATE = {
 		showPlayer: false,
