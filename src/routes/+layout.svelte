@@ -32,8 +32,6 @@
 	$: showContent = isThree ? finished : true;
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
-
-	$: console.log(data);
 </script>
 
 <Background bind:isThree bind:finished />
