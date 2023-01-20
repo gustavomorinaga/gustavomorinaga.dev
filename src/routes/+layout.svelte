@@ -6,19 +6,19 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { Background, Player, Transition } from '$lib/components';
+	import { page } from '$app/stores';
+	import type { LayoutServerData } from './$types';
+
+	export let data: LayoutServerData;
 
 	const routes = [
 		{
+			title: 'Blog',
+			path: '/blog'
+		},
+		{
 			title: 'Sobre mim',
 			path: '/about'
-		},
-		{
-			title: 'Serviços',
-			path: '/services'
-		},
-		{
-			title: 'Conhecimentos',
-			path: '/knowledge'
 		},
 		{
 			title: 'Projetos',
@@ -26,16 +26,14 @@
 		}
 	];
 
-	let currentRoute = '/';
-
 	let isThree!: boolean;
 	let finished!: boolean;
 
 	$: showContent = isThree ? finished : true;
 
-	const handleRouting = (path: string) => (currentRoute = path);
+	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
-	$: isCurrentRoute = (path: string) => currentRoute === path;
+	$: console.log(data);
 </script>
 
 <Background bind:isThree bind:finished />
@@ -47,7 +45,7 @@
 				<div />
 			</div>
 
-			<a href="/" on:click={() => handleRouting('/')}>
+			<a href="/">
 				<div class="logo">
 					<span class="retro">Gustavo Morinaga</span>
 					<span class="handwritten">Developer</span>
@@ -56,11 +54,7 @@
 
 			<nav>
 				{#each routes as route}
-					<a
-						class={isCurrentRoute(route.path) ? 'active' : null}
-						href={route.path}
-						on:click={() => handleRouting(route.path)}
-					>
+					<a class={isCurrentRoute(route.path) ? 'active' : null} href={route.path}>
 						{route.title}
 					</a>
 				{/each}
@@ -73,12 +67,12 @@
 	</header>
 
 	<main>
-		<Transition refresh={currentRoute}>
+		<Transition>
 			<slot />
 		</Transition>
 	</main>
 
-	<Player />
+	<Player playlist={data.playlist.data} />
 {/if}
 
 <style lang="scss" global>
@@ -159,6 +153,6 @@
 	}
 
 	main {
-		@apply max-w-screen-lg my-0 mx-auto pt-4;
+		@apply relative max-w-screen-lg min-h-screen my-0 mx-auto;
 	}
 </style>

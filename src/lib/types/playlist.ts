@@ -1,7 +1,9 @@
-export interface IPlaylist {
+import type { IMedia, ITimestamps } from '$lib/types/cms';
+
+export interface IPlaylist extends ITimestamps {
 	title: string;
-	source: string;
 	author: string;
-	imageURL: string;
-	linkURL: string;
+	url: string;
+	source: IMedia;
+	cover: IMedia;
 }

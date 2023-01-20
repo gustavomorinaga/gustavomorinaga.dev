@@ -1,18 +1,19 @@
 <script lang="ts">
+	import { env } from '$env/dynamic/public';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
-	import { playlist } from '$lib/database';
 	import { durationFormatter, getMinDiff } from '$lib/utils';
 	import { browser } from '$app/environment';
+	import type { IPlaylist } from '$lib/types';
 
+	export let playlist: IPlaylist[] = [];
+
+	const HOST = env.PUBLIC_NODE_ENV !== 'production' ? env.PUBLIC_CMS_URL : '';
 	const MAX_IDLE_MINUTES = 3;
-
-	let trackElementRef: HTMLAudioElement;
-
 	const INITIAL_STATE = {
 		showPlayer: false,
 		currentTrack: playlist[0],
@@ -22,6 +23,8 @@
 		repeat: false,
 		shuffle: false
 	};
+
+	let trackElementRef: HTMLAudioElement;
 	let playerStorage = browser
 		? persist(writable(INITIAL_STATE), createLocalStorage(), 'player')
 		: writable(INITIAL_STATE);
@@ -51,7 +54,7 @@
 		($playerStorage = { showPlayer, currentTrack, currentTime, muted, volume, repeat, shuffle });
 
 	const initAudio = () => {
-		trackElementRef = new Audio(currentTrack.source);
+		trackElementRef = new Audio(HOST + currentTrack.source.url);
 		trackElementRef.preload = 'auto';
 		trackElementRef.currentTime = currentTime;
 		trackElementRef.volume = volume;
@@ -87,7 +90,7 @@
 
 	const handleSelectTrack = async (index: number) => {
 		currentTrack = playlist[index];
-		trackElementRef.src = currentTrack.source;
+		trackElementRef.src = HOST + currentTrack.source.url;
 		currentTime = 0;
 		duration = 0;
 		saveStorage();
@@ -105,7 +108,7 @@
 		if (mode === 'prev') currentIndex = currentIndex === 0 ? playlist.length - 1 : currentIndex - 1;
 
 		currentTrack = playlist[currentIndex];
-		trackElementRef.src = currentTrack.source;
+		trackElementRef.src = HOST + currentTrack.source.url;
 		currentTime = 0;
 		duration = 0;
 		saveStorage();
@@ -190,10 +193,14 @@
 				/>
 			</div>
 
-			<a class="info" href={currentTrack.linkURL} target="_blank" rel="noopener noreferrer">
+			<a class="info" href={currentTrack.url} target="_blank" rel="noopener noreferrer">
 				<div class="info__wrapper">
 					<figure class="artwork">
-						<img src={currentTrack.imageURL} alt={currentTrack.title} loading="lazy" />
+						<img
+							src={HOST + currentTrack.cover.formats.thumbnail.url}
+							alt={currentTrack.title}
+							loading="lazy"
+						/>
 
 						<div class="artwork__overlay">
 							<Icon icon="external-link" />
@@ -315,7 +322,11 @@
 								<li class="track" class:playing={currentIndex === index}>
 									<button on:click={() => handleSelectTrack(index)}>
 										<figure class="artwork">
-											<img src={track.imageURL} alt={track.title} loading="lazy" />
+											<img
+												src={HOST + track.cover.formats.thumbnail.url}
+												alt={track.title}
+												loading="lazy"
+											/>
 
 											<div class="artwork__overlay">
 												<Icon icon="player-play" />
@@ -404,7 +415,7 @@
 				}
 
 				& .info__wrapper {
-					@apply flex gap-2 items-center;
+					@apply flex gap-4 items-center;
 
 					& .artwork {
 						@apply relative w-14;
@@ -508,7 +519,10 @@
 
 				& .track {
 					@apply p-2 border-white/10 transition-colors ease-out;
-					border-bottom-width: 1px;
+
+					&:not(:last-child) {
+						border-bottom-width: 1px;
+					}
 
 					&:hover {
 						& .artwork__overlay {

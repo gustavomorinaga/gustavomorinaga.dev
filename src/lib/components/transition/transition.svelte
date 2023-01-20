@@ -1,26 +1,31 @@
-<!-- Transition.svelte -->
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
-	import { cubicIn, cubicOut } from 'svelte/easing';
+	import { quintOut } from 'svelte/easing';
+	import { page } from '$app/stores';
 
-	export let refresh = '/';
-	export let inTransition = blur;
-	export let outTransition = blur;
+	export let effect = blur;
+	export let duration = 500;
 
-	let animations = false;
+	let animations = true;
 
 	onMount(() => {
 		animations = window.matchMedia('(prefers-reduced-motion: reduce)').matches !== true;
 	});
 </script>
 
-{#key refresh}
-	{#if !!animations}
-		<div in:inTransition={{ easing: cubicOut }} out:outTransition={{ easing: cubicIn }}>
+{#if animations}
+	{#key $page.url.pathname}
+		<div class="transition" in:effect={{ duration, easing: quintOut }}>
 			<slot />
 		</div>
-	{:else}
-		<slot />
-	{/if}
-{/key}
+	{/key}
+{:else}
+	<slot />
+{/if}
+
+<style lang="scss">
+	.transition {
+		@apply absolute inset-0 block py-4 origin-center;
+	}
+</style>

@@ -21,7 +21,12 @@ const textShadowPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	plugins: [require('@tailwindcss/typography'), require('daisyui'), textShadowPlugin],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('daisyui'),
+		require('tailwind-scrollbar'),
+		textShadowPlugin
+	],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
@@ -125,7 +130,7 @@ module.exports = {
 				synthwave: {
 					...require('daisyui/src/colors/themes')['[data-theme=synthwave]'],
 					primary: '#ef4444',
-					secondary: '#1d2be0',
+					secondary: '#7A3A8C',
 					accent: '#f94c0d',
 					'--rounded-box': '0rem',
 					'--rounded-btn': '0rem',

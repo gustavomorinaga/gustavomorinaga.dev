@@ -4,8 +4,22 @@
 
 @import 'atropos/scss';
 
+@import 'swiper/css';
+@import 'swiper/css/autoplay';
+@import 'swiper/css/free-mode';
+
+:root,
+[data-theme] {
+	@apply bg-black;
+}
+
+body {
+	@apply relative min-h-screen pb-56
+	scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus;
+}
+
 code {
 	& span.method {
-		@apply text-accent;
+		@apply text-primary;
 	}
 }
