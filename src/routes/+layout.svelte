@@ -5,8 +5,9 @@
 	import '@fontsource/orbitron';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
-	import { Background, Partytown, Player, Transition } from '$lib/components';
 	import { page } from '$app/stores';
+	import { dev } from '$app/environment';
+	import { Background, Partytown, Player, Transition } from '$lib/components';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
@@ -34,7 +35,9 @@
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 </script>
 
-<Partytown />
+{#if !dev}
+	<Partytown />
+{/if}
 
 <Background bind:isThree bind:finished bind:readMode />
 
