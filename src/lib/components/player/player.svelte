@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser, dev } from '$app/environment';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
@@ -12,7 +12,7 @@
 
 	export let playlist: IPlaylist[] = [];
 
-	const HOST = dev ? env.PUBLIC_CMS_URL : '';
+	const HOST = dev ? PUBLIC_CMS_URL : '';
 	const MAX_IDLE_MINUTES = 3;
 	const INITIAL_STATE = {
 		showPlayer: false,

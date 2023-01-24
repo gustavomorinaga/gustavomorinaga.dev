@@ -3,6 +3,7 @@
 	import { blur } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { page } from '$app/stores';
+	import { prefersReducedMotion } from '$lib/utils';
 
 	export let effect = blur;
 	export let duration = 500;
@@ -10,7 +11,7 @@
 	let animations = true;
 
 	onMount(() => {
-		animations = window.matchMedia('(prefers-reduced-motion: reduce)').matches !== true;
+		animations = !prefersReducedMotion;
 	});
 </script>
 

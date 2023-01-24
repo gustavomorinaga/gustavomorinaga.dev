@@ -5,7 +5,7 @@
 	import '@fontsource/orbitron';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
-	import { Background, Player, Transition } from '$lib/components';
+	import { Background, Partytown, Player, Transition } from '$lib/components';
 	import { page } from '$app/stores';
 	import type { LayoutServerData } from './$types';
 
@@ -29,12 +29,14 @@
 	let isThree!: boolean;
 	let finished!: boolean;
 
+	$: readMode = ['/blog'].includes($page.url.pathname);
 	$: showContent = isThree ? finished : true;
-
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 </script>
 
-<Background bind:isThree bind:finished />
+<Partytown />
+
+<Background bind:isThree bind:finished bind:readMode />
 
 {#if showContent}
 	<header in:fly={{ duration: 1000, y: -100, easing: expoOut }}>

@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 
@@ -17,6 +17,7 @@
 	export let isThree = true;
 	export let progress = 0;
 	export let finished = false;
+	export let readMode = false;
 
 	const initThree = () => {
 		const loadingManager = new THREE.LoadingManager(
@@ -177,12 +178,16 @@
 		const { tier } = await getGPUTier();
 
 		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
-		isThree = tier > 1;
+		isThree = tier > 2;
 		isThree && (await initThree());
 	});
 </script>
 
-<div class="background__container" class:loading={isThree ? !finished : false}>
+<div
+	class="background__container"
+	class:read__mode={readMode}
+	class:loading={isThree ? !finished : false}
+>
 	{#if isThree}
 		<div class="loader">
 			<div class="radial-progress" style="--value:{progress}; --size:5rem; --thickness: 4px;">
@@ -202,7 +207,11 @@
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-50 transition-all ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-60 transition-all ease-out duration-300;
+		}
+
+		&.read__mode {
+			@apply after:opacity-100;
 		}
 
 		&.loading {

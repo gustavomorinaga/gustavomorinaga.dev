@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon } from '$lib/components';
+	import { observeScroll } from '$lib/utils';
 	import type { IKnowledge, ISocial } from '$lib/types';
 	import Atropos from 'atropos/svelte';
 	import { Swiper, SwiperSlide } from 'swiper/svelte';
@@ -10,14 +12,16 @@
 
 	const carouselOptions: SwiperOptions & { autoplay: any } = {
 		modules: [Autoplay, FreeMode],
-		slidesPerView: 10,
+		slidesPerView: 'auto',
+		watchOverflow: true,
 		centeredSlides: true,
 		freeMode: true,
 		loop: true,
 		autoplay: {
 			delay: 0,
 			disableOnInteraction: false
-		}
+		},
+		speed: 5000
 	};
 
 	const socialLinks: ISocial[] = [
@@ -306,6 +310,12 @@
 			}
 		]
 	};
+
+	onMount(() => {
+		const { observer } = observeScroll({ threshold: 0.5 });
+
+		return () => observer && observer.disconnect();
+	});
 </script>
 
 <svelte:head>
@@ -313,7 +323,7 @@
 	<meta name="description" content="Gustavo Morinaga Developer" />
 </svelte:head>
 
-<div class="blurb">
+<section class="blurb">
 	<div class="blurb__content">
 		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
 			<Atropos class="atropos__profile" shadow={false} highlight={false}>
@@ -367,8 +377,8 @@
 			</h1>
 
 			<p in:fly={{ x: -125, duration: 1000, delay: 2050, easing: cubicOut }}>
-				Desenvolvedor full-stack criativo e apaixonado em criar soluções eficientes e de alta
-				tecnologia
+				Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de
+				alta tecnologia
 			</p>
 
 			<ul class="socials" in:fly={{ x: -150, duration: 1000, delay: 2100, easing: cubicOut }}>
@@ -390,12 +400,17 @@
 			</ul>
 		</div>
 	</div>
-</div>
+</section>
 
-<section class="knowledges">
+<section
+	class="knowledges observe__scroll"
+	style="--low-poly-grid: url('/images/svgs/low-poly-grid.svg');"
+>
 	<h2>Conhecimentos</h2>
 
-	<Swiper class="knowledges__carousel" {...carouselOptions} speed={7000}>
+	<p>Muito aprendizado</p>
+
+	<Swiper class="knowledges__carousel" {...carouselOptions}>
 		{#each knowledges.techs as tech}
 			<SwiperSlide>
 				<a
@@ -413,7 +428,7 @@
 		{/each}
 	</Swiper>
 
-	<Swiper class="knowledges__carousel" {...carouselOptions} speed={10000}>
+	<Swiper class="knowledges__carousel" {...carouselOptions}>
 		{#each knowledges.tools as tool}
 			<SwiperSlide>
 				<a
@@ -434,7 +449,7 @@
 
 <style lang="scss" global>
 	.blurb {
-		@apply hero;
+		@apply hero h-gutter-header;
 
 		& .blurb__content {
 			@apply hero-content flex-col lg:flex-row-reverse text-center lg:text-left;
@@ -444,7 +459,7 @@
 			}
 
 			& h1 {
-				@apply text-3xl lg:text-5xl font-futuristic text-shadow-rgb mb-8;
+				@apply text-3xl lg:text-5xl font-futuristic lg:leading-tight text-shadow-rgb mb-8;
 			}
 
 			& p {
@@ -497,7 +512,7 @@
 				}
 			}
 			& .popup {
-				@apply before:animate-spin-background before:shadow-lg;
+				@apply before:animate-spin-background before:shadow-lg animate-none;
 
 				& .popup__content {
 					& .skill {
@@ -524,7 +539,7 @@
 			}
 		}
 		& .popup {
-			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm shadow-black;
+			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm shadow-black animate-float;
 
 			&::before {
 				content: '';
@@ -554,36 +569,46 @@
 	}
 
 	.knowledges {
-		@apply w-screen py-4 bg-stone-900 bg-cover bg-no-repeat bg-center;
+		@apply w-screen h-[50vh] py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light;
 		margin-left: calc(50% - 50vw);
+		background-image: var(--low-poly-grid);
 
 		& h2 {
-			@apply text-2xl text-center font-futuristic text-shadow-glow shadow-primary uppercase;
+			@apply text-2xl lg:text-4xl font-futuristic text-shadow-glow shadow-primary uppercase;
+		}
+
+		& p {
+			@apply text-xl;
 		}
 
 		& .knowledges__carousel {
 			@apply w-full h-28;
 
 			& > .swiper-wrapper {
+				@apply gap-20;
 				transition-timing-function: linear !important;
 
-				& .knowledge {
-					@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 transition-all ease-out;
+				& > .swiper-slide {
+					@apply w-fit;
 
-					&:hover {
-						& .icon {
-							&::before {
-								@apply opacity-10;
+					& .knowledge {
+						@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 transition-all ease-out;
+
+						&:hover {
+							& .icon {
+								&::before {
+									@apply opacity-10;
+								}
 							}
 						}
-					}
 
-					& .icon {
-						@apply relative;
+						& .icon {
+							@apply relative;
 
-						&::before {
-							content: '';
-							@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
+							&::before {
+								content: '';
+								@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
+							}
 						}
 					}
 				}

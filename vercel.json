@@ -1,0 +1,12 @@
+{
+	"rewrites": [
+		{
+			"source": "/proxytown/gtm",
+			"destination": "https://googletagmanager.com/gtag/js"
+		},
+		{
+			"source": "/proxytown/ga",
+			"destination": "https://google-analytics.com/analytics.js"
+		}
+	]
+}

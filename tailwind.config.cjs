@@ -37,6 +37,9 @@ module.exports = {
 				retro: ['Righteous', 'cursive'],
 				handwritten: ['Caveat', 'cursive']
 			},
+			height: {
+				'gutter-header': 'calc(100vh - 5.5rem)'
+			},
 			backgroundImage: {
 				'gradient-conic':
 					'linear-gradient(var(--tw-gradient-from), var(--tw-gradient-from)), linear-gradient(var(--tw-gradient-to), var(--tw-gradient-to)), linear-gradient(var(--tw-gradient-from), var(--tw-gradient-from)), linear-gradient(var(--tw-gradient-to), var(--tw-gradient-to));'
@@ -55,7 +58,8 @@ module.exports = {
 				typing:
 					'typing 3.5s steps(100, end), blink-caret 0.75s ease-out infinite, low-opacity 2s ease-out',
 				glitch: 'glitch 1s linear',
-				'spin-background': 'spin-background 3s linear infinite'
+				'spin-background': 'spin-background 3s linear infinite',
+				float: 'float 5s ease 4.9s infinite alternate'
 			},
 			keyframes: {
 				typing: {
@@ -119,6 +123,20 @@ module.exports = {
 				'spin-background': {
 					'100%': {
 						transform: 'rotate(1turn)'
+					}
+				},
+				float: {
+					'0%': {
+						boxShadow: '0 5px 15px 0px rgba(0,0,0,0.6)',
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						boxShadow: '0 25px 15px 0px rgba(0,0,0,0.2)',
+						transform: 'translateY(-20px)'
+					},
+					'100%': {
+						boxShadow: '0 5px 15px 0px rgba(0,0,0,0.6)',
+						transform: 'translateY(0px)'
 					}
 				}
 			}

@@ -14,12 +14,26 @@
 }
 
 body {
-	@apply relative min-h-screen pb-56
+	@apply relative min-h-screen
 	scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus;
 }
 
 code {
 	& span.method {
 		@apply text-primary;
+	}
+}
+
+.observe__scroll {
+	@apply opacity-0 transition-opacity duration-300 ease-out;
+}
+
+.observe__show {
+	@apply opacity-100;
+}
+
+@media (prefers-reduced-motion) {
+	.observe__scroll {
+		@apply transition-none;
 	}
 }

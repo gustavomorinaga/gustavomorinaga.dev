@@ -10,7 +10,8 @@ const config = {
 		vitePreprocess(),
 		preprocess({
 			postcss: true,
-			scss: true
+			scss: true,
+			preserve: ['partytown']
 		})
 	],
 
