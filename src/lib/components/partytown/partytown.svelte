@@ -13,31 +13,33 @@
 </script>
 
 <svelte:head>
-	<script>
-		partytown = {
-			forward: ['dataLayer.push'],
-			resolveUrl: url => {
-				const siteUrl = `${origin}/proxytown`;
+	{@html `
+		<script>
+			partytown = {
+				forward: ['dataLayer.push'],
+				resolveUrl: url => {
+					const siteUrl = ${origin} + '/proxytown';
 
-				if (url.hostname.includes('googletagmanager.com')) {
-					const proxyUrl = new URL(`${siteUrl}/gtm`);
+					if (url.hostname.includes('googletagmanager.com')) {
+						const proxyUrl = new URL(siteUrl + '/gtm');
 
-					const gtmId = new URL(url).searchParams.get('id');
-					gtmId && proxyUrl.searchParams.append('id', gtmId);
+						const gtmId = new URL(url).searchParams.get('id');
+						gtmId && proxyUrl.searchParams.append('id', gtmId);
 
-					return proxyUrl;
+						return proxyUrl;
+					}
+
+					if (url.hostname.includes('google-analytics.com')) {
+						const proxyUrl = new URL(siteUrl + '/ga');
+
+						return proxyUrl;
+					}
+
+					return url;
 				}
-
-				if (url.hostname.includes('google-analytics.com')) {
-					const proxyUrl = new URL(`${siteUrl}/ga`);
-
-					return proxyUrl;
-				}
-
-				return url;
-			}
-		};
-	</script>
+			};
+		</script>
+	`}
 
 	<script bind:this={script}></script>
 
@@ -46,16 +48,18 @@
 		src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
 	></script>
 
-	<script type="text/partytown">
-		window.dataLayer = window.dataLayer || [];
+	{@html `
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
 
-		function gtag() {
-			dataLayer.push(arguments);
-		}
+			function gtag() {
+				dataLayer.push(arguments);
+			}
 
-		gtag('js', new Date());
-		gtag('config', PUBLIC_GTM_ID, {
-			page_path: window.location.pathname
-		});
-	</script>
+			gtag('js', new Date());
+			gtag('config', '${PUBLIC_GTM_ID}', {
+				page_path: window.location.pathname
+			});
+		</script>
+	`}
 </svelte:head>
