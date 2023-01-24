@@ -18,9 +18,11 @@
 			partytown = {
 				forward: ['dataLayer.push'],
 				resolveUrl: url => {
+					console.log(url);
+
 					const siteUrl = '${origin}/proxytown';
 
-					if (url.hostname === 'www.googletagmanager.com') {
+					if (url.hostname.includes('googletagmanager.com')) {
 						const proxyUrl = new URL(siteUrl + '/gtm');
 
 						const gtmId = new URL(url).searchParams.get('id');
@@ -29,7 +31,7 @@
 						return proxyUrl;
 					}
 
-					if (url.hostname === 'www.google-analytics.com') {
+					if (url.hostname.includes('google-analytics.com')) {
 						const proxyUrl = new URL(siteUrl + '/ga');
 
 						return proxyUrl;
@@ -45,15 +47,15 @@
 
 	<script
 		type="text/partytown"
-		src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
+		src={`https://googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
 	></script>
 
 	{@html `
 		<script type="text/partytown">
 			window.dataLayer = window.dataLayer || [];
 
-			function gtag() {
-				dataLayer.push(arguments);
+			window.gtag = function gtag() {
+				window.dataLayer.push(arguments);
 			}
 
 			gtag('js', new Date());
