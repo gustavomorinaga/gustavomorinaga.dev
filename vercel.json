@@ -1,7 +1,7 @@
 {
 	"headers": [
 		{
-			"source": "https://www.googletagmanager.com/(.*)",
+			"source": "/proxytown/(.*)",
 			"headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
 		}
 	],
