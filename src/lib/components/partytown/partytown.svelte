@@ -35,7 +35,7 @@
 
 	<script
 		type="text/partytown"
-		src={`https://googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
+		src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
 	></script>
 
 	{@html `
