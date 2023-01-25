@@ -10,7 +10,7 @@
 				resolveUrl: url => {
 					const siteUrl = '${PUBLIC_DOMAIN}/proxytown';
 
-					if (url.hostname === 'googletagmanager.com') {
+					if (url.hostname.includes('googletagmanager.com')) {
 						const proxyUrl = new URL(siteUrl + '/gtm');
 
 						const gtmId = new URL(url).searchParams.get('id');
@@ -19,7 +19,7 @@
 						return proxyUrl;
 					}
 
-					if (url.hostname === 'google-analytics.com') {
+					if (url.hostname.includes('google-analytics.com')) {
 						const proxyUrl = new URL(siteUrl + '/ga');
 
 						return proxyUrl;
