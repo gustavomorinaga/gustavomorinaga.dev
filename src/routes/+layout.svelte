@@ -6,7 +6,6 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
-	import { dev } from '$app/environment';
 	import { Background, Partytown, Player, Transition } from '$lib/components';
 	import type { LayoutServerData } from './$types';
 
@@ -35,9 +34,7 @@
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 </script>
 
-{#if !dev}
-	<Partytown />
-{/if}
+<Partytown />
 
 <Background bind:isThree bind:finished bind:readMode />
 

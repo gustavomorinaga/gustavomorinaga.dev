@@ -5,9 +5,9 @@
 	"author": "Gustavo Matheus <gustavo.morinaga27@gmail.com>",
 	"description": "Make a description",
 	"scripts": {
-		"dev": "vite dev --open",
+		"dev": "pnpm run partytown && vite dev --open",
 		"build": "pnpm run partytown && vite build",
-		"preview": "vite preview",
+		"preview": "pnpm run partytown && vite preview",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

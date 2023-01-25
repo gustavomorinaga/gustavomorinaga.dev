@@ -1,15 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { PUBLIC_GTM_ID } from '$env/static/public';
-	import { partytownSnippet } from '@builder.io/partytown/integration';
 
-	let script: HTMLScriptElement;
 	const { origin } = $page.url;
-
-	onMount(() => {
-		if (script) script.textContent = partytownSnippet();
-	});
 </script>
 
 <svelte:head>
@@ -18,8 +11,6 @@
 			partytown = {
 				forward: ['dataLayer.push'],
 				resolveUrl: url => {
-					console.log(url);
-
 					const siteUrl = '${origin}/proxytown';
 
 					if (url.hostname.includes('googletagmanager.com')) {
@@ -43,7 +34,7 @@
 		</script>
 	`}
 
-	<script bind:this={script}></script>
+	<script src="/~partytown/partytown.js"></script>
 
 	<script
 		type="text/partytown"
