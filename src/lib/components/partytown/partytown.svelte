@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { PUBLIC_GTM_ID } from '$env/static/public';
-
-	const { origin } = $page.url;
+	import { PUBLIC_DOMAIN, PUBLIC_GTM_ID } from '$env/static/public';
 </script>
 
 <svelte:head>
@@ -11,7 +8,7 @@
 			partytown = {
 				forward: ['dataLayer.push'],
 				resolveUrl: url => {
-					const siteUrl = '${origin}/proxytown';
+					const siteUrl = '${PUBLIC_DOMAIN}/proxytown';
 
 					if (url.hostname.includes('googletagmanager.com')) {
 						const proxyUrl = new URL(siteUrl + '/gtm');
