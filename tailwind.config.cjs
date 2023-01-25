@@ -1,7 +1,11 @@
 const plugin = require('tailwindcss/plugin');
 
-const textShadowPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
+const customPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
 	addComponents({
+		'.scrollbar__theme': {
+			'@apply scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus':
+				{}
+		},
 		'.typewriter': {
 			'@apply inline-flex overflow-hidden border-solid border-primary opacity-50 animate-typing animate-typing':
 				{},
@@ -25,7 +29,7 @@ module.exports = {
 		require('@tailwindcss/typography'),
 		require('daisyui'),
 		require('tailwind-scrollbar'),
-		textShadowPlugin
+		customPlugin
 	],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {

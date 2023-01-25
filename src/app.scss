@@ -14,8 +14,7 @@
 }
 
 body {
-	@apply relative min-h-screen
-	scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus;
+	@apply relative min-h-screen scrollbar__theme;
 }
 
 code {
