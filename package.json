@@ -6,7 +6,7 @@
 	"description": "Make a description",
 	"scripts": {
 		"dev": "vite dev --open",
-		"build": "vite build",
+		"build": "pnpm run partytown && vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,6 +14,7 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
+		"partytown": "partytown copylib static/~partytown",
 		"release": "standard-version",
 		"release-as-major": "pnpm run release --release-as major",
 		"release-as-minor": "pnpm run release --release-as minor",
