@@ -11,8 +11,6 @@
 				resolveUrl: (url) => {
 					const siteUrl = '${PUBLIC_DOMAIN}/proxytown';
 
-					console.log(url);
-
 					if (url.hostname.includes('googletagmanager.com')) {
 						const proxyUrl = new URL(siteUrl + '/gtm');
 
@@ -36,7 +34,7 @@
 
 	<script src="/~partytown/partytown.js"></script>
 
-	<script type="text/partytown" src={`${PUBLIC_DOMAIN}?id=${PUBLIC_GTM_ID}`}></script>
+	<script type="text/partytown" src={`${PUBLIC_DOMAIN}/proxytown/gtm?id=${PUBLIC_GTM_ID}`}></script>
 
 	{@html `
 		<script type="text/partytown">
