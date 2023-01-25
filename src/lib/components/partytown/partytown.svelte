@@ -6,7 +6,7 @@
 	{@html `
 		<script>
 			partytown = {
-				lib: '/static/~partytown/',
+				lib: '/~partytown/',
 				forward: ['gtag'],
 				resolveUrl: (url) => {
 					const siteUrl = '${PUBLIC_DOMAIN}/proxytown';
