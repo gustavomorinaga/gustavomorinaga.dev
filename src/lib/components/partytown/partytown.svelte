@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { PUBLIC_DOMAIN, PUBLIC_GTM_ID } from '$env/static/public';
+	import { page } from '$app/stores';
+
+	let type = $page.url.searchParams.get('gtm_debug') ? 'nomodule' : 'text/partytown';
 </script>
 
 <svelte:head>
@@ -33,13 +36,10 @@
 
 	<script src="/~partytown/partytown.js"></script>
 
-	<script
-		type="text/partytown"
-		src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GTM_ID}`}
-	></script>
+	<script {type} src={`${PUBLIC_DOMAIN}/proxytown/gtm?id=${PUBLIC_GTM_ID}`}></script>
 
 	{@html `
-		<script type="text/partytown">
+		<script type="${type}">
 			window.dataLayer = window.dataLayer || [];
 
 			window.gtag = function gtag() {
