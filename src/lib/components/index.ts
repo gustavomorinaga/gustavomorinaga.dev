@@ -4,3 +4,4 @@ export * from './icon';
 export * from './partytown';
 export * from './player';
 export * from './transition';
+export * from './vitals';

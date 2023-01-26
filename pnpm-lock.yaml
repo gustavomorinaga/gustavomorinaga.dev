@@ -47,6 +47,7 @@ specifiers:
   typescript: 4.9.4
   vite: 4.0.4
   vitest: 0.28.1
+  web-vitals: ^3.1.1
 
 devDependencies:
   '@builder.io/partytown': 0.7.5
@@ -95,6 +96,7 @@ devDependencies:
   typescript: 4.9.4
   vite: 4.0.4_sass@1.57.1
   vitest: 0.28.1_sass@1.57.1
+  web-vitals: 3.1.1
 
 packages:
 
@@ -4745,6 +4747,10 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /web-vitals/3.1.1:
+    resolution: {integrity: sha512-qvllU+ZeQChqzBhZ1oyXmWsjJ8a2jHYpH8AMaVuf29yscOPZfTQTjQFRX6+eADTdsDE8IanOZ0cetweHMs8/2A==}
     dev: true
 
   /webgl-constants/1.1.1:

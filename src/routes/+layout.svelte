@@ -6,7 +6,7 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
-	import { Background, Partytown, Player, Transition } from '$lib/components';
+	import { Background, Partytown, Player, Transition, Vitals } from '$lib/components';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
@@ -35,6 +35,7 @@
 </script>
 
 <Partytown />
+<Vitals />
 
 <Background bind:isThree bind:finished bind:readMode />
 
