@@ -3,10 +3,11 @@
 	import '@fontsource/caveat';
 	import '@fontsource/righteous';
 	import '@fontsource/orbitron';
-	import { fly } from 'svelte/transition';
-	import { expoOut } from 'svelte/easing';
+	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { Background, Partytown, Player, Transition, Vitals } from '$lib/components';
+	import { fly } from 'svelte/transition';
+	import { expoOut } from 'svelte/easing';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
@@ -34,8 +35,10 @@
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 </script>
 
-<Partytown />
-<Vitals />
+{#if !dev}
+	<Partytown />
+	<Vitals />
+{/if}
 
 <Background bind:isThree bind:finished bind:readMode />
 

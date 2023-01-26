@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { webVitals } from '$lib/scripts';
 
-	let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
+	let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID as string;
 
 	$: if (browser && analyticsId) {
 		webVitals({
