@@ -16,8 +16,6 @@ interface IAnalyticsOptions {
 
 const vitalsUrl = 'https://vitals.vercel-analytics.com/v1/vitals';
 
-window.navigator = navigator as INavigator;
-
 const getConnectionSpeed = () => {
 	const nav = navigator as INavigator;
 
