@@ -27,6 +27,6 @@
 
 <style lang="scss">
 	.transition {
-		@apply absolute inset-0 block py-4 origin-center;
+		@apply absolute top-0 block pt-4 pb-32 origin-center;
 	}
 </style>

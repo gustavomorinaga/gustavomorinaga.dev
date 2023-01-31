@@ -143,6 +143,9 @@ module.exports = {
 						transform: 'translateY(0px)'
 					}
 				}
+			},
+			transitionTimingFunction: {
+				smooth: 'cubic-bezier(0.5, 0, 0, 1)'
 			}
 		}
 	},
@@ -151,9 +154,9 @@ module.exports = {
 			{
 				synthwave: {
 					...require('daisyui/src/colors/themes')['[data-theme=synthwave]'],
-					primary: '#ef4444',
-					secondary: '#7A3A8C',
-					accent: '#f94c0d',
+					primary: '#EF4444',
+					secondary: '#F839F8',
+					accent: '#F87139',
 					'--rounded-box': '0rem',
 					'--rounded-btn': '0rem',
 					'--rounded-badge': '0rem'

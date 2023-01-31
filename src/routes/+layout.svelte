@@ -5,12 +5,15 @@
 	import '@fontsource/orbitron';
 	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
-	import { Background, Partytown, Player, Transition, Vitals } from '$lib/components';
+	import { Background, Icon, Partytown, Player, Transition, Vitals } from '$lib/components';
+	import { scrollToTop } from '$lib/utils';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
+
+	let scrollTopRef: HTMLButtonElement;
 
 	const routes = [
 		{
@@ -33,7 +36,15 @@
 	$: readMode = ['/blog'].includes($page.url.pathname);
 	$: showContent = isThree ? finished : true;
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
+
+	const handleOnScroll = () => {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+			scrollTopRef.classList.add('show');
+		else scrollTopRef.classList.remove('show');
+	};
 </script>
+
+<svelte:window on:scroll={handleOnScroll} />
 
 {#if !dev}
 	<Partytown />
@@ -75,6 +86,15 @@
 			<slot />
 		</Transition>
 	</main>
+
+	<button
+		bind:this={scrollTopRef}
+		class="btn__scroll__top"
+		title="Scroll to top"
+		on:click={scrollToTop}
+	>
+		<Icon icon="arrow-big-up-lines" />
+	</button>
 
 	<Player playlist={data.playlist.data} />
 {/if}
@@ -158,5 +178,13 @@
 
 	main {
 		@apply relative max-w-screen-lg min-h-screen my-0 mx-auto;
+	}
+
+	.btn__scroll__top {
+		@apply fixed z-40 right-8 bottom-28 btn btn-ghost btn-circle text-shadow-md shadow-black opacity-0 pointer-events-none transition-opacity duration-300 ease-out;
+
+		&.show {
+			@apply opacity-100 pointer-events-auto;
+		}
 	}
 </style>

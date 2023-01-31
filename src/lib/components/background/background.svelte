@@ -197,7 +197,7 @@
 
 		<canvas bind:this={canvas} class="webgl" />
 	{:else}
-		<div class="fallback__image" style="--synthwave: url('/images/svgs/synthwave.svg');" />
+		<div class="fallback__image" />
 	{/if}
 </div>
 
@@ -232,7 +232,7 @@
 
 		& .fallback__image {
 			@apply bg-center bg-cover bg-no-repeat w-full h-full;
-			background-image: var(--synthwave);
+			background-image: url('/images/svgs/synthwave.svg');
 		}
 	}
 </style>

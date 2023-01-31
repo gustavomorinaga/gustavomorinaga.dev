@@ -2,15 +2,15 @@
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon } from '$lib/components';
-	import { observeScroll } from '$lib/utils';
+	import { Icon, Metadata } from '$lib/components';
+	import { observeScroll, scrollIntoView } from '$lib/utils';
 	import type { IKnowledge, ISocial } from '$lib/types';
 	import Atropos from 'atropos/svelte';
 	import { Swiper, SwiperSlide } from 'swiper/svelte';
 	import { Autoplay, FreeMode } from 'swiper';
 	import type { SwiperOptions } from 'swiper/types';
 
-	const carouselOptions: SwiperOptions & { autoplay: any } = {
+	const carouselOptions: SwiperOptions = {
 		modules: [Autoplay, FreeMode],
 		slidesPerView: 'auto',
 		watchOverflow: true,
@@ -21,7 +21,7 @@
 			delay: 0,
 			disableOnInteraction: false
 		},
-		speed: 5000
+		speed: 2500
 	};
 
 	const socialLinks: ISocial[] = [
@@ -243,6 +243,12 @@
 				color: '#F9DC3E'
 			},
 			{
+				title: 'Vite',
+				url: 'https://vitejs.dev',
+				icon: 'vite',
+				color: '#646CFF'
+			},
+			{
 				title: 'ESLint',
 				url: 'https://eslint.org',
 				icon: 'eslint',
@@ -318,28 +324,17 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Gustavo Morinaga Developer</title>
-	<meta name="description" content="Gustavo Morinaga Developer" />
-</svelte:head>
+<Metadata />
 
 <section class="blurb">
 	<div class="blurb__content">
 		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
 			<Atropos class="atropos__profile" shadow={false} highlight={false}>
-				<div
-					class="triangle"
-					data-atropos-offset="0"
-					style="--triangle: url('/images/svgs/triangle.svg');"
-				/>
-				<div
-					class="profile"
-					data-atropos-offset="0"
-					style="--profile: url('/images/pngs/profile-cropped.png');"
-				/>
+				<div class="triangle" data-atropos-offset="0" />
+				<div class="profile" data-atropos-offset="0" />
 
 				<div
-					class="popup top-6 left-12 before:from-primary before:to-black"
+					class="popup top-10 left-12 before:from-primary before:to-black"
 					data-atropos-offset="14"
 				>
 					<div class="popup__content">
@@ -378,7 +373,7 @@
 
 			<p in:fly={{ x: -125, duration: 1000, delay: 2050, easing: cubicOut }}>
 				Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de
-				alta tecnologia
+				alta tecnologia.
 			</p>
 
 			<ul class="socials" in:fly={{ x: -150, duration: 1000, delay: 2100, easing: cubicOut }}>
@@ -400,15 +395,33 @@
 			</ul>
 		</div>
 	</div>
+
+	<a class="scroll__to" href="#about" on:click|preventDefault={scrollIntoView}>
+		<Icon icon="chevrons-down" size="lg" />
+	</a>
 </section>
 
-<section
-	class="knowledges observe__scroll"
-	style="--low-poly-grid: url('/images/svgs/low-poly-grid.svg');"
->
+<section id="about" class="about">
+	<div class="about__content">
+		<h2>Sobre mim</h2>
+
+		<p>
+			Meu nome é Gustavo Morinaga, tenho 22 anos, sou desenvolvedor Full-Stack e UX Designer. Gosto
+			de desenvolver aplicações
+		</p>
+
+		<a href="/about" class="btn btn-primary"> Mais detalhes </a>
+	</div>
+
+	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
+		<Icon icon="chevrons-down" size="lg" />
+	</a>
+</section>
+
+<section id="knowledges" class="knowledges observe__scroll">
 	<h2>Conhecimentos</h2>
 
-	<p>Muito aprendizado</p>
+	<p>Múltiplas ferramentas, múltiplas possibilidades.</p>
 
 	<Swiper class="knowledges__carousel" {...carouselOptions}>
 		{#each knowledges.techs as tech}
@@ -449,7 +462,7 @@
 
 <style lang="scss" global>
 	.blurb {
-		@apply hero h-gutter-header;
+		@apply relative hero h-gutter-header;
 
 		& .blurb__content {
 			@apply hero-content flex-col lg:flex-row-reverse text-center lg:text-left;
@@ -524,17 +537,17 @@
 
 		& .triangle {
 			@apply absolute inset-0 bg-cover bg-no-repeat text-primary text-opacity-40 drop-shadow-md;
-			background-image: var(--triangle);
+			background-image: url('/images/svgs/triangle.svg');
 		}
 		& .profile {
 			@apply relative z-auto w-96 h-96 bg-cover bg-no-repeat drop-shadow-md shadow-red-500 grayscale;
-			background-image: var(--profile);
+			background-image: url('/images/pngs/profile-cropped.png');
 			clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 
 			&:after {
 				content: '';
 				@apply absolute inset-0 w-full h-full bg-cover bg-no-repeat drop-shadow-md opacity-0 mix-blend-hard-light transition-opacity ease-out;
-				background-image: var(--profile);
+				background-image: url('/images/pngs/profile-cropped.png');
 				clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 			}
 		}
@@ -568,17 +581,26 @@
 		}
 	}
 
+	.about {
+		@apply relative hero;
+
+		& .about__content {
+			@apply hero-content h-screen;
+		}
+	}
+
 	.knowledges {
-		@apply w-screen h-[50vh] py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light;
+		@apply w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-stone-300/10 shadow-2xl shadow-black;
 		margin-left: calc(50% - 50vw);
-		background-image: var(--low-poly-grid);
+		background-image: url('/images/svgs/low-poly-grid.svg');
+		border-width: 1px 0;
 
 		& h2 {
-			@apply text-2xl lg:text-4xl font-futuristic text-shadow-glow shadow-primary uppercase;
+			@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-glow shadow-primary uppercase;
 		}
 
 		& p {
-			@apply text-xl;
+			@apply text-xl mb-4 text-shadow-md shadow-black;
 		}
 
 		& .knowledges__carousel {
@@ -592,7 +614,8 @@
 					@apply w-fit;
 
 					& .knowledge {
-						@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 transition-all ease-out;
+						@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
+						transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
 
 						&:hover {
 							& .icon {
@@ -614,5 +637,9 @@
 				}
 			}
 		}
+	}
+
+	.scroll__to {
+		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
 	}
 </style>
