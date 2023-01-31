@@ -211,7 +211,7 @@
 		}
 
 		&.read__mode {
-			@apply after:opacity-100;
+			@apply hidden after:opacity-100;
 		}
 
 		&.loading {

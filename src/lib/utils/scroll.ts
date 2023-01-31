@@ -1,5 +1,10 @@
 import { browser } from '$app/environment';
 import { prefersReducedMotion } from './reduced-motion';
+import anime from 'animejs';
+
+export const containerElement = browser
+	? window.document.scrollingElement || document.body || document.documentElement
+	: undefined;
 
 export const observeScroll = (
 	options: IntersectionObserverInit = { root: null, rootMargin: '0px', threshold: 1 }
@@ -19,23 +24,33 @@ export const observeScroll = (
 	return { observer };
 };
 
-export const scrollIntoView = (event: Event) => {
+export const scrollIntoView = async (event: Event) => {
 	if (!browser) return;
 
 	const target = event.currentTarget as HTMLAnchorElement;
 	const anchor = target.getAttribute('href');
 	if (!anchor) return;
 
-	const element = document.querySelector(anchor);
+	const element = document.querySelector(anchor) as HTMLElement;
 	if (!element) return;
 
-	element.scrollIntoView({ ...(!prefersReducedMotion && { behavior: 'smooth' }) });
+	const header = document.querySelector('#header') as HTMLElement;
+
+	return await anime({
+		targets: containerElement,
+		scrollTop: element.offsetTop + (header.offsetHeight || 0),
+		duration: 1000,
+		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
+	}).finished;
 };
 
-export const scrollToTop = () => {
-	if (!browser || prefersReducedMotion) return;
+export const scrollToTop = async () => {
+	if (!browser) return;
 
-	const body = document.body || document.documentElement;
-
-	body.scrollIntoView({ ...(!prefersReducedMotion && { behavior: 'smooth' }) });
+	return await anime({
+		targets: containerElement,
+		scrollTop: 0,
+		duration: 1000,
+		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
+	}).finished;
 };
