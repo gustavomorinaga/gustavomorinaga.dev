@@ -15,15 +15,17 @@
 	});
 </script>
 
-{#if animations}
-	{#key $page.url.pathname}
-		<div class="transition" in:effect={{ duration, easing: quintOut }}>
-			<slot />
-		</div>
-	{/key}
-{:else}
-	<slot />
-{/if}
+<div class="transition">
+	{#if animations}
+		{#key $page.url.pathname}
+			<div in:effect={{ duration, easing: quintOut }}>
+				<slot />
+			</div>
+		{/key}
+	{:else}
+		<slot />
+	{/if}
+</div>
 
 <style lang="scss">
 	.transition {

@@ -25,7 +25,7 @@
 	$: readMode = ['/blog'].includes($page.url.pathname);
 </script>
 
-{#if !dev}
+{#if dev}
 	<Partytown />
 	<Vitals />
 {/if}

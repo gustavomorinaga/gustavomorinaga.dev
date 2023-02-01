@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import { getGPUTier } from 'detect-gpu';
 
 	// --- Three.js ---
@@ -19,6 +20,14 @@
 	export let finished = false;
 	export let readMode = false;
 
+	let scene: THREE.Scene;
+	let renderer: THREE.WebGLRenderer;
+	let sizes = {
+		width: browser ? window.innerWidth : 0,
+		height: browser ? window.innerHeight : 0
+	};
+	let animate: () => void;
+
 	const initThree = () => {
 		const loadingManager = new THREE.LoadingManager(
 			() => (finished = true),
@@ -26,7 +35,7 @@
 		);
 
 		// Scene
-		const scene = new THREE.Scene();
+		scene = new THREE.Scene();
 
 		// Textures
 		const textureLoader = new THREE.TextureLoader(loadingManager);
@@ -93,12 +102,6 @@
 		scene.add(spotlight2);
 		scene.add(spotlight2.target);
 
-		// Sizes
-		const sizes = {
-			width: window.innerWidth,
-			height: window.innerHeight
-		};
-
 		// Camera
 		let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 20);
 		camera.position.x = 0;
@@ -106,7 +109,7 @@
 		camera.position.z = 1;
 
 		// Renderer
-		let renderer = new THREE.WebGLRenderer({ canvas });
+		renderer = new THREE.WebGLRenderer({ canvas });
 		renderer.setSize(sizes.width, sizes.height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -155,7 +158,7 @@
 		const clock = new THREE.Clock();
 
 		// Animate
-		const animate = () => {
+		animate = () => {
 			const elapsedTime = clock.getElapsedTime();
 
 			plane.position.z = (elapsedTime * 0.15) % 2;
@@ -164,15 +167,18 @@
 			// Render
 			// renderer.render(scene, camera);
 			effectComposer.render();
-
-			// Call animate again on the next frame
-			window.requestAnimationFrame(animate);
 		};
-
-		animate();
 
 		return Promise.resolve(canvas);
 	};
+
+	// Call animate again on the next frame
+	$: if (browser && isThree && finished) {
+		if (readMode) {
+			renderer?.setAnimationLoop(animate);
+			setTimeout(() => renderer?.setAnimationLoop(null), 300);
+		} else renderer?.setAnimationLoop(animate);
+	}
 
 	onMount(async () => {
 		const { tier } = await getGPUTier();
@@ -211,7 +217,7 @@
 		}
 
 		&.read__mode {
-			@apply hidden after:opacity-100;
+			@apply after:opacity-80;
 		}
 
 		&.loading {
