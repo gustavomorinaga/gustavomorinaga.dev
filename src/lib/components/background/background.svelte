@@ -22,11 +22,13 @@
 
 	let scene: THREE.Scene;
 	let renderer: THREE.WebGLRenderer;
-	let sizes = {
+	let clock: THREE.Clock;
+	let animate: () => void;
+
+	$: sizes = {
 		width: browser ? window.innerWidth : 0,
 		height: browser ? window.innerHeight : 0
 	};
-	let animate: () => void;
 
 	const initThree = () => {
 		const loadingManager = new THREE.LoadingManager(
@@ -155,7 +157,7 @@
 			effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 		});
 
-		const clock = new THREE.Clock();
+		clock = new THREE.Clock();
 
 		// Animate
 		animate = () => {
@@ -174,10 +176,12 @@
 
 	// Call animate again on the next frame
 	$: if (browser && isThree && finished) {
-		if (readMode) {
+		if (!readMode) {
+			renderer?.setAnimationLoop(animate);
+		} else {
 			renderer?.setAnimationLoop(animate);
 			setTimeout(() => renderer?.setAnimationLoop(null), 300);
-		} else renderer?.setAnimationLoop(animate);
+		}
 	}
 
 	onMount(async () => {
@@ -188,6 +192,11 @@
 		isThree && (await initThree());
 	});
 </script>
+
+<svelte:window
+	on:blur={() => renderer?.setAnimationLoop(null)}
+	on:focus={() => renderer?.setAnimationLoop(animate)}
+/>
 
 <div
 	class="background__container"
