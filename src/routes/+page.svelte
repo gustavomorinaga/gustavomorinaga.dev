@@ -326,7 +326,7 @@
 
 <Metadata />
 
-<section class="blurb">
+<section class="blurb observe__scroll">
 	<div class="blurb__content">
 		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
 			<Atropos class="atropos__profile" shadow={false} highlight={false}>

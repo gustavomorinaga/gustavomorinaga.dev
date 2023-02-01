@@ -24,16 +24,16 @@
 	let renderer: THREE.WebGLRenderer;
 	let clock: THREE.Clock;
 	let animate: () => void;
-
-	$: sizes = {
-		width: browser ? window.innerWidth : 0,
-		height: browser ? window.innerHeight : 0
+	let sizes = {
+		width: browser ? window.innerWidth : 1,
+		height: browser ? window.innerHeight : 1
 	};
 
 	const initThree = () => {
 		const loadingManager = new THREE.LoadingManager(
 			() => (finished = true),
-			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100))
+			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100)),
+			() => ((finished = false), (progress = 0))
 		);
 
 		// Scene
@@ -230,7 +230,7 @@
 		}
 
 		&.loading {
-			@apply z-50 after:opacity-100 after:backdrop-blur-sm;
+			@apply z-[100] after:opacity-100 after:backdrop-blur-sm;
 
 			& .loader {
 				@apply opacity-100;

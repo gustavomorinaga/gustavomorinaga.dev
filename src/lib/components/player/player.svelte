@@ -574,7 +574,7 @@
 	}
 
 	.artwork__overlay {
-		@apply absolute inset-0 grid place-items-center bg-black/75 opacity-0 transition-opacity ease-out;
+		@apply absolute inset-0 grid place-items-center bg-black/75 opacity-0 backdrop-blur-sm transition-opacity ease-out;
 	}
 
 	@keyframes bars {

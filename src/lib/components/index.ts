@@ -6,5 +6,5 @@ export * from './metadata';
 export * from './partytown';
 export * from './player';
 export * from './scroll-top';
-export * from './transition';
+export * from './page-transition';
 export * from './vitals';

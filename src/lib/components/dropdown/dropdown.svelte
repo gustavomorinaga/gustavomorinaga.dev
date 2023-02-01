@@ -49,7 +49,7 @@
 		@apply relative;
 
 		& .dropdown__content {
-			@apply fixed;
+			@apply fixed z-50;
 		}
 	}
 </style>

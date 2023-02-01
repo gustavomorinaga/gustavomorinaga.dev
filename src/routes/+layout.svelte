@@ -4,14 +4,13 @@
 	import '@fontsource/righteous';
 	import '@fontsource/orbitron';
 	import { dev } from '$app/environment';
-	import { page } from '$app/stores';
 	import {
 		Background,
 		Header,
 		Partytown,
 		Player,
 		ScrollTop,
-		Transition,
+		PageTransition,
 		Vitals
 	} from '$lib/components';
 	import type { LayoutServerData } from './$types';
@@ -22,7 +21,7 @@
 	let finished!: boolean;
 
 	$: showContent = isThree ? finished : true;
-	$: readMode = ['/blog'].includes($page.url.pathname);
+	$: readMode = ['/blog'].includes(data.pathname);
 </script>
 
 {#if dev}
@@ -36,9 +35,9 @@
 	<Header />
 
 	<main>
-		<Transition>
+		<PageTransition trigger={data.pathname}>
 			<slot />
-		</Transition>
+		</PageTransition>
 	</main>
 
 	<ScrollTop />
