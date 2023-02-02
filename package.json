@@ -5,16 +5,15 @@
 	"author": "Gustavo Matheus <gustavo.morinaga27@gmail.com>",
 	"description": "Make a description",
 	"scripts": {
-		"dev": "pnpm run partytown && vite dev --open",
-		"build": "pnpm run partytown && vite build",
-		"preview": "pnpm run partytown && vite preview",
+		"dev": "vite dev --open",
+		"build": "vite build",
+		"preview": "vite preview",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"partytown": "partytown copylib static/~partytown",
 		"release": "standard-version",
 		"release-as-major": "pnpm run release --release-as major",
 		"release-as-minor": "pnpm run release --release-as minor",
@@ -23,7 +22,6 @@
 		"prepare": "husky install"
 	},
 	"devDependencies": {
-		"@builder.io/partytown": "0.7.5",
 		"@fontsource/caveat": "4.5.10",
 		"@fontsource/courier-prime": "4.5.9",
 		"@fontsource/karla": "4.5.11",

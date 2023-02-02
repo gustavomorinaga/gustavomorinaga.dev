@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@builder.io/partytown': 0.7.5
   '@fontsource/caveat': 4.5.10
   '@fontsource/courier-prime': 4.5.9
   '@fontsource/karla': 4.5.11
@@ -52,7 +51,6 @@ specifiers:
   web-vitals: 3.1.1
 
 devDependencies:
-  '@builder.io/partytown': 0.7.5
   '@fontsource/caveat': 4.5.10
   '@fontsource/courier-prime': 4.5.9
   '@fontsource/karla': 4.5.11
@@ -123,11 +121,6 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       chalk: 2.4.2
       js-tokens: 4.0.0
-    dev: true
-
-  /@builder.io/partytown/0.7.5:
-    resolution: {integrity: sha512-Zbr2Eo0AQ4yzmQr/36/h+6LKjmdVBB3Q5cGzO6rtlIKB/IOpbQVUZW+XAnhpJmJr9sIF97OZjgbhG9k7Sjn4yw==}
-    hasBin: true
     dev: true
 
   /@esbuild/android-arm/0.16.10:

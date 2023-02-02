@@ -1,15 +1,8 @@
-import path from 'path';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { partytownVite } from '@builder.io/partytown/utils';
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [
-		sveltekit(),
-		partytownVite({
-			dest: path.join(process.cwd(), 'static', '~partytown')
-		})
-	],
+	plugins: [sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	},

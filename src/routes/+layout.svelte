@@ -4,13 +4,12 @@
 	import '@fontsource/righteous';
 	import '@fontsource/orbitron';
 	import {
+		Analytics,
 		Background,
 		Header,
-		Partytown,
 		Player,
 		ScrollTop,
-		PageTransition,
-		Vitals
+		PageTransition
 	} from '$lib/components';
 	import type { LayoutServerData } from './$types';
 
@@ -23,8 +22,7 @@
 	$: readMode = ['/blog'].includes(data.pathname);
 </script>
 
-<Partytown />
-<Vitals />
+<Analytics />
 
 <Background bind:isThree bind:finished bind:readMode />
 
