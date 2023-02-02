@@ -3,7 +3,6 @@
 	import '@fontsource/caveat';
 	import '@fontsource/righteous';
 	import '@fontsource/orbitron';
-	import { dev } from '$app/environment';
 	import {
 		Background,
 		Header,
