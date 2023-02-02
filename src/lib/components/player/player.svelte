@@ -199,6 +199,8 @@
 						<img
 							src={HOST + currentTrack.cover.formats.thumbnail.url}
 							alt={currentTrack.title}
+							width="56"
+							height="56"
 							loading="lazy"
 						/>
 
@@ -325,6 +327,8 @@
 											<img
 												src={HOST + track.cover.formats.thumbnail.url}
 												alt={track.title}
+												width="48"
+												height="48"
 												loading="lazy"
 											/>
 
