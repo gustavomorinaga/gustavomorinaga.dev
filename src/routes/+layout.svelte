@@ -24,10 +24,8 @@
 	$: readMode = ['/blog'].includes(data.pathname);
 </script>
 
-{#if dev}
-	<Partytown />
-	<Vitals />
-{/if}
+<Partytown />
+<Vitals />
 
 <Background bind:isThree bind:finished bind:readMode />
 
