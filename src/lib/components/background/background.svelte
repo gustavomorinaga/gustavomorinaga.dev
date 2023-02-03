@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { CubeLoader } from '$lib/components/loaders';
 	import { getGPUTier } from 'detect-gpu';
 
 	// --- Three.js ---
@@ -205,9 +206,7 @@
 >
 	{#if isThree}
 		<div class="loader">
-			<div class="radial-progress" style="--value:{progress}; --size:5rem; --thickness: 4px;">
-				{progress.toFixed()}%
-			</div>
+			<CubeLoader />
 		</div>
 
 		<canvas bind:this={canvas} class="webgl" />
@@ -239,10 +238,6 @@
 
 		& .loader {
 			@apply absolute inset-0 z-10 grid place-items-center opacity-0 transition-opacity ease-out duration-300;
-
-			& .radial-progress {
-				@apply text-red-500 text-shadow-glow shadow-red-700;
-			}
 		}
 
 		& .fallback__image {

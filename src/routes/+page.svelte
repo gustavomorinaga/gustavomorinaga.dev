@@ -366,17 +366,17 @@
 		<div>
 			<code>profile<span class="method">.welcome()</span>;</code>
 
-			<h1 in:fly={{ x: -100, duration: 1000, delay: 2000, easing: cubicOut }}>
+			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
 				Saudações! Eu sou
 				<span class="underline underline-offset-8">Gustavo Morinaga</span>
 			</h1>
 
-			<p in:fly={{ x: -125, duration: 1000, delay: 2050, easing: cubicOut }}>
+			<p in:fly={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
 				Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de
 				alta tecnologia.
 			</p>
 
-			<ul class="socials" in:fly={{ x: -150, duration: 1000, delay: 2100, easing: cubicOut }}>
+			<ul class="socials" in:fly={{ x: -250, duration: 1000, delay: 2100, easing: cubicOut }}>
 				{#each socialLinks as socialLink, index}
 					<li class="social" class:cta={index === 0} data-tip={socialLink.title}>
 						<a
@@ -421,7 +421,7 @@
 <section id="knowledges" class="knowledges observe__scroll">
 	<h2>Conhecimentos</h2>
 
-	<p>Múltiplas ferramentas, múltiplas possibilidades.</p>
+	<p>Flexibilidade é o que não falta para construir projetos incríveis</p>
 
 	<Swiper class="knowledges__carousel" {...carouselOptions}>
 		{#each knowledges.techs as tech}
@@ -590,10 +590,9 @@
 	}
 
 	.knowledges {
-		@apply w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-stone-300/10 shadow-2xl shadow-black;
+		@apply w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
 		margin-left: calc(50% - 50vw);
 		background-image: url('/images/svgs/low-poly-grid.svg');
-		border-width: 1px 0;
 
 		& h2 {
 			@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-glow shadow-primary uppercase;

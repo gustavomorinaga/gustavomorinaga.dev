@@ -4,10 +4,11 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
+	import { tweened } from 'svelte/motion';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
-	import { durationFormatter, getMinDiff } from '$lib/utils';
+	import { containerElement, durationFormatter, getMinDiff } from '$lib/utils';
 	import type { IPlaylist } from '$lib/types';
 
 	export let playlist: IPlaylist[] = [];
@@ -23,7 +24,10 @@
 		repeat: false,
 		shuffle: false
 	};
+	const playerOffset = tweened(0, { duration: 1000, easing: expoOut });
 
+	let bodyRef: HTMLBodyElement;
+	let playerRef: HTMLElement;
 	let trackElementRef: HTMLAudioElement;
 	let playerStorage = browser
 		? persist(writable(INITIAL_STATE), createLocalStorage(), 'player')
@@ -49,6 +53,16 @@
 	$: displayedVolume = muted ? 0 : volume * 100;
 	$: volumeStatus =
 		volume >= 0.5 ? 'high' : volume !== 0 ? 'low' : ('off' as 'high' | 'low' | 'off');
+	$: playerOffset.set(showPlayer ? playerRef?.offsetHeight || 0 : 0);
+	$: if (bodyRef && containerElement) {
+		bodyRef.style.paddingBottom = `${$playerOffset}px`;
+
+		if (
+			containerElement.scrollTop + containerElement.clientHeight >
+			containerElement.scrollHeight - 100
+		)
+			containerElement.scrollTo(0, containerElement.scrollTop + $playerOffset);
+	}
 
 	const saveStorage = () =>
 		($playerStorage = { showPlayer, currentTrack, currentTime, muted, volume, repeat, shuffle });
@@ -173,13 +187,20 @@
 
 	onMount(async () => {
 		await initAudio();
+
+		bodyRef = document.querySelector('body') as HTMLBodyElement;
 	});
 </script>
 
 <svelte:window on:beforeunload={handleBeforeUnload} />
 
 {#if showPlayer}
-	<div class="player" in:fly={{ duration: 1000, y: 100, easing: expoOut }}>
+	<div
+		id="player"
+		bind:this={playerRef}
+		in:fly={{ duration: 1000, y: 100, easing: expoOut }}
+		out:fly={{ duration: 1000, y: 100, easing: expoOut }}
+	>
 		<div class="player__wrapper">
 			<div class="progress__wrapper" class:is__loading={isLoading}>
 				<input
@@ -375,11 +396,11 @@
 {/if}
 
 <style lang="scss" global>
-	.player {
+	#player {
 		@apply fixed z-50 left-0 right-0 bottom-0 select-none;
 
 		& .player__wrapper {
-			@apply flex items-center justify-between gap-4 pt-5 px-4 pb-4 bg-black/75 backdrop-blur-md;
+			@apply flex items-center justify-between gap-4 pt-5 px-4 pb-4 bg-black/75 backdrop-blur-md shadow-lg shadow-black;
 
 			& .progress__wrapper {
 				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
@@ -487,8 +508,7 @@
 				}
 
 				& .volume__wrapper {
-					@apply relative h-[9.25rem] w-12 bg-black/50 backdrop-blur-sm border-solid border-white/10;
-					border-width: 1px;
+					@apply relative h-[9.25rem] w-12 bg-black/50 backdrop-blur-sm border border-solid border-white/10;
 
 					& .volume {
 						@apply range range-primary range-xs absolute inset-0 w-28 h-4 -rotate-90 origin-center -translate-x-8 translate-y-16;

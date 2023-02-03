@@ -9,7 +9,8 @@
 		Header,
 		Player,
 		ScrollTop,
-		PageTransition
+		PageTransition,
+		Footer
 	} from '$lib/components';
 	import type { LayoutServerData } from './$types';
 
@@ -35,13 +36,15 @@
 		</PageTransition>
 	</main>
 
+	<Player playlist={data.playlist.data} />
+
 	<ScrollTop />
 
-	<Player playlist={data.playlist.data} />
+	<Footer />
 {/if}
 
 <style lang="scss">
 	main {
-		@apply relative max-w-screen-lg min-h-screen my-0 mx-auto;
+		@apply relative max-w-screen-lg min-h-screen my-0 mx-auto py-8;
 	}
 </style>

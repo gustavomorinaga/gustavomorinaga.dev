@@ -36,7 +36,11 @@
 
 		<nav>
 			{#each routes as route}
-				<a class={isCurrentRoute(route.path) ? 'active' : null} href={route.path}>
+				<a
+					class={isCurrentRoute(route.path) ? 'active' : null}
+					href={route.path}
+					data-sveltekit-noscroll
+				>
 					{route.title}
 				</a>
 			{/each}
@@ -53,7 +57,7 @@
 		@apply relative z-40 h-[4.5rem];
 
 		& .header__wrapper {
-			@apply fixed z-50 top-0 left-0 right-0 max-w-screen-lg my-0 mx-auto flex justify-between items-center px-4 bg-black/75 backdrop-blur-sm border-zinc-800 shadow-md;
+			@apply fixed z-50 top-0 left-0 right-0 max-w-screen-lg my-0 mx-auto px-4 sm:px-0 flex justify-between items-center bg-black/75 backdrop-blur-sm border-zinc-800 shadow-md;
 			border-bottom-width: 1px;
 
 			& .logo {
@@ -76,7 +80,7 @@
 
 					&::before {
 						content: '';
-						@apply absolute left-0 -bottom-px w-full h-px bg-red-500 shadow-glow shadow-red-500/50 opacity-0 transition-opacity ease-in;
+						@apply absolute z-40 left-0 -bottom-px w-full h-px bg-red-500 shadow-glow shadow-red-500/50 opacity-0 transition-opacity ease-in;
 					}
 
 					&.active {
