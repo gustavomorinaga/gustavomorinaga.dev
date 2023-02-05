@@ -3,9 +3,12 @@
 	import { containerElement, scrollToTop } from '$lib/utils';
 
 	let scrollTopButtonRef: HTMLButtonElement;
+	let MINIMUM_OFFSET = 200;
 
 	const handleOnScroll = () => {
-		if ((containerElement as HTMLElement).scrollTop > 100) scrollTopButtonRef.classList.add('show');
+		const { scrollTop } = containerElement as HTMLElement;
+
+		if (scrollTop > MINIMUM_OFFSET) scrollTopButtonRef.classList.add('show');
 		else scrollTopButtonRef.classList.remove('show');
 	};
 </script>

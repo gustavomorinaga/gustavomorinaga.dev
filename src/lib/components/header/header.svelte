@@ -2,52 +2,90 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
+	import InlineSVG from 'svelte-inline-svg';
+	import anime from 'animejs';
 
 	const routes = [
 		{
 			title: 'Blog',
-			path: '/blog'
+			path: '/blog',
+			active: false
 		},
 		{
 			title: 'Sobre mim',
-			path: '/about'
+			path: '/about',
+			active: false
 		},
 		{
 			title: 'Projetos',
-			path: '/projects'
+			path: '/projects',
+			active: false
 		}
 	];
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
+
+	const handleAnimateLogo = () => {
+		anime
+			.timeline({
+				targets: '.logo #logo path',
+				transformStyle: 'preserve-3d',
+				transformOrigin: '50%',
+				easing: 'easeInOutQuint'
+			})
+			.add({
+				opacity: 0,
+				rotateX: '-60deg',
+				translateY: -25,
+				duration: 300
+			})
+			.add({
+				opacity: 1,
+				rotateX: '0deg',
+				translateY: 0
+			});
+
+		anime
+			.timeline({
+				targets: '.logo #slogan path',
+				transformStyle: 'preserve-3d',
+				transformOrigin: '50%',
+				easing: 'easeInOutQuint'
+			})
+			.add({
+				opacity: 0,
+				rotateX: '60deg',
+				translateY: 25,
+				duration: 300
+			})
+			.add({
+				opacity: 1,
+				rotateX: '0deg',
+				translateY: 0
+			});
+	};
 </script>
 
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
-		<div class="left__corner">
-			<div />
-		</div>
+		<div class="header__content">
+			<a href="/" class="logo" title="Página inicial" on:click={handleAnimateLogo}>
+				<InlineSVG id="logo" src="/images/svgs/logo-text.svg" />
+				<InlineSVG id="slogan" src="/images/svgs/slogan-text.svg" />
+			</a>
 
-		<a href="/">
-			<div class="logo">
-				<span class="retro">Gustavo Morinaga</span>
-				<span class="handwritten">Developer</span>
-			</div>
-		</a>
-
-		<nav>
-			{#each routes as route}
-				<a
-					class={isCurrentRoute(route.path) ? 'active' : null}
-					href={route.path}
-					data-sveltekit-noscroll
-				>
-					{route.title}
-				</a>
-			{/each}
-		</nav>
-
-		<div class="right__corner">
-			<div />
+			<nav>
+				{#each routes as route}
+					<a
+						class={isCurrentRoute(route.path) ? 'active' : null}
+						class:disabled={!route.active}
+						href={route.path}
+						data-sveltekit-noscroll
+					>
+						{route.title}
+					</a>
+				{/each}
+			</nav>
 		</div>
 	</div>
 </header>
@@ -57,73 +95,49 @@
 		@apply relative z-40 h-[4.5rem];
 
 		& .header__wrapper {
-			@apply fixed z-50 top-0 left-0 right-0 max-w-screen-lg my-0 mx-auto px-4 sm:px-0 flex justify-between items-center bg-black/75 backdrop-blur-sm border-zinc-800 shadow-md;
-			border-bottom-width: 1px;
+			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
 
-			& .logo {
-				@apply relative flex flex-col;
+			& .header__content {
+				@apply flex justify-between items-center max-w-screen-lg mx-auto my-0;
 
-				& .retro {
-					@apply font-retro uppercase text-base sm:text-2xl text-white text-shadow-glow shadow-zinc-500;
-				}
+				& .logo {
+					@apply relative flex flex-col items-center w-52 h-fit;
 
-				& .handwritten {
-					@apply self-center -mt-4 ml-2 font-handwritten text-base sm:text-2xl text-red-500 text-shadow-glow shadow-red-900;
-				}
-			}
-
-			& nav {
-				@apply relative hidden sm:flex;
-
-				& > a {
-					@apply relative py-6 px-4 font-futuristic uppercase text-white shadow-red-500/50 transition-all ease-in hover:text-red-500 hover:text-shadow-glow;
-
-					&::before {
-						content: '';
-						@apply absolute z-40 left-0 -bottom-px w-full h-px bg-red-500 shadow-glow shadow-red-500/50 opacity-0 transition-opacity ease-in;
+					& > * {
+						@apply focus:outline-none;
 					}
 
-					&.active {
-						@apply text-red-500 text-shadow-glow shadow-red-500/50;
+					& #logo {
+						@apply w-full h-8 drop-shadow-md shadow-black;
+					}
+					& #slogan {
+						@apply w-full h-6 -mt-3 z-10 drop-shadow-md shadow-black;
+					}
+				}
+
+				& nav {
+					@apply relative hidden sm:flex;
+
+					& > a {
+						@apply relative py-6 px-4 font-futuristic text-white shadow-red-500/50 transition-all ease-in hover:text-red-500 hover:text-shadow-glow;
 
 						&::before {
-							@apply opacity-100;
+							content: '';
+							@apply absolute z-40 left-0 -bottom-px w-full h-px bg-red-500 shadow-glow shadow-red-500/50 opacity-0 transition-opacity ease-in;
+						}
+
+						&.active {
+							@apply text-red-500 text-shadow-glow shadow-red-500/50;
+
+							&::before {
+								@apply opacity-100;
+							}
+						}
+
+						&.disabled {
+							@apply pointer-events-none opacity-50;
 						}
 					}
-				}
-			}
-
-			& .left__corner,
-			& .right__corner {
-				@apply fixed w-16 h-full overflow-hidden bg-zinc-800;
-
-				& > div {
-					@apply absolute bg-black;
-				}
-			}
-
-			& .left__corner {
-				@apply top-0 -left-16;
-
-				&,
-				& > div {
-					clip-path: polygon(0 0, 100% 101%, 100% 0);
-				}
-
-				& > div {
-					@apply top-0 left-px right-0 bottom-px;
-				}
-			}
-			& .right__corner {
-				@apply top-0 -right-16;
-
-				&,
-				& > div {
-					clip-path: polygon(0 0, 0% 101%, 100% 0);
-				}
-
-				& > div {
-					@apply top-0 left-0 right-px bottom-px;
 				}
 			}
 		}

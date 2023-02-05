@@ -38,7 +38,6 @@ module.exports = {
 				sans: ['Karla', 'sans-serif'],
 				mono: ['Courier Prime', 'monospace'],
 				futuristic: ['Orbitron', 'sans-serif'],
-				retro: ['Righteous', 'cursive'],
 				handwritten: ['Caveat', 'cursive']
 			},
 			height: {
@@ -153,13 +152,28 @@ module.exports = {
 		themes: [
 			{
 				synthwave: {
-					...require('daisyui/src/colors/themes')['[data-theme=synthwave]'],
+					...require('daisyui/src/colors/themes')['[data-theme=black]'],
 					primary: '#EF4444',
 					secondary: '#F839F8',
 					accent: '#F87139',
+					neutral: '#535353',
+					'base-100': '#100f10',
+					'base-200': '#1B1B1B',
+					'base-300': '#242424',
+					info: '#3747F0',
+					success: '#2BF063',
+					warning: '#F0D05B',
+					error: '#F02B2B',
 					'--rounded-box': '0rem',
 					'--rounded-btn': '0rem',
-					'--rounded-badge': '0rem'
+					'--rounded-badge': '0rem',
+					'--animation-btn': '0.3s',
+					'--animation-input': '0.3s',
+					'--btn-text-case': 'uppercase',
+					'--btn-focus-scale': '0.95',
+					'--border-btn': '1px',
+					'--tab-border': '1px',
+					'--tab-radius': '0rem'
 				}
 			}
 		]

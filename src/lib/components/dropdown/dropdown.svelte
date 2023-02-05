@@ -4,6 +4,7 @@
 
 	let activationRef: HTMLElement;
 	let contentRef: HTMLElement;
+
 	export let showContent = false;
 	export let title = '';
 	export let label = '';
@@ -29,7 +30,7 @@
 		aria-label={label}
 	>
 		<input type="checkbox" hidden aria-hidden="true" bind:checked={showContent} />
-		<slot name="button" />
+		<slot name="trigger" />
 	</label>
 
 	{#if showContent}

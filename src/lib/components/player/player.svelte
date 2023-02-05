@@ -335,7 +335,7 @@
 					inTransition:slide={{ duration: 300, easing: cubicOut }}
 					outTransition:slide={{ duration: 300, easing: cubicOut }}
 				>
-					<svelte:fragment slot="button">
+					<svelte:fragment slot="trigger">
 						<Icon icon="playlist" size="sm" />
 					</svelte:fragment>
 
@@ -400,7 +400,7 @@
 		@apply fixed z-50 left-0 right-0 bottom-0 select-none;
 
 		& .player__wrapper {
-			@apply flex items-center justify-between gap-4 pt-5 px-4 pb-4 bg-black/75 backdrop-blur-md shadow-lg shadow-black;
+			@apply flex items-center justify-between gap-4 pt-5 px-4 pb-4 bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
 
 			& .progress__wrapper {
 				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
@@ -443,7 +443,7 @@
 					@apply flex gap-4 items-center;
 
 					& .artwork {
-						@apply relative w-14;
+						@apply relative w-14 aspect-square;
 					}
 
 					& .wrapper {
@@ -562,7 +562,7 @@
 						@apply flex gap-2 items-center w-full link link-hover;
 
 						& .artwork {
-							@apply relative w-12;
+							@apply relative w-12 aspect-square;
 						}
 
 						& .wrapper {

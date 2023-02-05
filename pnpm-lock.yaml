@@ -39,6 +39,7 @@ specifiers:
   standard-version: 9.5.0
   svelte: 3.55.1
   svelte-check: 3.0.3
+  svelte-inline-svg: ^1.2.0
   svelte-preprocess: 5.0.1
   swiper: 8.4.7
   tailwind-scrollbar: 2.1.0
@@ -89,6 +90,7 @@ devDependencies:
   standard-version: 9.5.0
   svelte: 3.55.1
   svelte-check: 3.0.3_mraflicfyjy3x4taxigiwsr23i
+  svelte-inline-svg: 1.2.0
   svelte-preprocess: 5.0.1_vjxjhl25fa3lzr3j7qengixofu
   swiper: 8.4.7
   tailwind-scrollbar: 2.1.0_tailwindcss@3.2.4
@@ -4274,6 +4276,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.55.1
+    dev: true
+
+  /svelte-inline-svg/1.2.0:
+    resolution: {integrity: sha512-mYyvz7uddfaj/yXB5zyAyYSPUyE7vdK8En7dGJjZf3XImdAfOuDxhNn5OFF84BQeJFVZ7T8/rJU33emiHKdLhQ==}
     dev: true
 
   /svelte-preprocess/5.0.1_vjxjhl25fa3lzr3j7qengixofu:

@@ -15,13 +15,14 @@
 		slidesPerView: 'auto',
 		watchOverflow: true,
 		centeredSlides: true,
-		freeMode: true,
+		speed: 2500,
 		loop: true,
+		freeMode: true,
 		autoplay: {
 			delay: 0,
-			disableOnInteraction: false
-		},
-		speed: 2500
+			disableOnInteraction: false,
+			pauseOnMouseEnter: true
+		}
 	};
 
 	const socialLinks: ISocial[] = [
@@ -326,12 +327,12 @@
 
 <Metadata />
 
-<section class="blurb observe__scroll">
+<section id="blurb" class="observe__scroll">
 	<div class="blurb__content">
 		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
 			<Atropos class="atropos__profile" shadow={false} highlight={false}>
-				<div class="triangle" data-atropos-offset="0" />
-				<div class="profile" data-atropos-offset="0" />
+				<figure class="triangle" data-atropos-offset="0" />
+				<figure class="profile" data-atropos-offset="0" />
 
 				<div
 					class="popup top-10 left-12 before:from-primary before:to-black"
@@ -401,16 +402,45 @@
 	</a>
 </section>
 
-<section id="about" class="about">
-	<div class="about__content">
-		<h2>Sobre mim</h2>
+<section id="about" class="observe__scroll">
+	<div class="about__card">
+		<figure />
 
-		<p>
-			Meu nome é Gustavo Morinaga, tenho 22 anos, sou desenvolvedor Full-Stack e UX Designer. Gosto
-			de desenvolver aplicações
-		</p>
+		<div class="card-body">
+			<h2>Sobre mim</h2>
 
-		<a href="/about" class="btn btn-primary"> Mais detalhes </a>
+			<h3>Full-Stack Developer & UI/UX Designer</h3>
+
+			<p>
+				Meu nome é Gustavo Morinaga, tenho 22 anos, sou desenvolvedor Full-Stack e UI/UX Designer.
+				Desenvolvo sites e aplicações completas com as melhores tecnologias disponíveis no mercado.
+				Sempre estou em constante aprendizado e com o objetivo de entregar a melhor experiência e
+				performance possível.
+			</p>
+
+			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme">
+				<p>"Não é a linguagem de programação que define o programador, mas sim sua lógica."</p>
+				<footer>
+					<cite title="Pensador">
+						<a
+							href="https://www.pensador.com/autor/david_ribeiro_guilherme"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							David Ribeiro Guilherme
+						</a>
+					</cite>
+				</footer>
+			</blockquote>
+
+			<div class="card-actions">
+				<a href="/about" class="cta">
+					Mais detalhes
+
+					<Icon icon="chevron-right" />
+				</a>
+			</div>
+		</div>
 	</div>
 
 	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
@@ -418,54 +448,56 @@
 	</a>
 </section>
 
-<section id="knowledges" class="knowledges observe__scroll">
-	<h2>Conhecimentos</h2>
+<section id="knowledges" class="observe__scroll">
+	<div class="knowledges__content">
+		<h2>Conhecimentos</h2>
 
-	<p>Flexibilidade é o que não falta para construir projetos incríveis</p>
+		<p>Múltiplas ferramentas, múltiplas possibilidades em solucionar múltiplos problemas...</p>
 
-	<Swiper class="knowledges__carousel" {...carouselOptions}>
-		{#each knowledges.techs as tech}
-			<SwiperSlide>
-				<a
-					class="knowledge"
-					style="--icon-color: {tech.color}"
-					href={tech.url}
-					title={tech.title}
-					aria-label={tech.title}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Icon collection={tech.collection || 'simple-icons'} icon={tech.icon} size="xl" />
-				</a>
-			</SwiperSlide>
-		{/each}
-	</Swiper>
+		<Swiper class="knowledges__carousel" {...carouselOptions}>
+			{#each knowledges.techs as tech}
+				<SwiperSlide>
+					<a
+						class="knowledge"
+						style="--icon-color: {tech.color}"
+						href={tech.url}
+						title={tech.title}
+						aria-label={tech.title}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon collection={tech.collection || 'simple-icons'} icon={tech.icon} size="xl" />
+					</a>
+				</SwiperSlide>
+			{/each}
+		</Swiper>
 
-	<Swiper class="knowledges__carousel" {...carouselOptions}>
-		{#each knowledges.tools as tool}
-			<SwiperSlide>
-				<a
-					class="knowledge"
-					style="--icon-color: {tool.color}"
-					href={tool.url}
-					title={tool.title}
-					aria-label={tool.title}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Icon collection={tool.collection || 'simple-icons'} icon={tool.icon} size="xl" />
-				</a>
-			</SwiperSlide>
-		{/each}
-	</Swiper>
+		<Swiper class="knowledges__carousel" {...carouselOptions}>
+			{#each knowledges.tools as tool}
+				<SwiperSlide>
+					<a
+						class="knowledge"
+						style="--icon-color: {tool.color}"
+						href={tool.url}
+						title={tool.title}
+						aria-label={tool.title}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon collection={tool.collection || 'simple-icons'} icon={tool.icon} size="xl" />
+					</a>
+				</SwiperSlide>
+			{/each}
+		</Swiper>
+	</div>
 </section>
 
 <style lang="scss" global>
-	.blurb {
+	#blurb {
 		@apply relative hero h-gutter-header;
 
 		& .blurb__content {
-			@apply hero-content flex-col lg:flex-row-reverse text-center lg:text-left;
+			@apply hero-content flex-col lg:flex-row-reverse -mt-32 px-4 sm:px-0 text-center lg:text-left;
 
 			& code {
 				@apply typewriter;
@@ -581,55 +613,93 @@
 		}
 	}
 
-	.about {
-		@apply relative hero;
+	#about {
+		@apply relative grid place-items-center h-screen;
 
-		& .about__content {
-			@apply hero-content h-screen;
+		& .about__card {
+			@apply card card-side items-center h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
+
+			& > figure {
+				@apply min-w-[15vw] h-[50vh] m-4 bg-cover bg-no-repeat;
+				background-image: url('/images/pngs/profile.png');
+			}
+
+			& .card-body {
+				@apply p-4;
+
+				& h2 {
+					@apply mb-2 text-4xl font-futuristic text-shadow-glow shadow-primary;
+				}
+
+				& h3 {
+					@apply mb-2 text-xl;
+				}
+
+				& blockquote {
+					@apply mt-2 pl-2 italic border-l-2 border-primary;
+
+					& footer {
+						& cite {
+							@apply link-primary link-hover text-sm not-italic;
+						}
+					}
+				}
+
+				& .card-actions {
+					@apply mt-8;
+
+					& .cta {
+						@apply btn btn-primary btn-wide;
+					}
+				}
+			}
 		}
 	}
 
-	.knowledges {
-		@apply w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
-		margin-left: calc(50% - 50vw);
-		background-image: url('/images/svgs/low-poly-grid.svg');
+	#knowledges {
+		@apply relative grid place-items-center h-screen;
 
-		& h2 {
-			@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-glow shadow-primary uppercase;
-		}
+		& .knowledges__content {
+			@apply absolute w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
+			background-image: url('/images/svgs/low-poly-grid.svg');
 
-		& p {
-			@apply text-xl mb-4 text-shadow-md shadow-black;
-		}
+			& h2 {
+				@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-glow shadow-primary;
+			}
 
-		& .knowledges__carousel {
-			@apply w-full h-28;
+			& p {
+				@apply text-xl mb-4 text-shadow-md shadow-black;
+			}
 
-			& > .swiper-wrapper {
-				@apply gap-20;
-				transition-timing-function: linear !important;
+			& .knowledges__carousel {
+				@apply w-full h-28;
 
-				& > .swiper-slide {
-					@apply w-fit;
+				& > .swiper-wrapper {
+					@apply gap-20;
+					transition-timing-function: linear !important;
 
-					& .knowledge {
-						@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
-						transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
+					& > .swiper-slide {
+						@apply w-fit;
 
-						&:hover {
-							& .icon {
-								&::before {
-									@apply opacity-10;
+						& .knowledge {
+							@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
+							transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
+
+							&:hover {
+								& .icon {
+									&::before {
+										@apply opacity-10;
+									}
 								}
 							}
-						}
 
-						& .icon {
-							@apply relative;
+							& .icon {
+								@apply relative;
 
-							&::before {
-								content: '';
-								@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
+								&::before {
+									content: '';
+									@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
+								}
 							}
 						}
 					}

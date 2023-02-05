@@ -60,6 +60,7 @@
 		"standard-version": "9.5.0",
 		"svelte": "3.55.1",
 		"svelte-check": "3.0.3",
+		"svelte-inline-svg": "^1.2.0",
 		"svelte-preprocess": "5.0.1",
 		"swiper": "8.4.7",
 		"tailwind-scrollbar": "2.1.0",

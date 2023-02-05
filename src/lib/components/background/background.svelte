@@ -45,7 +45,7 @@
 		const gridTexture = textureLoader.load('images/pngs/grid.png');
 		const terrainTexture = textureLoader.load('images/pngs/displacement.png');
 		const metalnessTexture = textureLoader.load('images/pngs/metalness.png');
-		const universeTexture = textureLoader.load('images/pngs/universe.jpg');
+		const universeTexture = textureLoader.load('images/pngs/universe.png');
 
 		// Background
 		scene.background = universeTexture;
@@ -217,7 +217,7 @@
 
 <style lang="scss">
 	.background__container {
-		@apply fixed -z-10 inset-0 w-full h-full;
+		@apply fixed -z-10 inset-0 w-full h-full overflow-hidden;
 
 		&::after {
 			content: '';
@@ -229,10 +229,14 @@
 		}
 
 		&.loading {
-			@apply z-[100] after:opacity-100 after:backdrop-blur-sm;
+			@apply z-[100] after:bg-base-100 after:opacity-100 after:backdrop-blur-sm;
+
+			&::after {
+				background-image: url('/images/svgs/hexagons.svg');
+			}
 
 			& .loader {
-				@apply opacity-100;
+				@apply opacity-100 shadow-lg shadow-black;
 			}
 		}
 

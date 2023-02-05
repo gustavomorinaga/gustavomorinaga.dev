@@ -8,13 +8,8 @@
 @import 'swiper/css/autoplay';
 @import 'swiper/css/free-mode';
 
-:root,
-[data-theme] {
-	@apply bg-black;
-}
-
 body {
-	@apply relative min-h-screen scrollbar__theme;
+	@apply relative min-h-screen scrollbar__theme text-base-content selection:bg-primary;
 
 	&::before {
 		content: '';
