@@ -573,13 +573,13 @@
 		}
 		& .profile {
 			@apply relative z-auto w-96 h-96 bg-cover bg-no-repeat drop-shadow-md shadow-red-500 grayscale;
-			background-image: url('/images/pngs/profile-cropped.png');
+			background-image: url('/images/webps/profile-cropped.webp');
 			clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 
 			&:after {
 				content: '';
 				@apply absolute inset-0 w-full h-full bg-cover bg-no-repeat drop-shadow-md opacity-0 mix-blend-hard-light transition-opacity ease-out;
-				background-image: url('/images/pngs/profile-cropped.png');
+				background-image: url('/images/webps/profile-cropped.webp');
 				clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 			}
 		}
@@ -621,7 +621,7 @@
 
 			& > figure {
 				@apply min-w-[15vw] h-[50vh] m-4 bg-cover bg-no-repeat;
-				background-image: url('/images/pngs/profile.png');
+				background-image: url('/images/webps/profile.webp');
 			}
 
 			& .card-body {

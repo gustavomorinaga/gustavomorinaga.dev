@@ -7,9 +7,8 @@ const customPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
 				{}
 		},
 		'.typewriter': {
-			'@apply inline-flex overflow-hidden border-solid border-primary opacity-50 animate-typing animate-typing':
-				{},
-			borderRightWidth: '0.25rem'
+			'@apply inline-flex max-w-full pr-1 overflow-hidden border-r-2 border-solid border-primary animate-typing':
+				{}
 		}
 	});
 
@@ -58,8 +57,7 @@ module.exports = {
 				rgb: '2px 0px 2px rgb(255 0 255 / 50%), -2px 0px 2px rgb(0 255 191 / 50%), 0px 0px 10px rgb(49 122 255)'
 			},
 			animation: {
-				typing:
-					'typing 3.5s steps(100, end), blink-caret 0.75s ease-out infinite, low-opacity 2s ease-out',
+				typing: 'typing 3.5s steps(100, end) 0.5s, blink-caret 0.75s ease-out infinite',
 				glitch: 'glitch 1s linear',
 				'spin-background': 'spin-background 3s linear infinite',
 				float: 'float 5s ease 4.9s infinite alternate'
@@ -67,7 +65,7 @@ module.exports = {
 			keyframes: {
 				typing: {
 					from: {
-						maxWidth: '0'
+						maxWidth: '0%'
 					},
 					to: {
 						maxWidth: '100%'
@@ -79,14 +77,6 @@ module.exports = {
 					},
 					'50%': {
 						borderColor: 'hsl(var(--p)/var(--tw-border-opacity))'
-					}
-				},
-				'low-opacity': {
-					'0%, 95%': {
-						opacity: 1
-					},
-					to: {
-						opacity: 0.5
 					}
 				},
 				glitch: {
@@ -157,7 +147,7 @@ module.exports = {
 					secondary: '#F839F8',
 					accent: '#F87139',
 					neutral: '#535353',
-					'base-100': '#100f10',
+					'base-100': '#100F10',
 					'base-200': '#1B1B1B',
 					'base-300': '#242424',
 					info: '#3747F0',

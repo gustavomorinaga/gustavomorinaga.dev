@@ -23,6 +23,11 @@
 	$: readMode = ['/blog'].includes(data.pathname);
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://api.iconify.design" />
+	<link rel="preconnect" href="https://api.simplesvg.com" />
+</svelte:head>
+
 <Analytics />
 
 <Background bind:isThree bind:finished bind:readMode />

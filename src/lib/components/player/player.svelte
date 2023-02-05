@@ -54,6 +54,10 @@
 	$: volumeStatus =
 		volume >= 0.5 ? 'high' : volume !== 0 ? 'low' : ('off' as 'high' | 'low' | 'off');
 	$: playerOffset.set(showPlayer ? playerRef?.offsetHeight || 0 : 0);
+	$: if (browser) {
+		if (!paused) window.addEventListener('beforeunload', handleBeforeUnload);
+		else window.removeEventListener('beforeunload', handleBeforeUnload);
+	}
 	$: if (bodyRef && containerElement) {
 		bodyRef.style.paddingBottom = `${$playerOffset}px`;
 
@@ -64,8 +68,11 @@
 			containerElement.scrollTo(0, containerElement.scrollTop + $playerOffset);
 	}
 
-	const saveStorage = () =>
-		($playerStorage = { showPlayer, currentTrack, currentTime, muted, volume, repeat, shuffle });
+	const saveStorage = async () => {
+		$playerStorage = { showPlayer, currentTrack, currentTime, muted, volume, repeat, shuffle };
+
+		return Promise.resolve($playerStorage);
+	};
 
 	const initAudio = () => {
 		trackElementRef = new Audio(HOST + currentTrack.source.url);
@@ -97,7 +104,7 @@
 		}
 
 		paused = !paused;
-		paused && saveStorage();
+		paused && (await saveStorage());
 
 		return paused;
 	};
@@ -107,7 +114,8 @@
 		trackElementRef.src = HOST + currentTrack.source.url;
 		currentTime = 0;
 		duration = 0;
-		saveStorage();
+
+		await saveStorage();
 
 		await trackElementRef.play();
 		paused = false;
@@ -125,38 +133,42 @@
 		trackElementRef.src = HOST + currentTrack.source.url;
 		currentTime = 0;
 		duration = 0;
-		saveStorage();
+
+		await saveStorage();
 
 		!paused && (await trackElementRef.play());
 
 		return currentTrack;
 	};
 
-	const handleRepeat = () => {
+	const handleRepeat = async () => {
 		repeat = !repeat;
 		trackElementRef.loop = repeat;
-		saveStorage();
+
+		await saveStorage();
 
 		return repeat;
 	};
 
-	const handleShuffle = () => {
+	const handleShuffle = async () => {
 		shuffle = !shuffle;
-		saveStorage();
+
+		await saveStorage();
 
 		return shuffle;
 	};
 
-	const handleCurrentTime = (event: Event) => {
+	const handleCurrentTime = async (event: Event) => {
 		const time = Number((event.target as HTMLInputElement).value);
 		currentTime = (time * duration) / 100;
 		trackElementRef.currentTime = currentTime;
-		saveStorage();
+
+		await saveStorage();
 
 		return currentTime;
 	};
 
-	const handleVolume = (event: Event) => {
+	const handleVolume = async (event: Event) => {
 		volume = Number((event.target as HTMLInputElement).value) / 100;
 		trackElementRef.volume = volume;
 
@@ -165,20 +177,27 @@
 			trackElementRef.muted = muted;
 		}
 
-		saveStorage();
+		await saveStorage();
 
 		return volume;
 	};
 
-	const handleMute = () => {
+	const handleMute = async () => {
 		muted = !muted;
 		trackElementRef.muted = muted;
-		saveStorage();
+
+		await saveStorage();
 
 		return muted;
 	};
 
-	const handleBeforeUnload = () => browser && saveStorage();
+	const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
+		event.preventDefault();
+		paused = true;
+		await saveStorage();
+
+		window.removeEventListener('beforeunload', handleBeforeUnload);
+	};
 
 	const handleShowPlayer = () => {
 		showPlayer = !showPlayer;
@@ -191,8 +210,6 @@
 		bodyRef = document.querySelector('body') as HTMLBodyElement;
 	});
 </script>
-
-<svelte:window on:beforeunload={handleBeforeUnload} />
 
 {#if showPlayer}
 	<div

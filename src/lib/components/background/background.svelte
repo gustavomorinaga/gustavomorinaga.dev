@@ -42,10 +42,10 @@
 
 		// Textures
 		const textureLoader = new THREE.TextureLoader(loadingManager);
-		const gridTexture = textureLoader.load('images/pngs/grid.png');
-		const terrainTexture = textureLoader.load('images/pngs/displacement.png');
-		const metalnessTexture = textureLoader.load('images/pngs/metalness.png');
-		const universeTexture = textureLoader.load('images/pngs/universe.png');
+		const gridTexture = textureLoader.load('images/webps/grid.webp');
+		const terrainTexture = textureLoader.load('images/webps/displacement.webp');
+		const metalnessTexture = textureLoader.load('images/webps/metalness.webp');
+		const universeTexture = textureLoader.load('images/webps/universe.webp');
 
 		// Background
 		scene.background = universeTexture;

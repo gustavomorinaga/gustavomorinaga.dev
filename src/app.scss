@@ -14,7 +14,7 @@ body {
 	&::before {
 		content: '';
 		@apply fixed inset-0 z-50 bg-fixed bg-repeat opacity-75 pointer-events-none;
-		background-image: url('/images/pngs/noise.png');
+		background-image: url('/images/webps/noise.webp');
 	}
 }
 
