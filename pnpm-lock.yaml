@@ -13,7 +13,7 @@ specifiers:
   '@sveltejs/adapter-vercel': 1.0.6
   '@sveltejs/kit': 1.3.6
   '@tailwindcss/typography': 0.5.9
-  '@types/animejs': ^3.1.7
+  '@types/animejs': 3.1.7
   '@types/html-minifier': 4.0.2
   '@types/three': 0.149.0
   '@typescript-eslint/eslint-plugin': 5.50.0
@@ -39,7 +39,7 @@ specifiers:
   standard-version: 9.5.0
   svelte: 3.55.1
   svelte-check: 3.0.3
-  svelte-inline-svg: ^1.2.0
+  svelte-inline-svg: 1.2.0
   svelte-preprocess: 5.0.1
   swiper: 8.4.7
   tailwind-scrollbar: 2.1.0
@@ -48,7 +48,7 @@ specifiers:
   tslib: 2.5.0
   typescript: 4.9.5
   vite: 4.0.4
-  vite-plugin-compression: ^0.5.1
+  vite-plugin-compression: 0.5.1
   vitest: 0.28.3
   web-vitals: 3.1.1
 

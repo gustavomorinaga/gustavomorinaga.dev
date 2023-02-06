@@ -13,7 +13,7 @@ body {
 
 	&::before {
 		content: '';
-		@apply fixed inset-0 z-50 bg-fixed bg-repeat opacity-75 pointer-events-none;
+		@apply fixed inset-0 z-[90] bg-fixed bg-repeat opacity-50 pointer-events-none mix-blend-screen;
 		background-image: url('/images/webps/noise.webp');
 	}
 }
