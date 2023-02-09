@@ -2,7 +2,6 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
-	import InlineSVG from 'svelte-inline-svg';
 	import anime from 'animejs';
 
 	const routes = [
@@ -25,18 +24,18 @@
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
-	const handleAnimateLogo = () => {
+	const handleAnimateLogo = async () => {
 		anime
 			.timeline({
-				targets: '.logo #logo path',
+				targets: '.logo #logo',
 				transformStyle: 'preserve-3d',
 				transformOrigin: '50%',
 				easing: 'easeInOutQuint'
 			})
 			.add({
 				opacity: 0,
-				rotateX: '-60deg',
-				translateY: -25,
+				rotateX: '-45deg',
+				translateY: -10,
 				duration: 300
 			})
 			.add({
@@ -47,15 +46,15 @@
 
 		anime
 			.timeline({
-				targets: '.logo #slogan path',
+				targets: '.logo #slogan',
 				transformStyle: 'preserve-3d',
 				transformOrigin: '50%',
 				easing: 'easeInOutQuint'
 			})
 			.add({
 				opacity: 0,
-				rotateX: '60deg',
-				translateY: 25,
+				rotateX: '45deg',
+				translateY: 10,
 				duration: 300
 			})
 			.add({
@@ -70,8 +69,8 @@
 	<div class="header__wrapper">
 		<div class="header__content">
 			<a href="/" class="logo" title="Página inicial" on:click={handleAnimateLogo}>
-				<InlineSVG id="logo" src="/images/svgs/logo-text.svg" />
-				<InlineSVG id="slogan" src="/images/svgs/slogan-text.svg" />
+				<img id="logo" src="/images/svgs/logo-text.svg" alt="" />
+				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="" />
 			</a>
 
 			<nav>
