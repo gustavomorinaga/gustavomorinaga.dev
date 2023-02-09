@@ -40,7 +40,7 @@ specifiers:
   svelte: 3.55.1
   svelte-check: 3.0.3
   svelte-preprocess: 5.0.1
-  swiper: 8.4.7
+  swiper: 9.0.3
   tailwind-scrollbar: 2.1.0
   tailwindcss: 3.2.6
   three: 0.149.0
@@ -91,7 +91,7 @@ devDependencies:
   svelte: 3.55.1
   svelte-check: 3.0.3_2fhq4e3e5we74q3fjwcjkwqgle
   svelte-preprocess: 5.0.1_3b5ianm2ugvkaapjtuwrpxqq7a
-  swiper: 8.4.7
+  swiper: 9.0.3
   tailwind-scrollbar: 2.1.0_tailwindcss@3.2.6
   tailwindcss: 3.2.6_postcss@8.4.21
   three: 0.149.0
@@ -1776,12 +1776,6 @@ packages:
       domelementtype: 2.3.0
       domhandler: 4.3.1
       entities: 2.2.0
-    dev: true
-
-  /dom7/4.0.6:
-    resolution: {integrity: sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==}
-    dependencies:
-      ssr-window: 4.0.2
     dev: true
 
   /domelementtype/2.3.0:
@@ -4365,12 +4359,10 @@ packages:
       stable: 0.1.8
     dev: true
 
-  /swiper/8.4.7:
-    resolution: {integrity: sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==}
+  /swiper/9.0.3:
+    resolution: {integrity: sha512-hHYI6CeUHcDyv6IakzAQrUv6nS5BMRn6KOkui16nhtdgYBlWgUdlaMbcdT0o4RJxpwSktCTLgpBtCm+WwwVYRw==}
     engines: {node: '>= 4.7.0'}
-    requiresBuild: true
     dependencies:
-      dom7: 4.0.6
       ssr-window: 4.0.2
     dev: true
 

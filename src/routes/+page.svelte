@@ -6,23 +6,47 @@
 	import { observeScroll, scrollIntoView } from '$lib/utils';
 	import type { IKnowledge, ISocial } from '$lib/types';
 	import Atropos from 'atropos/svelte';
-	import { Swiper, SwiperSlide } from 'swiper/svelte';
 	import { Autoplay, FreeMode } from 'swiper';
-	import type { SwiperOptions } from 'swiper/types';
+	import { register } from 'swiper/element';
 
-	const carouselOptions: SwiperOptions = {
+	let techsSwiperElement: HTMLElement & { initialize: () => void };
+	let toolsSwiperElement: HTMLElement & { initialize: () => void };
+
+	const swiperOptions = {
 		modules: [Autoplay, FreeMode],
-		slidesPerView: 'auto',
+		slidesPerView: 10,
+		breakpoints: {
+			320: {
+				slidesPerView: 3,
+				spaceBetween: 20
+			},
+			480: {
+				slidesPerView: 5,
+				spaceBetween: 40
+			},
+			640: {
+				slidesPerView: 10,
+				spaceBetween: 80
+			}
+		},
+		spaceBetween: 80,
 		watchOverflow: true,
-		centeredSlides: true,
-		speed: 2500,
+		speed: 4000,
 		loop: true,
 		freeMode: true,
 		autoplay: {
 			delay: 0,
 			disableOnInteraction: false,
-			pauseOnMouseEnter: true
-		}
+			pauseOnMouseEnter: true,
+			reverseDirection: false
+		},
+		injectStyles: [
+			`
+      :host(.knowledges__carousel) .swiper-wrapper {
+				transition-timing-function: linear !important;
+      }
+      `
+		]
 	};
 
 	const socialLinks: ISocial[] = [
@@ -318,7 +342,29 @@
 		]
 	};
 
-	onMount(() => {
+	const initSwiper = () => {
+		register();
+
+		Object.assign(techsSwiperElement, swiperOptions);
+		Object.assign(toolsSwiperElement, {
+			...swiperOptions,
+			autoplay: {
+				delay: 0,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true,
+				reverseDirection: true
+			}
+		});
+
+		techsSwiperElement.initialize();
+		toolsSwiperElement.initialize();
+
+		return Promise.resolve(true);
+	};
+
+	onMount(async () => {
+		await initSwiper();
+
 		const { observer } = observeScroll({ threshold: 0.5 });
 
 		return () => observer && observer.disconnect();
@@ -454,9 +500,9 @@
 
 		<p>Múltiplas ferramentas, múltiplas possibilidades em solucionar múltiplos problemas...</p>
 
-		<Swiper class="knowledges__carousel" {...carouselOptions}>
+		<swiper-container bind:this={techsSwiperElement} class="knowledges__carousel" init="false">
 			{#each knowledges.techs as tech}
-				<SwiperSlide>
+				<swiper-slide>
 					<a
 						class="knowledge"
 						style="--icon-color: {tech.color}"
@@ -468,13 +514,13 @@
 					>
 						<Icon collection={tech.collection || 'simple-icons'} icon={tech.icon} size="xl" />
 					</a>
-				</SwiperSlide>
+				</swiper-slide>
 			{/each}
-		</Swiper>
+		</swiper-container>
 
-		<Swiper class="knowledges__carousel" {...carouselOptions}>
+		<swiper-container bind:this={toolsSwiperElement} class="knowledges__carousel" init="false">
 			{#each knowledges.tools as tool}
-				<SwiperSlide>
+				<swiper-slide>
 					<a
 						class="knowledge"
 						style="--icon-color: {tool.color}"
@@ -486,9 +532,9 @@
 					>
 						<Icon collection={tool.collection || 'simple-icons'} icon={tool.icon} size="xl" />
 					</a>
-				</SwiperSlide>
+				</swiper-slide>
 			{/each}
-		</Swiper>
+		</swiper-container>
 	</div>
 </section>
 
@@ -674,33 +720,24 @@
 			& .knowledges__carousel {
 				@apply w-full h-28;
 
-				& > .swiper-wrapper {
-					@apply gap-20;
-					transition-timing-function: linear !important;
+				& .knowledge {
+					@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
+					transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
 
-					& > .swiper-slide {
-						@apply w-fit;
-
-						& .knowledge {
-							@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
-							transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
-
-							&:hover {
-								& .icon {
-									&::before {
-										@apply opacity-10;
-									}
-								}
+					&:hover {
+						& .icon {
+							&::before {
+								@apply opacity-10;
 							}
+						}
+					}
 
-							& .icon {
-								@apply relative;
+					& .icon {
+						@apply relative;
 
-								&::before {
-									content: '';
-									@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
-								}
-							}
+						&::before {
+							content: '';
+							@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
 						}
 					}
 				}
