@@ -33,11 +33,5 @@ export const handle = (async ({ resolve, event }) => {
 		}
 	});
 
-	const acceptEncoding = event.request.headers.get('Accept-Encoding');
-
-	if (acceptEncoding?.includes('br')) response.headers.set('Content-Encoding', 'br');
-	else if (acceptEncoding?.includes('gzip')) response.headers.set('Content-Encoding', 'gzip');
-	else if (acceptEncoding?.includes('deflate')) response.headers.set('Content-Encoding', 'deflate');
-
 	return response;
 }) satisfies Handle;
