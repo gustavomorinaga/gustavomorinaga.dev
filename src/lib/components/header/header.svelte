@@ -97,7 +97,7 @@
 			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
 
 			& .header__content {
-				@apply flex justify-between items-center max-w-screen-lg mx-auto my-0;
+				@apply flex justify-between items-center max-w-screen-lg mx-auto my-0 px-4 lg:px-0;
 
 				& .logo {
 					@apply relative flex flex-col items-center w-52 h-fit;

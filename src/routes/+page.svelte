@@ -14,30 +14,34 @@
 
 	const swiperOptions = {
 		modules: [Autoplay, FreeMode],
-		slidesPerView: 10,
 		breakpoints: {
 			320: {
 				slidesPerView: 3,
-				spaceBetween: 20
+				spaceBetween: 10
 			},
 			480: {
 				slidesPerView: 5,
-				spaceBetween: 40
+				spaceBetween: 20
 			},
 			640: {
-				slidesPerView: 10,
-				spaceBetween: 80
+				slidesPerView: 7,
+				spaceBetween: 30
+			},
+			960: {
+				slidesPerView: 9,
+				spaceBetween: 30
+			},
+			1280: {
+				slidesPerView: 12,
+				spaceBetween: 40
 			}
 		},
-		spaceBetween: 80,
 		watchOverflow: true,
 		speed: 4000,
 		loop: true,
 		freeMode: true,
 		autoplay: {
-			delay: 0,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
+			delay: 1,
 			reverseDirection: false
 		},
 		injectStyles: [
@@ -342,6 +346,24 @@
 		]
 	};
 
+	const services = [
+		{
+			icon: '',
+			title: 'UI Design',
+			description: ''
+		},
+		{
+			icon: 'code',
+			title: 'Desenvolvimento',
+			description: ''
+		},
+		{
+			icon: '',
+			title: 'Animações',
+			description: ''
+		}
+	];
+
 	const initSwiper = () => {
 		register();
 
@@ -349,9 +371,7 @@
 		Object.assign(toolsSwiperElement, {
 			...swiperOptions,
 			autoplay: {
-				delay: 0,
-				disableOnInteraction: false,
-				pauseOnMouseEnter: true,
+				delay: 1,
 				reverseDirection: true
 			}
 		});
@@ -373,9 +393,14 @@
 
 <Metadata />
 
-<section id="blurb" class="observe__scroll">
-	<div class="blurb__content">
+<section id="blurb">
+	<div class="blurb__content observe__scroll">
 		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
+			<div class="mobile__profile">
+				<figure class="triangle" />
+				<figure class="profile" />
+			</div>
+
 			<Atropos class="atropos__profile" shadow={false} highlight={false}>
 				<figure class="triangle" data-atropos-offset="0" />
 				<figure class="profile" data-atropos-offset="0" />
@@ -448,8 +473,8 @@
 	</a>
 </section>
 
-<section id="about" class="observe__scroll">
-	<div class="about__card">
+<section id="about">
+	<article class="about__card observe__scroll">
 		<figure />
 
 		<div class="card-body">
@@ -487,15 +512,15 @@
 				</a>
 			</div>
 		</div>
-	</div>
+	</article>
 
 	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
 		<Icon icon="chevrons-down" size="lg" />
 	</a>
 </section>
 
-<section id="knowledges" class="observe__scroll">
-	<div class="knowledges__content">
+<section id="knowledges">
+	<div class="knowledges__content observe__scroll">
 		<h2>Conhecimentos</h2>
 
 		<p>Múltiplas ferramentas, múltiplas possibilidades em solucionar múltiplos problemas...</p>
@@ -538,12 +563,38 @@
 	</div>
 </section>
 
+<section id="services">
+	<div class="services__content">
+		<h2>Serviços</h2>
+
+		<ul class="services__list">
+			{#each services as service}
+				<li>
+					<article class="service">
+						<div class="card-body">
+							<Icon icon={service.icon} size="lg" />
+
+							<h3>{service.title}</h3>
+
+							<p>{service.description}</p>
+						</div>
+					</article>
+				</li>
+			{/each}
+		</ul>
+	</div>
+
+	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
+		<Icon icon="chevrons-down" size="lg" />
+	</a>
+</section>
+
 <style lang="scss" global>
 	#blurb {
-		@apply relative hero h-gutter-header;
+		@apply relative hero h-gutter-header -mt-4;
 
 		& .blurb__content {
-			@apply hero-content flex-col lg:flex-row-reverse -mt-32 px-4 sm:px-0 text-center lg:text-left;
+			@apply hero-content flex-col lg:flex-row-reverse -mt-28 px-4 sm:px-0 text-center lg:text-left;
 
 			& code {
 				@apply typewriter;
@@ -591,9 +642,8 @@
 		}
 	}
 
+	.mobile__profile,
 	.atropos__profile {
-		@apply w-fit h-fit p-2;
-
 		&:hover {
 			& .profile {
 				@apply grayscale-0;
@@ -602,21 +652,13 @@
 					@apply animate-glitch opacity-50;
 				}
 			}
-			& .popup {
-				@apply before:animate-spin-background before:shadow-lg animate-none;
-
-				& .popup__content {
-					& .skill {
-						@apply max-w-fit ml-1 opacity-100;
-					}
-				}
-			}
 		}
 
 		& .triangle {
 			@apply absolute inset-0 bg-cover bg-no-repeat text-primary text-opacity-40 drop-shadow-md;
 			background-image: url('/images/svgs/triangle.svg');
 		}
+
 		& .profile {
 			@apply relative z-auto w-96 h-96 bg-cover bg-no-repeat drop-shadow-md shadow-red-500 grayscale;
 			background-image: url('/images/webps/profile-cropped.webp');
@@ -629,6 +671,27 @@
 				clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 			}
 		}
+	}
+
+	.mobile__profile {
+		@apply block lg:hidden;
+	}
+
+	.atropos__profile {
+		@apply hidden lg:block w-fit h-fit p-2 pointer-events-none lg:pointer-events-auto;
+
+		&:hover {
+			& .popup {
+				@apply before:animate-spin-background before:shadow-lg animate-none;
+
+				& .popup__content {
+					& .skill {
+						@apply max-w-fit ml-1 opacity-100;
+					}
+				}
+			}
+		}
+
 		& .popup {
 			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm shadow-black animate-float;
 
@@ -666,7 +729,7 @@
 			@apply card card-side items-center h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
 
 			& > figure {
-				@apply min-w-[15vw] h-[50vh] m-4 bg-cover bg-no-repeat;
+				@apply block w-[46rem] min-h-[50vh] m-4 bg-cover bg-no-repeat grayscale hover:grayscale-0 transition duration-300 ease-out;
 				background-image: url('/images/webps/profile.webp');
 			}
 
@@ -674,7 +737,7 @@
 				@apply p-4;
 
 				& h2 {
-					@apply mb-2 text-4xl font-futuristic text-shadow-glow shadow-primary;
+					@apply mb-2 text-4xl font-futuristic text-shadow-rgb;
 				}
 
 				& h3 {
@@ -703,14 +766,14 @@
 	}
 
 	#knowledges {
-		@apply relative grid place-items-center h-screen;
+		@apply relative grid place-items-center h-[60vh];
 
 		& .knowledges__content {
 			@apply absolute w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
 			background-image: url('/images/svgs/low-poly-grid.svg');
 
 			& h2 {
-				@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-glow shadow-primary;
+				@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-rgb;
 			}
 
 			& p {
@@ -739,6 +802,28 @@
 							content: '';
 							@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
 						}
+					}
+				}
+			}
+		}
+	}
+
+	#services {
+		@apply relative grid place-items-center h-[60vh];
+
+		& .services__content {
+			& h2 {
+				@apply mb-2 text-4xl text-center font-futuristic text-shadow-rgb;
+			}
+
+			& .services__list {
+				@apply flex gap-8;
+
+				& .service {
+					@apply card card-bordered;
+
+					& h3 {
+						@apply text-2xl;
 					}
 				}
 			}
