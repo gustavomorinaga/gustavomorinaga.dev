@@ -154,16 +154,16 @@ module.exports = {
 					success: '#2BF063',
 					warning: '#F0D05B',
 					error: '#F02B2B',
-					'--rounded-box': '0rem',
-					'--rounded-btn': '0rem',
-					'--rounded-badge': '0rem',
+					'--rounded-box': '0.125rem',
+					'--rounded-btn': '0.125rem',
+					'--rounded-badge': '0.125rem',
 					'--animation-btn': '0.3s',
 					'--animation-input': '0.3s',
 					'--btn-text-case': 'uppercase',
 					'--btn-focus-scale': '0.95',
 					'--border-btn': '1px',
 					'--tab-border': '1px',
-					'--tab-radius': '0rem'
+					'--tab-radius': '0.125rem'
 				}
 			}
 		]

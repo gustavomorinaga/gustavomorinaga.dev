@@ -79,7 +79,6 @@
 						class={isCurrentRoute(route.path) ? 'active' : null}
 						class:disabled={!route.active}
 						href={route.path}
-						data-sveltekit-noscroll
 					>
 						{route.title}
 					</a>

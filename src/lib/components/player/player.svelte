@@ -442,7 +442,7 @@
 					@apply range range-primary range-xs w-full h-1;
 
 					&::-webkit-slider-thumb {
-						@apply bg-[hsl(var(--p))] opacity-100 transition-all ease-in-out;
+						@apply bg-[hsl(var(--p))] rounded-none opacity-100 transition-all ease-in-out;
 					}
 				}
 			}

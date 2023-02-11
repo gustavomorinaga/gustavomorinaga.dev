@@ -348,19 +348,32 @@
 
 	const services = [
 		{
-			icon: '',
-			title: 'UI Design',
-			description: ''
+			icon: '/images/svgs/nib-icon.svg',
+			title: 'UI/UX Design',
+			description:
+				'Esboço interfaces intuitivas, objetivas e claras. Experiência de usuário em primeiro lugar.',
+			alt: 'Icon by icon king1 on freeicons.io'
 		},
 		{
-			icon: 'code',
+			icon: '/images/svgs/code-icon.svg',
 			title: 'Desenvolvimento',
-			description: ''
+			description:
+				'Desenvolvo sites profissionais, aplicativos, blogs, portfólios, landing pages, e-commerce e APIs.',
+			alt: 'Icon by Fandi Kurniawan on freeicons.io'
 		},
 		{
-			icon: '',
+			icon: '/images/svgs/seo-icon.svg',
+			title: 'SEO',
+			description:
+				'Aprimoro a forma que seu site seja facilmente encontrado e divulgado pela internet.',
+			alt: 'Icon by Fandi Kurniawan on freeicons.io'
+		},
+		{
+			icon: '/images/svgs/magic-icon.svg',
 			title: 'Animações',
-			description: ''
+			description:
+				'Crio interações suaves, fluídas e atraentes para o usuário. Sem atrapalhar a navegação.',
+			alt: 'Icon by Vanda Arief on freeicons.io'
 		}
 	];
 
@@ -440,7 +453,7 @@
 
 			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
 				Saudações! Eu sou
-				<span class="underline underline-offset-8">Gustavo Morinaga</span>
+				<span class="name">Gustavo Morinaga</span>
 			</h1>
 
 			<p in:fly={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
@@ -572,7 +585,9 @@
 				<li>
 					<article class="service">
 						<div class="card-body">
-							<Icon icon={service.icon} size="lg" />
+							<figure>
+								<img src={service.icon} alt={service.alt} loading="lazy" />
+							</figure>
 
 							<h3>{service.title}</h3>
 
@@ -584,9 +599,9 @@
 		</ul>
 	</div>
 
-	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
+	<!-- <a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
 		<Icon icon="chevrons-down" size="lg" />
-	</a>
+	</a> -->
 </section>
 
 <style lang="scss" global>
@@ -602,6 +617,10 @@
 
 			& h1 {
 				@apply text-3xl lg:text-5xl font-futuristic lg:leading-tight text-shadow-rgb mb-8;
+
+				& .name {
+					@apply underline underline-offset-8;
+				}
 			}
 
 			& p {
@@ -729,8 +748,19 @@
 			@apply card card-side items-center h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
 
 			& > figure {
-				@apply block w-[46rem] min-h-[50vh] m-4 bg-cover bg-no-repeat grayscale hover:grayscale-0 transition duration-300 ease-out;
+				@apply relative block w-[46rem] min-h-[45vh] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
 				background-image: url('/images/webps/profile.webp');
+
+				&::before {
+					content: '';
+					@apply absolute inset-0 z-10 block backdrop-grayscale;
+				}
+
+				&::after {
+					content: '';
+					@apply absolute inset-0 z-20 block max-h-0 bg-cover bg-no-repeat border-b-0 border-transparent backdrop-grayscale transition-all duration-1000 ease-smooth;
+					background-image: url('/images/webps/profile.webp');
+				}
 			}
 
 			& .card-body {
@@ -809,21 +839,29 @@
 	}
 
 	#services {
-		@apply relative grid place-items-center h-[60vh];
+		@apply relative grid place-items-center pb-32;
 
 		& .services__content {
 			& h2 {
-				@apply mb-2 text-4xl text-center font-futuristic text-shadow-rgb;
+				@apply mb-8 text-4xl text-center font-futuristic text-shadow-rgb;
 			}
 
 			& .services__list {
-				@apply flex gap-8;
+				@apply grid grid-cols-2 grid-rows-2 gap-8;
 
 				& .service {
-					@apply card card-bordered;
+					@apply card card-bordered bg-base-100/75 border border-base-200 hover:border-primary backdrop-blur-md shadow-lg shadow-black transition duration-700 ease-smooth;
+
+					& figure {
+						@apply w-16 mb-4 aspect-square;
+
+						& > img {
+							@apply drop-shadow-sm shadow-primary;
+						}
+					}
 
 					& h3 {
-						@apply text-2xl;
+						@apply text-2xl font-futuristic text-shadow-glow shadow-primary;
 					}
 				}
 			}
