@@ -1,10 +1,10 @@
 <script lang="ts">
-	let year = new Date().getFullYear();
+	import { LANG } from '$lib/stores';
 </script>
 
 <footer>
 	<div>
-		<p>Desenvolvido com ❤ por Gustavo Morinaga © {year}</p>
+		<p>{$LANG.footer}</p>
 	</div>
 </footer>
 

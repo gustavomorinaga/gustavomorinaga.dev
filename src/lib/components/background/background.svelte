@@ -221,7 +221,7 @@
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-60 transition-all ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-75 transition-all ease-out duration-300;
 		}
 
 		&.read__mode {

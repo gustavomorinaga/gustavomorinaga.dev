@@ -4,12 +4,8 @@
 
 @import 'atropos/scss';
 
-@import 'swiper/css';
-@import 'swiper/css/autoplay';
-@import 'swiper/css/free-mode';
-
 body {
-	@apply relative min-h-screen scrollbar__theme text-base-content selection:bg-primary;
+	@apply relative min-h-screen scrollbar__theme text-base-content selection:bg-primary cursor-default;
 
 	&::before {
 		content: '';
@@ -25,11 +21,14 @@ code {
 }
 
 .observe__scroll {
-	@apply opacity-0 transition-opacity duration-300 ease-out;
+	--delay: 200ms;
+
+	@apply translate-y-8 opacity-0 transition duration-500;
+	transition-delay: calc(var(--delay) * var(--order));
 }
 
 .observe--show {
-	@apply opacity-100;
+	@apply translate-y-0 opacity-100;
 }
 
 @media (prefers-reduced-motion) {

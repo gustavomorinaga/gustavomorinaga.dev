@@ -8,6 +8,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
+	import { LANG } from '$lib/stores';
 	import { containerElement, durationFormatter, getMinDiff } from '$lib/utils';
 	import type { IPlaylist } from '$lib/types';
 
@@ -262,8 +263,8 @@
 				<button
 					class="btn__shuffle"
 					class:active={shuffle}
-					title="Shuffle"
-					aria-label="Shuffle tracks"
+					title={$LANG.player.shuffle}
+					aria-label={$LANG.player.shuffle}
 					on:click={handleShuffle}
 				>
 					<Icon icon="arrows-shuffle" size="sm" />
@@ -271,8 +272,8 @@
 
 				<button
 					class="btn__prev"
-					title="Previous"
-					aria-label="Previous track"
+					title={$LANG.player.prev}
+					aria-label={$LANG.player.prev}
 					on:click={() => handleChangeTrack('prev')}
 				>
 					<Icon icon="player-skip-back" size="sm" />
@@ -281,8 +282,8 @@
 				<button
 					class="btn__play"
 					class:loading={isLoading}
-					title={paused ? 'Play' : 'Pause'}
-					aria-label={`${paused ? 'Play' : 'Pause'} track`}
+					title={paused ? $LANG.player.play : $LANG.player.pause}
+					aria-label={`${paused ? $LANG.player.play : $LANG.player.pause}`}
 					on:click={handlePlay}
 				>
 					{#if !isLoading}
@@ -296,8 +297,8 @@
 
 				<button
 					class="btn__next"
-					title="Next"
-					aria-label="Next track"
+					title={$LANG.player.next}
+					aria-label={$LANG.player.next}
 					on:click={() => handleChangeTrack('next')}
 				>
 					<Icon icon="player-skip-forward" size="sm" />
@@ -306,8 +307,8 @@
 				<button
 					class="btn__repeat"
 					class:active={repeat}
-					title="Repeat"
-					aria-label="Repeat track"
+					title={$LANG.player.repeat}
+					aria-label={$LANG.player.repeat}
 					on:click={handleRepeat}
 				>
 					<Icon icon="repeat" size="sm" />
@@ -316,7 +317,12 @@
 
 			<div class="right-controls">
 				<div class="dropdown dropdown-top dropdown-hover">
-					<label class="btn__volume" tabindex="-1" title="Volume" aria-label="Volume">
+					<label
+						class="btn__volume"
+						tabindex="-1"
+						title={$LANG.player.volume}
+						aria-label={$LANG.player.volume}
+					>
 						<input type="checkbox" hidden aria-hidden="true" on:input={handleMute} />
 
 						{#if muted}
@@ -347,8 +353,8 @@
 				<Dropdown
 					class="playlist"
 					bind:showContent={showPlaylist}
-					title="Playlist"
-					label="Open playlist"
+					title={$LANG.player.playlist}
+					label={$LANG.player.playlist}
 					inTransition:slide={{ duration: 300, easing: cubicOut }}
 					outTransition:slide={{ duration: 300, easing: cubicOut }}
 				>
@@ -388,8 +394,8 @@
 
 				<button
 					class="btn__collapse"
-					title="Hide"
-					aria-label="Hide label"
+					title={$LANG.player.hide}
+					aria-label={$LANG.player.hide}
 					on:click={handleShowPlayer}
 				>
 					<Icon icon="chevron-down" size="sm" />
@@ -402,8 +408,8 @@
 		class="btn__player"
 		class:playing={!paused}
 		class:is__loading={isLoading}
-		title="Show player"
-		aria-label="Show player"
+		title={$LANG.player.show}
+		aria-label={$LANG.player.show}
 		on:click={handleShowPlayer}
 		in:fade={{ duration: 300, easing: cubicOut }}
 		out:fade={{ duration: 100 }}

@@ -1,5 +1,6 @@
 export * from './analytics';
 export * from './background';
+export * from './carousel';
 export * from './dropdown';
 export * from './footer';
 export * from './header';

@@ -2,56 +2,11 @@
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon, Metadata } from '$lib/components';
+	import { Carousel, Icon, Metadata } from '$lib/components';
+	import { LANG } from '$lib/stores';
 	import { observeScroll, scrollIntoView } from '$lib/utils';
 	import type { IKnowledge, ISocial } from '$lib/types';
 	import Atropos from 'atropos/svelte';
-	import { Autoplay, FreeMode } from 'swiper';
-	import { register } from 'swiper/element';
-
-	let techsSwiperElement: HTMLElement & { initialize: () => void };
-	let toolsSwiperElement: HTMLElement & { initialize: () => void };
-
-	const swiperOptions = {
-		modules: [Autoplay, FreeMode],
-		breakpoints: {
-			320: {
-				slidesPerView: 3,
-				spaceBetween: 10
-			},
-			480: {
-				slidesPerView: 5,
-				spaceBetween: 20
-			},
-			640: {
-				slidesPerView: 7,
-				spaceBetween: 30
-			},
-			960: {
-				slidesPerView: 9,
-				spaceBetween: 30
-			},
-			1280: {
-				slidesPerView: 12,
-				spaceBetween: 40
-			}
-		},
-		watchOverflow: true,
-		speed: 4000,
-		loop: true,
-		freeMode: true,
-		autoplay: {
-			delay: 1,
-			reverseDirection: false
-		},
-		injectStyles: [
-			`
-      :host(.knowledges__carousel) .swiper-wrapper {
-				transition-timing-function: linear !important;
-      }
-      `
-		]
-	};
 
 	const socialLinks: ISocial[] = [
 		{
@@ -117,6 +72,12 @@
 				url: 'https://getbootstrap.com',
 				icon: 'bootstrap',
 				color: '#7952B3'
+			},
+			{
+				title: 'styled-components',
+				url: 'https://styled-components.com',
+				icon: 'styledcomponents',
+				color: '#DB7093'
 			},
 			{
 				title: 'JavaScript',
@@ -346,58 +307,34 @@
 		]
 	};
 
-	const services = [
+	$: services = [
 		{
 			icon: '/images/svgs/nib-icon.svg',
-			title: 'UI/UX Design',
-			description:
-				'Esboço interfaces intuitivas, objetivas e claras. Experiência de usuário em primeiro lugar.',
-			alt: 'Icon by icon king1 on freeicons.io'
+			title: $LANG.home.services.cardDesign.title,
+			description: $LANG.home.services.cardDesign.paragraph,
+			alt: $LANG.home.services.cardDesign.alt
 		},
 		{
 			icon: '/images/svgs/code-icon.svg',
-			title: 'Desenvolvimento',
-			description:
-				'Desenvolvo sites profissionais, aplicativos, blogs, portfólios, landing pages, e-commerce e APIs.',
-			alt: 'Icon by Fandi Kurniawan on freeicons.io'
+			title: $LANG.home.services.cardDev.title,
+			description: $LANG.home.services.cardDev.paragraph,
+			alt: $LANG.home.services.cardDev.alt
 		},
 		{
 			icon: '/images/svgs/seo-icon.svg',
-			title: 'SEO',
-			description:
-				'Aprimoro a forma que seu site seja facilmente encontrado e divulgado pela internet.',
-			alt: 'Icon by Fandi Kurniawan on freeicons.io'
+			title: $LANG.home.services.cardSeo.title,
+			description: $LANG.home.services.cardSeo.paragraph,
+			alt: $LANG.home.services.cardSeo.alt
 		},
 		{
 			icon: '/images/svgs/magic-icon.svg',
-			title: 'Animações',
-			description:
-				'Crio interações suaves, fluídas e atraentes para o usuário. Sem atrapalhar a navegação.',
-			alt: 'Icon by Vanda Arief on freeicons.io'
+			title: $LANG.home.services.cardMotion.title,
+			description: $LANG.home.services.cardMotion.paragraph,
+			alt: $LANG.home.services.cardMotion.alt
 		}
 	];
 
-	const initSwiper = () => {
-		register();
-
-		Object.assign(techsSwiperElement, swiperOptions);
-		Object.assign(toolsSwiperElement, {
-			...swiperOptions,
-			autoplay: {
-				delay: 1,
-				reverseDirection: true
-			}
-		});
-
-		techsSwiperElement.initialize();
-		toolsSwiperElement.initialize();
-
-		return Promise.resolve(true);
-	};
-
 	onMount(async () => {
-		await initSwiper();
-
 		const { observer } = observeScroll({ threshold: 0.5 });
 
 		return () => observer && observer.disconnect();
@@ -424,7 +361,7 @@
 				>
 					<div class="popup__content">
 						<span class="emoji">👨‍💻</span>
-						<span class="skill">Dev Full-Stack</span>
+						<span class="skill">{$LANG.home.blurb.skillDev}</span>
 					</div>
 				</div>
 				<div
@@ -433,7 +370,7 @@
 				>
 					<div class="popup__content">
 						<span class="emoji">👨‍🎨</span>
-						<span class="skill">UX Designer</span>
+						<span class="skill">{$LANG.home.blurb.skillDesign}</span>
 					</div>
 				</div>
 				<div
@@ -442,7 +379,7 @@
 				>
 					<div class="popup__content">
 						<span class="emoji">✨</span>
-						<span class="skill">+2 anos de experiência</span>
+						<span class="skill">{$LANG.home.blurb.skillExp}</span>
 					</div>
 				</div>
 			</Atropos>
@@ -452,13 +389,12 @@
 			<code>profile<span class="method">.welcome()</span>;</code>
 
 			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
-				Saudações! Eu sou
+				{$LANG.home.blurb.title}
 				<span class="name">Gustavo Morinaga</span>
 			</h1>
 
 			<p in:fly={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
-				Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de
-				alta tecnologia.
+				{$LANG.home.blurb.paragraph}
 			</p>
 
 			<ul class="socials" in:fly={{ x: -250, duration: 1000, delay: 2100, easing: cubicOut }}>
@@ -491,19 +427,15 @@
 		<figure />
 
 		<div class="card-body">
-			<h2>Sobre mim</h2>
+			<h2>{$LANG.home.about.title}</h2>
 
-			<h3>Full-Stack Developer & UI/UX Designer</h3>
+			<h3>{$LANG.home.about.subtitle}</h3>
 
-			<p>
-				Meu nome é Gustavo Morinaga, tenho 22 anos, sou desenvolvedor Full-Stack e UI/UX Designer.
-				Desenvolvo sites e aplicações completas com as melhores tecnologias disponíveis no mercado.
-				Sempre estou em constante aprendizado e com o objetivo de entregar a melhor experiência e
-				performance possível.
-			</p>
+			<p>{$LANG.home.about.paragraph}</p>
 
 			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme">
-				<p>"Não é a linguagem de programação que define o programador, mas sim sua lógica."</p>
+				<p>"{$LANG.home.about.quote}"</p>
+
 				<footer>
 					<cite title="Pensador">
 						<a
@@ -518,8 +450,8 @@
 			</blockquote>
 
 			<div class="card-actions">
-				<a href="/about" class="cta">
-					Mais detalhes
+				<a href="/about" class="cta btn-disabled grayscale">
+					{$LANG.home.about.moreDetails}
 
 					<Icon icon="chevron-right" />
 				</a>
@@ -534,13 +466,13 @@
 
 <section id="knowledges">
 	<div class="knowledges__content observe__scroll">
-		<h2>Conhecimentos</h2>
+		<h2>{$LANG.home.knowledge.title}</h2>
 
-		<p>Múltiplas ferramentas, múltiplas possibilidades em solucionar múltiplos problemas...</p>
+		<p>{$LANG.home.knowledge.paragraph}</p>
 
-		<swiper-container bind:this={techsSwiperElement} class="knowledges__carousel" init="false">
-			{#each knowledges.techs as tech}
-				<swiper-slide>
+		<Carousel speed={7500}>
+			<svelte:fragment slot="slides">
+				{#each knowledges.techs as tech}
 					<a
 						class="knowledge"
 						style="--icon-color: {tech.color}"
@@ -552,13 +484,13 @@
 					>
 						<Icon collection={tech.collection || 'simple-icons'} icon={tech.icon} size="xl" />
 					</a>
-				</swiper-slide>
-			{/each}
-		</swiper-container>
+				{/each}
+			</svelte:fragment>
+		</Carousel>
 
-		<swiper-container bind:this={toolsSwiperElement} class="knowledges__carousel" init="false">
-			{#each knowledges.tools as tool}
-				<swiper-slide>
+		<Carousel speed={7500} reverse>
+			<svelte:fragment slot="slides">
+				{#each knowledges.tools as tool}
 					<a
 						class="knowledge"
 						style="--icon-color: {tool.color}"
@@ -570,19 +502,19 @@
 					>
 						<Icon collection={tool.collection || 'simple-icons'} icon={tool.icon} size="xl" />
 					</a>
-				</swiper-slide>
-			{/each}
-		</swiper-container>
+				{/each}
+			</svelte:fragment>
+		</Carousel>
 	</div>
 </section>
 
 <section id="services">
-	<div class="services__content">
-		<h2>Serviços</h2>
+	<div class="services__content observe__scroll">
+		<h2>{$LANG.home.services.title}</h2>
 
 		<ul class="services__list">
-			{#each services as service}
-				<li>
+			{#each services as service, index}
+				<li class="observe__scroll" style="--order: {index + 1};">
 					<article class="service">
 						<div class="card-body">
 							<figure>
@@ -616,7 +548,7 @@
 			}
 
 			& h1 {
-				@apply text-3xl lg:text-5xl font-futuristic lg:leading-tight text-shadow-rgb mb-8;
+				@apply flex flex-col text-3xl lg:text-5xl font-futuristic lg:leading-tight text-shadow-rgb mb-8;
 
 				& .name {
 					@apply underline underline-offset-8;
@@ -745,10 +677,10 @@
 		@apply relative grid place-items-center h-screen;
 
 		& .about__card {
-			@apply card card-side items-center h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
+			@apply card card-side items-center w-full h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
 
 			& > figure {
-				@apply relative block w-[46rem] min-h-[45vh] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
+				@apply relative block w-[15rem] h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
 				background-image: url('/images/webps/profile.webp');
 
 				&::before {
@@ -764,14 +696,14 @@
 			}
 
 			& .card-body {
-				@apply p-4;
+				@apply p-4 max-w-2xl;
 
 				& h2 {
 					@apply mb-2 text-4xl font-futuristic text-shadow-rgb;
 				}
 
 				& h3 {
-					@apply mb-2 text-xl;
+					@apply mb-4 text-xl;
 				}
 
 				& blockquote {
@@ -789,6 +721,16 @@
 
 					& .cta {
 						@apply btn btn-primary btn-wide;
+
+						&:hover {
+							& .icon {
+								@apply translate-x-1;
+							}
+						}
+
+						& .icon {
+							@apply transition-transform duration-300 ease-out;
+						}
 					}
 				}
 			}
@@ -810,28 +752,26 @@
 				@apply text-xl mb-4 text-shadow-md shadow-black;
 			}
 
-			& .knowledges__carousel {
-				@apply w-full h-28;
+			& .knowledge {
+				@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
+				transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
 
-				& .knowledge {
-					@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
-					transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
-
-					&:hover {
-						& .icon {
-							&::before {
-								@apply opacity-10;
-							}
-						}
-					}
+				&:hover {
+					@apply z-10;
 
 					& .icon {
-						@apply relative;
-
 						&::before {
-							content: '';
-							@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
+							@apply opacity-10;
 						}
+					}
+				}
+
+				& .icon {
+					@apply relative;
+
+					&::before {
+						content: '';
+						@apply absolute inset-3 block bg-white rounded-full blur-lg opacity-0 transition-opacity;
 					}
 				}
 			}
@@ -839,7 +779,7 @@
 	}
 
 	#services {
-		@apply relative grid place-items-center pb-32;
+		@apply relative grid place-items-center -mt-16 mb-24;
 
 		& .services__content {
 			& h2 {
@@ -850,7 +790,7 @@
 				@apply grid grid-cols-2 grid-rows-2 gap-8;
 
 				& .service {
-					@apply card card-bordered bg-base-100/75 border border-base-200 hover:border-primary backdrop-blur-md shadow-lg shadow-black transition duration-700 ease-smooth;
+					@apply card card-bordered bg-base-100/75 border border-base-200 hover:border-primary backdrop-blur-md shadow-lg shadow-black hover:shadow-glow hover:shadow-primary/10 transition duration-700 ease-smooth;
 
 					& figure {
 						@apply w-16 mb-4 aspect-square;

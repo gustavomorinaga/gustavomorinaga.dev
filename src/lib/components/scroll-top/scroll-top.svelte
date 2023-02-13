@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
+	import { LANG } from '$lib/stores';
 	import { containerElement, scrollToTop } from '$lib/utils';
 
 	let scrollTopButtonRef: HTMLButtonElement;
@@ -18,7 +19,8 @@
 <button
 	bind:this={scrollTopButtonRef}
 	id="btn-scroll-top"
-	title="Scroll to top"
+	title={$LANG.scrollTop}
+	aria-label={$LANG.scrollTop}
 	on:click={scrollToTop}
 >
 	<Icon icon="arrow-big-up-lines" />

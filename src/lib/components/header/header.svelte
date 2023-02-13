@@ -2,26 +2,34 @@
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
+	import { Icon } from '$lib/components';
+	import { LANG } from '$lib/stores';
 	import anime from 'animejs';
 
-	const routes = [
+	const specialRoutes = ['/bookmarks'];
+
+	$: routes = [
 		{
-			title: 'Blog',
+			title: $LANG.header.blog,
 			path: '/blog',
 			active: false
 		},
 		{
-			title: 'Sobre mim',
+			title: $LANG.header.about,
 			path: '/about',
 			active: false
 		},
 		{
-			title: 'Projetos',
+			title: $LANG.header.projects,
 			path: '/projects',
+			active: false
+		},
+		{
+			title: $LANG.header.bookmark,
+			path: '/bookmarks',
 			active: false
 		}
 	];
-
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
 	const handleAnimateLogo = async () => {
@@ -63,27 +71,55 @@
 				translateY: 0
 			});
 	};
+
+	const handleLanguage = () => LANG.change($LANG.code === 'pt' ? 'en' : 'pt');
 </script>
 
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
 		<div class="header__content">
-			<a href="/" class="logo" title="Página inicial" on:click={handleAnimateLogo}>
+			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
 				<img id="logo" src="/images/svgs/logo-text.svg" alt="" />
 				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="" />
 			</a>
 
 			<nav>
 				{#each routes as route}
-					<a
-						class={isCurrentRoute(route.path) ? 'active' : null}
-						class:disabled={!route.active}
-						href={route.path}
-					>
-						{route.title}
-					</a>
+					{#if !specialRoutes.includes(route.path)}
+						<a
+							class:active={isCurrentRoute(route.path)}
+							class:disabled={!route.active}
+							href={route.path}
+						>
+							{route.title}
+						</a>
+					{:else}
+						<a
+							class="btn__bookmark"
+							class:active={isCurrentRoute(route.path)}
+							class:disabled={!route.active}
+							title={route.title}
+							aria-label={route.title}
+							href={route.path}
+						>
+							<Icon icon="bookmark" />
+						</a>
+					{/if}
 				{/each}
 			</nav>
+
+			<button
+				class="btn__lang"
+				title={$LANG.header.lang}
+				aria-label={$LANG.header.lang}
+				on:click={handleLanguage}
+			>
+				<Icon
+					icon="flag-for-{$LANG.code === 'pt' ? 'brazil' : 'united-states'}"
+					collection="emojione"
+					animate
+				/>
+			</button>
 		</div>
 	</div>
 </header>
@@ -96,10 +132,10 @@
 			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
 
 			& .header__content {
-				@apply flex justify-between items-center max-w-screen-lg mx-auto my-0 px-4 lg:px-0;
+				@apply flex items-center max-w-screen-lg mx-auto my-0 px-4 lg:px-0;
 
 				& .logo {
-					@apply relative flex flex-col items-center w-52 h-fit;
+					@apply relative flex flex-col items-center w-52 h-fit mr-auto;
 
 					& > * {
 						@apply focus:outline-none;
@@ -135,7 +171,15 @@
 						&.disabled {
 							@apply pointer-events-none opacity-50;
 						}
+
+						&.btn__bookmark {
+							@apply w-fit;
+						}
 					}
+				}
+
+				& .btn__lang {
+					@apply rounded-full mx-4 border border-zinc-400;
 				}
 			}
 		}
