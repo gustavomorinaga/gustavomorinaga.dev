@@ -1,25 +1,16 @@
 <script lang="ts">
 	import '../app.scss';
-	import {
-		Analytics,
-		Background,
-		Drawer,
-		Footer,
-		Header,
-		Icon,
-		PageTransition,
-		Player,
-		Preload,
-		ScrollTop
-	} from '$lib/components';
+	import { Analytics, Background, Icon, Preload } from '$lib/components';
 	import { DRAWER, LANG } from '$lib/stores';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
+	import { onMount } from 'svelte';
 
 	export let data: LayoutServerData;
 
 	let isThree!: boolean;
 	let finished!: boolean;
+	let showDrawer = false;
 
 	const specialRoutes = ['/bookmarks'];
 
@@ -57,7 +48,20 @@
 			active: false
 		}
 	] satisfies IRoute[];
+
+	const handleIsMobile = () => window.matchMedia('(max-width: 640px)').matches;
+	const handleResize = () => {
+		showDrawer = handleIsMobile();
+
+		!showDrawer && DRAWER.set(false);
+	};
+
+	onMount(() => {
+		showDrawer = handleIsMobile();
+	});
 </script>
+
+<svelte:window on:resize={handleResize} />
 
 <Preload />
 
@@ -66,39 +70,53 @@
 <Background bind:isThree bind:finished bind:readMode />
 
 {#if showContent}
-	<Header routes={routes.filter(r => r.path !== '/')} {specialRoutes} />
+	{#await import('$lib/components/header') then Module}
+		<Module.Header routes={routes.filter(r => r.path !== '/')} {specialRoutes} />
+	{/await}
 
-	<Drawer>
-		<svelte:fragment slot="content">
-			<ul class="menu">
-				{#each routes as route}
-					<li>
-						<a
-							class="menu__item"
-							class:disabled={!route.active}
-							href={route.path}
-							on:click={() => DRAWER.set(false)}
-						>
-							<Icon icon={route.icon} />
-							{route.title}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</svelte:fragment>
-	</Drawer>
+	{#if showDrawer}
+		{#await import('$lib/components/drawer') then Module}
+			<Module.Drawer>
+				<svelte:fragment slot="content">
+					<ul class="menu">
+						{#each routes as route}
+							<li>
+								<a
+									class="menu__item"
+									class:disabled={!route.active}
+									href={route.path}
+									on:click={() => DRAWER.set(false)}
+								>
+									<Icon icon={route.icon} />
+									{route.title}
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</svelte:fragment>
+			</Module.Drawer>
+		{/await}
+	{/if}
 
 	<main>
-		<PageTransition trigger={data.pathname}>
-			<slot />
-		</PageTransition>
+		{#await import('$lib/components/page-transition') then Module}
+			<Module.PageTransition trigger={data.pathname}>
+				<slot />
+			</Module.PageTransition>
+		{/await}
 	</main>
 
-	<Player playlist={data.playlist.data} />
+	{#await import('$lib/components/scroll-top') then Module}
+		<Module.ScrollTop />
+	{/await}
 
-	<ScrollTop />
+	{#await import('$lib/components/player') then Module}
+		<Module.Player playlist={data.playlist.data} />
+	{/await}
 
-	<Footer />
+	{#await import('$lib/components/footer') then Module}
+		<Module.Footer />
+	{/await}
 {/if}
 
 <style lang="scss">
