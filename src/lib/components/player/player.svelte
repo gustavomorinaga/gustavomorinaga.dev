@@ -598,7 +598,7 @@
 	}
 
 	.btn__player {
-		@apply fixed z-40 right-8 bottom-8 btn btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
+		@apply fixed z-40 right-0 md:right-8 bottom-16 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
 
 		&::before {
 			content: '';

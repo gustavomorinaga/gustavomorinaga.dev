@@ -6,10 +6,10 @@ export interface ILang {
 			alt: string;
 		};
 
+		home: string;
 		blog: string;
 		about: string;
 		projects: string;
-
 		bookmark: string;
 		lang: string;
 	};

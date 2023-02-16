@@ -10,10 +10,10 @@ export const en: ILang = {
 			alt: 'Home'
 		},
 
+		home: 'Home',
 		blog: 'Blog',
 		about: 'About me',
 		projects: 'Projects',
-
 		bookmark: 'Bookmarks',
 		lang: 'Change language'
 	},

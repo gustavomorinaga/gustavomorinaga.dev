@@ -28,7 +28,7 @@
 
 <style lang="scss" global>
 	#btn-scroll-top {
-		@apply fixed z-40 right-8 bottom-28 btn btn-ghost btn-circle text-shadow-md shadow-black opacity-0 pointer-events-none transition-opacity duration-300 ease-out;
+		@apply fixed z-40 right-0 md:right-8 bottom-36 btn rounded-l-full md:btn-circle text-shadow-md shadow-black opacity-0 outline outline-black pointer-events-none transition-opacity duration-300 ease-out;
 
 		&.show {
 			@apply opacity-100 pointer-events-auto;

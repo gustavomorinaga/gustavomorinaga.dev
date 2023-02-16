@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@fontsource/caveat';
+@import '@fontsource/righteous';
+@import '@fontsource/orbitron';
+
 @import 'atropos/scss';
 
 body {
@@ -23,12 +27,12 @@ code {
 .observe__scroll {
 	--delay: 200ms;
 
-	@apply translate-y-8 opacity-0 transition duration-500;
+	@apply translate-y-8 opacity-0 pointer-events-none transition duration-500;
 	transition-delay: calc(var(--delay) * var(--order));
 }
 
 .observe--show {
-	@apply translate-y-0 opacity-100;
+	@apply translate-y-0 opacity-100 pointer-events-auto;
 }
 
 @media (prefers-reduced-motion) {

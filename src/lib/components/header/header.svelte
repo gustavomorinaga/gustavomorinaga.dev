@@ -3,33 +3,13 @@
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
 	import { Icon } from '$lib/components';
-	import { LANG } from '$lib/stores';
+	import { DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
+	import type { IRoute } from '$lib/types';
 
-	const specialRoutes = ['/bookmarks'];
+	export let routes: IRoute[] = [];
+	export let specialRoutes: string[] = [];
 
-	$: routes = [
-		{
-			title: $LANG.header.blog,
-			path: '/blog',
-			active: false
-		},
-		{
-			title: $LANG.header.about,
-			path: '/about',
-			active: false
-		},
-		{
-			title: $LANG.header.projects,
-			path: '/projects',
-			active: false
-		},
-		{
-			title: $LANG.header.bookmark,
-			path: '/bookmarks',
-			active: false
-		}
-	];
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
 	const handleAnimateLogo = async () => {
@@ -78,6 +58,10 @@
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
 		<div class="header__content">
+			<button class="btn__drawer" on:click={() => DRAWER.set(true)}>
+				<Icon icon="menu-2" />
+			</button>
+
 			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
 				<img id="logo" src="/images/svgs/logo-text.svg" alt="" />
 				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="" />
@@ -95,14 +79,14 @@
 						</a>
 					{:else}
 						<a
-							class="btn__bookmark"
+							class="w-fit"
 							class:active={isCurrentRoute(route.path)}
 							class:disabled={!route.active}
 							title={route.title}
 							aria-label={route.title}
 							href={route.path}
 						>
-							<Icon icon="bookmark" />
+							<Icon icon={route.icon} />
 						</a>
 					{/if}
 				{/each}
@@ -132,10 +116,10 @@
 			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
 
 			& .header__content {
-				@apply flex items-center max-w-screen-lg mx-auto my-0 px-4 lg:px-0;
+				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 lg:px-0;
 
 				& .logo {
-					@apply relative flex flex-col items-center w-52 h-fit mr-auto;
+					@apply relative flex flex-col items-center w-52 h-fit mx-auto md:ml-0;
 
 					& > * {
 						@apply focus:outline-none;
@@ -171,15 +155,15 @@
 						&.disabled {
 							@apply pointer-events-none opacity-50;
 						}
-
-						&.btn__bookmark {
-							@apply w-fit;
-						}
 					}
 				}
 
 				& .btn__lang {
-					@apply rounded-full mx-4 border border-zinc-400;
+					@apply block rounded-full mx-4 border border-zinc-400;
+				}
+
+				.btn__drawer {
+					@apply inline-flex sm:hidden btn btn-ghost drawer-button;
 				}
 			}
 		}
