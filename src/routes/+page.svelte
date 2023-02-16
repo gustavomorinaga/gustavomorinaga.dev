@@ -518,7 +518,7 @@
 					<article class="service">
 						<div class="card-body">
 							<figure>
-								<img src={service.icon} alt={service.alt} loading="lazy" />
+								<img src={service.icon} alt={service.alt} width="64" height="64" loading="lazy" />
 							</figure>
 
 							<h3>{service.title}</h3>
