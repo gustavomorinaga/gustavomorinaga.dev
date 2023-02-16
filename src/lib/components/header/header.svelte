@@ -63,8 +63,8 @@
 			</button>
 
 			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
-				<img id="logo" src="/images/svgs/logo-text.svg" alt="" />
-				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="" />
+				<img id="logo" src="/images/svgs/logo-text.svg" alt="Logotype" />
+				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="Slogan" />
 			</a>
 
 			<nav>

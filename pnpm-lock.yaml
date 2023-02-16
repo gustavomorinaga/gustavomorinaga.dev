@@ -1,11 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fontsource/caveat': 4.5.10
-  '@fontsource/courier-prime': 4.5.9
-  '@fontsource/karla': 4.5.11
-  '@fontsource/orbitron': 4.5.11
-  '@fontsource/righteous': 4.5.7
   '@iconify/svelte': 3.1.0
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1
@@ -51,11 +46,6 @@ specifiers:
   web-vitals: 3.1.1
 
 devDependencies:
-  '@fontsource/caveat': 4.5.10
-  '@fontsource/courier-prime': 4.5.9
-  '@fontsource/karla': 4.5.11
-  '@fontsource/orbitron': 4.5.11
-  '@fontsource/righteous': 4.5.7
   '@iconify/svelte': 3.1.0_svelte@3.55.1
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1_svelte@3.55.1
@@ -336,26 +326,6 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@fontsource/caveat/4.5.10:
-    resolution: {integrity: sha512-uTg0I4hBXfOzjpUQlGwdmdlcLUlwSNXlux52IwFq7TCHlyHMAHPEqP1zDyg8lWKD86L7wOyv9jmIK/Iy5erndg==}
-    dev: true
-
-  /@fontsource/courier-prime/4.5.9:
-    resolution: {integrity: sha512-jN5F/WvA7x1OuaOy2Hr2FzlA3EZizXPGTvjmR5YIb+Hc+SaDUT/ckJy8zbUc8sb6SsS6cIbG+lFDkZRYjJe91Q==}
-    dev: true
-
-  /@fontsource/karla/4.5.11:
-    resolution: {integrity: sha512-MpH+rW8V5v/mqEwoIrUTmGimY+GIyU5P23DmzYxWcTotosRLGWrg7XOjN4DtkpZuEv2LzHHZxOuFWbjRWL9JfQ==}
-    dev: true
-
-  /@fontsource/orbitron/4.5.11:
-    resolution: {integrity: sha512-OClxk3btSUtbvH+LKk3JSO95Ly88lJZjODRgUY2yLVOVBhR/i7u3xlj9j0SUmIYQAFn21jrMX5+zbS5IfIP9YQ==}
-    dev: true
-
-  /@fontsource/righteous/4.5.7:
-    resolution: {integrity: sha512-tIDEC1ygwIGiNPToM1XRRU6YqUdQ8S7NzrYNW1gcE1cN9vU7x7zcgNRy8jALjolgdAWJxM78LnEKDUa7mnOPlw==}
     dev: true
 
   /@humanwhocodes/config-array/0.11.8:

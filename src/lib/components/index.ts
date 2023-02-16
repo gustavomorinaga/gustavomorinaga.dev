@@ -9,4 +9,5 @@ export * from './icon';
 export * from './metadata';
 export * from './page-transition';
 export * from './player';
+export * from './preload';
 export * from './scroll-top';

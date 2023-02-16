@@ -9,6 +9,7 @@
 		Icon,
 		PageTransition,
 		Player,
+		Preload,
 		ScrollTop
 	} from '$lib/components';
 	import { DRAWER, LANG } from '$lib/stores';
@@ -58,10 +59,7 @@
 	] satisfies IRoute[];
 </script>
 
-<svelte:head>
-	<link rel="preconnect" href="https://api.iconify.design" />
-	<link rel="preconnect" href="https://api.simplesvg.com" />
-</svelte:head>
+<Preload />
 
 <Analytics />
 

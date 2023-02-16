@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/caveat';
-@import '@fontsource/righteous';
-@import '@fontsource/orbitron';
-
 @import 'atropos/scss';
+
+html {
+	@apply bg-base-100;
+}
 
 body {
 	@apply relative min-h-screen scrollbar__theme text-base-content selection:bg-primary cursor-default;

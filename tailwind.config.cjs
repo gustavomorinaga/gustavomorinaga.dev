@@ -35,9 +35,8 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ['Karla', 'sans-serif'],
-				mono: ['Courier Prime', 'monospace'],
-				futuristic: ['Orbitron', 'sans-serif'],
-				handwritten: ['Caveat', 'cursive']
+				mono: ['Fira Code', 'monospace'],
+				futuristic: ['Orbitron', 'sans-serif']
 			},
 			height: {
 				'gutter-header': 'calc(100vh - 5.5rem)'
