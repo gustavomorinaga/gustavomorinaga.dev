@@ -211,7 +211,7 @@
 {/if}
 
 <div class="background__container" class:read__mode={readMode}>
-	{#if isThree}
+	{#if isThree && !isMobile}
 		<canvas bind:this={canvas} class="webgl" />
 	{:else if !isLowEnd}
 		<div class="fallback__image" />
