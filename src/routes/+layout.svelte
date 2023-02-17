@@ -12,7 +12,7 @@
 		Preload,
 		ScrollTop
 	} from '$lib/components';
-	import { DRAWER, LANG } from '$lib/stores';
+	import { DRAWER, GPU, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
@@ -70,12 +70,11 @@
 	};
 
 	onMount(async () => {
-		const detectedGPU = await getGPUTier();
+		if (!$GPU) {
+			const detectedGPU = await getGPUTier();
 
-		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
-		isThree = detectedGPU.tier > 2;
-		isLowEnd = detectedGPU.tier <= 1;
-		isMobile = detectedGPU.isMobile || false;
+			GPU.change(detectedGPU);
+		}
 
 		if (isLowEnd) (containerElement as HTMLElement).classList.add('low__end');
 

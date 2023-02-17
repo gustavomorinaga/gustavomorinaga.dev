@@ -5,7 +5,7 @@
 @import 'atropos/scss';
 
 html {
-	@apply bg-base-100;
+	@apply overflow-hidden bg-base-100;
 
 	&:not(.low__end) {
 		& .observe__scroll {

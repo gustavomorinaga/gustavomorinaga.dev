@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { CubeLoader } from '$lib/components/loaders';
-	import { getGPUTier } from 'detect-gpu';
+	import { containerElement } from '$lib/utils';
 
 	// --- Three.js ---
 	import * as THREE from 'three';
@@ -177,14 +177,17 @@
 		return Promise.resolve(canvas);
 	};
 
-	// Call animate again on the next frame
-	$: if (browser && isThree && finished) {
-		if (!readMode) {
-			renderer?.setAnimationLoop(animate);
-		} else {
-			renderer?.setAnimationLoop(animate);
-			setTimeout(() => renderer?.setAnimationLoop(null), 300);
-		}
+	$: if (browser) {
+		// Call animate again on the next frame
+		if (isThree && finished)
+			if (!readMode) {
+				renderer?.setAnimationLoop(animate);
+			} else {
+				renderer?.setAnimationLoop(animate);
+				setTimeout(() => renderer?.setAnimationLoop(null), 300);
+			}
+
+		if (containerElement && finished) containerElement.classList.add('overflow-y-auto');
 	}
 
 	onMount(async () => {
