@@ -5,7 +5,7 @@
 	export let title = '';
 	export let description =
 		'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.';
-	export let thumbnail = '';
+	export let thumbnail = '/images/webps/preview.webp';
 
 	const baseURL = PUBLIC_DOMAIN;
 

@@ -25,6 +25,10 @@ html {
 			}
 		}
 	}
+
+	&.scrollbar--show {
+		overflow: inherit;
+	}
 }
 
 body {

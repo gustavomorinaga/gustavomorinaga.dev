@@ -187,7 +187,7 @@
 				setTimeout(() => renderer?.setAnimationLoop(null), 300);
 			}
 
-		if (containerElement && finished) containerElement.classList.add('overflow-y-auto');
+		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
 	}
 
 	onMount(async () => {
