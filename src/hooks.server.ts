@@ -33,7 +33,5 @@ export const handle = (async ({ resolve, event }) => {
 		}
 	});
 
-	response.headers.set('Accept-Encoding', 'br, gzip, deflate');
-
 	return response;
 }) satisfies Handle;

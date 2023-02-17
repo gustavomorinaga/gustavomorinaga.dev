@@ -7,10 +7,10 @@ export const pt: ILang = {
 
 	header: {
 		logo: {
-			alt: 'Página inicial'
+			alt: 'Início'
 		},
 
-		home: 'Página inicial',
+		home: 'Início',
 		blog: 'Blog',
 		about: 'Sobre mim',
 		projects: 'Projetos',

@@ -16,10 +16,12 @@
 
 	let canvas: HTMLCanvasElement;
 
-	export let isThree = true;
+	export let isThree: boolean;
+	export let isLowEnd: boolean;
+	export let isMobile: boolean;
+	export let finished: boolean;
+	export let readMode: boolean;
 	export let progress = 0;
-	export let finished = false;
-	export let readMode = false;
 
 	let scene: THREE.Scene;
 	let renderer: THREE.WebGLRenderer;
@@ -186,11 +188,7 @@
 	}
 
 	onMount(async () => {
-		const { tier } = await getGPUTier();
-
-		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
-		isThree = tier > 2;
-		isThree && (await initThree());
+		if (isThree && !isMobile) await initThree();
 	});
 </script>
 
@@ -210,7 +208,7 @@
 		</div>
 
 		<canvas bind:this={canvas} class="webgl" />
-	{:else}
+	{:else if !isLowEnd}
 		<div class="fallback__image" />
 	{/if}
 </div>

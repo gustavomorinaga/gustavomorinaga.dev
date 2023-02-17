@@ -116,7 +116,7 @@
 			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
 
 			& .header__content {
-				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 lg:px-0;
+				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 sm:px-8 lg:px-0;
 
 				& .logo {
 					@apply relative flex flex-col items-center w-52 h-fit mx-auto md:ml-0;
@@ -165,6 +165,14 @@
 				.btn__drawer {
 					@apply inline-flex sm:hidden btn btn-ghost drawer-button;
 				}
+			}
+		}
+	}
+
+	html.low__end {
+		& #header {
+			& .header__wrapper {
+				@apply bg-base-100 backdrop-blur-none;
 			}
 		}
 	}

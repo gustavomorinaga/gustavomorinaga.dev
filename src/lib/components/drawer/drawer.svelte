@@ -46,13 +46,19 @@
 			overflow: hidden !important;
 
 			& .drawer-overlay {
-				@apply bg-black/25 backdrop-blur-sm;
+				@apply bg-black/50 backdrop-blur-sm;
 			}
 
 			& .drawer-side-content {
-				@apply h-fit translate-y-full mt-auto mx-1 p-4 overflow-hidden bg-base-100 border-t border-base-200 rounded-t-lg shadow-lg shadow-black;
+				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border-t border-base-200 rounded-t-lg shadow-lg shadow-black;
 				--tw-translate-x: 0px !important;
 			}
+		}
+	}
+
+	html.low__end {
+		& .drawer-overlay {
+			--tw-backdrop-blur: blur(0) !important;
 		}
 	}
 </style>

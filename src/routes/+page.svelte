@@ -459,13 +459,13 @@
 		</div>
 	</article>
 
-	<a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
+	<a class="scroll__to" href="#knowledge" on:click|preventDefault={scrollIntoView}>
 		<Icon icon="chevrons-down" size="lg" />
 	</a>
 </section>
 
-<section id="knowledges">
-	<div class="knowledges__content observe__scroll">
+<section id="knowledge">
+	<div class="knowledge__content observe__scroll">
 		<h2>{$LANG.home.knowledge.title}</h2>
 
 		<p>{$LANG.home.knowledge.paragraph}</p>
@@ -539,16 +539,21 @@
 <style lang="scss" global>
 	#blurb {
 		@apply relative hero h-gutter-header -mt-4;
+		place-items: flex-start center;
+
+		@media (min-width: 640px) {
+			place-items: center;
+		}
 
 		& .blurb__content {
-			@apply hero-content flex-col lg:flex-row-reverse px-0 text-center lg:text-left;
+			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center px-0 text-left;
 
 			& code {
 				@apply typewriter;
 			}
 
 			& h1 {
-				@apply flex flex-col text-3xl lg:text-5xl font-futuristic lg:leading-tight text-shadow-rgb mb-8;
+				@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
 
 				& .name {
 					@apply underline underline-offset-8;
@@ -563,18 +568,18 @@
 				@apply flex gap-2 items-center flex-wrap;
 
 				& .social {
-					@apply w-full lg:w-fit;
+					@apply w-full md:w-fit;
 
 					&.cta {
-						@apply flex-grow lg:flex-grow-0;
+						@apply flex-grow md:flex-grow-0;
 
 						& .btn__social {
-							@apply btn-primary btn-block lg:w-fit shadow-glow shadow-primary/25 hover:shadow-lg hover:shadow-primary/30;
+							@apply btn-primary btn-block md:w-fit shadow-md shadow-black hover:shadow-lg;
 						}
 					}
 
 					&:not(.cta) {
-						@apply tooltip tooltip-bottom flex-1 lg:flex-initial;
+						@apply tooltip tooltip-bottom flex-1 md:flex-initial;
 
 						& .btn__social {
 							@apply btn-link text-shadow-md shadow-black;
@@ -588,7 +593,7 @@
 			}
 
 			& .blurb__image {
-				@apply scale-50 lg:scale-100 -mt-56 -mb-16 lg:my-0;
+				@apply md:my-0;
 			}
 		}
 	}
@@ -626,6 +631,14 @@
 
 	.mobile__profile {
 		@apply block lg:hidden;
+
+		& .triangle {
+			@apply inset-auto w-40 md:w-52 h-40 md:h-52;
+		}
+
+		& .profile {
+			@apply w-40 md:w-52 h-40 md:h-52;
+		}
 	}
 
 	.atropos__profile {
@@ -684,23 +697,23 @@
 			@apply card card-side items-center w-full h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
 
 			& > figure {
-				@apply relative hidden md:block w-[15rem] h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
+				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
 				background-image: url('/images/webps/profile.webp');
 
 				&::before {
 					content: '';
-					@apply absolute inset-0 z-10 block backdrop-grayscale;
+					@apply hidden lg:block absolute inset-0 z-10 backdrop-grayscale;
 				}
 
 				&::after {
 					content: '';
-					@apply absolute inset-0 z-20 block max-h-0 bg-cover bg-no-repeat border-b-0 border-transparent backdrop-grayscale transition-all duration-1000 ease-smooth;
+					@apply hidden lg:block absolute inset-0 z-20 max-h-0 bg-cover bg-no-repeat border-b-0 border-transparent backdrop-grayscale transition-all duration-1000 ease-smooth;
 					background-image: url('/images/webps/profile.webp');
 				}
 			}
 
 			& .card-body {
-				@apply p-4 max-w-2xl;
+				@apply max-w-lg lg:max-w-2xl mr-auto p-4;
 
 				& h2 {
 					@apply mb-2 text-4xl font-futuristic text-shadow-rgb;
@@ -741,19 +754,19 @@
 		}
 	}
 
-	#knowledges {
-		@apply relative grid place-items-center h-[60vh];
+	#knowledge {
+		@apply relative grid place-items-center h-[70vh] md:h-[60vh];
 
-		& .knowledges__content {
+		& .knowledge__content {
 			@apply absolute w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
 			background-image: url('/images/svgs/low-poly-grid.svg');
 
 			& h2 {
-				@apply text-2xl lg:text-4xl font-futuristic mb-4 text-shadow-rgb;
+				@apply text-2xl md:text-4xl font-futuristic mb-4 text-shadow-rgb;
 			}
 
 			& p {
-				@apply text-xl mb-4 px-4 lg:px-0 text-shadow-md shadow-black;
+				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
 			}
 
 			& .knowledge {
@@ -791,7 +804,7 @@
 			}
 
 			& .services__list {
-				@apply grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8;
+				@apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8;
 
 				& .service {
 					@apply card card-bordered bg-base-100/75 border border-base-200 hover:border-primary backdrop-blur-md shadow-lg shadow-black hover:shadow-glow hover:shadow-primary/10 transition duration-700 ease-smooth;
@@ -813,6 +826,20 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
+		@apply absolute bottom-16 sm:bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
+	}
+
+	html.low__end {
+		& #about {
+			& .about__card {
+				@apply backdrop-blur-none;
+			}
+		}
+
+		& #knowledge {
+			& .knowledge__content {
+				@apply bg-none bg-base-100;
+			}
+		}
 	}
 </style>

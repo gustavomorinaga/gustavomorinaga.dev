@@ -423,7 +423,7 @@
 		@apply fixed z-50 left-0 right-0 bottom-0 select-none;
 
 		& .player__wrapper {
-			@apply flex items-center justify-between gap-4 pt-5 px-4 pb-4 bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
+			@apply flex items-center justify-between gap-2 pt-5 px-4 pb-4 bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
 
 			& .progress__wrapper {
 				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
@@ -484,7 +484,7 @@
 			}
 
 			& .controls {
-				@apply flex items-center gap-2 translate-x-1 sm:-translate-x-7;
+				@apply flex items-center gap-2 w-full sm:w-fit sm:-translate-x-7;
 
 				& .btn__prev,
 				& .btn__next {
@@ -492,10 +492,10 @@
 				}
 
 				& .btn__prev {
-					@apply order-3 sm:order-2;
+					@apply order-3 sm:order-2 ml-auto sm:ml-0;
 				}
 				& .btn__next {
-					@apply order-5 sm:order-4;
+					@apply order-5 sm:order-4 mr-auto sm:mr-0;
 				}
 
 				& .btn__play {
@@ -598,7 +598,7 @@
 	}
 
 	.btn__player {
-		@apply fixed z-40 right-0 md:right-8 bottom-16 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
+		@apply fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
 
 		&::before {
 			content: '';
@@ -639,6 +639,14 @@
 
 		80% {
 			background-size: 7.2px 100%, 7.2px 100%, 7.2px 80%;
+		}
+	}
+
+	html.low__end {
+		& #player {
+			& .player__wrapper {
+				@apply bg-base-100 backdrop-blur-none;
+			}
 		}
 	}
 </style>

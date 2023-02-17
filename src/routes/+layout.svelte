@@ -1,15 +1,19 @@
 <script lang="ts">
 	import '../app.scss';
+	import { onMount } from 'svelte';
+	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Icon, Preload } from '$lib/components';
 	import { DRAWER, LANG } from '$lib/stores';
+	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
-	import { onMount } from 'svelte';
 
 	export let data: LayoutServerData;
 
-	let isThree!: boolean;
-	let finished!: boolean;
+	let isThree = true;
+	let isLowEnd = false;
+	let isMobile = false;
+	let finished = false;
 	let showDrawer = false;
 
 	const specialRoutes = ['/bookmarks'];
@@ -56,7 +60,16 @@
 		!showDrawer && DRAWER.set(false);
 	};
 
-	onMount(() => {
+	onMount(async () => {
+		const detectedGPU = await getGPUTier();
+
+		// tier: 1 (>= 15 fps), tier: 2 (>= 30 fps) or tier: 3 (>= 60 fps)
+		isThree = detectedGPU.tier > 2;
+		isLowEnd = detectedGPU.tier <= 1;
+		isMobile = detectedGPU.isMobile || false;
+
+		if (isLowEnd) (containerElement as HTMLElement).classList.add('low__end');
+
 		showDrawer = handleIsMobile();
 	});
 </script>
@@ -67,16 +80,16 @@
 
 <Analytics />
 
-<Background bind:isThree bind:finished bind:readMode />
+<Background bind:isThree bind:isLowEnd bind:isMobile bind:finished bind:readMode />
 
 {#if showContent}
-	{#await import('$lib/components/header') then Module}
-		<Module.Header routes={routes.filter(r => r.path !== '/')} {specialRoutes} />
+	{#await import('$lib/components/header') then { Header }}
+		<Header routes={routes.filter(r => r.path !== '/')} {specialRoutes} />
 	{/await}
 
 	{#if showDrawer}
-		{#await import('$lib/components/drawer') then Module}
-			<Module.Drawer>
+		{#await import('$lib/components/drawer') then { Drawer }}
+			<Drawer>
 				<svelte:fragment slot="content">
 					<ul class="menu">
 						{#each routes as route}
@@ -94,28 +107,28 @@
 						{/each}
 					</ul>
 				</svelte:fragment>
-			</Module.Drawer>
+			</Drawer>
 		{/await}
 	{/if}
 
-	<main>
-		{#await import('$lib/components/page-transition') then Module}
-			<Module.PageTransition trigger={data.pathname}>
+	{#await import('$lib/components/page-transition') then { PageTransition }}
+		<main>
+			<PageTransition trigger={data.pathname}>
 				<slot />
-			</Module.PageTransition>
-		{/await}
-	</main>
-
-	{#await import('$lib/components/scroll-top') then Module}
-		<Module.ScrollTop />
+			</PageTransition>
+		</main>
 	{/await}
 
-	{#await import('$lib/components/player') then Module}
-		<Module.Player playlist={data.playlist.data} />
+	{#await import('$lib/components/scroll-top') then { ScrollTop }}
+		<ScrollTop />
 	{/await}
 
-	{#await import('$lib/components/footer') then Module}
-		<Module.Footer />
+	{#await import('$lib/components/player') then { Player }}
+		<Player playlist={data.playlist.data} />
+	{/await}
+
+	{#await import('$lib/components/footer') then { Footer }}
+		<Footer />
 	{/await}
 {/if}
 
