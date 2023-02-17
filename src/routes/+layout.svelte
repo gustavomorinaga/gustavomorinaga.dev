@@ -2,7 +2,16 @@
 	import '../app.scss';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
-	import { Analytics, Background, Icon, PageTransition, Preload } from '$lib/components';
+	import {
+		Analytics,
+		Background,
+		Footer,
+		Icon,
+		PageTransition,
+		Player,
+		Preload,
+		ScrollTop
+	} from '$lib/components';
 	import { DRAWER, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
@@ -110,24 +119,20 @@
 			</Drawer>
 		{/await}
 	{/if}
+{/if}
 
-	<main>
-		<PageTransition trigger={data.pathname}>
-			<slot />
-		</PageTransition>
-	</main>
+<main>
+	<PageTransition trigger={data.pathname}>
+		<slot />
+	</PageTransition>
+</main>
 
-	{#await import('$lib/components/scroll-top') then { ScrollTop }}
-		<ScrollTop />
-	{/await}
+{#if showContent}
+	<ScrollTop />
 
-	{#await import('$lib/components/player') then { Player }}
-		<Player playlist={data.playlist.data} />
-	{/await}
+	<Player playlist={data.playlist.data} />
 
-	{#await import('$lib/components/footer') then { Footer }}
-		<Footer />
-	{/await}
+	<Footer />
 {/if}
 
 <style lang="scss">
