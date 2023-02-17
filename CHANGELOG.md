@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/gustavomorinaga/portfolio/compare/v0.2.0...v0.2.1) (2023-02-17)
+
+
+### Bug Fixes
+
+* metadata bug in lazy load page transition ([7becda5](https://github.com/gustavomorinaga/portfolio/commit/7becda503d5fd30686dc954c4e43b02ae11d8d14))
+* removing lazy load to page has ssr ([2e5e884](https://github.com/gustavomorinaga/portfolio/commit/2e5e8846a563eb7d572a04f2d7c2702ded87b708))
+* scroll reduced motion ([3f37f36](https://github.com/gustavomorinaga/portfolio/commit/3f37f363017805ab2a2119e9e5c701bfdd207587))
+
+
+### Improvements
+
+* improving performance by saving gpu stats ([0de9e6f](https://github.com/gustavomorinaga/portfolio/commit/0de9e6ff4722c92a61655e0a20d24597f1e2434d))
+* low end css mode ([628effb](https://github.com/gustavomorinaga/portfolio/commit/628effb4dc2b71e7b6bc7c9850e699183ec4ffda))
+* metadata and favicon ([97a7930](https://github.com/gustavomorinaga/portfolio/commit/97a7930c5873cfc18c6902435b927d3b082e7747))
+
 ## [0.2.0](https://github.com/gustavomorinaga/portfolio/compare/v0.1.2...v0.2.0) (2023-02-16)
 
 
