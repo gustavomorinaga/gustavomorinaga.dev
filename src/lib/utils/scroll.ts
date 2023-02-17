@@ -9,7 +9,7 @@ export const containerElement = browser
 export const observeScroll = (
 	options: IntersectionObserverInit = { root: null, rootMargin: '0px', threshold: 1 }
 ) => {
-	if (!browser || prefersReducedMotion) return { observer: null };
+	if (!browser) return { observer: null };
 
 	const observedElements = document.querySelectorAll('.observe__scroll');
 
@@ -24,7 +24,7 @@ export const observeScroll = (
 	return { observer };
 };
 
-export const scrollIntoView = async (event: Event) => {
+export const scrollIntoView = (event: Event) => {
 	if (!browser) return;
 
 	const target = event.currentTarget as HTMLAnchorElement;
@@ -36,21 +36,21 @@ export const scrollIntoView = async (event: Event) => {
 
 	const header = document.querySelector('#header') as HTMLElement;
 
-	return await anime({
+	return anime({
 		targets: containerElement,
 		scrollTop: element.offsetTop + (header.offsetHeight || 0),
-		duration: 1000,
+		duration: prefersReducedMotion ? 500 : 1000,
 		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
-	}).finished;
+	});
 };
 
-export const scrollToTop = async () => {
+export const scrollToTop = () => {
 	if (!browser) return;
 
-	return await anime({
+	return anime({
 		targets: containerElement,
 		scrollTop: 0,
-		duration: 1000,
+		duration: prefersReducedMotion ? 500 : 1000,
 		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
-	}).finished;
+	});
 };

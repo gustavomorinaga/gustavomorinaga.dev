@@ -334,7 +334,7 @@
 		]
 	} as IProfile;
 
-	onMount(async () => {
+	onMount(() => {
 		const { observer } = observeScroll({ threshold: 0.5 });
 
 		return () => observer && observer.disconnect();
@@ -506,6 +506,10 @@
 			</svelte:fragment>
 		</Carousel>
 	</div>
+
+	<a class="scroll__to" href="#services" on:click|preventDefault={scrollIntoView}>
+		<Icon icon="chevrons-down" size="lg" />
+	</a>
 </section>
 
 <section id="services">
@@ -530,10 +534,6 @@
 			{/each}
 		</ul>
 	</div>
-
-	<!-- <a class="scroll__to" href="#knowledges" on:click|preventDefault={scrollIntoView}>
-		<Icon icon="chevrons-down" size="lg" />
-	</a> -->
 </section>
 
 <style lang="scss" global>
@@ -691,7 +691,7 @@
 	}
 
 	#about {
-		@apply relative grid place-items-center h-screen;
+		@apply relative grid place-items-center min-h-screen;
 
 		& .about__card {
 			@apply card card-side items-center w-full h-fit bg-base-100/75 border border-base-200 backdrop-blur-md shadow-lg shadow-black;
@@ -755,7 +755,7 @@
 	}
 
 	#knowledge {
-		@apply relative grid place-items-center h-[70vh] md:h-[60vh];
+		@apply relative grid place-items-center min-h-screen;
 
 		& .knowledge__content {
 			@apply absolute w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
@@ -796,9 +796,11 @@
 	}
 
 	#services {
-		@apply relative grid place-items-center -mt-12;
+		@apply relative grid place-items-center min-h-[75vh];
 
 		& .services__content {
+			@apply mt-24 -mb-16 md:mt-0;
+
 			& h2 {
 				@apply mb-8 text-4xl text-center font-futuristic text-shadow-rgb;
 			}
@@ -826,7 +828,7 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-16 sm:bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
+		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
 	}
 
 	html.low__end {
