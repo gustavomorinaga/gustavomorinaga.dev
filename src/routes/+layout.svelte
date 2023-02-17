@@ -2,7 +2,7 @@
 	import '../app.scss';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
-	import { Analytics, Background, Icon, Preload } from '$lib/components';
+	import { Analytics, Background, Icon, PageTransition, Preload } from '$lib/components';
 	import { DRAWER, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
@@ -111,13 +111,11 @@
 		{/await}
 	{/if}
 
-	{#await import('$lib/components/page-transition') then { PageTransition }}
-		<main>
-			<PageTransition trigger={data.pathname}>
-				<slot />
-			</PageTransition>
-		</main>
-	{/await}
+	<main>
+		<PageTransition trigger={data.pathname}>
+			<slot />
+		</PageTransition>
+	</main>
 
 	{#await import('$lib/components/scroll-top') then { ScrollTop }}
 		<ScrollTop />
