@@ -4,15 +4,8 @@
 	import { CubeLoader } from '$lib/components/loaders';
 	import { containerElement } from '$lib/utils';
 
-	// --- Three.js ---
 	import * as THREE from 'three';
-	import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-	import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
-	import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
-	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
-	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
-	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
+	import { fade } from 'svelte/transition';
 
 	let canvas: HTMLCanvasElement;
 
@@ -32,7 +25,18 @@
 		height: browser ? window.innerHeight : 1
 	};
 
-	const initThree = () => {
+	const initThree = async () => {
+		// --- Lazy Load Three.js Imports ---
+		const { EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer');
+		const { FilmPass } = await import('three/examples/jsm/postprocessing/FilmPass');
+		const { RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass');
+		const { ShaderPass } = await import('three/examples/jsm/postprocessing/ShaderPass');
+		const { GammaCorrectionShader } = await import(
+			'three/examples/jsm/shaders/GammaCorrectionShader'
+		);
+		const { RGBShiftShader } = await import('three/examples/jsm/shaders/RGBShiftShader');
+		const { VignetteShader } = await import('three/examples/jsm/shaders/VignetteShader');
+
 		const loadingManager = new THREE.LoadingManager(
 			() => (finished = true),
 			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100)),
@@ -200,16 +204,14 @@
 	on:focus={() => renderer?.setAnimationLoop(animate)}
 />
 
-<div
-	class="background__container"
-	class:read__mode={readMode}
-	class:loading={isThree ? !finished : false}
->
-	{#if isThree}
-		<div class="loader">
-			<CubeLoader />
-		</div>
+{#if isThree && !finished}
+	<div class="loader" transition:fade>
+		<CubeLoader />
+	</div>
+{/if}
 
+<div class="background__container" class:read__mode={readMode}>
+	{#if isThree}
 		<canvas bind:this={canvas} class="webgl" />
 	{:else if !isLowEnd}
 		<div class="fallback__image" />
@@ -217,32 +219,26 @@
 </div>
 
 <style lang="scss">
+	.loader {
+		@apply fixed inset-0 z-[100] grid place-items-center;
+
+		&::after {
+			content: '';
+			@apply absolute inset-0 -z-10 bg-base-100;
+			background-image: url('/images/svgs/hexagons.svg');
+		}
+	}
+
 	.background__container {
 		@apply fixed -z-10 inset-0 w-full h-full overflow-hidden;
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-75 transition-all ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-80 transition-opacity ease-out duration-300;
 		}
 
 		&.read__mode {
 			@apply after:opacity-80;
-		}
-
-		&.loading {
-			@apply z-[100] after:bg-base-100 after:opacity-100 after:backdrop-blur-sm;
-
-			&::after {
-				background-image: url('/images/svgs/hexagons.svg');
-			}
-
-			& .loader {
-				@apply opacity-100 shadow-lg shadow-black;
-			}
-		}
-
-		& .loader {
-			@apply absolute inset-0 z-10 grid place-items-center opacity-0 transition-opacity ease-out duration-300;
 		}
 
 		& .fallback__image {
