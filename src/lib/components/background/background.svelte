@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { CubeLoader } from '$lib/components/loaders';
+	import { CubeLoader } from '$lib/components';
+	import { GPU } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 
 	import * as THREE from 'three';
@@ -9,10 +10,7 @@
 
 	let canvas: HTMLCanvasElement;
 
-	export let isThree: boolean;
-	export let isLowEnd: boolean;
-	export let isMobile: boolean;
-	export let finished: boolean;
+	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
 	export let progress = 0;
 
@@ -24,6 +22,22 @@
 		width: browser ? window.innerWidth : 1,
 		height: browser ? window.innerHeight : 1
 	};
+
+	$: isThree = $GPU.isThree;
+	$: isMobile = $GPU.isMobile;
+	$: isLowEnd = $GPU.isLowEnd;
+	$: if (browser) {
+		// Call animate again on the next frame
+		if (isThree && finished)
+			if (!readMode) {
+				renderer?.setAnimationLoop(animate);
+			} else {
+				renderer?.setAnimationLoop(animate);
+				setTimeout(() => renderer?.setAnimationLoop(null), 300);
+			}
+
+		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
+	}
 
 	const initThree = async () => {
 		// --- Lazy Load Three.js Imports ---
@@ -181,21 +195,8 @@
 		return Promise.resolve(canvas);
 	};
 
-	$: if (browser) {
-		// Call animate again on the next frame
-		if (isThree && finished)
-			if (!readMode) {
-				renderer?.setAnimationLoop(animate);
-			} else {
-				renderer?.setAnimationLoop(animate);
-				setTimeout(() => renderer?.setAnimationLoop(null), 300);
-			}
-
-		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
-	}
-
 	onMount(async () => {
-		if (isThree && !isMobile) await initThree();
+		if (isThree) await initThree();
 	});
 </script>
 
@@ -204,16 +205,15 @@
 	on:focus={() => renderer?.setAnimationLoop(animate)}
 />
 
-{#if isThree && !finished}
+{#if isThree && !isLowEnd && !finished}
 	<div class="loader" transition:fade>
 		<CubeLoader />
 	</div>
 {/if}
 
 <div class="background__container" class:read__mode={readMode}>
-	{#if isThree && !isMobile}
-		<canvas bind:this={canvas} class="webgl" />
-	{:else if !isLowEnd}
+	<canvas id="webgl" bind:this={canvas} class:hidden={!isThree} />
+	{#if !isThree && isMobile && !isLowEnd}
 		<div class="fallback__image" />
 	{/if}
 </div>

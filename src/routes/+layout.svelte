@@ -19,15 +19,12 @@
 
 	export let data: LayoutServerData;
 
-	let isThree = true;
-	let isLowEnd = false;
-	let isMobile = false;
-	let finished = false;
+	let finished: boolean;
 	let showDrawer = false;
 
 	const specialRoutes = ['/bookmarks'];
 
-	$: showContent = isThree ? finished : true;
+	$: showContent = $GPU.isThree ? finished : true;
 	$: readMode = ['/blog'].includes(data.pathname);
 	$: routes = [
 		{
@@ -70,13 +67,13 @@
 	};
 
 	onMount(async () => {
-		if (!$GPU) {
+		if (!$GPU?.gpu) {
 			const detectedGPU = await getGPUTier();
 
 			GPU.change(detectedGPU);
 		}
 
-		if (isLowEnd) (containerElement as HTMLElement).classList.add('low__end');
+		if ($GPU.isLowEnd) (containerElement as HTMLElement).classList.add('low__end');
 
 		showDrawer = handleIsMobile();
 	});
@@ -88,7 +85,7 @@
 
 <Analytics />
 
-<Background bind:isThree bind:isLowEnd bind:isMobile bind:finished bind:readMode />
+<Background bind:finished bind:readMode />
 
 {#if showContent}
 	{#await import('$lib/components/header') then { Header }}

@@ -559,7 +559,7 @@
 		}
 
 		& .dropdown__content {
-			@apply right-4 bottom-3 card card-bordered w-96 h-96 overflow-y-auto -translate-y-24 bg-black/90 border-white/10 shadow-md scrollbar__theme;
+			@apply left-4 md:left-auto right-4 bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-black/90 border-white/10 shadow-md scrollbar__theme;
 
 			& .playlist__wrapper {
 				@apply flex flex-col;
