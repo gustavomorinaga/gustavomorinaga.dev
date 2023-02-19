@@ -9,8 +9,7 @@
 	const handleOnScroll = () => {
 		const { scrollTop } = containerElement as HTMLElement;
 
-		if (scrollTop > MINIMUM_OFFSET) scrollTopButtonRef.classList.add('show');
-		else scrollTopButtonRef.classList.remove('show');
+		scrollTopButtonRef.classList.toggle('show', scrollTop > MINIMUM_OFFSET);
 	};
 </script>
 

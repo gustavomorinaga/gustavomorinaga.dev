@@ -6,10 +6,7 @@
 
 	let bodyRef: HTMLElement;
 
-	$: if (browser && bodyRef)
-		$DRAWER
-			? bodyRef.classList.add('overflow-hidden')
-			: bodyRef.classList.remove('overflow-hidden');
+	$: if (browser && bodyRef) bodyRef.classList.toggle('overflow-hidden', $DRAWER);
 
 	onMount(() => {
 		bodyRef = containerElement as HTMLElement;
