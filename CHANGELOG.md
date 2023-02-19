@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/gustavomorinaga/portfolio/compare/v0.2.1...v0.2.2) (2023-02-19)
+
+
+### Bug Fixes
+
+* gpu storage problem ([32e47f6](https://github.com/gustavomorinaga/portfolio/commit/32e47f63ac12a7adc6908688df3992cb9bfe24cb))
+* showing threejs canvas only in desktop mode ([0fbdf49](https://github.com/gustavomorinaga/portfolio/commit/0fbdf49ccf43e958138e4713c1c884be78c87c18))
+
+
+### Improvements
+
+* lazy load threejs imports and loader ([02f4983](https://github.com/gustavomorinaga/portfolio/commit/02f498376f3e297c3906429504a7b3bbcc8ad6e2))
+* resuming scroll classlist toggle ([8c77445](https://github.com/gustavomorinaga/portfolio/commit/8c774456c0e19e0fd448731587627dcd1a8e628e))
+
+
+### Documentation
+
+* first time doc ([bacb7ff](https://github.com/gustavomorinaga/portfolio/commit/bacb7ff3b5c91234a01f1c991cf92ed7d29ebd0c))
+
 ### [0.2.1](https://github.com/gustavomorinaga/portfolio/compare/v0.2.0...v0.2.1) (2023-02-17)
 
 
