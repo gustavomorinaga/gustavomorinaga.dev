@@ -9,7 +9,7 @@
 
 <!-- Banner Section -->
 <p align="center">
-  <img src="./static/images/webps/preview.webp" alt="Portfolio preview" width="512px" />
+  <img src="../../../static/images/webps/preview.webp" alt="Portfolio preview" width="512px" />
 </p>
 <h3 align="center">
   My super portfolio built with SvelteKit and served on Vercel.
@@ -46,8 +46,8 @@
 
 ## 🌎 Translations
 
-<kbd>[<img title="English" alt="English" src="https://flagicons.lipis.dev/flags/4x3/us.svg" width="22">](./static/docs/translations/README.en-US.md)</kbd>
-<kbd>[<img title="Português Brasileiro" alt="Português Brasileiro" src="https://flagicons.lipis.dev/flags/4x3/br.svg" width="22">](./static/docs/translations/README.pt-BR.md)</kbd>
+<kbd>[<img title="English" alt="English" src="https://flagicons.lipis.dev/flags/4x3/us.svg" width="22">](./README.en-US.md)</kbd>
+<kbd>[<img title="Português Brasileiro" alt="Português Brasileiro" src="https://flagicons.lipis.dev/flags/4x3/br.svg" width="22">](./README.pt-BR.md)</kbd>
 
 <!-- Introduction Section -->
 
@@ -69,7 +69,7 @@ This repo is dedicated to show my own projects, bookmarks, blog posts and fun fa
 
 This website was not created to be a template or theme, but for my own use. Feel free to take whatever piece of code or inspiration from it that you want, but it was not written with the intention of being cloned and deployed. Thanks!
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) page for details.
+This project is licensed under the **MIT License** - see the [LICENSE](../../../LICENSE) page for details.
 
 <!-- Acknowledgment Section -->
 
