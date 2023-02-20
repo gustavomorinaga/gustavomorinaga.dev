@@ -655,7 +655,7 @@
 	}
 
 	.atropos__profile {
-		@apply w-fit h-fit p-2 pointer-events-none md:pointer-events-auto;
+		@apply hidden lg:block w-fit h-fit p-2 pointer-events-none md:pointer-events-auto;
 
 		@media (min-width: 1024px) {
 			display: block !important;
