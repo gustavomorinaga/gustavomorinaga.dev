@@ -18,23 +18,18 @@
 	let renderer: THREE.WebGLRenderer;
 	let clock: THREE.Clock;
 	let animate: () => void;
-	let sizes = {
-		width: browser ? window.innerWidth : 1,
-		height: browser ? window.innerHeight : 1
-	};
 
 	$: isThree = $GPU.isThree;
 	$: isMobile = $GPU.isMobile;
 	$: isLowEnd = $GPU.isLowEnd;
+	$: loading = (isThree || isMobile) && !isLowEnd && !finished;
+	$: showFallbackImage = !isThree && isMobile && !isLowEnd;
 	$: if (browser) {
 		// Call animate again on the next frame
-		if (isThree && finished)
-			if (!readMode) {
-				renderer?.setAnimationLoop(animate);
-			} else {
-				renderer?.setAnimationLoop(animate);
-				setTimeout(() => renderer?.setAnimationLoop(null), 300);
-			}
+		if (isThree && finished) {
+			renderer?.setAnimationLoop(animate);
+			readMode && setTimeout(() => renderer?.setAnimationLoop(null), 300);
+		}
 
 		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
 	}
@@ -56,6 +51,11 @@
 			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100)),
 			() => ((finished = false), (progress = 0))
 		);
+
+		const sizes = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		};
 
 		// Scene
 		scene = new THREE.Scene();
@@ -197,6 +197,7 @@
 
 	onMount(async () => {
 		if (isThree) await initThree();
+		if (isMobile || isLowEnd) finished = true;
 	});
 </script>
 
@@ -205,7 +206,7 @@
 	on:focus={() => renderer?.setAnimationLoop(animate)}
 />
 
-{#if isThree && !isLowEnd && !finished}
+{#if loading}
 	<div class="loader" transition:fade>
 		<CubeLoader />
 	</div>
@@ -213,7 +214,7 @@
 
 <div class="background__container" class:read__mode={readMode}>
 	<canvas id="webgl" bind:this={canvas} class:hidden={!isThree} />
-	{#if !isThree && isMobile && !isLowEnd}
+	{#if showFallbackImage}
 		<div class="fallback__image" />
 	{/if}
 </div>

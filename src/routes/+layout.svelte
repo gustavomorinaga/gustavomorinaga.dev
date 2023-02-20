@@ -73,7 +73,7 @@
 			GPU.change(detectedGPU);
 		}
 
-		if ($GPU.isLowEnd) (containerElement as HTMLElement).classList.add('low__end');
+		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 
 		showDrawer = handleIsMobile();
 	});

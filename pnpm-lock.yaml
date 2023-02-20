@@ -34,6 +34,7 @@ specifiers:
   standard-version: 9.5.0
   svelte: 3.55.1
   svelte-check: 3.0.3
+  svelte-portal: ^2.2.0
   svelte-preprocess: 5.0.1
   tailwind-scrollbar: 2.1.0
   tailwindcss: 3.2.6
@@ -79,6 +80,7 @@ devDependencies:
   standard-version: 9.5.0
   svelte: 3.55.1
   svelte-check: 3.0.3_2fhq4e3e5we74q3fjwcjkwqgle
+  svelte-portal: 2.2.0
   svelte-preprocess: 5.0.1_3b5ianm2ugvkaapjtuwrpxqq7a
   tailwind-scrollbar: 2.1.0_tailwindcss@3.2.6
   tailwindcss: 3.2.6_postcss@8.4.21
@@ -4249,6 +4251,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.55.1
+    dev: true
+
+  /svelte-portal/2.2.0:
+    resolution: {integrity: sha512-jhtZWtD6cUE2nMw46dJ5VXWYiqnER+JH+V/BmNBQ5fNP/YdsJCpJi+DemUy9msklqGb0f+wLhJPBtKHLWQvzjg==}
     dev: true
 
   /svelte-preprocess/5.0.1_3b5ianm2ugvkaapjtuwrpxqq7a:
