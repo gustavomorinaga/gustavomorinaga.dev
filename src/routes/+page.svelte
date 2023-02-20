@@ -8,6 +8,15 @@
 	import Atropos from 'atropos/svelte';
 	import type { IProfile } from '$lib/types';
 
+	import profileWebp from '$lib/images/webps/profile.webp';
+	import profileCroppedWebp from '$lib/images/webps/profile-cropped.webp';
+	import lowPolyGridSVG from '$lib/images/svgs/low-poly-grid.svg';
+	import triangleSVG from '$lib/images/svgs/triangle.svg';
+	import nibSVG from '$lib/images/svgs/nib-icon.svg';
+	import codeSVG from '$lib/images/svgs/code-icon.svg';
+	import seoSVG from '$lib/images/svgs/seo-icon.svg';
+	import magicSVG from '$lib/images/svgs/magic-icon.svg';
+
 	$: profile = {
 		social: [
 			{
@@ -308,25 +317,25 @@
 		},
 		services: [
 			{
-				icon: '/images/svgs/nib-icon.svg',
+				icon: nibSVG,
 				title: $LANG.home.services.cardDesign.title,
 				description: $LANG.home.services.cardDesign.paragraph,
 				alt: $LANG.home.services.cardDesign.alt
 			},
 			{
-				icon: '/images/svgs/code-icon.svg',
+				icon: codeSVG,
 				title: $LANG.home.services.cardDev.title,
 				description: $LANG.home.services.cardDev.paragraph,
 				alt: $LANG.home.services.cardDev.alt
 			},
 			{
-				icon: '/images/svgs/seo-icon.svg',
+				icon: seoSVG,
 				title: $LANG.home.services.cardSeo.title,
 				description: $LANG.home.services.cardSeo.paragraph,
 				alt: $LANG.home.services.cardSeo.alt
 			},
 			{
-				icon: '/images/svgs/magic-icon.svg',
+				icon: magicSVG,
 				title: $LANG.home.services.cardMotion.title,
 				description: $LANG.home.services.cardMotion.paragraph,
 				alt: $LANG.home.services.cardMotion.alt
@@ -345,13 +354,17 @@
 
 <section id="blurb">
 	<div class="blurb__content observe__scroll">
-		<div class="blurb__image" in:fade={{ delay: 2000, easing: cubicOut }}>
+		<div
+			class="blurb__image"
+			style="--triangle: url({triangleSVG}); --profile-cropped: url({profileCroppedWebp});"
+			in:fade={{ delay: 2000, easing: cubicOut }}
+		>
 			<div class="mobile__profile">
 				<figure class="triangle" />
 				<figure class="profile" />
 			</div>
 
-			<Atropos class="atropos__profile" style="display: none;">
+			<Atropos class="atropos__profile">
 				<figure class="triangle" data-atropos-offset="0" />
 				<figure class="profile" data-atropos-offset="0" />
 
@@ -424,7 +437,7 @@
 
 <section id="about">
 	<article class="about__card observe__scroll">
-		<figure />
+		<figure style="--profile: url({profileWebp})" />
 
 		<div class="card-body">
 			<h2>{$LANG.home.about.title}</h2>
@@ -465,7 +478,7 @@
 </section>
 
 <section id="knowledge">
-	<div class="knowledge__content observe__scroll">
+	<div class="knowledge__content observe__scroll" style="--low-poly-grid: url({lowPolyGridSVG})">
 		<h2>{$LANG.home.knowledge.title}</h2>
 
 		<p>{$LANG.home.knowledge.paragraph}</p>
@@ -612,18 +625,18 @@
 
 		& .triangle {
 			@apply absolute inset-0 bg-cover bg-no-repeat text-primary text-opacity-40 drop-shadow-md;
-			background-image: url('/images/svgs/triangle.svg');
+			background-image: var(--triangle);
 		}
 
 		& .profile {
 			@apply relative z-auto w-96 h-96 bg-cover bg-no-repeat drop-shadow-md shadow-red-500 grayscale;
-			background-image: url('/images/webps/profile-cropped.webp');
+			background-image: var(--profile-cropped);
 			clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 
 			&:after {
 				content: '';
 				@apply absolute inset-0 w-full h-full bg-cover bg-no-repeat drop-shadow-md opacity-0 mix-blend-hard-light transition-opacity ease-out;
-				background-image: url('/images/webps/profile-cropped.webp');
+				background-image: var(--profile-cropped);
 				clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 			}
 		}
@@ -698,7 +711,7 @@
 
 			& > figure {
 				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
-				background-image: url('/images/webps/profile.webp');
+				background-image: var(--profile);
 
 				&::before {
 					content: '';
@@ -708,7 +721,7 @@
 				&::after {
 					content: '';
 					@apply hidden lg:block absolute inset-0 z-20 max-h-0 bg-cover bg-no-repeat border-b-0 border-transparent backdrop-grayscale transition-all duration-1000 ease-smooth;
-					background-image: url('/images/webps/profile.webp');
+					background-image: var(--profile);
 				}
 			}
 
@@ -759,7 +772,7 @@
 
 		& .knowledge__content {
 			@apply absolute w-screen py-8 text-center bg-stone-900 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-stone-300/10 shadow-2xl shadow-black;
-			background-image: url('/images/svgs/low-poly-grid.svg');
+			background-image: var(--low-poly-grid);
 
 			& h2 {
 				@apply text-2xl md:text-4xl font-futuristic mb-4 text-shadow-rgb;

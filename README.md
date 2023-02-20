@@ -9,7 +9,7 @@
 
 <!-- Banner Section -->
 <p align="center">
-  <img src="./static/images/webps/preview.webp" alt="Portfolio preview" width="512px" />
+  <img src="./static/images/pngs/preview.png" alt="Portfolio preview" width="512px" />
 </p>
 <h3 align="center">
   My super portfolio built with SvelteKit and served on Vercel.

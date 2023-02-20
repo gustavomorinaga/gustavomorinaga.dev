@@ -8,7 +8,6 @@
 		Footer,
 		Icon,
 		PageTransition,
-		Player,
 		Preload,
 		ScrollTop
 	} from '$lib/components';
@@ -123,12 +122,14 @@
 	</PageTransition>
 </main>
 
+<Footer />
+
+<ScrollTop />
+
 {#if showContent}
-	<ScrollTop />
-
-	<Player playlist={data.playlist.data} />
-
-	<Footer />
+	{#await import('$lib/components/player') then { Player }}
+		<Player playlist={data.playlist.data} />
+	{/await}
 {/if}
 
 <style lang="scss">

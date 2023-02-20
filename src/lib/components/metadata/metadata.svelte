@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { PUBLIC_DOMAIN } from '$env/static/public';
+	import { page } from '$app/stores';
 
 	export let title = '';
 	export let description =
 		'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.';
-	export let thumbnail = '/images/webps/preview.webp';
+	export let thumbnail = '/images/pngs/preview.png';
 
 	const baseURL = PUBLIC_DOMAIN;
 

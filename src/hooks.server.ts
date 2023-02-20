@@ -22,10 +22,13 @@ const minificationOptions = {
 	collapseInlineTagWhitespace: true
 } satisfies Options;
 
+const PRELOAD = ['font', 'css', 'js', 'asset'];
+
 export const handle = (async ({ resolve, event }) => {
 	let page = '';
 
 	const response = await resolve(event, {
+		preload: ({ type }) => PRELOAD.includes(type),
 		transformPageChunk: ({ html, done }) => {
 			page += html;
 

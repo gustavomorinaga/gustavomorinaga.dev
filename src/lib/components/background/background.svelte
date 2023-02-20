@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import { CubeLoader } from '$lib/components';
 	import { GPU } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
-
 	import * as THREE from 'three';
-	import { fade } from 'svelte/transition';
+
+	import hexagonsSVG from '$lib/images/svgs/hexagons.svg';
+	import synthwaveSVG from '$lib/images/svgs/synthwave.svg';
 
 	let canvas: HTMLCanvasElement;
 
@@ -46,6 +48,11 @@
 		const { RGBShiftShader } = await import('three/examples/jsm/shaders/RGBShiftShader');
 		const { VignetteShader } = await import('three/examples/jsm/shaders/VignetteShader');
 
+		const gridWebp = await import('$lib/images/webps/grid.webp');
+		const terrainWebp = await import('$lib/images/webps/displacement.webp');
+		const metalnessWebp = await import('$lib/images/webps/metalness.webp');
+		const universeWebp = await import('$lib/images/webps/universe.webp');
+
 		const loadingManager = new THREE.LoadingManager(
 			() => (finished = true),
 			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100)),
@@ -62,10 +69,10 @@
 
 		// Textures
 		const textureLoader = new THREE.TextureLoader(loadingManager);
-		const gridTexture = textureLoader.load('images/webps/grid.webp');
-		const terrainTexture = textureLoader.load('images/webps/displacement.webp');
-		const metalnessTexture = textureLoader.load('images/webps/metalness.webp');
-		const universeTexture = textureLoader.load('images/webps/universe.webp');
+		const gridTexture = textureLoader.load(gridWebp.default);
+		const terrainTexture = textureLoader.load(terrainWebp.default);
+		const metalnessTexture = textureLoader.load(metalnessWebp.default);
+		const universeTexture = textureLoader.load(universeWebp.default);
 
 		// Background
 		scene.background = universeTexture;
@@ -207,7 +214,7 @@
 />
 
 {#if loading}
-	<div class="loader" transition:fade>
+	<div class="loader" transition:fade style="--hexagons-pattern: url({hexagonsSVG})">
 		<CubeLoader />
 	</div>
 {/if}
@@ -215,18 +222,18 @@
 <div class="background__container" class:read__mode={readMode}>
 	<canvas id="webgl" bind:this={canvas} class:hidden={!isThree} />
 	{#if showFallbackImage}
-		<div class="fallback__image" />
+		<div class="fallback__image" style="--synthwave-pattern: url({synthwaveSVG})" />
 	{/if}
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
 	.loader {
 		@apply fixed inset-0 z-[100] grid place-items-center;
 
 		&::after {
 			content: '';
 			@apply absolute inset-0 -z-10 bg-base-100;
-			background-image: url('/images/svgs/hexagons.svg');
+			background-image: var(--hexagons-pattern);
 		}
 	}
 
@@ -244,7 +251,7 @@
 
 		& .fallback__image {
 			@apply bg-center bg-cover bg-no-repeat w-full h-full;
-			background-image: url('/images/svgs/synthwave.svg');
+			background-image: var(--synthwave-pattern);
 		}
 	}
 </style>

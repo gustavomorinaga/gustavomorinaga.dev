@@ -7,6 +7,9 @@
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/types';
 
+	import logoSVG from '$lib/images/svgs/logo-text.svg';
+	import sloganSVG from '$lib/images/svgs/slogan-text.svg';
+
 	export let routes: IRoute[] = [];
 	export let specialRoutes: string[] = [];
 
@@ -63,8 +66,8 @@
 			</button>
 
 			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
-				<img id="logo" src="/images/svgs/logo-text.svg" alt="Logotype" />
-				<img id="slogan" src="/images/svgs/slogan-text.svg" alt="Slogan" />
+				<img id="logo" src={logoSVG} alt="Logotype" />
+				<img id="slogan" src={sloganSVG} alt="Slogan" />
 			</a>
 
 			<nav>
@@ -118,6 +121,10 @@
 			& .header__content {
 				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 sm:px-8 lg:px-0;
 
+				& .btn__drawer {
+					@apply inline-flex sm:hidden btn btn-ghost drawer-button;
+				}
+
 				& .logo {
 					@apply relative flex flex-col items-center w-52 h-fit mx-auto md:ml-0;
 
@@ -160,10 +167,6 @@
 
 				& .btn__lang {
 					@apply block rounded-full mx-4 border border-zinc-400;
-				}
-
-				.btn__drawer {
-					@apply inline-flex sm:hidden btn btn-ghost drawer-button;
 				}
 			}
 		}
