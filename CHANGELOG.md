@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/gustavomorinaga/portfolio/compare/v0.2.2...v0.3.0) (2023-02-20)
+
+
+### Improvements
+
+* image cache and portal ([3fa5d97](https://github.com/gustavomorinaga/portfolio/commit/3fa5d97d123d4766f15740fe7c70c1c3c6e3db18))
+* improving fixed elements with portals ([b4eef1b](https://github.com/gustavomorinaga/portfolio/commit/b4eef1bc5d96699f40a42bfc0a940855c5f86cdc))
+
 ### [0.2.2](https://github.com/gustavomorinaga/portfolio/compare/v0.2.1...v0.2.2) (2023-02-19)
 
 
