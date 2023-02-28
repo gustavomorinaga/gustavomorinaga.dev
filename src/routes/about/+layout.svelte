@@ -16,7 +16,7 @@
 	);
 </script>
 
-<code>
+<code class="about">
 	profile
 	<span class="method">
 		{#if data.pathname.includes('/setup')}
@@ -122,7 +122,7 @@
 </section>
 
 <style lang="scss" global>
-	code {
+	code.about {
 		@apply md:mt-16;
 	}
 
