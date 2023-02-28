@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/gustavomorinaga/portfolio/compare/v0.3.0...v0.4.0) (2023-02-28)
+
+
+### Features
+
+* added about, knowledge and setup pages ([64d245f](https://github.com/gustavomorinaga/portfolio/commit/64d245f78ba6a4d38cb10c9f7c4839287b192586))
+
+
+### Bug Fixes
+
+* atropos profile media query ([13e0a3e](https://github.com/gustavomorinaga/portfolio/commit/13e0a3e0b1d9a5f75dad16c0257035447516dd0b))
+* rewriting texts ([9dad9ba](https://github.com/gustavomorinaga/portfolio/commit/9dad9ba9f05bfd00d4caa6c9817192d56a5c7ba8))
+
+
+### Documentation
+
+* fix readme portfolio link translation ([a4ce2d2](https://github.com/gustavomorinaga/portfolio/commit/a4ce2d21cd3e12a3bf71cb5bbe01943b724be2bb))
+
 ## [0.3.0](https://github.com/gustavomorinaga/portfolio/compare/v0.2.2...v0.3.0) (2023-02-20)
 
 
