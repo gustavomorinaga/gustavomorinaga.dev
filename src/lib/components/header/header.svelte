@@ -1,14 +1,18 @@
 <script lang="ts">
+	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
 	import { Icon } from '$lib/components';
+	import { profileJSON } from '$lib/databases';
 	import { DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/types';
 
-	import logoSVG from '$lib/images/svgs/logo-text.svg';
-	import sloganSVG from '$lib/images/svgs/slogan-text.svg';
+	import logoSVG from '$lib/images/svgs/logo-title.svg';
+	import sloganSVG from '$lib/images/svgs/logo-slogan.svg';
+
+	const baseURL = PUBLIC_DOMAIN;
 
 	export let routes: IRoute[] = [];
 	export let specialRoutes: string[] = [];
@@ -95,6 +99,41 @@
 				{/each}
 			</nav>
 
+			<div class="social dropdown dropdown-left dropdown-bottom dropdown-hover">
+				<label title="Social" aria-label="Social" tabindex="-1">
+					<input type="checkbox" hidden aria-hidden="true" />
+					<Icon icon="social" />
+				</label>
+
+				<div class="dropdown-content" tabindex="-1">
+					<ul>
+						{#each profileJSON.social as socialLink}
+							<li data-tip={socialLink.title}>
+								<a
+									href={socialLink.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={socialLink.title}
+								>
+									<Icon icon={socialLink.icon} />
+								</a>
+							</li>
+						{/each}
+
+						<li data-tip={$LANG.curriculum.title}>
+							<a
+								href={`${baseURL}/files/pdfs/curriculum-${$LANG.code}.pdf`}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={$LANG.curriculum.title}
+							>
+								<Icon icon="file-download" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
 			<button
 				class="btn__lang"
 				title={$LANG.header.lang}
@@ -161,6 +200,26 @@
 
 						&.disabled {
 							@apply pointer-events-none opacity-50;
+						}
+					}
+				}
+
+				& .social {
+					@apply hidden md:block z-50;
+
+					& .dropdown-content {
+						@apply translate-x-14;
+
+						& ul {
+							@apply card card-side card-bordered mt-8 p-2 bg-base-100 shadow-lg shadow-black;
+
+							& li {
+								@apply tooltip tooltip-bottom;
+
+								& a {
+									@apply btn btn-link btn-sm hover:-translate-y-1 transition-transform duration-300 ease-out;
+								}
+							}
 						}
 					}
 				}

@@ -5,6 +5,16 @@ const year = new Date().getFullYear();
 export const en: ILang = {
 	code: 'en',
 
+	metadata: {
+		title: 'Gustavo Morinaga',
+		description:
+			'Creative full-stack developer passionate about creating complete, efficient and hi-tech solutions.'
+	},
+
+	curriculum: {
+		title: 'Download curriculum'
+	},
+
 	header: {
 		logo: {
 			alt: 'Home'
@@ -39,7 +49,8 @@ export const en: ILang = {
 
 		knowledge: {
 			title: 'Knowledge',
-			paragraph: 'Multiple technologies, multiple possibilities to solve multiple problems...'
+			paragraph: 'Multiple technologies, multiple possibilities to solve multiple problems...',
+			moreDetails: 'More details'
 		},
 
 		services: {
@@ -69,6 +80,89 @@ export const en: ILang = {
 					'I create smooth, fluid and attractive interactions for the user. Without disturbing navigation.',
 				alt: 'Icon by Vanda Arief on freeicons.io'
 			}
+		}
+	},
+
+	about: {
+		title: 'About me',
+		paragraph:
+			"<p>You can call me Gu or Morinaga, I'm a full-stack developer with a focus on front-end. <br /> Since childhood I had a lot of skill and interest in computers, but I never thought about the possibility of working in the area because I loved drawing. My first contact with programming was at the age of 17 in the technical course of Informatics at <a href='https://www.cps.sp.gov.br/etecs/etec-de-sao-roque' target='_blank' rel='noopener noreferrer'>Etec de São Roque</a>, but what inspired me to pursue this career in technology was the <a href='https://summit.microsoft.com' target='_blank' rel='noopener noreferrer'>MVP Conf</a> that I attended in 2018. I dedicated to becoming a good developer, starting with JavaScript and Node.js. <br /> I always take programming as fun, I value a great DX a lot, I'm very curious to learn about new concepts and new technologies (no wonder I have a huge collection of them) and I like to teach/help other developers. I'm attentive to details and I don't stop until the problem is solved. <br /> Have a question or want to talk? Call me on one of my contacts, I'll be happy to help!</p>",
+
+		metadata: {
+			title: 'About me',
+			description:
+				'Aqui conto brevemente a minha jornada de desenvolvedor full-stack e algumas curiosidades sobre mim.'
+		},
+
+		details: {
+			title: 'Details',
+			age: 'years old',
+			occupation:
+				'Full-Stack Developer at <a href="https://advtecnologia.com.br" target="_blank" rel="noopener noreferrer"> @ADV Tecnologia </a>',
+			home: 'Live in São Roque, SP, Brasil',
+			homeland: 'From Isesaki, Gunma, Japão'
+		},
+		facts: {
+			title: 'Random Facts',
+			character: 'My favorite character is Spider-Man.',
+			entertainment: "I'm passionate about games.",
+			movie: 'I watch action and sci-fi movies/animations.',
+			hobby: 'I like to play electric guitar at spare time.',
+			music: 'I love to listen metal, synthwave and old ones.'
+		},
+
+		actions: {
+			knowledge: 'Knowledge',
+			setup: 'Setup',
+			about: 'About me'
+		},
+
+		knowledge: {
+			title: 'Knowledge',
+
+			metadata: {
+				title: 'Knowledge',
+				description:
+					'Here I highlight the technologies and tools that I have knowledge and practice in developing my work.'
+			},
+
+			languages: 'Languages',
+			runtime: 'Runtime',
+			libs: 'Libs',
+			frameworks: 'Frameworks',
+			databases: 'Databases',
+			versionControl: 'Version control',
+			packageManagers: 'Package managers',
+			platforms: 'Platforms',
+			plugins: 'Plugins',
+			bundlers: 'Bundlers',
+			compilers: 'Compilers',
+			tools: 'Tools'
+		},
+
+		setup: {
+			title: 'Setup',
+
+			metadata: {
+				title: 'Setup',
+				description: 'Here I show the equipment I currently have for work and study.'
+			},
+
+			motherboard: 'Motherboard',
+			cpu: 'CPU',
+			ram: 'RAM',
+			gpu: 'GPU',
+			ssd: 'SSD',
+			hdd: 'HDD',
+			cooler: 'Cooler',
+			powerSupply: 'Power supply',
+			pcTower: 'PC tower',
+			monitor: 'Monitor',
+			keyboard: 'Keyboard',
+			mouse: 'Mouse',
+			audioInterface: 'Audio interface',
+			headset: 'Headset',
+			microphone: 'Microphone'
 		}
 	},
 

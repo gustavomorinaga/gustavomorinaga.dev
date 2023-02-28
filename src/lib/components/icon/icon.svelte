@@ -4,7 +4,7 @@
 	import Icon from '@iconify/svelte';
 	import type { IIcon } from '$lib/types';
 
-	export let collection: IIcon['collection'] = 'tabler';
+	export let collection: IIcon['collection'] | string = 'tabler';
 	export let icon: IIcon['icon'] = '';
 	export let size: IIcon['size'] = 'md';
 	export let width = '100%';
@@ -47,7 +47,7 @@
 	);
 
 	.icon {
-		@apply relative;
+		@apply relative block overflow-hidden p-2;
 
 		@each $size, $value in $sizes {
 			&.#{$size} {

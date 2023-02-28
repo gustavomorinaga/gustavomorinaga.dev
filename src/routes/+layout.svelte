@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.scss';
+	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import {
@@ -11,10 +12,13 @@
 		Preload,
 		ScrollTop
 	} from '$lib/components';
+	import { profileJSON } from '$lib/databases';
 	import { DRAWER, GPU, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
+
+	const baseURL = PUBLIC_DOMAIN;
 
 	export let data: LayoutServerData;
 
@@ -42,7 +46,7 @@
 			title: $LANG.header.about,
 			path: '/about',
 			icon: 'user',
-			active: false
+			active: true
 		},
 		{
 			title: $LANG.header.projects,
@@ -110,6 +114,34 @@
 							</li>
 						{/each}
 					</ul>
+
+					<div class="divider" />
+
+					<ul class="social">
+						{#each profileJSON.social as socialLink}
+							<li>
+								<a
+									href={socialLink.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={socialLink.title}
+								>
+									<Icon icon={socialLink.icon} size="sm" />
+								</a>
+							</li>
+						{/each}
+
+						<li data-tip={$LANG.curriculum.title}>
+							<a
+								href={`${baseURL}/files/pdfs/curriculum-${$LANG.code}.pdf`}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={$LANG.curriculum.title}
+							>
+								<Icon icon="file-download" size="sm" />
+							</a>
+						</li>
+					</ul>
 				</svelte:fragment>
 			</Drawer>
 		{/await}
@@ -117,7 +149,7 @@
 {/if}
 
 <main>
-	<PageTransition trigger={data.pathname}>
+	<PageTransition trigger={`${data.pathname.split('/').slice(1).shift()}`}>
 		<slot />
 	</PageTransition>
 </main>
@@ -144,6 +176,14 @@
 			&.disabled {
 				@apply pointer-events-none opacity-50;
 			}
+		}
+	}
+
+	.social {
+		@apply flex flex-wrap justify-center;
+
+		& li {
+			@apply btn btn-link btn-sm;
 		}
 	}
 </style>

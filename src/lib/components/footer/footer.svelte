@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { LANG } from '$lib/stores';
 
-	import vercelSVG from '$lib/images/svgs/vercel-logo.svg';
-	import sveltekitSVG from '$lib/images/svgs/sveltekit-logo.svg';
+	import vercelSVG from '$lib/images/svgs/logo-vercel.svg';
+	import sveltekitSVG from '$lib/images/svgs/logo-sveltekit.svg';
 </script>
 
 <footer id="footer">

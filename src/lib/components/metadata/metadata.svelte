@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { page } from '$app/stores';
+	import { LANG } from '$lib/stores';
 
 	export let title = '';
-	export let description =
-		'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.';
+	export let description = $LANG.metadata.description;
 	export let thumbnail = '/images/pngs/preview.png';
 
 	const baseURL = PUBLIC_DOMAIN;
 
-	$: pageTitle = title ? `${title} » Gustavo Morinaga` : 'Gustavo Morinaga';
+	$: pageTitle = title ? `${title} » ${$LANG.metadata.title}` : `${$LANG.metadata.title}`;
 </script>
 
 <svelte:head>
@@ -18,11 +18,13 @@
 	<meta name="description" content={description} />
 	<meta name="theme-color" content="#100F10" />
 
-	<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-	<meta prefix="og: http://ogp.me/ns#" property="og:url" content="{baseURL}{$page.url.pathname}" />
-	<meta prefix="og: http://ogp.me/ns#" property="og:title" content={pageTitle} />
-	<meta prefix="og: http://ogp.me/ns#" property="og:description" content={description} />
-	<meta prefix="og: http://ogp.me/ns#" property="og:image" content="{baseURL}{thumbnail}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{baseURL}{$page.url.pathname}" />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content="{baseURL}{thumbnail}" />
+	<meta property="og:image" content="{baseURL}{thumbnail}" />
+	<meta property="og:image:type" content="image/png" />
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="{baseURL}{$page.url.pathname}" />

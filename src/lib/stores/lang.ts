@@ -5,9 +5,9 @@ import { en, pt } from '$lib/lang';
 const updateAria = (code: string) => browser && document.documentElement.setAttribute('lang', code);
 
 export const initializeLang = () => {
-	let defaultLang = en;
+	let defaultLang = pt;
 
-	if (browser && navigator.language.startsWith('pt')) defaultLang = pt;
+	if (browser && navigator.language.startsWith('en')) defaultLang = en;
 
 	const { subscribe, set } = writable(defaultLang);
 	updateAria(defaultLang.code);

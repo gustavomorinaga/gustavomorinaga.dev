@@ -7,8 +7,8 @@
 	import { containerElement } from '$lib/utils';
 	import * as THREE from 'three';
 
-	import hexagonsSVG from '$lib/images/svgs/hexagons.svg';
-	import synthwaveSVG from '$lib/images/svgs/synthwave.svg';
+	import hexagonsSVG from '$lib/images/svgs/bg-hexagons.svg';
+	import synthwaveSVG from '$lib/images/svgs/bg-synthwave.svg';
 
 	let canvas: HTMLCanvasElement;
 
@@ -191,8 +191,8 @@
 		animate = () => {
 			const elapsedTime = clock.getElapsedTime();
 
-			plane.position.z = (elapsedTime * 0.15) % 2;
-			plane2.position.z = ((elapsedTime * 0.15) % 2) - 2;
+			plane.position.z = (elapsedTime * 0.1) % 2;
+			plane2.position.z = ((elapsedTime * 0.1) % 2) - 2;
 
 			// Render
 			// renderer.render(scene, camera);

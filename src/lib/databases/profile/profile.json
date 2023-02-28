@@ -1,0 +1,392 @@
+{
+	"social": [
+		{
+			"title": "GitHub",
+			"icon": "brand-github",
+			"url": "https://github.com/gustavomorinaga"
+		},
+		{
+			"title": "LinkedIn",
+			"icon": "brand-linkedin",
+			"url": "https://www.linkedin.com/in/gustavomorinaga"
+		},
+		{
+			"title": "Instagram",
+			"icon": "brand-instagram",
+			"url": "https://www.instagram.com/gustavomorinaga"
+		},
+		{
+			"title": "Facebook",
+			"icon": "brand-facebook",
+			"url": "https://www.facebook.com/gustavomorinaga"
+		},
+		{
+			"title": "Discord",
+			"icon": "brand-discord",
+			"url": "https://discordapp.com/users/373397937155473408"
+		},
+		{
+			"title": "E-mail",
+			"icon": "mail",
+			"url": "mailto:me@gustavomorinaga.dev"
+		}
+	],
+	"knowledge": {
+		"techs": [
+			{
+				"title": "HTML",
+				"url": "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
+				"icon": "html5",
+				"collection": "simple-icons",
+				"color": "#E34F26",
+				"category": "language"
+			},
+			{
+				"title": "CSS",
+				"url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
+				"icon": "css3",
+				"collection": "simple-icons",
+				"color": "#1572B6",
+				"category": "language"
+			},
+			{
+				"title": "Sass",
+				"url": "https://sass-lang.com",
+				"icon": "sass",
+				"collection": "simple-icons",
+				"color": "#CC6699",
+				"category": "language"
+			},
+			{
+				"title": "Tailwind CSS",
+				"url": "https://tailwindcss.com",
+				"icon": "tailwindcss",
+				"collection": "simple-icons",
+				"color": "#06B6D4",
+				"category": "framework"
+			},
+			{
+				"title": "Bootstrap",
+				"url": "https://getbootstrap.com",
+				"icon": "bootstrap",
+				"collection": "simple-icons",
+				"color": "#7952B3",
+				"category": "framework"
+			},
+			{
+				"title": "styled-components",
+				"url": "https://styled-components.com",
+				"icon": "styledcomponents",
+				"collection": "simple-icons",
+				"color": "#DB7093",
+				"category": "framework"
+			},
+			{
+				"title": "JavaScript",
+				"url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+				"icon": "javascript",
+				"collection": "simple-icons",
+				"color": "#F7DF1E",
+				"category": "language"
+			},
+			{
+				"title": "TypeScript",
+				"url": "https://www.typescriptlang.org",
+				"icon": "typescript",
+				"collection": "simple-icons",
+				"color": "#3178C6",
+				"category": "language"
+			},
+			{
+				"title": "Node.js",
+				"url": "https://nodejs.org",
+				"icon": "nodejs",
+				"collection": "simple-icons",
+				"color": "#339933",
+				"category": "runtime"
+			},
+			{
+				"title": "Express",
+				"url": "https://expressjs.com",
+				"icon": "express",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "framework"
+			},
+			{
+				"title": "pm2",
+				"url": "https://pm2.keymetrics.io",
+				"icon": "pm2",
+				"collection": "simple-icons",
+				"color": "#BA20D5",
+				"category": "lib"
+			},
+			{
+				"title": "PHP",
+				"url": "https://www.php.net",
+				"icon": "php",
+				"collection": "simple-icons",
+				"color": "#777BB4",
+				"category": "language"
+			},
+			{
+				"title": "MySQL",
+				"url": "https://www.mysql.com",
+				"icon": "mysql",
+				"collection": "simple-icons",
+				"color": "#4479A1",
+				"category": "database"
+			},
+			{
+				"title": "MongoDB",
+				"url": "https://www.mongodb.com",
+				"icon": "mongodb",
+				"collection": "simple-icons",
+				"color": "#47A248",
+				"category": "database"
+			},
+			{
+				"title": "Firebase",
+				"url": "https://firebase.google.com",
+				"icon": "firebase",
+				"collection": "simple-icons",
+				"color": "#FFCA28",
+				"category": "database"
+			},
+			{
+				"title": "React",
+				"url": "https://reactjs.org",
+				"icon": "react",
+				"collection": "simple-icons",
+				"color": "#61DAFB",
+				"category": "lib"
+			},
+			{
+				"title": "Expo",
+				"url": "https://expo.io",
+				"icon": "expo",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "framework"
+			},
+			{
+				"title": "Next.js",
+				"url": "https://nextjs.org",
+				"icon": "nextdotjs",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "framework"
+			},
+			{
+				"title": "Chakra-UI",
+				"url": "https://chakra-ui.com",
+				"icon": "chakraui",
+				"collection": "simple-icons",
+				"color": "#319795",
+				"category": "lib"
+			},
+			{
+				"title": "Material UI",
+				"url": "https://mui.com",
+				"icon": "materialui",
+				"collection": "simple-icons",
+				"color": "#007FFF",
+				"category": "lib"
+			},
+			{
+				"title": "Angular",
+				"url": "https://angular.io",
+				"icon": "angular",
+				"collection": "simple-icons",
+				"color": "#DD0031",
+				"category": "framework"
+			},
+			{
+				"title": "PrimeNG",
+				"url": "https://www.primefaces.org/primeng",
+				"icon": "prime",
+				"collection": "prime",
+				"color": "#DD0031",
+				"category": "lib"
+			},
+			{
+				"title": "SvelteKit",
+				"url": "https://kit.svelte.dev",
+				"icon": "svelte",
+				"collection": "simple-icons",
+				"color": "#FF3E00",
+				"category": "framework"
+			}
+		],
+		"tools": [
+			{
+				"title": "Git",
+				"url": "https://git-scm.com",
+				"icon": "git",
+				"collection": "simple-icons",
+				"color": "#F05032",
+				"category": "version-control"
+			},
+			{
+				"title": "GitHub",
+				"url": "https://github.com",
+				"icon": "github",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "version-control"
+			},
+			{
+				"title": "Windows Terminal",
+				"url": "https://docs.microsoft.com/windows/terminal",
+				"icon": "windowsterminal",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "tool"
+			},
+			{
+				"title": "Visual Studio Code",
+				"url": "https://code.visualstudio.com",
+				"icon": "visualstudiocode",
+				"collection": "simple-icons",
+				"color": "#007ACC",
+				"category": "tool"
+			},
+			{
+				"title": "npm",
+				"url": "https://www.npmjs.com",
+				"icon": "npm",
+				"collection": "simple-icons",
+				"color": "#CB3837",
+				"category": "package-manager"
+			},
+			{
+				"title": "yarn",
+				"url": "https://yarnpkg.com",
+				"icon": "yarn",
+				"collection": "simple-icons",
+				"color": "#007ACC",
+				"category": "package-manager"
+			},
+			{
+				"title": "pnpm",
+				"url": "https://pnpm.io",
+				"icon": "pnpm",
+				"collection": "simple-icons",
+				"color": "#F69220",
+				"category": "package-manager"
+			},
+			{
+				"title": "Webpack",
+				"url": "https://webpack.js.org",
+				"icon": "webpack",
+				"collection": "simple-icons",
+				"color": "#8DD6F9",
+				"category": "bundler"
+			},
+			{
+				"title": "Babel",
+				"url": "https://babeljs.io",
+				"icon": "babel",
+				"collection": "simple-icons",
+				"color": "#F9DC3E",
+				"category": "compiler"
+			},
+			{
+				"title": "Vite",
+				"url": "https://vitejs.dev",
+				"icon": "vite",
+				"collection": "simple-icons",
+				"color": "#646CFF",
+				"category": "bundler"
+			},
+			{
+				"title": "ESLint",
+				"url": "https://eslint.org",
+				"icon": "eslint",
+				"collection": "simple-icons",
+				"color": "#4B32C3",
+				"category": "plugin"
+			},
+			{
+				"title": "Prettier",
+				"url": "https://prettier.io",
+				"icon": "prettier",
+				"collection": "simple-icons",
+				"color": "#F7B93E",
+				"category": "plugin"
+			},
+			{
+				"title": "Markdown",
+				"url": "https://markdownguide.org",
+				"icon": "markdown",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "tool"
+			},
+			{
+				"title": "Insomnia",
+				"url": "https://insomnia.rest",
+				"icon": "insomnia",
+				"collection": "simple-icons",
+				"color": "#4000BF",
+				"category": "tool"
+			},
+			{
+				"title": "Vercel",
+				"url": "https://vercel.com",
+				"icon": "vercel",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "platform"
+			},
+			{
+				"title": "Netlify",
+				"url": "https://netlify.com",
+				"icon": "netlify",
+				"collection": "simple-icons",
+				"color": "#00C7B7",
+				"category": "platform"
+			},
+			{
+				"title": "Render",
+				"url": "https://render.com",
+				"icon": "render",
+				"collection": "simple-icons",
+				"color": "#46E3B7",
+				"category": "platform"
+			},
+			{
+				"title": "Heroku",
+				"url": "https://heroku.com",
+				"icon": "heroku",
+				"collection": "simple-icons",
+				"color": "#430098",
+				"category": "platform"
+			},
+			{
+				"title": "Figma",
+				"url": "https://figma.com",
+				"icon": "figma",
+				"collection": "simple-icons",
+				"color": "#F24E1E",
+				"category": "tool"
+			},
+			{
+				"title": "Framer",
+				"url": "https://framer.com",
+				"icon": "framer",
+				"collection": "simple-icons",
+				"color": "#0055FF",
+				"category": "tool"
+			},
+			{
+				"title": "Notion",
+				"url": "https://notion.so",
+				"icon": "notion",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "tool"
+			}
+		]
+	}
+}

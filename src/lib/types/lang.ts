@@ -1,6 +1,15 @@
 export interface ILang {
 	code: string;
 
+	metadata: {
+		title: string;
+		description: string;
+	};
+
+	curriculum: {
+		title: string;
+	};
+
 	header: {
 		logo: {
 			alt: string;
@@ -35,6 +44,7 @@ export interface ILang {
 		knowledge: {
 			title: string;
 			paragraph: string;
+			moreDetails: string;
 		};
 
 		services: {
@@ -60,6 +70,86 @@ export interface ILang {
 				paragraph: string;
 				alt: string;
 			};
+		};
+	};
+
+	about: {
+		title: string;
+		paragraph: string;
+
+		metadata: {
+			title: string;
+			description: string;
+		};
+
+		details: {
+			title: string;
+			age: string;
+			occupation: string;
+			home: string;
+			homeland: string;
+		};
+
+		facts: {
+			title: string;
+			character: string;
+			entertainment: string;
+			movie: string;
+			hobby: string;
+			music: string;
+		};
+
+		actions: {
+			knowledge: string;
+			setup: string;
+			about: string;
+		};
+
+		knowledge: {
+			title: string;
+
+			metadata: {
+				title: string;
+				description: string;
+			};
+
+			languages: string;
+			runtime: string;
+			libs: string;
+			frameworks: string;
+			databases: string;
+			versionControl: string;
+			packageManagers: string;
+			platforms: string;
+			plugins: string;
+			bundlers: string;
+			compilers: string;
+			tools: string;
+		};
+
+		setup: {
+			title: string;
+
+			metadata: {
+				title: string;
+				description: string;
+			};
+
+			motherboard: string;
+			cpu: string;
+			ram: string;
+			gpu: string;
+			ssd: string;
+			hdd: string;
+			cooler: string;
+			powerSupply: string;
+			pcTower: string;
+			monitor: string;
+			keyboard: string;
+			mouse: string;
+			audioInterface: string;
+			headset: string;
+			microphone: string;
 		};
 	};
 

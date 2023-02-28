@@ -15,7 +15,9 @@ export const observeScroll = (
 
 	const observer = new IntersectionObserver(entries => {
 		for (const entry of entries)
-			entry.target.classList.toggle('observe--show', entry.isIntersecting);
+			if (entry.target.getAttribute('data-repeat-animation'))
+				entry.target.classList.toggle('observe--show', entry.isIntersecting);
+			else entry.isIntersecting && entry.target.classList.add('observe--show');
 	}, options);
 
 	for (const element of observedElements) observer.observe(element);

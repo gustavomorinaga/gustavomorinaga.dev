@@ -533,7 +533,7 @@
 				}
 
 				& .volume__wrapper {
-					@apply relative h-[9.25rem] w-12 bg-black/50 backdrop-blur-sm border border-solid border-white/10;
+					@apply relative h-[9.25rem] w-12 bg-base-100/50 backdrop-blur-md border border-solid border-white/10;
 
 					& .volume {
 						@apply range range-primary range-xs absolute inset-0 w-28 h-4 -rotate-90 origin-center -translate-x-8 translate-y-16;
@@ -562,7 +562,7 @@
 	}
 
 	#playlist__content {
-		@apply left-2 sm:left-4 md:left-auto right-2 sm:right-4 bottom-0 sm:bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-black/90 border-white/10 shadow-md backdrop-blur-md scrollbar__theme;
+		@apply left-2 sm:left-4 md:left-auto right-2 sm:right-4 bottom-0 sm:bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-base-100/50 border-white/10 shadow-md backdrop-blur-md scrollbar__theme;
 
 		& .playlist__wrapper {
 			@apply flex flex-col;
