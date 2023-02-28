@@ -281,7 +281,7 @@
 		}
 
 		& .blurb__content {
-			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 md:-mt-16 px-0 text-left;
+			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 px-0 text-left;
 
 			& h1 {
 				@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;

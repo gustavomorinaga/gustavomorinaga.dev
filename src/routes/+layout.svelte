@@ -164,26 +164,28 @@
 	{/await}
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
 	main {
 		@apply relative max-w-screen-lg min-h-screen my-0 mx-auto px-4 lg:px-0 pt-8 pb-40;
 	}
 
-	.menu {
-		& .menu__item {
-			@apply rounded font-futuristic;
+	.drawer {
+		& .menu {
+			& .menu__item {
+				@apply rounded font-futuristic;
 
-			&.disabled {
-				@apply pointer-events-none opacity-50;
+				&.disabled {
+					@apply pointer-events-none opacity-50;
+				}
 			}
 		}
-	}
 
-	.social {
-		@apply flex flex-wrap justify-center;
+		& .social {
+			@apply flex flex-wrap justify-center;
 
-		& li {
-			@apply btn btn-link btn-sm;
+			& li {
+				@apply btn btn-link btn-sm;
+			}
 		}
 	}
 </style>
