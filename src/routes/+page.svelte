@@ -302,7 +302,7 @@
 					@apply w-full md:w-fit;
 
 					&.cta {
-						@apply flex-grow md:flex-grow-0;
+						@apply flex-grow md:flex-grow-0 mr-2 md:mr-0;
 
 						& .btn__social {
 							@apply btn-block md:w-36 shadow-md shadow-black hover:shadow-lg;
