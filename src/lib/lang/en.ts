@@ -6,7 +6,7 @@ export const en: ILang = {
 	code: 'en',
 
 	metadata: {
-		title: 'Gustavo Morinaga',
+		title: 'Gustavo Morinaga Developer',
 		description:
 			'Creative full-stack developer passionate about creating complete, efficient and hi-tech solutions.'
 	},
@@ -86,12 +86,12 @@ export const en: ILang = {
 	about: {
 		title: 'About me',
 		paragraph:
-			"<p>You can call me Gu or Morinaga, I'm a full-stack developer with a focus on front-end. <br /> Since childhood I had a lot of skill and interest in computers, but I never thought about the possibility of working in the area because I loved drawing. My first contact with programming was at the age of 17 in the technical course of Informatics at <a href='https://www.cps.sp.gov.br/etecs/etec-de-sao-roque' target='_blank' rel='noopener noreferrer'>Etec de São Roque</a>, but what inspired me to pursue this career in technology was the <a href='https://summit.microsoft.com' target='_blank' rel='noopener noreferrer'>MVP Conf</a> that I attended in 2018. I dedicated to becoming a good developer, starting with JavaScript and Node.js. <br /> I always take programming as fun, I value a great DX a lot, I'm very curious to learn about new concepts and new technologies (no wonder I have a huge collection of them) and I like to teach/help other developers. I'm attentive to details and I don't stop until the problem is solved. <br /> Have a question or want to talk? Call me on one of my contacts, I'll be happy to help!</p>",
+			"<p>You can call me Gu or Morinaga, I'm a full-stack developer with a focus on front-end. <br /> Since childhood I had a lot of skill and interest in computers, but I never thought about the possibility of working in the area because I loved drawing. When I as 17, I had my first contact with programming at <a href='https://www.cps.sp.gov.br/etecs/etec-de-sao-roque' target='_blank' rel='noopener noreferrer'>Etec de São Roque</a> while doing the course of Informatics. But the <a href='https://summit.microsoft.com' target='_blank' rel='noopener noreferrer'>MVP Conf</a>, that I attended in 2018, that inspired me to pursue this career in technology. Since then I dedicated to become a good developer, starting with JavaScript and Node.js. <br /> I always take programming as fun, I  really value a great DX (developer experience), I'm very curious to learn about new concepts and technologies (no wonder I have a huge collection of them) and I like to teach/help other developers. I'm attentive to details and I don't stop until the problem is solved. <br /> Do you have a question or want to talk? Call me on one of my contacts, I'll be happy to help!</p>",
 
 		metadata: {
 			title: 'About me',
 			description:
-				'Aqui conto brevemente a minha jornada de desenvolvedor full-stack e algumas curiosidades sobre mim.'
+				'Here I briefly tell my journey as a full-stack developer and some fun facts about myself.'
 		},
 
 		details: {

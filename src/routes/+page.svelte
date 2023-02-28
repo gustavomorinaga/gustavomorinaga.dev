@@ -281,7 +281,7 @@
 		}
 
 		& .blurb__content {
-			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 px-0 text-left;
+			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 md:-mt-16 px-0 text-left;
 
 			& h1 {
 				@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
@@ -302,7 +302,7 @@
 					@apply w-full md:w-fit;
 
 					&.cta {
-						@apply flex-grow md:flex-grow-0 mr-2 md:mr-0;
+						@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
 
 						& .btn__social {
 							@apply btn-block md:w-36 shadow-md shadow-black hover:shadow-lg;
@@ -310,7 +310,7 @@
 					}
 
 					&:not(.cta) {
-						@apply md:tooltip tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
+						@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
 
 						& .btn__social {
 							@apply btn-link btn-sm text-shadow-md shadow-black;

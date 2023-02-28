@@ -6,7 +6,7 @@ export const pt: ILang = {
 	code: 'pt',
 
 	metadata: {
-		title: 'Gustavo Morinaga',
+		title: 'Gustavo Morinaga Developer',
 		description:
 			'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.'
 	},
@@ -87,7 +87,7 @@ export const pt: ILang = {
 	about: {
 		title: 'Sobre mim',
 		paragraph:
-			'<p>Pode me chamar de Gu ou Morinaga, sou desenvolvedor full-stack com foco em front-end. <br /> Desde a infância tive muita habilidade e interesse com computadores, mas nunca pensei na possibilidade de trabalhar na área pois gostava muito de desenhar. Meu primeiro contato com programação foi aos 17 anos no curso técnico de Informática na <a href="https://www.cps.sp.gov.br/etecs/etec-de-sao-roque" target="_blank" rel="noopener noreferrer">Etec de São Roque</a>, porém o que me inspirou em seguir essa carreira da tecnologia foi a conferência da <a href="https://summit.microsoft.com/pt-br" target="_blank" rel="noopener noreferrer">MVP Conf</a> que participei em 2018. Desde então gostei muito de lógica e me dediquei para virar um bom desenvolvedor, começando por JavaScript e Node.js. <br /> Levo a programação sempre na diversão, dou muito valor para um ótimo DX, sou muito curioso em conhecer novos conceitos e tecnologias novas (não é atoa que tenho uma baita coleção delas) e gosto de ensinar/ajudar outros desenvolvedores. Sou atencioso aos detalhes e não paro até que o problema seja resolvido. <br /> Tem alguma dúvida ou quer trocar uma ideia? Me chama em um dos meus contatos, ficarei feliz em ajudar!</p>',
+			'<p>Pode me chamar de Gu ou Morinaga, sou desenvolvedor full-stack com foco em front-end. <br /> Desde a infância tive muita habilidade e interesse com computadores, mas nunca pensei na possibilidade de trabalhar na área pois gostava muito de desenhar. Meu primeiro contato com programação foi aos 17 anos no curso técnico de Informática na <a href="https://www.cps.sp.gov.br/etecs/etec-de-sao-roque" target="_blank" rel="noopener noreferrer">Etec de São Roque</a>, porém o que me inspirou em seguir essa carreira da tecnologia foi a conferência da <a href="https://summit.microsoft.com/pt-br" target="_blank" rel="noopener noreferrer">MVP Conf</a> que participei em 2018. Desde então gostei muito de lógica e me dediquei para virar um bom desenvolvedor, começando por JavaScript e Node.js. <br /> Levo a programação sempre na diversão, dou muito valor para um ótimo DX (experiência do desenvolvedor), sou muito curioso em conhecer novos conceitos e tecnologias novas (não é atoa que tenho uma baita coleção delas) e gosto de ensinar/ajudar outros desenvolvedores. Sou atencioso aos detalhes e não paro até que o problema seja resolvido. <br /> Tem alguma dúvida ou quer trocar uma ideia? Me chama em um dos meus contatos, ficarei feliz em ajudar!</p>',
 
 		metadata: {
 			title: 'Sobre mim',
