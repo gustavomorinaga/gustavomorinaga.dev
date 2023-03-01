@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/gustavomorinaga/portfolio/compare/v0.4.0...v0.5.0) (2023-03-01)
+
+
+### Bug Fixes
+
+* global css in main layout ([1424aab](https://github.com/gustavomorinaga/portfolio/commit/1424aabdb671e750cdf12eda2a5d2d008eb1a2f8))
+* margin top code inherit from parent ([e31fd1e](https://github.com/gustavomorinaga/portfolio/commit/e31fd1ebd273e62a29a5fa0ef8f9f856ff9ff5ca))
+
+
+### Improvements
+
+* activate vercel edge ([4aab42c](https://github.com/gustavomorinaga/portfolio/commit/4aab42cf4e25165da7d06102d98e54b5dab678be))
+* using threlte for svelte compatibility ([f0d4f92](https://github.com/gustavomorinaga/portfolio/commit/f0d4f9264303c4e4d4658b97a2fb0a59fa297eca))
+
 ## [0.4.0](https://github.com/gustavomorinaga/portfolio/compare/v0.3.0...v0.4.0) (2023-02-28)
 
 
