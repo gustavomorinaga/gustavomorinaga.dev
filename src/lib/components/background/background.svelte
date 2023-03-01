@@ -1,217 +1,30 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { browser } from '$app/environment';
 	import { CubeLoader } from '$lib/components';
 	import { GPU } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
-	import * as THREE from 'three';
+	import { Canvas } from '@threlte/core';
 
 	import hexagonsSVG from '$lib/images/svgs/bg-hexagons.svg';
-	import synthwaveSVG from '$lib/images/svgs/bg-synthwave.svg';
-
-	let canvas: HTMLCanvasElement;
+	import universeWebp from '$lib/images/webps/universe.webp';
 
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
-	export let progress = 0;
-
-	let scene: THREE.Scene;
-	let renderer: THREE.WebGLRenderer;
-	let clock: THREE.Clock;
-	let animate: () => void;
 
 	$: isThree = $GPU.isThree;
 	$: isMobile = $GPU.isMobile;
 	$: isLowEnd = $GPU.isLowEnd;
 	$: loading = (isThree || isMobile) && !isLowEnd && !finished;
-	$: showFallbackImage = !isThree && isMobile && !isLowEnd;
 	$: if (browser) {
-		// Call animate again on the next frame
-		if (isThree && finished) {
-			renderer?.setAnimationLoop(animate);
-			readMode && setTimeout(() => renderer?.setAnimationLoop(null), 300);
-		}
-
 		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
 	}
 
-	const initThree = async () => {
-		// --- Lazy Load Three.js Imports ---
-		const { EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer');
-		const { FilmPass } = await import('three/examples/jsm/postprocessing/FilmPass');
-		const { RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass');
-		const { ShaderPass } = await import('three/examples/jsm/postprocessing/ShaderPass');
-		const { GammaCorrectionShader } = await import(
-			'three/examples/jsm/shaders/GammaCorrectionShader'
-		);
-		const { RGBShiftShader } = await import('three/examples/jsm/shaders/RGBShiftShader');
-		const { VignetteShader } = await import('three/examples/jsm/shaders/VignetteShader');
-
-		const gridWebp = await import('$lib/images/webps/grid.webp');
-		const terrainWebp = await import('$lib/images/webps/displacement.webp');
-		const metalnessWebp = await import('$lib/images/webps/metalness.webp');
-		const universeWebp = await import('$lib/images/webps/universe.webp');
-
-		const loadingManager = new THREE.LoadingManager(
-			() => (finished = true),
-			(_, loaded, total) => (progress = Math.floor((loaded / total) * 100)),
-			() => ((finished = false), (progress = 0))
-		);
-
-		const sizes = {
-			width: window.innerWidth,
-			height: window.innerHeight
-		};
-
-		// Scene
-		scene = new THREE.Scene();
-
-		// Textures
-		const textureLoader = new THREE.TextureLoader(loadingManager);
-		const gridTexture = textureLoader.load(gridWebp.default);
-		const terrainTexture = textureLoader.load(terrainWebp.default);
-		const metalnessTexture = textureLoader.load(metalnessWebp.default);
-		const universeTexture = textureLoader.load(universeWebp.default);
-
-		// Background
-		scene.background = universeTexture;
-		scene.backgroundBlurriness = 0.5;
-		scene.backgroundIntensity = 0.1;
-
-		// Fog
-		let fog = new THREE.Fog(new THREE.Color('#000000'), 0, 2.5);
-		scene.fog = fog;
-
-		// Objects
-		let geometry = new THREE.PlaneGeometry(1, 2, 24, 24);
-		let material = new THREE.MeshStandardMaterial({
-			map: gridTexture,
-			displacementMap: terrainTexture,
-			displacementScale: 0.4,
-			metalnessMap: metalnessTexture,
-			metalness: 0.96,
-			roughness: 0.5
-		});
-
-		let plane = new THREE.Mesh(geometry, material);
-		plane.rotation.x = -Math.PI * 0.5;
-		plane.position.y = 0.0;
-		plane.position.z = 0.15;
-
-		let plane2 = new THREE.Mesh(geometry, material);
-		plane2.rotation.x = -Math.PI * 0.5;
-		plane2.position.y = 0.0;
-		plane2.position.z = -1.85;
-
-		scene.add(plane);
-		scene.add(plane2);
-
-		// Light
-		// Ambient Light
-		let ambientLight = new THREE.AmbientLight('#ffffff', 10);
-		scene.add(ambientLight);
-
-		// Right Spotlight aiming to the left
-		let spotlight = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
-		spotlight.position.set(0.5, 0.75, 2.2);
-		// Target the spotlight to a specific point to the left of the scene
-		spotlight.target.position.x = -0.25;
-		spotlight.target.position.y = 0.25;
-		spotlight.target.position.z = 0.25;
-		scene.add(spotlight);
-		scene.add(spotlight.target);
-
-		// Left Spotlight aiming to the right
-		let spotlight2 = new THREE.SpotLight('#d53c3d', 20, 25, Math.PI * 0.1, 0.25);
-		spotlight2.position.set(-0.5, 0.75, 2.2);
-		// Target the spotlight to a specific point to the right side of the scene
-		spotlight2.target.position.x = 0.25;
-		spotlight2.target.position.y = 0.25;
-		spotlight2.target.position.z = 0.25;
-		scene.add(spotlight2);
-		scene.add(spotlight2.target);
-
-		// Camera
-		let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 20);
-		camera.position.x = 0;
-		camera.position.y = 0.06;
-		camera.position.z = 1;
-
-		// Renderer
-		renderer = new THREE.WebGLRenderer({ canvas });
-		renderer.setSize(sizes.width, sizes.height);
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-		// Post Processing
-		let effectComposer = new EffectComposer(renderer);
-		effectComposer.setSize(sizes.width, sizes.height);
-		effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-		let renderPass = new RenderPass(scene, camera);
-		effectComposer.addPass(renderPass);
-
-		let rgbShiftPass = new ShaderPass(RGBShiftShader);
-		rgbShiftPass.uniforms['amount'].value = 0.0015;
-		effectComposer.addPass(rgbShiftPass);
-
-		let gammaCorrectionPass = new ShaderPass(GammaCorrectionShader);
-		effectComposer.addPass(gammaCorrectionPass);
-
-		let filmPass = new FilmPass(0.35, 0.025, 648, 0);
-		filmPass.renderToScreen = true;
-		effectComposer.addPass(filmPass);
-
-		const vignettePass = new ShaderPass(VignetteShader);
-		vignettePass.uniforms['offset'].value = 1.5;
-		effectComposer.addPass(vignettePass);
-
-		// Event listener to handle screen resize
-		window.addEventListener('resize', () => {
-			// Update sizes
-			sizes.width = window.innerWidth;
-			sizes.height = window.innerHeight;
-
-			// Update camera
-			camera.aspect = sizes.width / sizes.height;
-			camera.updateProjectionMatrix();
-
-			// Update renderer
-			renderer.setSize(sizes.width, sizes.height);
-			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-			// Update effect composer
-			effectComposer.setSize(sizes.width, sizes.height);
-			effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-		});
-
-		clock = new THREE.Clock();
-
-		// Animate
-		animate = () => {
-			const elapsedTime = clock.getElapsedTime();
-
-			plane.position.z = (elapsedTime * 0.1) % 2;
-			plane2.position.z = ((elapsedTime * 0.1) % 2) - 2;
-
-			// Render
-			// renderer.render(scene, camera);
-			effectComposer.render();
-		};
-
-		return Promise.resolve(canvas);
-	};
-
 	onMount(async () => {
-		if (isThree) await initThree();
 		if (isMobile || isLowEnd) finished = true;
 	});
 </script>
-
-<svelte:window
-	on:blur={() => renderer?.setAnimationLoop(null)}
-	on:focus={() => renderer?.setAnimationLoop(animate)}
-/>
 
 {#if loading}
 	<div class="loader" transition:fade style="--hexagons-pattern: url({hexagonsSVG})">
@@ -219,10 +32,18 @@
 	</div>
 {/if}
 
-<div class="background__container" class:read__mode={readMode}>
-	<canvas id="webgl" bind:this={canvas} class:hidden={!isThree} />
-	{#if showFallbackImage}
-		<div class="fallback__image" style="--synthwave-pattern: url({synthwaveSVG})" />
+<div
+	class="background__container"
+	class:read__mode={readMode}
+	class:plain={!isThree}
+	style="--universe: url({universeWebp});"
+>
+	{#if isThree}
+		{#await import('./synthwave') then { Synthwave }}
+			<Canvas>
+				<Synthwave bind:finished />
+			</Canvas>
+		{/await}
 	{/if}
 </div>
 
@@ -238,7 +59,8 @@
 	}
 
 	.background__container {
-		@apply fixed -z-10 inset-0 w-full h-full overflow-hidden;
+		@apply fixed -z-10 inset-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat;
+		background-image: var(--universe);
 
 		&::after {
 			content: '';
@@ -249,9 +71,8 @@
 			@apply after:opacity-80;
 		}
 
-		& .fallback__image {
-			@apply bg-center bg-cover bg-no-repeat w-full h-full;
-			background-image: var(--synthwave-pattern);
+		&.plain {
+			@apply bg-none;
 		}
 	}
 </style>

@@ -23,7 +23,7 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
 	.carousel {
 		@apply relative overflow-hidden w-full h-fit py-4;
 
@@ -54,6 +54,14 @@
 		}
 		100% {
 			transform: translateX(calc(-9rem * var(--num-slides)));
+		}
+	}
+
+	html.low__end {
+		& .carousel {
+			& .carousel__wrapper {
+				@apply animate-none;
+			}
 		}
 	}
 </style>

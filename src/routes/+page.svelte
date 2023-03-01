@@ -389,6 +389,10 @@
 					}
 				}
 			}
+
+			& .atropos-shadow {
+				opacity: 0.25 !important;
+			}
 		}
 
 		& .popup {
@@ -410,13 +414,13 @@
 			}
 		}
 
-		& :global(.atropos-inner) {
+		& .atropos-inner {
 			@apply overflow-visible;
 		}
-		& :global(.atropos-highlight) {
+		& .atropos-highlight {
 			@apply hidden;
 		}
-		& :global(.atropos-shadow) {
+		& .atropos-shadow {
 			@apply w-[90%] h-[90%];
 		}
 	}
@@ -639,6 +643,14 @@
 		& #knowledge {
 			& .knowledge__content {
 				@apply bg-none bg-base-100;
+			}
+		}
+
+		& #services {
+			& .services__list {
+				& .service {
+					@apply transform-none hover:transform-none;
+				}
 			}
 		}
 	}

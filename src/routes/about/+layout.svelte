@@ -197,4 +197,14 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& .infos {
+			& aside {
+				& .details {
+					@apply bg-base-200 bg-none;
+				}
+			}
+		}
+	}
 </style>
