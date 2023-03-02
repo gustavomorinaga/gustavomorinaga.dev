@@ -27,6 +27,7 @@
 		shuffle: false
 	};
 	const playerOffset = tweened(0, { duration: 1000, easing: expoOut });
+	const currentProgress = tweened(0, { duration: 300, easing: expoOut });
 
 	let playerRef: HTMLElement;
 	let trackElementRef: HTMLAudioElement;
@@ -49,7 +50,7 @@
 	let idleTime = new Date();
 
 	$: currentIndex = playlist.findIndex(({ title }) => title === currentTrack.title);
-	$: currentProgress = Math.min((10 / duration) * currentTime * 10, 100) || 0;
+	$: currentProgress.set(Math.min((10 / duration) * currentTime * 10, 100) || 0);
 	$: displayedDuration = durationFormatter.format(duration * 1000);
 	$: displayedCurrentTime = durationFormatter.format(currentTime * 1000);
 	$: displayedVolume = muted ? 0 : volume * 100;
@@ -229,7 +230,7 @@
 						min="0"
 						max="100"
 						step="0.01"
-						value={currentProgress}
+						value={$currentProgress}
 						on:input={handleCurrentTime}
 					/>
 				</div>
@@ -255,7 +256,7 @@
 							<span>{currentTrack.author}</span>
 
 							<div class="duration">
-								<span>{displayedCurrentTime}</span> / <span>{displayedDuration}</span>
+								{displayedCurrentTime} / {displayedDuration}
 							</div>
 						</div>
 					</div>
@@ -450,7 +451,7 @@
 					@apply range range-primary range-xs w-full h-1;
 
 					&::-webkit-slider-thumb {
-						@apply bg-[hsl(var(--p))] rounded-none opacity-100 transition-all ease-in-out;
+						@apply bg-[hsl(var(--p))] rounded-none opacity-100 transition ease-out;
 					}
 				}
 			}
@@ -479,7 +480,7 @@
 						}
 
 						& .duration {
-							@apply block text-xs text-gray-400;
+							@apply inline-block text-xs whitespace-nowrap text-gray-400;
 						}
 					}
 				}
@@ -533,7 +534,7 @@
 				}
 
 				& .volume__wrapper {
-					@apply relative h-[9.25rem] w-12 bg-base-100/50 backdrop-blur-md border border-solid border-white/10;
+					@apply relative z-50 h-[9.25rem] w-12 bg-base-100 border border-solid border-base-200;
 
 					& .volume {
 						@apply range range-primary range-xs absolute inset-0 w-28 h-4 -rotate-90 origin-center -translate-x-8 translate-y-16;

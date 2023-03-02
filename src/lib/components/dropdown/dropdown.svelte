@@ -56,7 +56,7 @@
 	}
 
 	.dropdown__content {
-		@apply z-50;
+		@apply z-40;
 		position: fixed !important;
 	}
 </style>

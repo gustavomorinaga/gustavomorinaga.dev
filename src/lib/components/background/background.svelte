@@ -22,7 +22,7 @@
 	}
 
 	onMount(async () => {
-		if (isMobile || isLowEnd) finished = true;
+		finished = isMobile || isLowEnd;
 	});
 </script>
 
