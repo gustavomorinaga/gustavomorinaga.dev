@@ -57,7 +57,7 @@
 <Metadata />
 
 <section id="blurb">
-	<div class="blurb__content observe__scroll">
+	<div class="blurb__wrapper observe__scroll">
 		<div
 			class="blurb__image"
 			style="--triangle: url({triangleSVG}); --profile-cropped: url({profileCroppedWebp});"
@@ -102,7 +102,7 @@
 			</Atropos>
 		</div>
 
-		<div>
+		<div class="blurb__content">
 			<code>profile<span class="method">.welcome()</span>;</code>
 
 			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
@@ -280,51 +280,55 @@
 			place-items: center;
 		}
 
-		& .blurb__content {
+		& .blurb__wrapper {
 			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 md:-mt-16 px-0 text-left;
-
-			& h1 {
-				@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
-
-				& .name {
-					@apply underline underline-offset-[7px];
-				}
-			}
-
-			& p {
-				@apply text-xl mb-12 md:mb-16 text-shadow-md shadow-black;
-			}
-
-			& .socials {
-				@apply flex gap-2 items-center flex-wrap;
-
-				& .social {
-					@apply w-full md:w-fit;
-
-					&.cta {
-						@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
-
-						& .btn__social {
-							@apply btn-block md:w-36 shadow-md shadow-black hover:shadow-lg;
-						}
-					}
-
-					&:not(.cta) {
-						@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
-
-						& .btn__social {
-							@apply btn-link btn-sm text-shadow-md shadow-black;
-						}
-					}
-				}
-
-				& .btn__social {
-					@apply btn btn-primary gap-2 hover:-translate-y-1;
-				}
-			}
 
 			& .blurb__image {
 				@apply md:my-0;
+			}
+
+			& .blurb__content {
+				@apply relative before:absolute before:-z-10 before:inset-0 before:rounded-full before:bg-black/50 before:blur-xl;
+
+				& h1 {
+					@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
+
+					& .name {
+						@apply underline underline-offset-[7px];
+					}
+				}
+
+				& p {
+					@apply text-xl mb-12 md:mb-16;
+				}
+
+				& .socials {
+					@apply flex gap-2 items-center flex-wrap;
+
+					& .social {
+						@apply w-full md:w-fit;
+
+						&.cta {
+							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
+
+							& .btn__social {
+								@apply btn-block md:w-36 shadow-md shadow-black hover:shadow-lg;
+							}
+						}
+
+						&:not(.cta) {
+							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
+
+							& .btn__social {
+								@apply btn-link btn-sm text-shadow-md shadow-black;
+							}
+						}
+					}
+
+					& .btn__social {
+						@apply btn btn-primary gap-2 hover:-translate-y-1;
+					}
+				}
 			}
 		}
 	}

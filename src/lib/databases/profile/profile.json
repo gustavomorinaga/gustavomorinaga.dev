@@ -292,6 +292,14 @@
 				"category": "compiler"
 			},
 			{
+				"title": "SWC",
+				"url": "https://swc.rs/",
+				"icon": "swc",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "compiler"
+			},
+			{
 				"title": "Vite",
 				"url": "https://vitejs.dev",
 				"icon": "vite",

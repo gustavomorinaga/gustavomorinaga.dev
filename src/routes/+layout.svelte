@@ -52,7 +52,7 @@
 			title: $LANG.header.projects,
 			path: '/projects',
 			icon: 'code',
-			active: false
+			active: true
 		},
 		{
 			title: $LANG.header.bookmark,

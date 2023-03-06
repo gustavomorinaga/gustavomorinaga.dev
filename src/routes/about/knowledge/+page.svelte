@@ -184,16 +184,16 @@
 </article>
 
 <style lang="scss" global>
-	.knowledge {
+	article.knowledge {
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& .knowledge__content {
-			@apply flex flex-1 flex-wrap gap-4 max-h-[35rem] pr-4 overflow-y-auto scrollbar__theme;
+			@apply flex flex-wrap gap-4 max-h-[35rem] pr-4 overflow-y-auto scrollbar__theme;
 
 			& > article {
-				@apply card card-bordered flex-grow p-8 bg-base-100/50 shadow-lg shadow-black backdrop-blur-md;
+				@apply flex-auto card card-bordered p-8 bg-base-100/50 shadow-lg shadow-black backdrop-blur-md;
 
 				& h3 {
 					@apply text-2xl font-futuristic text-shadow-glow shadow-primary mb-4;

@@ -126,11 +126,11 @@
 		@apply md:mt-16;
 	}
 
-	.infos {
+	section.infos {
 		@apply grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-8 min-h-[75vh];
 
 		& .info__content {
-			@apply relative flex col-span-7 overflow-hidden min-h-screen md:min-h-full;
+			@apply relative flex col-span-7 min-h-screen md:min-h-full;
 
 			& .page__transition {
 				@apply absolute inset-0;

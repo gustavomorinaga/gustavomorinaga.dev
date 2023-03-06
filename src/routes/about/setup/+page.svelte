@@ -164,7 +164,7 @@
 </article>
 
 <style lang="scss" global>
-	.setup {
+	article.setup {
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}

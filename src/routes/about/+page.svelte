@@ -12,13 +12,18 @@
 </article>
 
 <style lang="scss" global>
-	.history {
+	article.history {
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& p {
-			@apply text-base md:text-lg text-shadow-md shadow-black;
+			@apply relative text-base md:text-lg;
+
+			&::before {
+				content: '';
+				@apply absolute -z-10 inset-0 rounded-2xl bg-black/50 blur-xl;
+			}
 		}
 
 		& br {
