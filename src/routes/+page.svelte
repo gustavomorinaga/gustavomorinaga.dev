@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_DOMAIN } from '$env/static/public';
-	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Carousel, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
-	import { observeScroll, scrollIntoView } from '$lib/utils';
+	import { animateOnScroll, scrollIntoView } from '$lib/utils';
+	import { intersect } from '@svelte-put/intersect';
 	import Atropos from 'atropos/svelte';
 
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
@@ -39,18 +39,12 @@
 			alt: $LANG.home.services.cardMotion.alt
 		}
 	];
-
-	onMount(() => {
-		const { observer } = observeScroll({ threshold: 0.5 });
-
-		return () => observer && observer.disconnect();
-	});
 </script>
 
 <Metadata />
 
 <section id="blurb">
-	<div class="blurb__wrapper observe__scroll">
+	<div class="blurb__wrapper" use:intersect={{ threshold: 0.5 }} on:intersect={animateOnScroll}>
 		<div
 			class="blurb__image"
 			style="--triangle: url({IMAGES_SVG.polyTriangle}); --profile-cropped: url({IMAGES_WEBP.profileCropped});"
@@ -145,7 +139,7 @@
 </section>
 
 <section id="about">
-	<article class="about__card observe__scroll">
+	<article class="about__card" use:intersect={{ threshold: 0.5 }} on:intersect={animateOnScroll}>
 		<figure style="--profile: url({IMAGES_WEBP.profile})" />
 
 		<div class="card-body">
@@ -188,8 +182,10 @@
 
 <section id="knowledge">
 	<div
-		class="knowledge__content observe__scroll"
+		class="knowledge__content"
 		style="--low-poly-grid: url({IMAGES_SVG.bgLowPolyGrid})"
+		use:intersect={{ threshold: 0.5 }}
+		on:intersect={animateOnScroll}
 	>
 		<h2>{$LANG.home.knowledge.title}</h2>
 
@@ -244,12 +240,16 @@
 </section>
 
 <section id="services">
-	<div class="services__content observe__scroll">
+	<div class="services__content" use:intersect={{ threshold: 0.5 }} on:intersect={animateOnScroll}>
 		<h2>{$LANG.home.services.title}</h2>
 
 		<ul class="services__list">
 			{#each services as service, index}
-				<li class="observe__scroll" style="--order: {index + 1};">
+				<li
+					style="--order: {index + 1};"
+					use:intersect={{ threshold: 0.5 }}
+					on:intersect={animateOnScroll}
+				>
 					<article class="service">
 						<figure>
 							<img src={service.icon} alt={service.alt} width="64" height="64" loading="lazy" />

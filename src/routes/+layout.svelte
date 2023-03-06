@@ -25,8 +25,6 @@
 	let finished: boolean;
 	let showDrawer = false;
 
-	const specialRoutes = ['/bookmarks'];
-
 	$: showContent = $GPU.isThree ? finished : true;
 	$: readMode = ['/blog'].includes(data.pathname);
 	$: routes = [
@@ -34,31 +32,36 @@
 			title: $LANG.header.home,
 			path: '/',
 			icon: 'home',
-			active: true
+			active: true,
+			special: false
 		},
 		{
 			title: $LANG.header.blog,
 			path: '/blog',
 			icon: 'news',
-			active: false
+			active: false,
+			special: false
 		},
 		{
 			title: $LANG.header.about,
 			path: '/about',
 			icon: 'user',
-			active: true
+			active: true,
+			special: false
 		},
 		{
 			title: $LANG.header.projects,
 			path: '/projects',
 			icon: 'code',
-			active: true
+			active: true,
+			special: false
 		},
 		{
 			title: $LANG.header.bookmark,
 			path: '/bookmarks',
 			icon: 'bookmark',
-			active: false
+			active: false,
+			special: true
 		}
 	] satisfies IRoute[];
 
@@ -92,7 +95,7 @@
 
 {#if showContent}
 	{#await import('$lib/components/header') then { Header }}
-		<Header routes={routes.filter(r => r.path !== '/')} {specialRoutes} />
+		<Header routes={routes.filter(r => r.path !== '/')} />
 	{/await}
 
 	{#if showDrawer}

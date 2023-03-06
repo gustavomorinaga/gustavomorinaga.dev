@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { observeScroll } from '$lib/utils';
 
 	import { IMAGES_SVG } from '$lib/images';
 
@@ -104,12 +102,6 @@
 			alt: 'Created by Iki from Noun Project'
 		}
 	];
-
-	onMount(() => {
-		const { observer } = observeScroll({ threshold: 0.5 });
-
-		return () => observer && observer.disconnect();
-	});
 </script>
 
 <Metadata
@@ -122,7 +114,7 @@
 
 	<ul class="setup__list">
 		{#each setup as component, index}
-			<li class="observe__scroll" style="--order: {index + 1}; --delay: 50ms;">
+			<li>
 				<a
 					class="component"
 					href="https://google.com/search?q={component.description.split(' ').join('+')}"

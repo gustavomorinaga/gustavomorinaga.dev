@@ -15,7 +15,6 @@
 	const baseURL = PUBLIC_DOMAIN;
 
 	export let routes: IRoute[] = [];
-	export let specialRoutes: string[] = [];
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
@@ -76,7 +75,7 @@
 
 			<nav>
 				{#each routes as route}
-					{#if !specialRoutes.includes(route.path)}
+					{#if !route.special}
 						<a
 							class:active={isCurrentRoute(route.path)}
 							class:disabled={!route.active}

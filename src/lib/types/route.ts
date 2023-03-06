@@ -3,4 +3,5 @@ export interface IRoute {
 	path: string;
 	icon: string;
 	active?: boolean;
+	special?: boolean;
 }

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { observeScroll } from '$lib/utils';
+	import { animateOnScroll } from '$lib/utils';
 
 	const projects = [
 		{
@@ -33,12 +32,6 @@
 			previewImage: '/images/pngs/preview.png'
 		}
 	];
-
-	onMount(() => {
-		const { observer } = observeScroll({ threshold: 0.5 });
-
-		return () => observer && observer.disconnect();
-	});
 </script>
 
 <Metadata title={$LANG.about.metadata.title} description={$LANG.about.metadata.description} />

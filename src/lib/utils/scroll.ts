@@ -1,28 +1,21 @@
 import { browser } from '$app/environment';
 import { prefersReducedMotion } from './reduced-motion';
 import anime from 'animejs';
+import type { IntersectDetail } from '@svelte-put/intersect';
 
 export const containerElement = browser
 	? window.document.scrollingElement || document.body || document.documentElement
 	: undefined;
 
-export const observeScroll = (
-	options: IntersectionObserverInit = { root: null, rootMargin: '0px', threshold: 1 }
-) => {
-	if (!browser) return { observer: null };
+export const animateOnScroll = (e: CustomEvent<IntersectDetail>) => {
+	const {
+		entries: [{ target, isIntersecting }]
+	} = e.detail;
 
-	const observedElements = document.querySelectorAll('.observe__scroll');
+	if (prefersReducedMotion) return;
 
-	const observer = new IntersectionObserver(entries => {
-		for (const entry of entries)
-			if (entry.target.getAttribute('data-repeat-animation'))
-				entry.target.classList.toggle('observe--show', entry.isIntersecting);
-			else entry.isIntersecting && entry.target.classList.add('observe--show');
-	}, options);
-
-	for (const element of observedElements) observer.observe(element);
-
-	return { observer };
+	!target.classList.contains('observe__scroll') && target.classList.add('observe__scroll');
+	target.classList.toggle('observe--show', isIntersecting);
 };
 
 export const scrollIntoView = (event: Event) => {
