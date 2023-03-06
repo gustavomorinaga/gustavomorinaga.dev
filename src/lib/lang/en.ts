@@ -12,7 +12,7 @@ export const en: ILang = {
 	},
 
 	curriculum: {
-		title: 'Download curriculum'
+		title: 'Curriculum'
 	},
 
 	header: {

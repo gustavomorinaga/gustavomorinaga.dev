@@ -12,7 +12,7 @@ export const pt: ILang = {
 	},
 
 	curriculum: {
-		title: 'Baixar currículo'
+		title: 'Currículo'
 	},
 
 	header: {

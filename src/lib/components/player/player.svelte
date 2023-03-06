@@ -469,7 +469,7 @@
 					@apply flex gap-4 items-center;
 
 					& .artwork {
-						@apply relative w-14 aspect-square;
+						@apply relative w-14 aspect-square overflow-hidden;
 					}
 
 					& .wrapper {
@@ -589,7 +589,7 @@
 					@apply flex gap-2 items-center w-full link link-hover;
 
 					& .artwork {
-						@apply relative w-12 aspect-square;
+						@apply relative w-12 aspect-square overflow-hidden;
 					}
 
 					& .wrapper {
@@ -624,7 +624,7 @@
 	}
 
 	.artwork__overlay {
-		@apply absolute inset-0 grid place-items-center bg-black/75 opacity-0 backdrop-blur-sm transition-opacity ease-out;
+		@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm transition-opacity ease-out;
 	}
 
 	@keyframes bars {

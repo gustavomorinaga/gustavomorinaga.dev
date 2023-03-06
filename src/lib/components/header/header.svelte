@@ -126,7 +126,7 @@
 								rel="noopener noreferrer"
 								aria-label={$LANG.curriculum.title}
 							>
-								<Icon icon="file-download" />
+								<Icon icon="file-info" />
 							</a>
 						</li>
 					</ul>

@@ -220,6 +220,14 @@
 		],
 		"tools": [
 			{
+				"title": "Markdown",
+				"url": "https://markdownguide.org",
+				"icon": "markdown",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "tool"
+			},
+			{
 				"title": "Git",
 				"url": "https://git-scm.com",
 				"icon": "git",
@@ -322,14 +330,6 @@
 				"collection": "simple-icons",
 				"color": "#F7B93E",
 				"category": "plugin"
-			},
-			{
-				"title": "Markdown",
-				"url": "https://markdownguide.org",
-				"icon": "markdown",
-				"collection": "simple-icons",
-				"color": "#FFFFFF",
-				"category": "tool"
 			},
 			{
 				"title": "Insomnia",

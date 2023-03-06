@@ -2,6 +2,9 @@
 	import { Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
+
+	const getKnowledge = (section: 'techs' | 'tools', category: string) =>
+		profileJSON.knowledge[section].filter(t => t.category === category);
 </script>
 
 <Metadata
@@ -17,7 +20,7 @@
 			<h3>{$LANG.about.knowledge.languages}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.techs.filter(t => t.category === 'language') as { icon, collection, title, url, color }}
+				{#each getKnowledge('techs', 'language') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -31,7 +34,7 @@
 			<h3>{$LANG.about.knowledge.runtime}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.techs.filter(t => t.category === 'runtime') as { icon, collection, title, url, color }}
+				{#each getKnowledge('techs', 'runtime') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -45,7 +48,7 @@
 			<h3>{$LANG.about.knowledge.libs}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.techs.filter(t => t.category === 'lib') as { icon, collection, title, url, color }}
+				{#each getKnowledge('techs', 'lib') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -59,7 +62,7 @@
 			<h3>{$LANG.about.knowledge.frameworks}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.techs.filter(t => t.category === 'framework') as { icon, collection, title, url, color }}
+				{#each getKnowledge('techs', 'framework') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -73,7 +76,7 @@
 			<h3>{$LANG.about.knowledge.databases}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.techs.filter(t => t.category === 'database') as { icon, collection, title, url, color }}
+				{#each getKnowledge('techs', 'database') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -87,7 +90,7 @@
 			<h3>{$LANG.about.knowledge.versionControl}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'version-control') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'version-control') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -101,7 +104,7 @@
 			<h3>{$LANG.about.knowledge.packageManagers}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'package-manager') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'package-manager') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -115,7 +118,7 @@
 			<h3>{$LANG.about.knowledge.platforms}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'platform') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'platform') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -129,7 +132,7 @@
 			<h3>{$LANG.about.knowledge.plugins}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'plugin') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'plugin') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -143,7 +146,7 @@
 			<h3>{$LANG.about.knowledge.bundlers}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'bundler') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'bundler') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -157,7 +160,7 @@
 			<h3>{$LANG.about.knowledge.compilers}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'compiler') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'compiler') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
@@ -171,7 +174,7 @@
 			<h3>{$LANG.about.knowledge.tools}</h3>
 
 			<ul>
-				{#each profileJSON.knowledge.tools.filter(t => t.category === 'tool') as { icon, collection, title, url, color }}
+				{#each getKnowledge('tools', 'tool') as { icon, collection, title, url, color }}
 					<li data-tip={title} style="--icon-color: {color}">
 						<a href={url} target="_blank" rel="noopener noreferrer">
 							<Icon {icon} {collection} size="lg" />
