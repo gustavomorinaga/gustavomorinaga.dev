@@ -7,10 +7,10 @@
 	import { profileJSON } from '$lib/databases';
 	import { DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
+	import { inlineSvg } from '@svelte-put/inline-svg';
 	import type { IRoute } from '$lib/types';
 
-	import logoSVG from '$lib/images/svgs/logo-title.svg';
-	import sloganSVG from '$lib/images/svgs/logo-slogan.svg';
+	import { IMAGES_SVG } from '$lib/images';
 
 	const baseURL = PUBLIC_DOMAIN;
 
@@ -70,8 +70,8 @@
 			</button>
 
 			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
-				<img id="logo" src={logoSVG} alt="Logotype" />
-				<img id="slogan" src={sloganSVG} alt="Slogan" />
+				<svg id="logo" use:inlineSvg={IMAGES_SVG.logoTitle} />
+				<svg id="slogan" use:inlineSvg={IMAGES_SVG.logoSlogan} />
 			</a>
 
 			<nav>

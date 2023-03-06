@@ -5,6 +5,9 @@ specifiers:
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1
   '@playwright/test': 1.30.0
+  '@svelte-put/clickoutside': ^2.0.0
+  '@svelte-put/inline-svg': ^1.0.0
+  '@svelte-put/intersect': ^2.0.0
   '@sveltejs/adapter-vercel': 2.0.2
   '@sveltejs/kit': 1.5.5
   '@tailwindcss/typography': 0.5.9
@@ -40,6 +43,7 @@ specifiers:
   svelte-portal: 2.2.0
   svelte-preprocess: 5.0.1
   svelte-sequential-preprocessor: ^1.0.0
+  swiper: ^9.1.0
   tailwind-scrollbar: 2.1.0
   tailwindcss: 3.2.6
   three: 0.149.0
@@ -55,6 +59,9 @@ devDependencies:
   '@iconify/types': 2.0.0
   '@macfja/svelte-persistent-store': 2.2.1_svelte@3.55.1
   '@playwright/test': 1.30.0
+  '@svelte-put/clickoutside': 2.0.0
+  '@svelte-put/inline-svg': 1.0.0
+  '@svelte-put/intersect': 2.0.0
   '@sveltejs/adapter-vercel': 2.0.2_@sveltejs+kit@1.5.5
   '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.6
@@ -90,6 +97,7 @@ devDependencies:
   svelte-portal: 2.2.0
   svelte-preprocess: 5.0.1_3b5ianm2ugvkaapjtuwrpxqq7a
   svelte-sequential-preprocessor: 1.0.0
+  swiper: 9.1.0
   tailwind-scrollbar: 2.1.0_tailwindcss@3.2.6
   tailwindcss: 3.2.6_postcss@8.4.21
   three: 0.149.0
@@ -467,6 +475,18 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@svelte-put/clickoutside/2.0.0:
+    resolution: {integrity: sha512-04xYxOT5Ti+VlP70+uY/a5tGnVWl3XFgnRiO9bMSHbkwOlzHxSgXyM1NCS4NV09B3i41LRuShgeMrbgU0J5cPg==}
+    dev: true
+
+  /@svelte-put/inline-svg/1.0.0:
+    resolution: {integrity: sha512-+jt/I99EacqhvFOW7uJF98dcRcUzYIrRuYQ6USG1CuIVvSwV0ZxXV/45b6xebQ4l7TnQ/3DhzXrBHlA0TPCBKg==}
+    dev: true
+
+  /@svelte-put/intersect/2.0.0:
+    resolution: {integrity: sha512-tlqDJYNK0aSydj9aYC+N+Dcav8EeIvmAlOLoODh+BMVGPSQN8iJJXc67PZegMyIld0xZ905IIv+dztH6kcccFw==}
     dev: true
 
   /@sveltejs/adapter-vercel/2.0.2_@sveltejs+kit@1.5.5:
@@ -4101,6 +4121,10 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
+  /ssr-window/4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: true
+
   /stable/0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
     deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
@@ -4368,6 +4392,13 @@ packages:
       csso: 4.2.0
       picocolors: 1.0.0
       stable: 0.1.8
+    dev: true
+
+  /swiper/9.1.0:
+    resolution: {integrity: sha512-Ck8CywwfUghkbUAHbxTAWyeUAcNrIDNJ6EnKFBGGcHDjeqbh0Jq08RbmD5fMu1a0oOv1eIkUGVkqNJy/asm+yA==}
+    engines: {node: '>= 4.7.0'}
+    dependencies:
+      ssr-window: 4.0.2
     dev: true
 
   /tailwind-scrollbar/2.1.0_tailwindcss@3.2.6:

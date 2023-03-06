@@ -3,11 +3,10 @@
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, PageTransition } from '$lib/components';
 	import { LANG } from '$lib/stores';
+	import { scrollToTop } from '$lib/utils';
 	import type { LayoutServerData } from './$types';
 
-	import avatarWebp from '$lib/images/webps/avatar.webp';
-	import lowPolyGridSVG from '$lib/images/svgs/bg-low-poly-grid.svg';
-	import { scrollToTop } from '$lib/utils';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	export let data: LayoutServerData;
 
@@ -39,11 +38,11 @@
 	<aside>
 		<div
 			class="details"
-			style="--low-poly-grid: url({lowPolyGridSVG})"
+			style="--low-poly-grid: url({IMAGES_SVG.bgLowPolyGrid})"
 			in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}
 		>
 			<figure>
-				<img src={avatarWebp} width="160" height="160" alt="Ready Player Me Avatar" />
+				<img src={IMAGES_WEBP.avatar} width="160" height="160" alt="Ready Player Me Avatar" />
 			</figure>
 
 			<div class="card-body">

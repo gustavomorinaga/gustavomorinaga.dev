@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { LANG } from '$lib/stores';
+	import { inlineSvg } from '@svelte-put/inline-svg';
 
-	import vercelSVG from '$lib/images/svgs/logo-vercel.svg';
-	import sveltekitSVG from '$lib/images/svgs/logo-sveltekit.svg';
+	import { IMAGES_SVG } from '$lib/images';
 </script>
 
 <footer id="footer">
@@ -13,11 +13,11 @@
 			<span class="powered-by">
 				Powered by
 				<a class="w-16 mr-1" href="https://vercel.com" target="_blank" rel="noopener noreferrer">
-					<img src={vercelSVG} width="64" height="14" alt="Vercel logotype" />
+					<svg use:inlineSvg={IMAGES_SVG.logoVercel} width="64" height="14" />
 				</a>
 				|
 				<a class="w-24" href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
-					<img src={sveltekitSVG} width="96" height="19" alt="SvelteKit logotype" />
+					<svg use:inlineSvg={IMAGES_SVG.logoSvelteKit} width="96" height="19" />
 				</a>
 			</span>
 		</div>

@@ -9,38 +9,31 @@
 	import { observeScroll, scrollIntoView } from '$lib/utils';
 	import Atropos from 'atropos/svelte';
 
-	import profileWebp from '$lib/images/webps/profile.webp';
-	import profileCroppedWebp from '$lib/images/webps/profile-cropped.webp';
-	import lowPolyGridSVG from '$lib/images/svgs/bg-low-poly-grid.svg';
-	import triangleSVG from '$lib/images/svgs/poly-triangle.svg';
-	import nibSVG from '$lib/images/svgs/icon-nib.svg';
-	import codeSVG from '$lib/images/svgs/icon-code.svg';
-	import seoSVG from '$lib/images/svgs/icon-seo.svg';
-	import magicSVG from '$lib/images/svgs/icon-magic.svg';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	const baseURL = PUBLIC_DOMAIN;
 
 	$: services = [
 		{
-			icon: nibSVG,
+			icon: IMAGES_SVG.iconNib,
 			title: $LANG.home.services.cardDesign.title,
 			description: $LANG.home.services.cardDesign.paragraph,
 			alt: $LANG.home.services.cardDesign.alt
 		},
 		{
-			icon: codeSVG,
+			icon: IMAGES_SVG.iconCode,
 			title: $LANG.home.services.cardDev.title,
 			description: $LANG.home.services.cardDev.paragraph,
 			alt: $LANG.home.services.cardDev.alt
 		},
 		{
-			icon: seoSVG,
+			icon: IMAGES_SVG.iconSEO,
 			title: $LANG.home.services.cardSeo.title,
 			description: $LANG.home.services.cardSeo.paragraph,
 			alt: $LANG.home.services.cardSeo.alt
 		},
 		{
-			icon: magicSVG,
+			icon: IMAGES_SVG.iconMagic,
 			title: $LANG.home.services.cardMotion.title,
 			description: $LANG.home.services.cardMotion.paragraph,
 			alt: $LANG.home.services.cardMotion.alt
@@ -60,7 +53,7 @@
 	<div class="blurb__wrapper observe__scroll">
 		<div
 			class="blurb__image"
-			style="--triangle: url({triangleSVG}); --profile-cropped: url({profileCroppedWebp});"
+			style="--triangle: url({IMAGES_SVG.polyTriangle}); --profile-cropped: url({IMAGES_WEBP.profileCropped});"
 			in:fade={{ delay: 2000, easing: cubicOut }}
 		>
 			<div class="mobile__profile">
@@ -153,7 +146,7 @@
 
 <section id="about">
 	<article class="about__card observe__scroll">
-		<figure style="--profile: url({profileWebp})" />
+		<figure style="--profile: url({IMAGES_WEBP.profile})" />
 
 		<div class="card-body">
 			<h2>{$LANG.home.about.title}</h2>
@@ -194,7 +187,10 @@
 </section>
 
 <section id="knowledge">
-	<div class="knowledge__content observe__scroll" style="--low-poly-grid: url({lowPolyGridSVG})">
+	<div
+		class="knowledge__content observe__scroll"
+		style="--low-poly-grid: url({IMAGES_SVG.bgLowPolyGrid})"
+	>
 		<h2>{$LANG.home.knowledge.title}</h2>
 
 		<p>{$LANG.home.knowledge.paragraph}</p>

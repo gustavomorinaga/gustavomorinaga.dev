@@ -9,16 +9,14 @@
 	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
 	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
 
-	import gridWebp from '$lib/images/webps/grid.webp';
-	import terrainWebp from '$lib/images/webps/displacement.webp';
-	import metalnessWebp from '$lib/images/webps/metalness.webp';
+	import { IMAGES_WEBP } from '$lib/images';
 
 	export let finished = false;
 
 	const [gridTexture, terrainTexture, metalnessTexture] = useTexture([
-		gridWebp,
-		terrainWebp,
-		metalnessWebp
+		IMAGES_WEBP.grid,
+		IMAGES_WEBP.displacement,
+		IMAGES_WEBP.metalness
 	]);
 
 	const [rgbFX, gammaFX, vignetteFX, filmFX] = [

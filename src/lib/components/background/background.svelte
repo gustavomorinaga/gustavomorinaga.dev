@@ -7,8 +7,7 @@
 	import { containerElement } from '$lib/utils';
 	import { Canvas } from '@threlte/core';
 
-	import hexagonsSVG from '$lib/images/svgs/bg-hexagons.svg';
-	import universeWebp from '$lib/images/webps/universe.webp';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
@@ -27,7 +26,7 @@
 </script>
 
 {#if loading}
-	<div class="loader" transition:fade style="--hexagons-pattern: url({hexagonsSVG})">
+	<div class="loader" transition:fade style="--hexagons-pattern: url({IMAGES_SVG.bgHexagons})">
 		<CubeLoader />
 	</div>
 {/if}
@@ -36,7 +35,7 @@
 	class="background__container"
 	class:read__mode={readMode}
 	class:plain={!isThree}
-	style="--universe: url({universeWebp});"
+	style="--universe: url({IMAGES_WEBP.universe});"
 >
 	{#if isThree}
 		{#await import('./synthwave') then { Synthwave }}
