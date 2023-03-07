@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/gustavomorinaga/portfolio/compare/v0.5.0...v0.6.0) (2023-03-07)
+
+
+### Features
+
+* projects page ([efaf491](https://github.com/gustavomorinaga/portfolio/commit/efaf49117201aef54dd19a28cd46a0b7769f11a7))
+
+
+### Bug Fixes
+
+* build target problem ([ac24509](https://github.com/gustavomorinaga/portfolio/commit/ac245094d337d256daceea02f958f43673b2d78d))
+* package json author info ([24b111a](https://github.com/gustavomorinaga/portfolio/commit/24b111a575655fdafa142ac3098769bd045f96fc))
+* scroll activation in low end mode ([e7a0304](https://github.com/gustavomorinaga/portfolio/commit/e7a0304bd3da8cc46f7aca99c7af0bbd150a7281))
+
+
+### Improvements
+
+* optimizing some webps ([a5f9019](https://github.com/gustavomorinaga/portfolio/commit/a5f901916c57b8ca1ffc20bfdf6be29683827534))
+* projects carousel breakpoint ([58a2df7](https://github.com/gustavomorinaga/portfolio/commit/58a2df7f258a930e561caeb9ee7c199dc5659e41))
+* recolor and improving knowledge filtering ([3ff6e15](https://github.com/gustavomorinaga/portfolio/commit/3ff6e15b65c3fe7881bf14af541c8feac0721963))
+* using dynamic imports for images ([6e6de68](https://github.com/gustavomorinaga/portfolio/commit/6e6de68898bc4960bd126523add43e4dd8b0ce03))
+* using svelte-put for intersection ([3366e53](https://github.com/gustavomorinaga/portfolio/commit/3366e53594095d51bbbf03fc0c690305410a7462))
+
 ## [0.5.0](https://github.com/gustavomorinaga/portfolio/compare/v0.4.0...v0.5.0) (2023-03-01)
 
 
