@@ -7,6 +7,9 @@ const config = {
 	ssr: {
 		noExternal: ['three', 'troika-three-text']
 	},
+	build: {
+		target: 'esnext'
+	},
 	define: {
 		'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
 	},
