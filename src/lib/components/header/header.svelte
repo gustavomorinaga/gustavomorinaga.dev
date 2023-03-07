@@ -154,7 +154,7 @@
 		@apply relative z-40 h-[4.5rem];
 
 		& .header__wrapper {
-			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-sm shadow-lg;
+			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/50 backdrop-blur-md shadow-lg;
 
 			& .header__content {
 				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 sm:px-8 lg:px-0;

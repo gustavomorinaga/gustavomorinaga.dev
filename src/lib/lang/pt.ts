@@ -167,6 +167,31 @@ export const pt: ILang = {
 		}
 	},
 
+	projects: {
+		title: 'Projetos',
+		paragraph:
+			'Alguns destaques dos meus projetos open-source. Veja todos no <a href="https://github.com/gustavomorinaga?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>.',
+
+		metadata: {
+			title: 'Projetos',
+			description: 'Alguns destaques dos meus projetos open-source.'
+		},
+
+		portfolio: {
+			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.'
+		},
+		'next-plate': {
+			description: 'Um super modelo de projeto para Next.js com pacote de ferramentas incríveis.'
+		},
+		'github-unfollower-checker': {
+			description:
+				'Uma ferramenta simples para consultar os usuários que não te seguem de volta no GitHub.'
+		},
+		hotcode: {
+			description: 'Um hotsite para atrair desenvolvedores iniciantes a aprender sobre programação.'
+		}
+	},
+
 	player: {
 		show: 'Mostrar player',
 

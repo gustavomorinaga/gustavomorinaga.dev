@@ -1,65 +1,123 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon, Metadata } from '$lib/components';
+	import { Metadata } from '$lib/components';
+	import { IMAGES_WEBP } from '$lib/images';
 	import { LANG } from '$lib/stores';
-	import { animateOnScroll } from '$lib/utils';
+	import { register } from 'swiper/element/bundle';
+	import type { SwiperOptions } from 'swiper';
 
-	const projects = [
+	let swiperRef: HTMLElement & { initialize: () => void };
+
+	const SWIPER_OPTIONS: SwiperOptions = {
+		navigation: true,
+		effect: 'coverflow',
+		slidesPerView: 1,
+		centeredSlides: true,
+		grabCursor: true,
+		coverflowEffect: {
+			depth: 100,
+			modifier: 1,
+			rotate: 50,
+			scale: 1.05,
+			slideShadows: false,
+			stretch: 0
+		},
+		injectStyles: [
+			`
+			.swiper-button-prev,
+			.swiper-button-next {
+				display: none;
+			}
+
+			@media (min-width: 768px) {
+				.swiper-button-prev,
+				.swiper-button-next {
+					display: flex;
+				}
+			}
+			`
+		],
+		breakpoints: {
+			640: {
+				slidesPerView: 2
+			},
+			1280: {
+				slidesPerView: 3
+			},
+			1920: {
+				slidesPerView: 4
+			}
+		}
+	};
+
+	$: projects = [
 		{
 			title: 'Portfolio',
-			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.',
-			previewImage: '/images/pngs/preview.png'
+			description: $LANG.projects.portfolio.description,
+			previewImage: IMAGES_WEBP.previewPortfolio,
+			tags: ['sveltekit', 'typescript', 'vite', 'tailwindcss', 'sass']
 		},
 		{
-			title: 'Portfolio',
-			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.',
-			previewImage: '/images/pngs/preview.png'
+			title: 'Next-Plate',
+			description: $LANG.projects['next-plate'].description,
+			previewImage: IMAGES_WEBP.previewNextPlate,
+			tags: ['nextjs', 'typescript', 'chakraui']
 		},
 		{
-			title: 'Portfolio',
-			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.',
-			previewImage: '/images/pngs/preview.png'
+			title: 'GitHub Unfollower Checker',
+			description: $LANG.projects['github-unfollower-checker'].description,
+			previewImage: IMAGES_WEBP.previewGithubUnfollowerChecker,
+			tags: ['nextjs', 'typescript', 'tailwindcss', 'sass']
 		},
 		{
-			title: 'Portfolio',
-			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.',
-			previewImage: '/images/pngs/preview.png'
-		},
-		{
-			title: 'Portfolio',
-			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.',
-			previewImage: '/images/pngs/preview.png'
+			title: 'HotCode',
+			description: $LANG.projects.hotcode.description,
+			previewImage: IMAGES_WEBP.previewHotCode,
+			tags: ['react', 'nodejs', 'html', 'css']
 		}
 	];
+
+	onMount(() => {
+		register();
+		Object.assign(swiperRef, SWIPER_OPTIONS);
+		swiperRef.initialize();
+	});
 </script>
 
-<Metadata title={$LANG.about.metadata.title} description={$LANG.about.metadata.description} />
+<Metadata title={$LANG.projects.metadata.title} description={$LANG.projects.metadata.description} />
 
 <code class="projects">profile<span class="method">.projects()</span>;</code>
 
 <article class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
-	<h1>Projetos</h1>
+	<h1>{$LANG.projects.title}</h1>
 
-	<p>
-		Alguns destaques dos meus projetos open-source. Veja todos no
-		<a
-			href="https://github.com/gustavomorinaga?tab=repositories"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			GitHub
-		</a>
-		.
-	</p>
+	<p>{@html $LANG.projects.paragraph}</p>
 
-	{#each projects as { title, description, previewImage }}
-		<div>
-			<figure class="preview">
-				<img src={previewImage} width="480" alt="Preview" />
-			</figure>
-		</div>
-	{/each}
+	<swiper-container bind:this={swiperRef} init="false" class="carousel">
+		{#each projects as { title, description, previewImage, tags }}
+			<swiper-slide>
+				<article class="project">
+					<figure class="preview">
+						<img src={previewImage} width="480" alt="Preview" />
+					</figure>
+
+					<div class="content">
+						<div class="card-body">
+							<h2>{title}</h2>
+							<ul class="tags">
+								{#each tags as tag}
+									<li class="tag">{tag}</li>
+								{/each}
+							</ul>
+							<p>{description}</p>
+						</div>
+					</div>
+				</article>
+			</swiper-slide>
+		{/each}
+	</swiper-container>
 </article>
 
 <style lang="scss" global>
@@ -68,6 +126,8 @@
 	}
 
 	article.projects {
+		@apply min-h-[80vh];
+
 		& > h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
@@ -78,6 +138,68 @@
 
 		& a {
 			@apply link-primary link-hover;
+		}
+
+		& .carousel {
+			--swiper-navigation-color: hsl(var(--bc) / var(--tw-text-opacity));
+			--swiper-navigation-sides-offset: 5vw;
+			--ml-offset: 1rem;
+
+			@apply absolute w-screen py-2 xl:py-16;
+			margin-left: calc(-50vw + 50% - var(--ml-offset));
+
+			@media (min-width: 768px) {
+				--ml-offset: 0rem;
+			}
+
+			& swiper-slide {
+				&.swiper-slide-active {
+					& .project {
+						@apply grayscale-0 brightness-100 after:opacity-0;
+
+						& figure {
+							@apply xl:scale-125;
+						}
+
+						& .content {
+							@apply lg:opacity-100 lg:translate-y-0;
+						}
+					}
+				}
+
+				& .project {
+					@apply relative grayscale-[25] brightness-75 transition duration-300 ease-out;
+
+					&::after {
+						content: '';
+						@apply absolute inset-0 bg-black opacity-50 transition-opacity duration-300 ease-out;
+					}
+
+					& figure {
+						@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg shadow-black transition duration-300 ease-out;
+
+						& img {
+							@apply border-t border-base-200;
+						}
+					}
+
+					& .content {
+						@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg shadow-black lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
+
+						& h2 {
+							@apply text-3xl font-futuristic text-shadow-glow shadow-primary;
+						}
+
+						& .tags {
+							@apply flex flex-wrap gap-1 mb-2;
+
+							& .tag {
+								@apply badge;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 </style>

@@ -153,6 +153,29 @@ export interface ILang {
 		};
 	};
 
+	projects: {
+		title: string;
+		paragraph: string;
+
+		metadata: {
+			title: string;
+			description: string;
+		};
+
+		portfolio: {
+			description: string;
+		};
+		'next-plate': {
+			description: string;
+		};
+		'github-unfollower-checker': {
+			description: string;
+		};
+		hotcode: {
+			description: string;
+		};
+	};
+
 	player: {
 		show: string;
 

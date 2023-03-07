@@ -166,6 +166,30 @@ export const en: ILang = {
 		}
 	},
 
+	projects: {
+		title: 'Projects',
+		paragraph:
+			'Some highlights of my open-source projects. See them all on <a href="https://github.com/gustavomorinaga?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>.',
+
+		metadata: {
+			title: 'Projects',
+			description: 'Some highlights of my open-source projects.'
+		},
+
+		portfolio: {
+			description: 'My super portfolio built with SvelteKit and served on Vercel.'
+		},
+		'next-plate': {
+			description: 'A super template for Next.js with a pack of incredible tools.'
+		},
+		'github-unfollower-checker': {
+			description: "A simple tool to check the users that doesn't follow you back."
+		},
+		hotcode: {
+			description: 'A hotsite to attract developers to learn programming.'
+		}
+	},
+
 	player: {
 		show: 'Show player',
 

@@ -2,10 +2,11 @@
 	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { page } from '$app/stores';
 	import { LANG } from '$lib/stores';
+	import { IMAGES_WEBP } from '$lib/images';
 
 	export let title = '';
 	export let description = $LANG.metadata.description;
-	export let thumbnail = '/images/pngs/preview.png';
+	export let thumbnail = IMAGES_WEBP.previewPortfolio;
 
 	const baseURL = PUBLIC_DOMAIN;
 
