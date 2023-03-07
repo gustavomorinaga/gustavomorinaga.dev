@@ -3,19 +3,19 @@
 	import { prefersReducedMotion } from '$lib/utils';
 	import { blur } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
+	import { GPU } from '$lib/stores';
 
 	export let trigger: any;
 	export let effect = blur;
 	export let duration = 500;
-
-	let animations = true;
+	export let animate = true;
 
 	onMount(() => {
-		animations = !prefersReducedMotion || window.matchMedia('(max-width: 640px)').matches;
+		animate = !prefersReducedMotion || !$GPU.isLowEnd;
 	});
 </script>
 
-{#if animations}
+{#if animate}
 	{#key trigger}
 		<div
 			class="page__transition"
