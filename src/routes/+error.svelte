@@ -44,10 +44,10 @@
 			@apply max-w-none w-full flex-col md:flex-row-reverse justify-between;
 
 			& .window {
-				@apply mockup-window bg-base-100 border border-base-200 animate-float;
+				@apply mockup-window bg-base-100 border border-base-200 md:animate-float;
 
 				& .window__content {
-					@apply grid place-items-center w-96 h-48 p-4 font-futuristic bg-base-200 bg-cover bg-no-repeat bg-center bg-blend-hard-light border-t border-base-200 text-error;
+					@apply grid place-items-center w-80 h-40 md:w-96 md:h-48 p-4 font-futuristic bg-base-200 bg-cover bg-no-repeat bg-center bg-blend-hard-light border-t border-base-200 text-error;
 					background-image: var(--low-poly-grid);
 				}
 			}
@@ -72,7 +72,7 @@
 					@apply flex gap-2;
 
 					& a {
-						@apply btn btn-primary btn-wide;
+						@apply btn btn-primary btn-block md:btn-wide;
 
 						&:hover {
 							& .icon {

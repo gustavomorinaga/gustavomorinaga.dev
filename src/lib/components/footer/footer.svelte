@@ -28,7 +28,7 @@
 
 <style lang="scss">
 	#footer {
-		@apply bg-black border-t border-base-100;
+		@apply relative z-40 block bg-black border-t border-base-100;
 
 		& .footer__wrapper {
 			@apply footer footer-center p-4 text-base-content;

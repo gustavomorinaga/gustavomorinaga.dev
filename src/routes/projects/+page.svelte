@@ -103,6 +103,11 @@
 
 	<p>{@html $LANG.projects.paragraph}</p>
 
+	<span class="motion__instruction">
+		<Icon icon="arrow-narrow-left" />
+		Arraste para visualizar
+		<Icon icon="arrow-narrow-right" />
+	</span>
 	<swiper-container bind:this={swiperRef} init="false" class="carousel">
 		{#each projects as { title, description, previewImage, tags, repo, deploy }}
 			<swiper-slide>
@@ -153,10 +158,18 @@
 		}
 
 		& > p {
-			@apply text-xl mb-16;
+			@apply text-xl mb-8 md:mb-16;
 
 			& > a {
 				@apply link-primary link-hover;
+			}
+		}
+
+		& .motion__instruction {
+			@apply flex md:hidden justify-center gap-2 p-4;
+
+			& .icon {
+				@apply text-primary;
 			}
 		}
 
@@ -199,7 +212,7 @@
 						@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg shadow-black transition duration-300 ease-out;
 
 						& img {
-							@apply border-t border-base-200;
+							@apply w-full border-t border-base-200;
 						}
 					}
 
@@ -223,7 +236,7 @@
 								@apply justify-end;
 
 								& > a {
-									@apply btn btn-outline btn-primary btn-sm gap-1;
+									@apply btn btn-outline btn-sm gap-1 border-primary text-primary hover:btn-primary;
 								}
 							}
 						}
