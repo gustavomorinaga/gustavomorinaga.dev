@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/gustavomorinaga/portfolio/compare/v0.6.0...v0.7.0) (2023-03-10)
+
+
+### Features
+
+* error page ([6a4d000](https://github.com/gustavomorinaga/portfolio/commit/6a4d000a2b3093101e23129ffc56e237b47b6ad4))
+
+
+### Bug Fixes
+
+* error page responsiveness ([80a9b9f](https://github.com/gustavomorinaga/portfolio/commit/80a9b9f063a1085ace7284e9274a843658b9bf21))
+* package lock and page transition animate ([326c031](https://github.com/gustavomorinaga/portfolio/commit/326c03170f64dce0d837a6884f8625b8a9b66426))
+
+
+### Improvements
+
+* adding deploy and repo project links ([7726995](https://github.com/gustavomorinaga/portfolio/commit/7726995278beb119a69aa5892c8966b57cb8d017))
+
 ## [0.6.0](https://github.com/gustavomorinaga/portfolio/compare/v0.5.0...v0.6.0) (2023-03-07)
 
 
