@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/gustavomorinaga/portfolio/compare/v0.7.0...v0.7.1) (2023-03-10)
+
+
+### Bug Fixes
+
+* build target top-level async ([ec830d7](https://github.com/gustavomorinaga/portfolio/commit/ec830d79193ba0940a3b4e7bc985a30ad6f1360b))
+* vercel adapter top level await problem ([1dce0e8](https://github.com/gustavomorinaga/portfolio/commit/1dce0e88db1b8855ed3b9831ab690a07542eb402))
+
 ## [0.7.0](https://github.com/gustavomorinaga/portfolio/compare/v0.6.0...v0.7.0) (2023-03-10)
 
 

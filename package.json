@@ -1,6 +1,6 @@
 {
 	"name": "portfolio",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"type": "module",
 	"author": "Gustavo Morinaga <me@gustavomorinaga.dev>",
 	"description": "My super portfolio built with SvelteKit and served on Vercel",
