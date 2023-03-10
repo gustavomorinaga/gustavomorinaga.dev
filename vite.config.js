@@ -8,7 +8,7 @@ const config = {
 		noExternal: ['three', 'troika-three-text']
 	},
 	build: {
-		target: 'esnext'
+		target: 'es2022'
 	},
 	define: {
 		'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
