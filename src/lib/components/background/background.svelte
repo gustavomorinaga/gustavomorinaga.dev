@@ -20,7 +20,7 @@
 		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		finished = isMobile || isLowEnd;
 	});
 </script>

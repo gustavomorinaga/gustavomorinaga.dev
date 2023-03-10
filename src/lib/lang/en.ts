@@ -205,6 +205,13 @@ export const en: ILang = {
 		hide: 'Hide player'
 	},
 
+	error: {
+		title: 'Lost in the system?',
+		paragraph: "This page wasn't found or doesn't exist.",
+
+		return: 'Back to start'
+	},
+
 	scrollTop: 'Scroll to top',
 
 	footer: `Developed with ❤ by Gustavo Morinaga © ${year}`

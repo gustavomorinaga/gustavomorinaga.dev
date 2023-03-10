@@ -161,7 +161,7 @@
 
 <ScrollTop />
 
-{#if showContent}
+{#if showContent && data.playlist.meta.pagination.pageCount}
 	{#await import('$lib/components/player') then { Player }}
 		<Player playlist={data.playlist.data} />
 	{/await}

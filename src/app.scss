@@ -36,15 +36,17 @@ body {
 
 	&::before {
 		content: '';
-		@apply fixed inset-0 z-[90] bg-fixed bg-repeat opacity-50 pointer-events-none mix-blend-screen;
+		@apply fixed inset-0 z-[90] bg-fixed bg-repeat opacity-60 pointer-events-none mix-blend-screen;
 		background-image: url('$lib/images/webps/texture-noise.webp');
 	}
 
 	& code {
 		@apply typewriter;
 
-		& span.method {
-			@apply text-primary;
+		& span {
+			&.method {
+				@apply text-primary;
+			}
 		}
 	}
 }

@@ -3,9 +3,11 @@ import type { ICMSData, IPlaylist } from '$lib/types';
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ fetch, url }) => {
-	const playlist: ICMSData<IPlaylist> = await fetch(
-		`${PUBLIC_CMS_URL}/api/playlist-tracks?populate=*`
-	).then(res => res.json());
+	const [playlist] = await Promise.all([
+		fetch(`${PUBLIC_CMS_URL}/api/playlist-tracks?populate=*`).then<ICMSData<IPlaylist>>(res =>
+			res.json()
+		)
+	]);
 
 	return { pathname: url.pathname, playlist };
 }) satisfies LayoutServerLoad;

@@ -207,7 +207,14 @@ export const pt: ILang = {
 		hide: 'Esconder player'
 	},
 
-	scrollTop: 'Ir para o topo',
+	error: {
+		title: 'Perdido no sistema?',
+		paragraph: 'Essa página não foi encontrada ou não existe.',
+
+		return: 'Voltar ao início'
+	},
+
+	scrollTop: 'Ir ao topo',
 
 	footer: `Desenvolvido com ❤ por Gustavo Morinaga © ${year}`
 };

@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { Clock, MeshStandardMaterial, PlaneGeometry } from 'three';
 	import { AmbientLight, Fog, Pass, SpotLight, T, useFrame, useTexture } from '@threlte/core';
 	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 	import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
+	import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
 	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
 	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
@@ -19,11 +21,12 @@
 		IMAGES_WEBP.metalness
 	]);
 
-	const [rgbFX, gammaFX, vignetteFX, filmFX] = [
+	const [rgbFX, gammaFX, vignetteFX, filmFX, glitchFX] = [
 		new ShaderPass(RGBShiftShader),
 		new ShaderPass(GammaCorrectionShader),
 		new ShaderPass(VignetteShader),
-		new FilmPass(0.35, 0.025, 648, 0)
+		new FilmPass(0.35, 0.025, 648, 0),
+		new GlitchPass(0.5)
 	];
 
 	let zPositions = [0.15, -1.85];
@@ -40,14 +43,16 @@
 
 	rgbFX.uniforms['amount'].value = 0.001;
 	vignetteFX.uniforms['offset'].value = 1.5;
-	filmFX.renderToScreen = true;
 
 	$: sizes = {
 		width: browser ? window.innerWidth : 1,
 		height: browser ? window.innerHeight : 1
 	};
+	$: (filmFX as any).uniforms['grayscale'].value = Number(!!$page.error);
 
 	useFrame(() => {
+		if ($page.error) return;
+
 		const newPosition = (clock.getElapsedTime() * 0.075) % 2;
 
 		zPositions = [newPosition, newPosition - 2];
@@ -110,4 +115,8 @@
 	<Pass pass={filmFX} />
 	<Pass pass={rgbFX} />
 	<Pass pass={vignetteFX} />
+
+	{#if $page.error}
+		<Pass pass={glitchFX} />
+	{/if}
 </T.Group>

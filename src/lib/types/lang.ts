@@ -191,6 +191,13 @@ export interface ILang {
 		hide: string;
 	};
 
+	error: {
+		title: string;
+		paragraph: string;
+
+		return: string;
+	};
+
 	scrollTop: string;
 
 	footer: string;

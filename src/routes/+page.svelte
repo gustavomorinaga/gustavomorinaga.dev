@@ -268,7 +268,7 @@
 </section>
 
 <style lang="scss" global>
-	#blurb {
+	section#blurb {
 		@apply relative hero h-gutter-header -mt-4;
 		place-items: flex-start center;
 
@@ -425,7 +425,7 @@
 		}
 	}
 
-	#about {
+	section#about {
 		@apply relative grid place-items-center min-h-screen;
 
 		& .about__card {
@@ -489,7 +489,7 @@
 		}
 	}
 
-	#knowledge {
+	section#knowledge {
 		@apply relative grid place-items-center min-h-screen;
 
 		& .knowledge__content {
@@ -544,7 +544,7 @@
 		}
 	}
 
-	#services {
+	section#services {
 		@apply relative grid place-items-center min-h-[75vh];
 
 		& .services__content {

@@ -12,7 +12,7 @@
   <img src="../../../src/lib/images/webps/preview-portfolio.webp" alt="Portfolio preview" width="512px" />
 </p>
 <h3 align="center">
-  My super portfolio built with SvelteKit and served on Vercel.
+  Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.
   <br>
   <br>
   <a href="https://gustavomorinaga.dev">
@@ -76,4 +76,4 @@ Este projeto está licenciado sob a **Licença MIT** - veja a página [LICENSE](
 
 ---
 
-### ❤️ Thanks for your attention!
+### ❤️ Obrigado pela atenção!
