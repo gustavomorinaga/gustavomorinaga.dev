@@ -6,7 +6,7 @@ export const IMAGES_WEBP = {
 	noise: await import('./texture-noise.webp').then(i => i.default),
 	previewPortfolio: await import('./preview-portfolio.webp').then(i => i.default),
 	previewNextPlate: await import('./preview-next-plate.webp').then(i => i.default),
-	previewGithubUnfollowerChecker: await import('./preview-github-unfollower-checker.webp').then(
+	previewGithubUnfollowerChecker: await import('./preview-github-unfollow-checker.webp').then(
 		i => i.default
 	),
 	previewHotCode: await import('./preview-hotcode.webp').then(i => i.default),

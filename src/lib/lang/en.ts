@@ -176,13 +176,18 @@ export const en: ILang = {
 			description: 'Some highlights of my open-source projects.'
 		},
 
+		links: {
+			deploy: 'Demo',
+			code: 'Code'
+		},
+
 		portfolio: {
 			description: 'My super portfolio built with SvelteKit and served on Vercel.'
 		},
 		'next-plate': {
 			description: 'A super template for Next.js with a pack of incredible tools.'
 		},
-		'github-unfollower-checker': {
+		'github-unfollow-checker': {
 			description: "A simple tool to check the users that doesn't follow you back."
 		},
 		hotcode: {

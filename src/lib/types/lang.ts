@@ -162,13 +162,18 @@ export interface ILang {
 			description: string;
 		};
 
+		links: {
+			deploy: string;
+			code: string;
+		};
+
 		portfolio: {
 			description: string;
 		};
 		'next-plate': {
 			description: string;
 		};
-		'github-unfollower-checker': {
+		'github-unfollow-checker': {
 			description: string;
 		};
 		hotcode: {

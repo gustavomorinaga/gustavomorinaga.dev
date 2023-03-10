@@ -177,13 +177,18 @@ export const pt: ILang = {
 			description: 'Alguns destaques dos meus projetos open-source.'
 		},
 
+		links: {
+			deploy: 'Demo',
+			code: 'Código'
+		},
+
 		portfolio: {
 			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.'
 		},
 		'next-plate': {
 			description: 'Um super modelo de projeto para Next.js com pacote de ferramentas incríveis.'
 		},
-		'github-unfollower-checker': {
+		'github-unfollow-checker': {
 			description:
 				'Uma ferramenta simples para consultar os usuários que não te seguem de volta no GitHub.'
 		},
