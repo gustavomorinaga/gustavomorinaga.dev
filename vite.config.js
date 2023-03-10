@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import viteCompression from 'vite-plugin-compression';
+import browserslistToEsbuild from 'browserslist-to-esbuild';
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -7,14 +8,19 @@ const config = {
 	ssr: {
 		noExternal: ['three', 'troika-three-text']
 	},
-	build: {
-		target: 'es2022'
-	},
 	define: {
 		'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
 	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
+	},
+	build: {
+		target: browserslistToEsbuild()
+	},
+	esbuild: {
+		supported: {
+			'top-level-await': true
+		}
 	}
 };
 

@@ -5,7 +5,6 @@
 	import { CubeLoader } from '$lib/components';
 	import { GPU } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
-	import { Canvas } from '@threlte/core';
 
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
@@ -15,7 +14,7 @@
 	$: isThree = $GPU.isThree;
 	$: isMobile = $GPU.isMobile;
 	$: isLowEnd = $GPU.isLowEnd;
-	$: loading = (isThree || isMobile) && !isLowEnd && !finished;
+	$: loading = !isLowEnd && !finished;
 	$: if (browser) {
 		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
 	}
@@ -38,7 +37,7 @@
 	style="--universe: url({IMAGES_WEBP.universe});"
 >
 	{#if isThree}
-		{#await import('./synthwave') then { Synthwave }}
+		{#await Promise.all( [import('@threlte/core'), import('./synthwave')] ) then [{ Canvas }, { Synthwave }]}
 			<Canvas>
 				<Synthwave bind:finished />
 			</Canvas>

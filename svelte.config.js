@@ -9,19 +9,10 @@ import { preprocessThrelte } from '@threlte/preprocess';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: seqPreprocessor([
-		vitePreprocess(),
-		preprocess({
-			postcss: true,
-			scss: true,
-			typescript: true
-		}),
-		inlineSvg(),
-		preprocessThrelte()
-	]),
+	preprocess: seqPreprocessor([vitePreprocess(), preprocess(), inlineSvg(), preprocessThrelte()]),
 
 	kit: {
-		adapter: adapter({ runtime: 'edge', split: true })
+		adapter: adapter({ runtime: 'edge' })
 	}
 };
 

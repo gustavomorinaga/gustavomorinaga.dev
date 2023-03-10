@@ -8,7 +8,7 @@ export interface IGraphicsState extends Partial<TierResult> {
 	isMobile: boolean;
 }
 
-const INITIAL_STATE: IGraphicsState = { isThree: true, isLowEnd: false, isMobile: false };
+const INITIAL_STATE: IGraphicsState = { isThree: false, isLowEnd: false, isMobile: false };
 
 export const initializeGPU = () => {
 	const { subscribe, set } = persist<IGraphicsState>(

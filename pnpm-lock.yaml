@@ -8,7 +8,7 @@ specifiers:
   '@svelte-put/clickoutside': 2.0.0
   '@svelte-put/inline-svg': 1.0.0
   '@svelte-put/intersect': 2.0.0
-  '@sveltejs/adapter-vercel': 2.3.1
+  '@sveltejs/adapter-vercel': 2.0.2
   '@sveltejs/kit': 1.11.0
   '@tailwindcss/typography': 0.5.9
   '@threlte/core': 5.0.9
@@ -23,6 +23,7 @@ specifiers:
   animejs: 3.2.1
   atropos: 1.0.2
   autoprefixer: 10.4.14
+  browserslist-to-esbuild: ^1.2.0
   cssnano: 5.1.15
   daisyui: 2.51.3
   detect-gpu: 5.0.14
@@ -62,7 +63,7 @@ devDependencies:
   '@svelte-put/clickoutside': 2.0.0
   '@svelte-put/inline-svg': 1.0.0
   '@svelte-put/intersect': 2.0.0
-  '@sveltejs/adapter-vercel': 2.3.1_@sveltejs+kit@1.11.0
+  '@sveltejs/adapter-vercel': 2.0.2_@sveltejs+kit@1.11.0
   '@sveltejs/kit': 1.11.0_svelte@3.56.0+vite@4.1.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@threlte/core': 5.0.9
@@ -77,6 +78,7 @@ devDependencies:
   animejs: 3.2.1
   atropos: 1.0.2
   autoprefixer: 10.4.14_postcss@8.4.21
+  browserslist-to-esbuild: 1.2.0
   cssnano: 5.1.15_postcss@8.4.21
   daisyui: 2.51.3_j7yt3jd32cwenjqavrrga47yr4
   detect-gpu: 5.0.14
@@ -496,8 +498,8 @@ packages:
     resolution: {integrity: sha512-tlqDJYNK0aSydj9aYC+N+Dcav8EeIvmAlOLoODh+BMVGPSQN8iJJXc67PZegMyIld0xZ905IIv+dztH6kcccFw==}
     dev: true
 
-  /@sveltejs/adapter-vercel/2.3.1_@sveltejs+kit@1.11.0:
-    resolution: {integrity: sha512-EanZoRgqaZw4EaT3yGbkUtswYW3cQFVL/7aRunbiZ86mmDEyn6liuYNpmMCiqhgnz6hwhfJErpR7p8l71zcKRA==}
+  /@sveltejs/adapter-vercel/2.0.2_@sveltejs+kit@1.11.0:
+    resolution: {integrity: sha512-Mn80jy3rPNWB9iBp93MHXWwOh1qyxNzMNal0Dd80rD3As5Qi5L3lGhr1cIZ3T3Y3giwAVxzjMiHEflaUb8sjqg==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
@@ -1105,6 +1107,13 @@ packages:
 
   /browser-cookies/1.2.0:
     resolution: {integrity: sha512-cg2WuoOJo+F+g2XjEaP8nmeRp1vDHjt7sqpKJMsTNXKrpyIBNVslYJeehvs6FEddj8usV2+qyRSBEX244yN5/g==}
+    dev: true
+
+  /browserslist-to-esbuild/1.2.0:
+    resolution: {integrity: sha512-ftrrbI/VHBgEnmnSyhkqvQVMp6jAKybfs0qMIlm7SLBrQTGMsdCIP4q3BoKeLsZTBQllIQtY9kbxgRYV2WU47g==}
+    engines: {node: '>=12'}
+    dependencies:
+      browserslist: 4.21.5
     dev: true
 
   /browserslist/4.21.5:

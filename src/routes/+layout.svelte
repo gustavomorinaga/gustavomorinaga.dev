@@ -3,15 +3,7 @@
 	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
-	import {
-		Analytics,
-		Background,
-		Footer,
-		Icon,
-		PageTransition,
-		Preload,
-		ScrollTop
-	} from '$lib/components';
+	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { DRAWER, GPU, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
@@ -159,12 +151,16 @@
 
 <Footer />
 
-<ScrollTop />
-
-{#if showContent && data.playlist.meta.pagination.pageCount}
-	{#await import('$lib/components/player') then { Player }}
-		<Player playlist={data.playlist.data} />
+{#if showContent}
+	{#await import('$lib/components/scroll-top') then { ScrollTop }}
+		<ScrollTop />
 	{/await}
+
+	{#if data.playlist.meta.pagination.pageCount}
+		{#await import('$lib/components/player') then { Player }}
+			<Player playlist={data.playlist.data} />
+		{/await}
+	{/if}
 {/if}
 
 <style lang="scss" global>
