@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.2](https://github.com/gustavomorinaga/portfolio/compare/v0.7.1...v0.7.2) (2023-03-11)
+
+
+### Features
+
+* sitemap generator ([2c1b291](https://github.com/gustavomorinaga/portfolio/commit/2c1b2914af8df81f14424104f9411cec5eba28b4))
+
 ### [0.7.1](https://github.com/gustavomorinaga/portfolio/compare/v0.7.0...v0.7.1) (2023-03-10)
 
 
