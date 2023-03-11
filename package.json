@@ -19,7 +19,8 @@
 		"release-as-minor": "pnpm run release --release-as minor",
 		"release-as-patch": "pnpm run release --release-as patch",
 		"push-release": "git push --follow-tags origin main",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"postbuild": "npx svelte-sitemap --out-dir .vercel/output/static --domain https://gustavomorinaga.dev"
 	},
 	"devDependencies": {
 		"@iconify/svelte": "3.1.0",
@@ -44,7 +45,7 @@
 		"animejs": "3.2.1",
 		"atropos": "1.0.2",
 		"autoprefixer": "10.4.14",
-		"browserslist-to-esbuild": "^1.2.0",
+		"browserslist-to-esbuild": "1.2.0",
 		"cssnano": "5.1.15",
 		"daisyui": "2.51.3",
 		"detect-gpu": "5.0.14",
@@ -65,6 +66,7 @@
 		"svelte-portal": "2.2.0",
 		"svelte-preprocess": "5.0.1",
 		"svelte-sequential-preprocessor": "1.0.0",
+		"svelte-sitemap": "2.6.0",
 		"swiper": "9.1.0",
 		"tailwind-scrollbar": "2.1.0",
 		"tailwindcss": "3.2.7",
