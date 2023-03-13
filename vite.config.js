@@ -1,11 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import viteCompression from 'vite-plugin-compression';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
-import topLevelAwait from 'vite-plugin-top-level-await';
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit(), topLevelAwait(), viteCompression({ algorithm: 'brotliCompress' })],
+	plugins: [sveltekit(), viteCompression({ algorithm: 'brotliCompress' })],
 	ssr: {
 		noExternal: ['three', 'troika-three-text']
 	},
