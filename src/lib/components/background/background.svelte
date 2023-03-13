@@ -10,10 +10,7 @@
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
 
-	$: isThree = $GPU.isThree;
-	$: isMobile = $GPU.isMobile;
-	$: isLowEnd = $GPU.isLowEnd;
-	$: loading = !isLowEnd && !finished;
+	$: loading = !$GPU.isLowEnd && !finished;
 	$: if (browser) {
 		containerElement && containerElement.classList.toggle('scrollbar--show', finished);
 	}
@@ -28,10 +25,10 @@
 <div
 	class="background__container"
 	class:read__mode={readMode}
-	class:plain={!isThree}
+	class:plain={!$GPU.isThree}
 	style="--universe: url({IMAGES_WEBP.universe});"
 >
-	{#if isThree}
+	{#if $GPU.isThree}
 		{#await Promise.all( [import('@threlte/core'), import('./synthwave')] ) then [{ Canvas }, { Synthwave }]}
 			<Canvas>
 				<Synthwave bind:finished />

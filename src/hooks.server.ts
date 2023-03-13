@@ -1,9 +1,8 @@
 import { building } from '$app/environment';
-import { minify } from 'html-minifier';
+import { minify, type Options } from 'html-minifier';
 import type { Handle } from '@sveltejs/kit';
-import type { Options } from 'html-minifier';
 
-const minificationOptions = {
+const MINIFICATION_CONFIG = {
 	collapseBooleanAttributes: true,
 	collapseWhitespace: true,
 	conservativeCollapse: true,
@@ -32,7 +31,7 @@ export const handle = (async ({ resolve, event }) => {
 		transformPageChunk: ({ html, done }) => {
 			page += html;
 
-			if (done) return building ? minify(page, minificationOptions) : page;
+			if (done) return building ? minify(page, MINIFICATION_CONFIG) : page;
 		}
 	});
 
