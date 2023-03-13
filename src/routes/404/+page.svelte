@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 
 	import { IMAGES_SVG } from '$lib/images';
 </script>
 
-<Metadata title={$page.error?.message} description={$LANG.error.paragraph} />
+<Metadata title="Not found" description={$LANG.error.paragraph} />
 
 <section class="hero">
 	<div class="hero-content gap-8">
@@ -14,7 +13,7 @@
 			<div class="window" style="--low-poly-grid: url({IMAGES_SVG.bgLowPolyGrid})">
 				<span class="window__content">
 					<Icon icon="alert-octagon" size="xl" />
-					{$page.status}: {$page.error?.message}
+					404: Not found
 				</span>
 			</div>
 		</div>
