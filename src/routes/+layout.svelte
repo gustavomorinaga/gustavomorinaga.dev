@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.scss';
 	import { PUBLIC_DOMAIN } from '$env/static/public';
+	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
@@ -19,6 +20,7 @@
 
 	$: showContent = $GPU.isThree ? finished : true;
 	$: readMode = ['/blog'].includes(data.pathname);
+	$: isMobile = browser && window.matchMedia('(max-width: 640px)').matches;
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -57,9 +59,8 @@
 		}
 	] satisfies IRoute[];
 
-	const handleIsMobile = () => window.matchMedia('(max-width: 640px)').matches;
 	const handleResize = () => {
-		showDrawer = handleIsMobile();
+		showDrawer = isMobile;
 
 		!showDrawer && DRAWER.set(false);
 	};
@@ -73,7 +74,7 @@
 
 		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 
-		showDrawer = handleIsMobile();
+		showDrawer = isMobile;
 	});
 </script>
 

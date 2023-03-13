@@ -236,7 +236,7 @@
 								@apply justify-end;
 
 								& > a {
-									@apply btn btn-outline btn-sm gap-1 border-primary text-primary hover:btn-primary;
+									@apply btn btn-outline btn-sm gap-1 border-primary text-primary lg:hover:btn-primary;
 								}
 							}
 						}

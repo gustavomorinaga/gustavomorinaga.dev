@@ -290,11 +290,7 @@
 						on:click={handlePlay}
 					>
 						{#if !isLoading}
-							{#if paused}
-								<Icon icon="player-play" />
-							{:else}
-								<Icon icon="player-pause" />
-							{/if}
+							<Icon icon={paused ? 'player-play' : 'player-pause'} />
 						{/if}
 					</button>
 
@@ -459,9 +455,11 @@
 			& .info {
 				@apply hidden sm:flex w-48;
 
-				&:hover {
-					& .artwork__overlay {
-						@apply opacity-100;
+				@media (hover: hover) {
+					&:hover {
+						& .artwork__overlay {
+							@apply opacity-100;
+						}
 					}
 				}
 
@@ -575,9 +573,11 @@
 					border-bottom-width: 1px;
 				}
 
-				&:hover {
-					& .artwork__overlay {
-						@apply opacity-100;
+				@media (hover: hover) {
+					&:hover {
+						& .artwork__overlay {
+							@apply opacity-100;
+						}
 					}
 				}
 
@@ -601,7 +601,7 @@
 	}
 
 	.btn__player {
-		@apply fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md hover:before:text-primary-focus;
+		@apply fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
 
 		&::before {
 			content: '';

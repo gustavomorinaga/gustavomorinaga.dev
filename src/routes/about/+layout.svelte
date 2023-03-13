@@ -183,7 +183,7 @@
 				@apply flex gap-4;
 
 				& > a {
-					@apply btn shadow-md shadow-black hover:shadow-lg;
+					@apply btn shadow-md shadow-black lg:hover:shadow-lg;
 
 					&.cta {
 						@apply flex-grow btn-primary gap-2;

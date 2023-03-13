@@ -394,6 +394,14 @@
 				"collection": "simple-icons",
 				"color": "#FFFFFF",
 				"category": "tool"
+			},
+			{
+				"title": "Jira",
+				"url": "https://www.atlassian.com/software/jira",
+				"icon": "jirasoftware",
+				"collection": "simple-icons",
+				"color": "#0052CC",
+				"category": "tool"
 			}
 		]
 	}

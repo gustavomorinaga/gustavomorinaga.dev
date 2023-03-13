@@ -21,14 +21,6 @@
 		IMAGES_WEBP.metalness
 	]);
 
-	const [rgbFX, gammaFX, vignetteFX, filmFX, glitchFX] = [
-		new ShaderPass(RGBShiftShader),
-		new ShaderPass(GammaCorrectionShader),
-		new ShaderPass(VignetteShader),
-		new FilmPass(0.35, 0.025, 648, 0),
-		new GlitchPass(0.5)
-	];
-
 	let zPositions = [0.15, -1.85];
 	let clock = new Clock();
 	let geometry = new PlaneGeometry(1, 2, 24, 24);
@@ -40,6 +32,14 @@
 		metalness: 0.75,
 		roughness: 0.5
 	});
+
+	const [rgbFX, gammaFX, vignetteFX, filmFX, glitchFX] = [
+		new ShaderPass(RGBShiftShader),
+		new ShaderPass(GammaCorrectionShader),
+		new ShaderPass(VignetteShader),
+		new FilmPass(0.35, 0.025, 648, 0),
+		new GlitchPass(0.5)
+	];
 
 	rgbFX.uniforms['amount'].value = 0.001;
 	vignetteFX.uniforms['offset'].value = 1.5;

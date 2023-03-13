@@ -182,7 +182,7 @@
 					@apply relative hidden sm:flex;
 
 					& > a {
-						@apply relative py-6 px-4 font-futuristic text-white shadow-red-500/50 transition-all ease-in hover:text-red-500 hover:text-shadow-glow;
+						@apply relative py-6 px-4 font-futuristic text-white shadow-red-500/50 transition-all ease-in lg:hover:text-red-500 lg:hover:text-shadow-glow;
 
 						&::before {
 							content: '';
@@ -216,7 +216,7 @@
 								@apply tooltip tooltip-bottom;
 
 								& a {
-									@apply btn btn-link btn-sm hover:-translate-y-1 transition-transform duration-300 ease-out;
+									@apply btn btn-link btn-sm lg:hover:-translate-y-1 transition-transform duration-300 ease-out;
 								}
 							}
 						}

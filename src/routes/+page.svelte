@@ -308,7 +308,7 @@
 							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
 
 							& .btn__social {
-								@apply btn-block md:w-36 shadow-md shadow-black hover:shadow-lg;
+								@apply btn-block md:w-36 shadow-md shadow-black lg:hover:shadow-lg;
 							}
 						}
 
@@ -322,7 +322,7 @@
 					}
 
 					& .btn__social {
-						@apply btn btn-primary gap-2 hover:-translate-y-1;
+						@apply btn btn-primary gap-2 lg:hover:-translate-y-1;
 					}
 				}
 			}
@@ -331,12 +331,14 @@
 
 	.mobile__profile,
 	.atropos__profile {
-		&:hover {
-			& .profile {
-				@apply grayscale-0;
+		@media (hover: hover) {
+			&:hover {
+				& .profile {
+					@apply grayscale-0;
 
-				&:after {
-					@apply animate-glitch opacity-50;
+					&:after {
+						@apply animate-glitch opacity-50;
+					}
 				}
 			}
 		}
@@ -379,19 +381,21 @@
 			display: block !important;
 		}
 
-		&:hover {
-			& .popup {
-				@apply before:animate-spin-background before:shadow-lg animate-none;
+		@media (hover: hover) {
+			&:hover {
+				& .popup {
+					@apply before:animate-spin-background before:shadow-lg animate-none;
 
-				& .popup__content {
-					& .skill {
-						@apply max-w-fit ml-1 opacity-100;
+					& .popup__content {
+						& .skill {
+							@apply max-w-fit ml-1 opacity-100;
+						}
 					}
 				}
-			}
 
-			& .atropos-shadow {
-				opacity: 0.25 !important;
+				& .atropos-shadow {
+					opacity: 0.25 !important;
+				}
 			}
 		}
 
@@ -432,7 +436,7 @@
 			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
 
 			& > figure {
-				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat hover:after:max-h-full hover:after:border-b-2 hover:after:border-primary;
+				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
 				background-image: var(--profile);
 
 				&::before {
@@ -474,9 +478,11 @@
 					& .cta {
 						@apply btn btn-primary btn-block md:btn-wide;
 
-						&:hover {
-							& .icon {
-								@apply translate-x-1;
+						@media (hover: hover) {
+							&:hover {
+								& .icon {
+									@apply translate-x-1;
+								}
 							}
 						}
 
@@ -505,15 +511,17 @@
 			}
 
 			& .knowledge {
-				@apply grid place-items-center w-full h-full text-zinc-400 hover:text-[var(--icon-color)] drop-shadow-lg hover:scale-110 grayscale hover:grayscale-0 ease-smooth;
+				@apply grid place-items-center w-full h-full text-zinc-400 lg:hover:text-[var(--icon-color)] drop-shadow-lg lg:hover:scale-110 grayscale lg:hover:grayscale-0 ease-smooth;
 				transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
 
-				&:hover {
-					@apply z-10;
+				@media (hover: hover) {
+					&:hover {
+						@apply z-10;
 
-					& .icon {
-						&::before {
-							@apply opacity-5;
+						& .icon {
+							&::before {
+								@apply opacity-5;
+							}
 						}
 					}
 				}
@@ -531,9 +539,11 @@
 			& .cta {
 				@apply btn btn-primary w-4/5 md:btn-wide mt-8;
 
-				&:hover {
-					& .icon {
-						@apply translate-x-1;
+				@media (hover: hover) {
+					&:hover {
+						& .icon {
+							@apply translate-x-1;
+						}
 					}
 				}
 
@@ -561,7 +571,7 @@
 					@apply transform-none;
 
 					& .service {
-						@apply card card-bordered bg-base-100/50 hover:border-primary backdrop-blur-md shadow-lg shadow-black hover:shadow-glow hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered bg-base-100/50 lg:hover:border-primary backdrop-blur-md shadow-lg shadow-black lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 
@@ -580,7 +590,7 @@
 						}
 					}
 
-					@media (min-width: 640px) {
+					@media (min-width: 640px) and (hover: hover) {
 						&:hover .service {
 							@apply z-20;
 							transform: perspective(var(--perspective)) rotateY(var(--rotate-y-hover))
@@ -589,36 +599,36 @@
 
 						&:nth-child(1) .service {
 							--rotate-y: 3deg;
-							--rotate-y-hover: 1deg;
+							--rotate-y-lg:hover: 1deg;
 							--translate-x: 0.75rem;
-							--translate-x-hover: 0.25rem;
+							--translate-x-lg:hover: 0.25rem;
 							--scale: 1.025;
 
 							transform-origin: left bottom;
 						}
 						&:nth-child(2) .service {
 							--rotate-y: -3deg;
-							--rotate-y-hover: -1deg;
+							--rotate-y-lg:hover: -1deg;
 							--translate-x: -0.75rem;
-							--translate-x-hover: -0.25rem;
+							--translate-x-lg:hover: -0.25rem;
 							--scale: 1.025;
 
 							transform-origin: right bottom;
 						}
 						&:nth-child(3) .service {
 							--rotate-y: 3deg;
-							--rotate-y-hover: 1deg;
+							--rotate-y-lg:hover: 1deg;
 							--translate-x: 0.75rem;
-							--translate-x-hover: 0.25rem;
+							--translate-x-lg:hover: 0.25rem;
 							--scale: 1.025;
 
 							transform-origin: left top;
 						}
 						&:nth-child(4) .service {
 							--rotate-y: -3deg;
-							--rotate-y-hover: -1deg;
+							--rotate-y-lg:hover: -1deg;
 							--translate-x: -0.75rem;
-							--translate-x-hover: -0.25rem;
+							--translate-x-lg:hover: -0.25rem;
 							--scale: 1.025;
 
 							transform-origin: right top;
@@ -649,7 +659,7 @@
 		& #services {
 			& .services__list {
 				& .service {
-					@apply transform-none hover:transform-none;
+					@apply transform-none lg:hover:transform-none;
 				}
 			}
 		}

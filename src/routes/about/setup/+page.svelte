@@ -113,7 +113,7 @@
 	<h1>{$LANG.about.setup.title}</h1>
 
 	<ul class="setup__list">
-		{#each setup as component, index}
+		{#each setup as component}
 			<li>
 				<a
 					class="component"
@@ -154,11 +154,13 @@
 			& .component {
 				@apply card card-side card-compact card-bordered h-full bg-base-100/50 shadow-lg shadow-black backdrop-blur-md transition duration-700 ease-smooth;
 
-				&:hover {
-					@apply no-underline border-primary shadow-glow shadow-primary/10;
+				@media (hover: hover) {
+					&:hover {
+						@apply no-underline border-primary shadow-glow shadow-primary/10;
 
-					& .external {
-						@apply opacity-100;
+						& .external {
+							@apply opacity-100;
+						}
 					}
 				}
 

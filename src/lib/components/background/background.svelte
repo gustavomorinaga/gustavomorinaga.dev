@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { CubeLoader } from '$lib/components';
 	import { GPU } from '$lib/stores';
@@ -16,12 +15,8 @@
 	$: isLowEnd = $GPU.isLowEnd;
 	$: loading = !isLowEnd && !finished;
 	$: if (browser) {
-		if (containerElement && finished) containerElement.classList.add('scrollbar--show');
+		containerElement && containerElement.classList.toggle('scrollbar--show', finished);
 	}
-
-	onMount(() => {
-		finished = isMobile || isLowEnd;
-	});
 </script>
 
 {#if loading}

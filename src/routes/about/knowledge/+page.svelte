@@ -3,6 +3,27 @@
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
 
+	$: knowledges = [
+		{ title: $LANG.about.knowledge.languages, knowledge: getKnowledge('techs', 'language') },
+		{ title: $LANG.about.knowledge.runtime, knowledge: getKnowledge('techs', 'runtime') },
+		{ title: $LANG.about.knowledge.libs, knowledge: getKnowledge('techs', 'lib') },
+		{ title: $LANG.about.knowledge.frameworks, knowledge: getKnowledge('techs', 'framework') },
+		{ title: $LANG.about.knowledge.databases, knowledge: getKnowledge('techs', 'database') },
+		{
+			title: $LANG.about.knowledge.versionControl,
+			knowledge: getKnowledge('tools', 'version-control')
+		},
+		{
+			title: $LANG.about.knowledge.packageManagers,
+			knowledge: getKnowledge('tools', 'package-manager')
+		},
+		{ title: $LANG.about.knowledge.platforms, knowledge: getKnowledge('tools', 'platform') },
+		{ title: $LANG.about.knowledge.plugins, knowledge: getKnowledge('tools', 'plugin') },
+		{ title: $LANG.about.knowledge.bundlers, knowledge: getKnowledge('tools', 'bundler') },
+		{ title: $LANG.about.knowledge.compilers, knowledge: getKnowledge('tools', 'compiler') },
+		{ title: $LANG.about.knowledge.tools, knowledge: getKnowledge('tools', 'tool') }
+	];
+
 	const getKnowledge = (section: 'techs' | 'tools', category: string) =>
 		profileJSON.knowledge[section].filter(t => t.category === category);
 </script>
@@ -16,173 +37,21 @@
 	<h1>{$LANG.about.knowledge.title}</h1>
 
 	<div class="knowledge__content">
-		<article>
-			<h3>{$LANG.about.knowledge.languages}</h3>
+		{#each knowledges as { title, knowledge }}
+			<article>
+				<h3>{title}</h3>
 
-			<ul>
-				{#each getKnowledge('techs', 'language') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.runtime}</h3>
-
-			<ul>
-				{#each getKnowledge('techs', 'runtime') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.libs}</h3>
-
-			<ul>
-				{#each getKnowledge('techs', 'lib') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.frameworks}</h3>
-
-			<ul>
-				{#each getKnowledge('techs', 'framework') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.databases}</h3>
-
-			<ul>
-				{#each getKnowledge('techs', 'database') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.versionControl}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'version-control') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.packageManagers}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'package-manager') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.platforms}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'platform') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.plugins}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'plugin') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.bundlers}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'bundler') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.compilers}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'compiler') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
-
-		<article>
-			<h3>{$LANG.about.knowledge.tools}</h3>
-
-			<ul>
-				{#each getKnowledge('tools', 'tool') as { icon, collection, title, url, color }}
-					<li data-tip={title} style="--icon-color: {color}">
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							<Icon {icon} {collection} size="lg" />
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</article>
+				<ul>
+					{#each knowledge as { icon, collection, title, url, color }}
+						<li data-tip={title} style="--icon-color: {color}">
+							<a href={url} target="_blank" rel="noopener noreferrer">
+								<Icon {icon} {collection} size="lg" />
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</article>
+		{/each}
 	</div>
 </article>
 
@@ -206,7 +75,7 @@
 					@apply flex flex-wrap gap-8;
 
 					& li {
-						@apply tooltip tooltip-bottom hover:text-[var(--icon-color)] transition-colors duration-700 ease-smooth;
+						@apply tooltip tooltip-bottom lg:hover:text-[var(--icon-color)] transition-colors duration-700 ease-smooth;
 					}
 				}
 			}
