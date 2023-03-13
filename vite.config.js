@@ -11,6 +11,11 @@ const config = {
 	build: {
 		target: browserslistToEsbuild()
 	},
+	esbuild: {
+		supported: {
+			'top-level-await': true
+		}
+	},
 	define: {
 		'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
 	},
