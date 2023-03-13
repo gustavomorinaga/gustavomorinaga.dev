@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/gustavomorinaga/portfolio/compare/v0.7.2...v0.7.3) (2023-03-13)
+
+
+### Bug Fixes
+
+* hover on mobile and redirect to 404 custom page ([1883cd0](https://github.com/gustavomorinaga/portfolio/commit/1883cd0f6d18b9a00ce092c1d045aeaad5999175))
+
 ### [0.7.2](https://github.com/gustavomorinaga/portfolio/compare/v0.7.1...v0.7.2) (2023-03-11)
 
 
