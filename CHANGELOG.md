@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/gustavomorinaga/portfolio/compare/v0.7.3...v0.7.4) (2023-03-13)
+
+
+### Bug Fixes
+
+* 404 page text content ([83228ae](https://github.com/gustavomorinaga/portfolio/commit/83228aec5ec75d0202dcd2795a31f17b608d69b2))
+* headers in vercel config ([0383a35](https://github.com/gustavomorinaga/portfolio/commit/0383a3568bbd586cf921cf155023756ef6cd81d7))
+* redirect to sveltekit error handling ([48c5cf2](https://github.com/gustavomorinaga/portfolio/commit/48c5cf228e02ab34f340a5f7e705b1e34afe11e4))
+* removing handle system on vercel config ([97daf18](https://github.com/gustavomorinaga/portfolio/commit/97daf18c295fd41ffa6595102f6c57bb08464d71))
+* removing status code on vercel rewrite config ([9005890](https://github.com/gustavomorinaga/portfolio/commit/9005890a99dc13ce4bef40e24e5ce428d2d45b1a))
+* removing vercel config ([40940ce](https://github.com/gustavomorinaga/portfolio/commit/40940ce97538caff679a99ce13599dd3935b589e))
+* testing 404 destination on vercel ([500ba74](https://github.com/gustavomorinaga/portfolio/commit/500ba7431634ce53152e97735e3d2b1f275c16bf))
+* testing if 404 error handle in +error ([1067192](https://github.com/gustavomorinaga/portfolio/commit/106719239dcb45a1dc8b39afc0c352e69ddbaf37))
+* testing rewrite method for 404 page ([3185632](https://github.com/gustavomorinaga/portfolio/commit/318563258f43bc7165e3da1c5827746edaba5136))
+* testing vercel route for 404 ([e2b4a4f](https://github.com/gustavomorinaga/portfolio/commit/e2b4a4f23bd8434f41eec12704a47c75a9810d6c))
+* top level await vite config ([40adef3](https://github.com/gustavomorinaga/portfolio/commit/40adef346f18c648550716b6860bd5106a0cfcd2))
+
 ### [0.7.3](https://github.com/gustavomorinaga/portfolio/compare/v0.7.2...v0.7.3) (2023-03-13)
 
 
