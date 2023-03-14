@@ -99,8 +99,8 @@ export const en: ILang = {
 			age: 'years old',
 			occupation:
 				'Full-Stack Developer at <a href="https://advtecnologia.com.br" target="_blank" rel="noopener noreferrer"> @ADV Tecnologia </a>',
-			home: 'Live in São Roque, SP, Brasil',
-			homeland: 'From Isesaki, Gunma, Japão'
+			home: 'Live in São Roque, SP, Brazil',
+			homeland: 'From Isesaki, Gunma, Japan'
 		},
 		facts: {
 			title: 'Random Facts',

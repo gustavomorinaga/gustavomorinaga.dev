@@ -5,7 +5,7 @@
 	import { Carousel, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
-	import { animateOnScroll, scrollIntoView } from '$lib/utils';
+	import { animateOnScroll, scrollIntoView, speakText } from '$lib/utils';
 	import { intersect } from '@svelte-put/intersect';
 	import Atropos from 'atropos/svelte';
 
@@ -39,6 +39,8 @@
 			alt: $LANG.home.services.cardMotion.alt
 		}
 	];
+
+	const handleSpeech = () => speakText('Gustavo Morinaga', 'pt-BR');
 </script>
 
 <Metadata />
@@ -94,7 +96,15 @@
 
 			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
 				{$LANG.home.blurb.title}
-				<span class="name">Gustavo Morinaga</span>
+				<span class="name">
+					Gustavo Morinaga
+
+					{#if $LANG.code === 'en'}
+						<button class="btn__pronounce" on:click={handleSpeech}>
+							<Icon icon="volume" size="sm" />
+						</button>
+					{/if}
+				</span>
 			</h1>
 
 			<p in:fly={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
@@ -290,7 +300,11 @@
 					@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
 
 					& .name {
-						@apply underline underline-offset-[7px];
+						@apply relative w-fit pr-12 underline underline-offset-[7px];
+
+						& .btn__pronounce {
+							@apply absolute top-0 right-0 btn btn-outline btn-circle btn-sm w-8 p-0 text-primary border-primary hover:btn-primary;
+						}
 					}
 				}
 
@@ -659,7 +673,7 @@
 		& #services {
 			& .services__list {
 				& .service {
-					@apply transform-none lg:hover:transform-none;
+					@apply duration-1000;
 				}
 			}
 		}

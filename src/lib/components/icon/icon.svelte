@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade, type TransitionConfig } from 'svelte/transition';
-	import { cubicIn } from 'svelte/easing';
+	import { expoOut } from 'svelte/easing';
 	import Icon from '@iconify/svelte';
 	import type { IIcon } from '$lib/types';
 
@@ -14,8 +14,8 @@
 	export let animate = false;
 	export let motionConfig: TransitionConfig & { fn: unknown } = {
 		fn: fade,
-		duration: 300,
-		easing: cubicIn
+		duration: 150,
+		easing: expoOut
 	};
 
 	const motion = (node: Element, options: any) => animate && options.fn(node, options);

@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { prefersReducedMotion } from './reduced-motion';
-import anime from 'animejs';
+import anime, { type AnimeParams } from 'animejs';
 import type { IntersectDetail } from '@svelte-put/intersect';
 
 export const containerElement = browser
@@ -32,19 +32,22 @@ export const scrollIntoView = (event: Event) => {
 
 	return anime({
 		targets: containerElement,
-		scrollTop: element.offsetTop + (header.offsetHeight || 0),
 		duration: prefersReducedMotion ? 500 : 1000,
-		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
+		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart',
+		scrollTop: element.offsetTop + (header.offsetHeight || 0)
 	});
 };
 
-export const scrollToTop = () => {
+export const scrollToTop = (event?: { static?: boolean }) => {
 	if (!browser) return;
 
-	return anime({
+	let animeParams: AnimeParams = {
 		targets: containerElement,
 		scrollTop: 0,
 		duration: prefersReducedMotion ? 500 : 1000,
 		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart'
-	});
+	};
+	if (event && event.static) animeParams = { ...animeParams, duration: 0, easing: 'linear' };
+
+	return anime(animeParams);
 };

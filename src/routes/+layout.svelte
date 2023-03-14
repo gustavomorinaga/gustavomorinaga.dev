@@ -58,6 +58,7 @@
 			special: true
 		}
 	] satisfies IRoute[];
+	$: trigger = data.pathname.split('/').slice(1).shift()?.replace('', '/');
 
 	const handleResize = () => {
 		showDrawer = isMobile;
@@ -145,7 +146,7 @@
 {/if}
 
 <main>
-	<PageTransition trigger={`${data.pathname.split('/').slice(1).shift()}`}>
+	<PageTransition isMain {trigger}>
 		<slot />
 	</PageTransition>
 </main>
