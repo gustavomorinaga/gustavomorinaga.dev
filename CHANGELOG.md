@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.5](https://github.com/gustavomorinaga/portfolio/compare/v0.7.4...v0.7.5) (2023-03-14)
+
+
+### Bug Fixes
+
+* removing top level await plugin ([9736799](https://github.com/gustavomorinaga/portfolio/commit/9736799d12946878028ecf93953b40c74ea5ce87))
+* top level await browser support ([e6817dc](https://github.com/gustavomorinaga/portfolio/commit/e6817dca38646881626774f17bedc220d93bd540))
+
+
+### Improvements
+
+* noscroll page transition and name pronounce ([fce2797](https://github.com/gustavomorinaga/portfolio/commit/fce2797f89cdb5f03f3caae11ce31637bd294695))
+
 ### [0.7.4](https://github.com/gustavomorinaga/portfolio/compare/v0.7.3...v0.7.4) (2023-03-13)
 
 
