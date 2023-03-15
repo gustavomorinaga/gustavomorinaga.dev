@@ -223,7 +223,7 @@
 			out:fly={{ duration: 1000, y: 100, easing: expoOut }}
 		>
 			<div class="player__wrapper">
-				<div class="progress__wrapper" class:is__loading={isLoading}>
+				<div class="progress__wrapper" class:refreshing={isLoading}>
 					<input
 						class="progress__bar"
 						type="range"
@@ -247,7 +247,7 @@
 							/>
 
 							<div class="artwork__overlay">
-								<Icon icon="external-link" />
+								<Icon icon="brand-soundcloud" />
 							</div>
 						</figure>
 
@@ -403,10 +403,38 @@
 		</div>
 	</Portal>
 {:else}
+	<div id="miniplayer" in:fade={{ duration: 300, easing: cubicOut }} out:fade={{ duration: 100 }}>
+		<figure class="artwork">
+			<img
+				src={HOST + currentTrack.cover.formats.thumbnail.url}
+				alt={currentTrack.title}
+				width="56"
+				height="56"
+				loading="lazy"
+			/>
+		</figure>
+
+		<div class="overlay" class:show={isLoading}>
+			<button
+				class="btn__bar"
+				class:loading={isLoading}
+				title={$LANG.player.show}
+				aria-label={$LANG.player.show}
+				on:click={handleShowPlayer}
+			>
+				{#if !isLoading}
+					<Icon icon="window-minimize" />
+				{/if}
+			</button>
+		</div>
+
+		<span class="progress__bar" style="width: {$currentProgress}%;" />
+	</div>
+
 	<button
 		class="btn__player"
 		class:playing={!paused}
-		class:is__loading={isLoading}
+		class:refreshing={isLoading}
 		title={$LANG.player.show}
 		aria-label={$LANG.player.show}
 		on:click={handleShowPlayer}
@@ -427,7 +455,7 @@
 			& .progress__wrapper {
 				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
 
-				&:not(.is__loading):hover {
+				&:not(.refreshing):hover {
 					@apply -top-[0.40rem];
 
 					& .progress__bar {
@@ -439,7 +467,7 @@
 					}
 				}
 
-				&.is__loading {
+				&.refreshing {
 					@apply opacity-50 pointer-events-none;
 				}
 
@@ -600,8 +628,46 @@
 		}
 	}
 
+	#miniplayer {
+		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 overflow-hidden rounded-sm bg-base-100 border border-base-200 shadow-lg shadow-black;
+
+		&:hover {
+			& .overlay {
+				@apply opacity-100;
+			}
+
+			& .progress__bar {
+				@apply opacity-0;
+			}
+		}
+
+		& .artwork {
+			@apply relative aspect-square overflow-hidden;
+		}
+
+		& .overlay {
+			@apply absolute inset-0 grid place-items-center bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-out;
+
+			&.show {
+				@apply opacity-100;
+			}
+
+			& .btn__bar {
+				@apply btn btn-square btn-ghost grid place-items-center w-full h-full hover:bg-transparent hover:border-transparent;
+
+				&::before {
+					margin: 0 !important;
+				}
+			}
+		}
+
+		& .progress__bar {
+			@apply absolute left-0 right-0 bottom-0 block h-px bg-primary transition-opacity duration-300 ease-out;
+		}
+	}
+
 	.btn__player {
-		@apply fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
+		@apply inline-flex md:hidden fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
 
 		&::before {
 			content: '';
@@ -617,7 +683,7 @@
 		&.playing {
 			@apply before:opacity-100;
 
-			&.is__loading {
+			&.refreshing {
 				@apply before:opacity-0;
 			}
 		}

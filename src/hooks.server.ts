@@ -26,7 +26,7 @@ const PRELOAD = ['font', 'css', 'js', 'asset'];
 export const handle = (async ({ resolve, event }) => {
 	let page = '';
 
-	const response = await resolve(event, {
+	return await resolve(event, {
 		preload: ({ type }) => PRELOAD.includes(type),
 		transformPageChunk: ({ html, done }) => {
 			page += html;
@@ -34,6 +34,4 @@ export const handle = (async ({ resolve, event }) => {
 			if (done) return building ? minify(page, MINIFICATION_CONFIG) : page;
 		}
 	});
-
-	return response;
 }) satisfies Handle;
