@@ -7,7 +7,6 @@
 	import { profileJSON } from '$lib/databases';
 	import { DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
-	import { inlineSvg } from '@svelte-put/inline-svg';
 	import type { IRoute } from '$lib/types';
 
 	import { IMAGES_SVG } from '$lib/images';
@@ -69,8 +68,8 @@
 			</button>
 
 			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
-				<svg id="logo" use:inlineSvg={IMAGES_SVG.logoTitle} />
-				<svg id="slogan" use:inlineSvg={IMAGES_SVG.logoSlogan} />
+				<img id="logo" src={IMAGES_SVG.logoTitle} alt="Logotype" />
+				<img id="slogan" src={IMAGES_SVG.logoSlogan} alt="Slogan" />
 			</a>
 
 			<nav>
@@ -207,7 +206,7 @@
 					@apply hidden md:block z-50;
 
 					& .dropdown-content {
-						@apply translate-x-14;
+						@apply translate-x-20;
 
 						& ul {
 							@apply card card-side card-bordered mt-8 p-2 bg-base-100 shadow-lg shadow-black;

@@ -12,14 +12,19 @@
 	export let duration = 300;
 	export let easing = cubicInOut;
 
-	const handleBlur = () => (showContent = false);
+	const toggleShow = () => (showContent = !showContent);
 </script>
 
 <div {id} class="dropdown__wrapper">
-	<label class="btn__dropdown" class:active={showContent} {title} aria-label={label}>
-		<input type="checkbox" hidden aria-hidden="true" bind:checked={showContent} />
+	<button
+		class="dropdown__trigger"
+		class:active={showContent}
+		{title}
+		aria-label={label}
+		on:click|stopPropagation={toggleShow}
+	>
 		<slot name="trigger" />
-	</label>
+	</button>
 </div>
 
 {#if showContent}
@@ -28,8 +33,8 @@
 			id="{id}__content"
 			class="dropdown__content"
 			transition:effect={{ duration, easing }}
-			use:clickoutside
-			on:clickoutside={handleBlur}
+			use:clickoutside={{ enabled: showContent, options: { passive: true } }}
+			on:clickoutside={toggleShow}
 		>
 			<slot name="content" />
 		</div>

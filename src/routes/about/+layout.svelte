@@ -60,7 +60,9 @@
 					</li>
 					<li>
 						<Icon icon="briefcase" />
-						{@html $LANG.about.details.occupation}
+						<span>
+							{@html $LANG.about.details.occupation}
+						</span>
 					</li>
 					<li>
 						<Icon icon="home" />

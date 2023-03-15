@@ -98,7 +98,7 @@ export const en: ILang = {
 			title: 'Details',
 			age: 'years old',
 			occupation:
-				'Full-Stack Developer at <a href="https://advtecnologia.com.br" target="_blank" rel="noopener noreferrer"> @ADV Tecnologia </a>',
+				'Full-Stack Developer at <a href="https://advtecnologia.com.br" target="_blank" rel="noopener noreferrer">@ADV Tecnologia</a>',
 			home: 'Live in São Roque, SP, Brazil',
 			homeland: 'From Isesaki, Gunma, Japan'
 		},
@@ -197,6 +197,8 @@ export const en: ILang = {
 
 	player: {
 		show: 'Show player',
+
+		link: 'Open on SoundCloud',
 
 		shuffle: 'Shuffle',
 		prev: 'Previous',

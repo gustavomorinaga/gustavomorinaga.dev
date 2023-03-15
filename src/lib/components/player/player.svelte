@@ -235,7 +235,14 @@
 					/>
 				</div>
 
-				<a class="info" href={currentTrack.url} target="_blank" rel="noopener noreferrer">
+				<a
+					class="info"
+					href={currentTrack.url}
+					title={$LANG.player.link}
+					aria-label={$LANG.player.link}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<div class="info__wrapper">
 						<figure class="artwork">
 							<img
@@ -396,7 +403,7 @@
 						aria-label={$LANG.player.hide}
 						on:click={handleShowPlayer}
 					>
-						<Icon icon="chevron-down" size="sm" />
+						<Icon icon="caret-down" size="sm" />
 					</button>
 				</div>
 			</div>
@@ -579,7 +586,7 @@
 	}
 
 	#playlist {
-		& .btn__dropdown {
+		& .dropdown__trigger {
 			@apply btn btn-ghost btn-sm;
 
 			&.active {
@@ -629,7 +636,7 @@
 	}
 
 	#miniplayer {
-		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 overflow-hidden rounded-sm bg-base-100 border border-base-200 shadow-lg shadow-black;
+		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-sm bg-base-200 shadow-lg shadow-black;
 
 		&:hover {
 			& .overlay {
@@ -662,7 +669,7 @@
 		}
 
 		& .progress__bar {
-			@apply absolute left-0 right-0 bottom-0 h-px bg-primary transition-opacity duration-300 ease-out;
+			@apply absolute left-0 right-0 bottom-0 h-[2px] bg-primary transition-opacity duration-300 ease-out;
 		}
 	}
 

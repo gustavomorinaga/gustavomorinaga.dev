@@ -184,6 +184,8 @@ export interface ILang {
 	player: {
 		show: string;
 
+		link: string;
+
 		shuffle: string;
 		prev: string;
 		play: string;

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { LANG } from '$lib/stores';
-	import { inlineSvg } from '@svelte-put/inline-svg';
 
 	import { IMAGES_SVG } from '$lib/images';
 </script>
@@ -13,11 +12,11 @@
 			<span class="powered-by">
 				Powered by
 				<a class="w-16 mr-1" href="https://vercel.com" target="_blank" rel="noopener noreferrer">
-					<svg use:inlineSvg={IMAGES_SVG.logoVercel} width="64" height="14" />
+					<img src={IMAGES_SVG.logoVercel} width="64" height="14" alt="Vercel logotype" />
 				</a>
 				|
 				<a class="w-24" href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
-					<svg use:inlineSvg={IMAGES_SVG.logoSvelteKit} width="96" height="19" />
+					<img src={IMAGES_SVG.logoSvelteKit} width="96" height="19" alt="SvelteKit logotype" />
 				</a>
 			</span>
 		</div>
