@@ -118,6 +118,8 @@
 				<a
 					class="component"
 					href="https://google.com/search?q={component.description.split(' ').join('+')}"
+					title={$LANG.about.setup.link}
+					aria-label={$LANG.about.setup.link}
 					target="_blank"
 					rel="noopener noreferrer"
 				>

@@ -135,6 +135,8 @@ export interface ILang {
 				description: string;
 			};
 
+			link: string;
+
 			motherboard: string;
 			cpu: string;
 			ram: string;

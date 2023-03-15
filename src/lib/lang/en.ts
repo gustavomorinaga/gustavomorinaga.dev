@@ -148,6 +148,8 @@ export const en: ILang = {
 				description: 'Here I show the equipment I currently have for work and study.'
 			},
 
+			link: 'Search',
+
 			motherboard: 'Motherboard',
 			cpu: 'CPU',
 			ram: 'RAM',

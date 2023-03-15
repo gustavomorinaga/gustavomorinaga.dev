@@ -223,7 +223,7 @@
 				}
 
 				& .btn__lang {
-					@apply block rounded-full mx-4 border border-zinc-400;
+					@apply block rounded-full mx-4 md:mr-0 border border-zinc-400;
 				}
 			}
 		}

@@ -585,7 +585,7 @@
 					@apply transform-none;
 
 					& .service {
-						@apply card card-bordered bg-base-100/50 md:hover:border-primary backdrop-blur-md shadow-lg shadow-black lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered h-full bg-base-100/50 md:hover:border-primary backdrop-blur-md shadow-lg shadow-black lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 

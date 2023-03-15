@@ -149,6 +149,8 @@ export const pt: ILang = {
 				description: 'Aqui mostro o equipamento que eu tenho atualmente para trabalhar e estudar.'
 			},
 
+			link: 'Pesquisar',
+
 			motherboard: 'Placa-mãe',
 			cpu: 'CPU',
 			ram: 'RAM',
