@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.7](https://github.com/gustavomorinaga/portfolio/compare/v0.7.6...v0.7.7) (2023-03-15)
+
+
+### Bug Fixes
+
+* svg inline caching and player ([adfa48e](https://github.com/gustavomorinaga/portfolio/commit/adfa48ef3072568d4736cc0aeb5962e85dafe96c))
+
 ### [0.7.6](https://github.com/gustavomorinaga/portfolio/compare/v0.7.5...v0.7.6) (2023-03-15)
 
 
