@@ -32,4 +32,6 @@
 	<meta property="twitter:title" content={pageTitle} />
 	<meta property="twitter:description" content={description} />
 	<meta property="twitter:image" content="{baseURL}{thumbnail}" />
+
+	<slot />
 </svelte:head>

@@ -163,6 +163,10 @@
 			<Player playlist={data.playlist.data} />
 		{/await}
 	{/if}
+
+	{#await import('$lib/components/cookie-consent') then { CookieConsent }}
+		<CookieConsent />
+	{/await}
 {/if}
 
 <style lang="scss" global>

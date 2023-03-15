@@ -2,6 +2,7 @@
 	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { containerElement, scrollToTop } from '$lib/utils';
+	import Portal from 'svelte-portal';
 
 	let scrollTopButtonRef: HTMLButtonElement;
 	let MINIMUM_OFFSET = 200;
@@ -15,15 +16,17 @@
 
 <svelte:window on:scroll={handleOnScroll} />
 
-<button
-	bind:this={scrollTopButtonRef}
-	id="btn-scroll-top"
-	title={$LANG.scrollTop}
-	aria-label={$LANG.scrollTop}
-	on:click={scrollToTop}
->
-	<Icon icon="arrow-big-up-lines" />
-</button>
+<Portal>
+	<button
+		bind:this={scrollTopButtonRef}
+		id="btn-scroll-top"
+		title={$LANG.scrollTop}
+		aria-label={$LANG.scrollTop}
+		on:click={scrollToTop}
+	>
+		<Icon icon="arrow-big-up-lines" />
+	</button>
+</Portal>
 
 <style lang="scss" global>
 	button#btn-scroll-top {

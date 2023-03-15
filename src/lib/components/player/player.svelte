@@ -214,8 +214,8 @@
 	});
 </script>
 
-{#if showPlayer}
-	<Portal target="body">
+<Portal>
+	{#if showPlayer}
 		<div
 			id="player"
 			bind:this={playerRef}
@@ -408,49 +408,49 @@
 				</div>
 			</div>
 		</div>
-	</Portal>
-{:else}
-	<div id="miniplayer" in:fade={{ duration: 300, easing: cubicOut }} out:fade={{ duration: 100 }}>
-		<figure class="artwork">
-			<img
-				src={HOST + currentTrack.cover.formats.thumbnail.url}
-				alt={currentTrack.title}
-				width="56"
-				height="56"
-				loading="lazy"
-			/>
-		</figure>
+	{:else}
+		<div id="miniplayer" in:fade={{ duration: 300, easing: cubicOut }} out:fade={{ duration: 100 }}>
+			<figure class="artwork">
+				<img
+					src={HOST + currentTrack.cover.formats.thumbnail.url}
+					alt={currentTrack.title}
+					width="56"
+					height="56"
+					loading="lazy"
+				/>
+			</figure>
 
-		<div class="overlay" class:show={isLoading}>
-			<button
-				class="btn__bar"
-				class:loading={isLoading}
-				title={$LANG.player.show}
-				aria-label={$LANG.player.show}
-				on:click={handleShowPlayer}
-			>
-				{#if !isLoading}
-					<Icon icon="window-minimize" />
-				{/if}
-			</button>
+			<div class="overlay" class:show={isLoading}>
+				<button
+					class="btn__bar"
+					class:loading={isLoading}
+					title={$LANG.player.show}
+					aria-label={$LANG.player.show}
+					on:click={handleShowPlayer}
+				>
+					{#if !isLoading}
+						<Icon icon="window-minimize" />
+					{/if}
+				</button>
+			</div>
+
+			<span class="progress__bar" class:hidden={paused} style="width: {$currentProgress}%;" />
 		</div>
 
-		<span class="progress__bar" class:hidden={paused} style="width: {$currentProgress}%;" />
-	</div>
-
-	<button
-		class="btn__player"
-		class:playing={!paused}
-		class:refreshing={isLoading}
-		title={$LANG.player.show}
-		aria-label={$LANG.player.show}
-		on:click={handleShowPlayer}
-		in:fade={{ duration: 300, easing: cubicOut }}
-		out:fade={{ duration: 100 }}
-	>
-		<Icon icon="music" />
-	</button>
-{/if}
+		<button
+			class="btn__player"
+			class:playing={!paused}
+			class:refreshing={isLoading}
+			title={$LANG.player.show}
+			aria-label={$LANG.player.show}
+			on:click={handleShowPlayer}
+			in:fade={{ duration: 300, easing: cubicOut }}
+			out:fade={{ duration: 100 }}
+		>
+			<Icon icon="music" />
+		</button>
+	{/if}
+</Portal>
 
 <style lang="scss" global>
 	#player {

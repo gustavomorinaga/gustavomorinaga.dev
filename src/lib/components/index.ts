@@ -1,6 +1,7 @@
 export * from './analytics';
 export * from './background';
 export * from './carousel';
+export * from './cookie-consent';
 export * from './drawer';
 export * from './dropdown';
 export * from './footer';

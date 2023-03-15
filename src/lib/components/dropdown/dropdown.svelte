@@ -28,7 +28,7 @@
 </div>
 
 {#if showContent}
-	<Portal target="body">
+	<Portal>
 		<div
 			id="{id}__content"
 			class="dropdown__content"
