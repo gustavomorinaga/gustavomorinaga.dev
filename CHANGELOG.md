@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.8](https://github.com/gustavomorinaga/portfolio/compare/v0.7.7...v0.7.8) (2023-03-15)
+
+
+### Bug Fixes
+
+* language button margin and setup search aria ([95d5188](https://github.com/gustavomorinaga/portfolio/commit/95d5188257e03a0627e315bd83b5aacb4d8686eb))
+
 ### [0.7.7](https://github.com/gustavomorinaga/portfolio/compare/v0.7.6...v0.7.7) (2023-03-15)
 
 
