@@ -428,7 +428,7 @@
 			</button>
 		</div>
 
-		<span class="progress__bar" style="width: {$currentProgress}%;" />
+		<span class="progress__bar" class:hidden={paused} style="width: {$currentProgress}%;" />
 	</div>
 
 	<button
@@ -662,7 +662,7 @@
 		}
 
 		& .progress__bar {
-			@apply absolute left-0 right-0 bottom-0 block h-px bg-primary transition-opacity duration-300 ease-out;
+			@apply absolute left-0 right-0 bottom-0 h-px bg-primary transition-opacity duration-300 ease-out;
 		}
 	}
 
