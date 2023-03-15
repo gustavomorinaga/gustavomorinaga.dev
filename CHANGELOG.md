@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.6](https://github.com/gustavomorinaga/portfolio/compare/v0.7.5...v0.7.6) (2023-03-15)
+
+
+### Bug Fixes
+
+* miniplayer hide progress bar when paused ([93e0729](https://github.com/gustavomorinaga/portfolio/commit/93e072985e613c0e5eb722d86790e0294c2133c5))
+
+
+### Improvements
+
+* error boundary and miniplayer ([b9417cd](https://github.com/gustavomorinaga/portfolio/commit/b9417cd95f21ebe7bb0bca4bd971f472668d2026))
+
 ### [0.7.5](https://github.com/gustavomorinaga/portfolio/compare/v0.7.4...v0.7.5) (2023-03-14)
 
 
