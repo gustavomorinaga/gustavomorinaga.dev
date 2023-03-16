@@ -225,5 +225,12 @@ export const pt: ILang = {
 
 	scrollTop: 'Ir ao topo',
 
-	footer: `Desenvolvido com ❤ por Gustavo Morinaga © ${year}`
+	footer: `Desenvolvido com ❤ por Gustavo Morinaga © ${year}`,
+
+	cookieConsent: {
+		title: 'Cookies',
+		paragraph:
+			'Este website utiliza cookies e tecnologias similares para melhorar a sua experiência de navegação.',
+		confirm: 'Okay'
+	}
 };

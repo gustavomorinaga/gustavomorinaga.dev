@@ -210,4 +210,10 @@ export interface ILang {
 	scrollTop: string;
 
 	footer: string;
+
+	cookieConsent: {
+		title: string;
+		paragraph: string;
+		confirm: string;
+	};
 }

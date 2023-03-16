@@ -1,12 +1,11 @@
 <script lang="ts">
 	import '../app.scss';
 	import { PUBLIC_DOMAIN } from '$env/static/public';
-	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
-	import { DRAWER, GPU, LANG } from '$lib/stores';
+	import { COOKIE_CONSENT, DRAWER, GPU, LANG } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
@@ -16,11 +15,11 @@
 	export let data: LayoutServerData;
 
 	let finished: boolean;
+	let isMobile = false;
 	let showDrawer = false;
 
 	$: showContent = $GPU.isThree ? finished : true;
 	$: readMode = ['/blog'].includes(data.pathname);
-	$: isMobile = browser && window.matchMedia('(max-width: 640px)').matches;
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -61,10 +60,13 @@
 	$: trigger = data.pathname.split('/').slice(1).shift()?.replace('', '/');
 
 	const handleResize = () => {
+		handleIsMobile();
 		showDrawer = isMobile;
 
 		!showDrawer && DRAWER.set(false);
 	};
+
+	const handleIsMobile = () => (isMobile = window.matchMedia('(max-width: 640px)').matches);
 
 	onMount(async () => {
 		if (!$GPU?.gpu) {
@@ -75,6 +77,7 @@
 
 		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 
+		handleIsMobile();
 		showDrawer = isMobile;
 	});
 </script>
@@ -164,9 +167,11 @@
 		{/await}
 	{/if}
 
-	{#await import('$lib/components/cookie-consent') then { CookieConsent }}
-		<CookieConsent />
-	{/await}
+	{#if !$COOKIE_CONSENT.accepted}
+		{#await import('$lib/components/cookie-consent') then { CookieConsent }}
+			<CookieConsent />
+		{/await}
+	{/if}
 {/if}
 
 <style lang="scss" global>

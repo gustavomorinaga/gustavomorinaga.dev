@@ -2,10 +2,10 @@
 	import { fly, type FlyParams } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon } from '$lib/components';
-	import { COOKIE_CONSENT } from '$lib/stores';
+	import { COOKIE_CONSENT, LANG } from '$lib/stores';
 	import Portal from 'svelte-portal';
 
-	const TRANSITION_CONFIG: FlyParams = { x: -100, duration: 300, easing: cubicOut };
+	const TRANSITION_CONFIG: FlyParams = { y: 50, duration: 300, easing: cubicOut };
 
 	const handleConsent = () => COOKIE_CONSENT.set({ accepted: true });
 </script>
@@ -17,15 +17,13 @@
 				<header>
 					<Icon icon="cookie" />
 
-					<h4>Cookies</h4>
+					<h4>{$LANG.cookieConsent.title}</h4>
 				</header>
 
-				<p>
-					This website uses cookies and similar technologies to improve your browsing experience.
-				</p>
+				<p>{$LANG.cookieConsent.paragraph}</p>
 
 				<div class="card-actions">
-					<button class="cta" on:click={handleConsent}>Accept</button>
+					<button class="cta" on:click={handleConsent}>{$LANG.cookieConsent.confirm}</button>
 				</div>
 			</div>
 		</section>
@@ -34,7 +32,7 @@
 
 <style lang="scss" global>
 	section#cookie-consent {
-		@apply fixed left-8 bottom-20 card card-compact card-bordered max-w-sm bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
+		@apply fixed z-[90] left-0 right-0 bottom-0 md:left-8 md:bottom-20 card card-compact card-bordered max-w-full md:max-w-sm bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
 
 		& .card-body {
 			& header {

@@ -223,5 +223,12 @@ export const en: ILang = {
 
 	scrollTop: 'Scroll to top',
 
-	footer: `Developed with ❤ by Gustavo Morinaga © ${year}`
+	footer: `Developed with ❤ by Gustavo Morinaga © ${year}`,
+
+	cookieConsent: {
+		title: 'Cookies',
+		paragraph:
+			'This website uses cookies and similar technologies to improve your browsing experience.',
+		confirm: 'Okay'
+	}
 };

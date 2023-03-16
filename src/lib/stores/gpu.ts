@@ -13,7 +13,7 @@ const INITIAL_STATE: IGraphicsState = { isThree: false, isLowEnd: false, isMobil
 export const initializeGPU = () => {
 	const { subscribe, set } = persist<IGraphicsState>(
 		writable(INITIAL_STATE),
-		createSessionStorage(),
+		createSessionStorage(true),
 		'gpu'
 	);
 

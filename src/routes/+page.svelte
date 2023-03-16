@@ -316,7 +316,7 @@
 					@apply flex gap-2 items-center flex-wrap;
 
 					& .social {
-						@apply w-full md:w-fit;
+						@apply grid place-items-center w-full md:w-fit;
 
 						&.cta {
 							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;

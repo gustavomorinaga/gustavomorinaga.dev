@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import { DRAWER } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
-	import { onMount } from 'svelte';
+	import Portal from 'svelte-portal';
 
 	let bodyRef: HTMLElement;
+
+	export let target: HTMLElement | string = 'body';
 
 	$: if (browser && bodyRef) bodyRef.classList.toggle('overflow-hidden', $DRAWER);
 
@@ -13,17 +16,19 @@
 	});
 </script>
 
-<div class="drawer" class:show={$DRAWER}>
-	<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={$DRAWER} />
+<Portal {target}>
+	<div class="drawer" class:show={$DRAWER}>
+		<input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={$DRAWER} />
 
-	<div class="drawer-side">
-		<label for="drawer" class="drawer-overlay" />
+		<div class="drawer-side">
+			<label for="drawer" class="drawer-overlay" />
 
-		<div class="drawer-side-content">
-			<slot name="content" />
+			<div class="drawer-side-content">
+				<slot name="content" />
+			</div>
 		</div>
 	</div>
-</div>
+</Portal>
 
 <style lang="scss" global>
 	.drawer {
@@ -47,7 +52,7 @@
 			}
 
 			& .drawer-side-content {
-				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border-t border-base-200 rounded-t-lg shadow-lg shadow-black;
+				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg shadow-black;
 				--tw-translate-x: 0px !important;
 			}
 		}
