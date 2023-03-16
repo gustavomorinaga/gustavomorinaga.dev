@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.9](https://github.com/gustavomorinaga/portfolio/compare/v0.7.8...v0.7.9) (2023-03-16)
+
+
+### Features
+
+* cookie consent and change portal of some components ([3158974](https://github.com/gustavomorinaga/portfolio/commit/3158974a7510c9ca062a18592b37cc7dd5baf918))
+
+
+### Improvements
+
+* cookie consent and is mobile in main layout ([195e34f](https://github.com/gustavomorinaga/portfolio/commit/195e34fffbd02c3494801923c7727c1952df8ff5))
+
 ### [0.7.8](https://github.com/gustavomorinaga/portfolio/compare/v0.7.7...v0.7.8) (2023-03-15)
 
 
