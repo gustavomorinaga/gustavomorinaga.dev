@@ -596,7 +596,7 @@
 	}
 
 	#playlist__content {
-		@apply left-0 sm:left-4 md:left-auto right-0 sm:right-4 -bottom-3 sm:bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-base-100/50 border-x-0 border-b-0 md:border border-white/10 shadow-md backdrop-blur-md scrollbar__theme;
+		@apply z-30 left-0 sm:left-4 md:left-auto right-0 sm:right-4 -bottom-3 sm:bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-base-100/50 border-x-0 border-b-0 md:border border-white/10 shadow-md backdrop-blur-md scrollbar__theme;
 
 		& .playlist__wrapper {
 			@apply flex flex-col;
