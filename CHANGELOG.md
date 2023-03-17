@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.12](https://github.com/gustavomorinaga/portfolio/compare/v0.7.11...v0.7.12) (2023-03-17)
+
+
+### Bug Fixes
+
+* dark overlay in project preview image ([f0f8f16](https://github.com/gustavomorinaga/portfolio/commit/f0f8f163fce187a5d2f2cd04a41435a698e69e46))
+
 ### [0.7.11](https://github.com/gustavomorinaga/portfolio/compare/v0.7.10...v0.7.11) (2023-03-17)
 
 
