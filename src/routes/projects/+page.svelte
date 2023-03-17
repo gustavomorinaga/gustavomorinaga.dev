@@ -105,7 +105,7 @@
 
 	<span class="motion__instruction">
 		<Icon icon="arrow-narrow-left" />
-		Arraste para visualizar
+		{$LANG.projects.gesture}
 		<Icon icon="arrow-narrow-right" />
 	</span>
 	<swiper-container bind:this={swiperRef} init="false" class="carousel">

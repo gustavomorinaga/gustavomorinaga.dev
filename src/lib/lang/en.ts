@@ -178,6 +178,8 @@ export const en: ILang = {
 			description: 'Some highlights of my open-source projects.'
 		},
 
+		gesture: 'Drag to view',
+
 		links: {
 			deploy: 'Demo',
 			code: 'Code'

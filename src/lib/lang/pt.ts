@@ -179,6 +179,8 @@ export const pt: ILang = {
 			description: 'Alguns destaques dos meus projetos open-source.'
 		},
 
+		gesture: 'Arraste para visualizar',
+
 		links: {
 			deploy: 'Demo',
 			code: 'Código'

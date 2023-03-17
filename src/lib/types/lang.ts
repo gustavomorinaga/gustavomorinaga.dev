@@ -164,6 +164,8 @@ export interface ILang {
 			description: string;
 		};
 
+		gesture: string;
+
 		links: {
 			deploy: string;
 			code: string;
