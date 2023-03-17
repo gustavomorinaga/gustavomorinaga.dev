@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.11](https://github.com/gustavomorinaga/portfolio/compare/v0.7.10...v0.7.11) (2023-03-17)
+
+
+### Bug Fixes
+
+* volume z position ([85cb285](https://github.com/gustavomorinaga/portfolio/commit/85cb2859d02228d44ea93ccdedd55e5d3b30f1b8))
+
 ### [0.7.10](https://github.com/gustavomorinaga/portfolio/compare/v0.7.9...v0.7.10) (2023-03-17)
 
 
