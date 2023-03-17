@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.10](https://github.com/gustavomorinaga/portfolio/compare/v0.7.9...v0.7.10) (2023-03-17)
+
+
+### Bug Fixes
+
+* cookie consent responsiveness and minor fixes ([ae5769a](https://github.com/gustavomorinaga/portfolio/commit/ae5769ab1194a4eed01deff0b2afee20b3c8f87e))
+
 ### [0.7.9](https://github.com/gustavomorinaga/portfolio/compare/v0.7.8...v0.7.9) (2023-03-16)
 
 
