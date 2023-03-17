@@ -454,7 +454,7 @@
 
 <style lang="scss" global>
 	#player {
-		@apply fixed z-50 left-0 right-0 bottom-0 bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
+		@apply fixed z-40 left-0 right-0 bottom-0 bg-base-100/50 backdrop-blur-md shadow-lg;
 
 		& .player__wrapper {
 			@apply flex items-center justify-between sm:gap-2 pt-5 px-4 pb-4;
@@ -636,7 +636,7 @@
 	}
 
 	#miniplayer {
-		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-sm bg-base-200 shadow-lg shadow-black;
+		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-sm bg-base-200 shadow-lg;
 
 		&:hover {
 			& .overlay {

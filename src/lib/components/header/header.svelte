@@ -17,7 +17,7 @@
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
-	const handleAnimateLogo = async () => {
+	const handleAnimateLogo = () => {
 		anime
 			.timeline({
 				targets: '.logo #logo',
@@ -170,10 +170,10 @@
 					}
 
 					& #logo {
-						@apply w-full h-8 drop-shadow-md shadow-black;
+						@apply w-full h-8 drop-shadow-md;
 					}
 					& #slogan {
-						@apply w-full h-6 -mt-3 z-10 drop-shadow-md shadow-black;
+						@apply w-full h-6 -mt-3 z-10 drop-shadow-md;
 					}
 				}
 
@@ -209,7 +209,7 @@
 						@apply translate-x-20;
 
 						& ul {
-							@apply card card-side card-bordered mt-8 p-2 bg-base-100 shadow-lg shadow-black;
+							@apply card card-side card-bordered mt-8 p-2 bg-base-100 shadow-lg;
 
 							& li {
 								@apply tooltip tooltip-bottom;

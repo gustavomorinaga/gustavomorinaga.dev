@@ -154,7 +154,7 @@
 			@apply grid row-auto gap-4 max-h-[35rem] pr-4 overflow-y-auto scrollbar__theme;
 
 			& .component {
-				@apply card card-side card-compact card-bordered h-full bg-base-100/50 shadow-lg shadow-black backdrop-blur-md transition duration-700 ease-smooth;
+				@apply card card-side card-compact card-bordered h-full bg-base-100/50 shadow-lg  backdrop-blur-md transition duration-700 ease-smooth;
 
 				@media (hover: hover) {
 					&:hover {

@@ -52,7 +52,7 @@
 			}
 
 			& .drawer-side-content {
-				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg shadow-black;
+				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg;
 				--tw-translate-x: 0px !important;
 			}
 		}

@@ -143,7 +143,7 @@
 
 			& .details,
 			& .facts {
-				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg shadow-black backdrop-blur-md;
+				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg  backdrop-blur-md;
 
 				& figure {
 					@apply absolute -top-20 right-0 w-40 h-40 drop-shadow-lg;
@@ -185,7 +185,7 @@
 				@apply flex gap-4;
 
 				& > a {
-					@apply btn shadow-md shadow-black lg:hover:shadow-lg;
+					@apply btn shadow-md  lg:hover:shadow-lg;
 
 					&.cta {
 						@apply flex-grow btn-primary gap-2;

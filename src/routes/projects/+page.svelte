@@ -188,7 +188,7 @@
 			& swiper-slide {
 				&.swiper-slide-active {
 					& .project {
-						@apply grayscale-0 brightness-100 after:opacity-0;
+						@apply grayscale-0 brightness-100 after:opacity-0 after:xl:scale-125;
 
 						& figure {
 							@apply xl:scale-125;
@@ -205,11 +205,11 @@
 
 					&::after {
 						content: '';
-						@apply absolute inset-0 bg-black opacity-50 transition-opacity duration-300 ease-out;
+						@apply absolute inset-0 bg-black opacity-50 transition duration-300 ease-out;
 					}
 
 					& figure {
-						@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg shadow-black transition duration-300 ease-out;
+						@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg  transition duration-300 ease-out;
 
 						& img {
 							@apply w-full border-t border-base-200;
@@ -217,7 +217,7 @@
 					}
 
 					& .content {
-						@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg shadow-black lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
+						@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg  lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
 
 						& .card-body {
 							& h2 {

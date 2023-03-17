@@ -322,7 +322,7 @@
 							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
 
 							& .btn__social {
-								@apply btn-block md:w-36 shadow-md shadow-black lg:hover:shadow-lg;
+								@apply btn-block md:w-36 shadow-md  lg:hover:shadow-lg;
 							}
 						}
 
@@ -330,7 +330,7 @@
 							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
 
 							& .btn__social {
-								@apply btn-link btn-sm text-shadow-md shadow-black;
+								@apply btn-link btn-sm text-shadow-md ;
 							}
 						}
 					}
@@ -414,7 +414,7 @@
 		}
 
 		& .popup {
-			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm shadow-black animate-float;
+			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm  animate-float;
 
 			&::before {
 				content: '';
@@ -447,7 +447,7 @@
 		@apply relative grid place-items-center min-h-screen;
 
 		& .about__card {
-			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/50 backdrop-blur-md shadow-lg shadow-black;
+			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/50 backdrop-blur-md shadow-lg ;
 
 			& > figure {
 				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
@@ -513,7 +513,7 @@
 		@apply relative grid place-items-center min-h-screen;
 
 		& .knowledge__content {
-			@apply absolute w-screen py-8 text-center bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-base-200 shadow-2xl shadow-black;
+			@apply absolute w-screen py-8 text-center bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-base-200 shadow-2xl ;
 			background-image: var(--low-poly-grid);
 
 			& h2 {
@@ -521,7 +521,7 @@
 			}
 
 			& p {
-				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
+				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md ;
 			}
 
 			& .knowledge {
@@ -585,7 +585,7 @@
 					@apply transform-none;
 
 					& .service {
-						@apply card card-bordered h-full bg-base-100/50 md:hover:border-primary backdrop-blur-md shadow-lg shadow-black lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered h-full bg-base-100/50 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 
@@ -654,7 +654,7 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md shadow-black;
+		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md ;
 	}
 
 	html.low__end {
