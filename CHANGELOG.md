@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.13](https://github.com/gustavomorinaga/portfolio/compare/v0.7.12...v0.7.13) (2023-03-17)
+
+
+### Bug Fixes
+
+* scroll top z position and gesture translation ([777db71](https://github.com/gustavomorinaga/portfolio/commit/777db71188390d43e62b03c35057372f517eacc1))
+
 ### [0.7.12](https://github.com/gustavomorinaga/portfolio/compare/v0.7.11...v0.7.12) (2023-03-17)
 
 
