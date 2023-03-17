@@ -188,10 +188,10 @@
 			& swiper-slide {
 				&.swiper-slide-active {
 					& .project {
-						@apply grayscale-0 brightness-100 after:opacity-0 after:xl:scale-125;
+						@apply grayscale-0 brightness-100;
 
 						& figure {
-							@apply xl:scale-125;
+							@apply xl:scale-125 after:opacity-0;
 						}
 
 						& .content {
@@ -203,13 +203,13 @@
 				& .project {
 					@apply relative grayscale-[25] brightness-75 transition duration-300 ease-out;
 
-					&::after {
-						content: '';
-						@apply absolute inset-0 bg-black opacity-50 transition duration-300 ease-out;
-					}
-
 					& figure {
 						@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg  transition duration-300 ease-out;
+
+						&::after {
+							content: '';
+							@apply absolute inset-0 bg-black opacity-50 transition duration-300 ease-out;
+						}
 
 						& img {
 							@apply w-full border-t border-base-200;
