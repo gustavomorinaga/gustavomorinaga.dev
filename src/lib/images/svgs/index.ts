@@ -19,6 +19,7 @@ export const IMAGES_SVG = {
 	iconRAM: (await import('./icon-ram.svg')).default,
 	iconSEO: (await import('./icon-seo.svg')).default,
 	iconSoundCard: (await import('./icon-sound-card.svg')).default,
+	iconTrophy: (await import('./icon-trophy.svg')).default,
 	logoSlogan: (await import('./logo-slogan.svg')).default,
 	logoSvelteKit: (await import('./logo-sveltekit.svg')).default,
 	logoTitle: (await import('./logo-title.svg')).default,

@@ -5,7 +5,7 @@
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
-	import { COOKIE_CONSENT, DRAWER, GPU, LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
@@ -146,17 +146,7 @@
 			</Drawer>
 		{/await}
 	{/if}
-{/if}
 
-<main>
-	<PageTransition isMain {trigger}>
-		<slot />
-	</PageTransition>
-</main>
-
-<Footer />
-
-{#if showContent}
 	{#await import('$lib/components/scroll-top') then { ScrollTop }}
 		<ScrollTop />
 	{/await}
@@ -172,7 +162,27 @@
 			<CookieConsent />
 		{/await}
 	{/if}
+
+	{#if $NOTIFICATIONS.length}
+		{#await import('$lib/components/notification') then { Notification }}
+			<Notification />
+		{/await}
+	{/if}
+
+	{#if $ACHIEVEMENTS.length}
+		{#await import('$lib/components/achievement') then { Achievement }}
+			<Achievement />
+		{/await}
+	{/if}
 {/if}
+
+<main>
+	<PageTransition isMain {trigger}>
+		<slot />
+	</PageTransition>
+</main>
+
+<Footer />
 
 <style lang="scss" global>
 	main {

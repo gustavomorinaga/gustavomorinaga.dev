@@ -1,3 +1,4 @@
+export * from './achievement';
 export * from './analytics';
 export * from './background';
 export * from './carousel';
@@ -9,6 +10,7 @@ export * from './header';
 export * from './icon';
 export * from './loaders';
 export * from './metadata';
+export * from './notification';
 export * from './page-transition';
 export * from './player';
 export * from './preload';

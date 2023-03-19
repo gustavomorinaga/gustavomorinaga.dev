@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { Icon, Metadata } from '$lib/components';
-	import { LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 
 	import { IMAGES_SVG } from '$lib/images';
+
+	ACHIEVEMENTS.unlock('GMD_404');
 </script>
 
 <Metadata title={$page.error?.message} description={$LANG.error.paragraph} />

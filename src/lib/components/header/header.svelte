@@ -5,19 +5,20 @@
 	import { page } from '$app/stores';
 	import { Icon } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
-	import { DRAWER, LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/types';
 
 	import { IMAGES_SVG } from '$lib/images';
 
 	const baseURL = PUBLIC_DOMAIN;
+	let logoClickedTimes = 0;
 
 	export let routes: IRoute[] = [];
 
 	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
 
-	const handleAnimateLogo = () => {
+	const handleLogo = () => {
 		anime
 			.timeline({
 				targets: '.logo #logo',
@@ -55,6 +56,14 @@
 				rotateX: '0deg',
 				translateY: 0
 			});
+
+		handleLogoAchievement();
+	};
+
+	const handleLogoAchievement = () => {
+		logoClickedTimes++;
+		logoClickedTimes === 5 && ACHIEVEMENTS.unlock('GMD_LOGO');
+		ACHIEVEMENTS.unlock('GMD_LOGO');
 	};
 
 	const handleLanguage = () => LANG.change($LANG.code === 'pt' ? 'en' : 'pt');
@@ -67,7 +76,7 @@
 				<Icon icon="menu-2" />
 			</button>
 
-			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleAnimateLogo}>
+			<a href="/" class="logo" title={$LANG.header.logo.alt} on:click={handleLogo}>
 				<img id="logo" src={IMAGES_SVG.logoTitle} alt="Logotype" />
 				<img id="slogan" src={IMAGES_SVG.logoSlogan} alt="Slogan" />
 			</a>
