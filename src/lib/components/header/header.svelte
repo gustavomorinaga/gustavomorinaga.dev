@@ -63,7 +63,6 @@
 	const handleLogoAchievement = () => {
 		logoClickedTimes++;
 		logoClickedTimes === 5 && ACHIEVEMENTS.unlock('GMD_LOGO');
-		ACHIEVEMENTS.unlock('GMD_LOGO');
 	};
 
 	const handleLanguage = () => LANG.change($LANG.code === 'pt' ? 'en' : 'pt');
