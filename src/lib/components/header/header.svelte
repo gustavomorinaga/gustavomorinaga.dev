@@ -66,6 +66,8 @@
 	};
 
 	const handleLanguage = () => LANG.change($LANG.code === 'pt' ? 'en' : 'pt');
+
+	const handleSocialAchievement = () => ACHIEVEMENTS.unlock('GMD_SOCIAL');
 </script>
 
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
@@ -120,6 +122,7 @@
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={socialLink.title}
+									on:click={handleSocialAchievement}
 								>
 									<Icon icon={socialLink.icon} />
 								</a>

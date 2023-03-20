@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly, type FlyParams } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { ACHIEVEMENTS } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import Portal from 'svelte-portal';
 
 	import { IMAGES_SVG } from '$lib/images';
@@ -11,7 +11,7 @@
 
 <Portal>
 	<ul class="achievements">
-		{#each $ACHIEVEMENTS as { title, description, xp }}
+		{#each $ACHIEVEMENTS as { _id, xp }}
 			<li transition:fly={TRANSITION_CONFIG}>
 				<section class="achievement">
 					<figure>
@@ -25,14 +25,14 @@
 					</figure>
 
 					<div class="card-body">
-						<h1>{title}</h1>
+						<h1>{$LANG.achievements[_id].title}</h1>
 
 						<div class="description">
 							<span class="xp">
 								<strong>{xp}</strong>
 								XP
 							</span>
-							<p>{description}</p>
+							<p>{$LANG.achievements[_id].description}</p>
 						</div>
 					</div>
 				</section>
@@ -43,7 +43,7 @@
 
 <style lang="scss" global>
 	ul.achievements {
-		@apply fixed z-50 left-0 right-0 bottom-0 md:bottom-8 flex flex-col-reverse items-center gap-2;
+		@apply fixed z-50 left-0 right-0 bottom-0 md:bottom-8 flex flex-col-reverse items-center gap-2 md:mx-4;
 
 		& > li {
 			@apply w-full md:w-fit;
@@ -98,14 +98,14 @@
 		}
 		30%,
 		to {
-			@apply w-96 px-2 opacity-100;
+			@apply w-[28rem] px-2 opacity-100;
 		}
 	}
 
 	@keyframes achievement_content--close {
 		from,
 		50% {
-			@apply w-96 px-2 opacity-100;
+			@apply w-[28rem] px-2 opacity-100;
 		}
 		to {
 			@apply w-0 pl-2 pr-0 opacity-0;

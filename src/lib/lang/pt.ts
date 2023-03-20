@@ -234,5 +234,32 @@ export const pt: ILang = {
 		paragraph:
 			'Este website utiliza cookies e tecnologias similares para melhorar a sua experiência de navegação.',
 		confirm: 'Okay'
+	},
+
+	achievements: {
+		GMD_404: {
+			title: 'Desafiando o Desconhecido',
+			description: 'Entre em uma página inexistente'
+		},
+		GMD_LOGO: {
+			title: 'Clicador Mestre',
+			description: 'Clique na logotipo 5 vezes'
+		},
+		GMD_SOCIAL: {
+			title: 'Olá mundo!',
+			description: 'Clique uma rede social para entrar em contato'
+		},
+		GMD_PROJECT: {
+			title: 'Explorador de Projetos',
+			description: 'Visite ou veja código de um projeto'
+		},
+		GMD_SETUP: {
+			title: 'Santuário Sagrado',
+			description: 'Clique em um componente do equipamento'
+		},
+		GMD_SONG: {
+			title: 'Solta o som, DJ!',
+			description: 'Escute 3 músicas seguidas'
+		}
 	}
 };

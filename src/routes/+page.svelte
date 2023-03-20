@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { Carousel, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
-	import { LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { animateOnScroll, scrollIntoView, speakText } from '$lib/utils';
 	import { intersect } from '@svelte-put/intersect';
 	import Atropos from 'atropos/svelte';
@@ -41,6 +41,8 @@
 	];
 
 	const handleSpeech = () => speakText('Gustavo Morinaga', 'pt-BR');
+
+	const handleSocialAchievement = () => ACHIEVEMENTS.unlock('GMD_SOCIAL');
 </script>
 
 <Metadata />
@@ -120,6 +122,7 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={socialLink.title}
+							on:click={handleSocialAchievement}
 						>
 							<Icon icon={socialLink.icon} />
 

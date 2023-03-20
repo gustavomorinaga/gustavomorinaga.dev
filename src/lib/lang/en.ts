@@ -232,5 +232,32 @@ export const en: ILang = {
 		paragraph:
 			'This website uses cookies and similar technologies to improve your browsing experience.',
 		confirm: 'Okay'
+	},
+
+	achievements: {
+		GMD_404: {
+			title: 'Challenging The Unknown',
+			description: 'Enter on a nonexistent page'
+		},
+		GMD_LOGO: {
+			title: 'Master Clicker',
+			description: 'Click the logo 5 times'
+		},
+		GMD_SOCIAL: {
+			title: 'Hello World!',
+			description: 'Click on a social network to get in touch'
+		},
+		GMD_PROJECT: {
+			title: 'Project Explorer',
+			description: "Visit or view a project's code"
+		},
+		GMD_SETUP: {
+			title: 'Holy Shrine',
+			description: 'Click on a setup component'
+		},
+		GMD_SONG: {
+			title: 'Drop The Beat!',
+			description: 'Listen to 3 songs in a row'
+		}
 	}
 };

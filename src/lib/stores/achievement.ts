@@ -2,8 +2,7 @@ import { get, writable } from 'svelte/store';
 import { createLocalStorage, persist } from '@macfja/svelte-persistent-store';
 
 interface IAchievement {
-	title: string;
-	description: string;
+	_id: string;
 	xp: number;
 }
 
@@ -11,28 +10,27 @@ type TAchievement = typeof ACHIEVEMENTS_DICTIONARY;
 
 const ACHIEVEMENTS_DICTIONARY = {
 	GMD_404: {
-		title: 'Challenging The Unknown',
-		description: 'Enter on a nonexistent page',
+		_id: 'GMD_404',
 		xp: 100
 	},
 	GMD_LOGO: {
-		title: 'Master Clicker',
-		description: 'Click the logo 5 times',
+		_id: 'GMD_LOGO',
 		xp: 50
+	},
+	GMD_SOCIAL: {
+		_id: 'GMD_SOCIAL',
+		xp: 150
 	},
 	GMD_PROJECT: {
-		title: 'Project Explorer',
-		description: "Visit or view a project's code",
-		xp: 50
+		_id: 'GMD_PROJECT',
+		xp: 100
 	},
 	GMD_SETUP: {
-		title: 'Holy Shrine',
-		description: 'Click on a setup component',
+		_id: 'GMD_SETUP',
 		xp: 50
 	},
 	GMD_SONG: {
-		title: 'Drop The Beat',
-		description: 'Listen to 3 songs in a row',
+		_id: 'GMD_SONG',
 		xp: 50
 	}
 } satisfies { [k: string]: IAchievement };

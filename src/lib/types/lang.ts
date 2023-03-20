@@ -218,4 +218,11 @@ export interface ILang {
 		paragraph: string;
 		confirm: string;
 	};
+
+	achievements: {
+		[key: string]: {
+			title: string;
+			description: string;
+		};
+	};
 }
