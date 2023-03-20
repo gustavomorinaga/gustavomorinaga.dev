@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.14](https://github.com/gustavomorinaga/portfolio/compare/v0.7.13...v0.7.14) (2023-03-20)
+
+
+### Features
+
+* achievements ([7791f52](https://github.com/gustavomorinaga/portfolio/commit/7791f52b50e9591a328625ff3a76a1fba310d927))
+
+
+### Bug Fixes
+
+* unexpected unlock logo achievement ([e29707a](https://github.com/gustavomorinaga/portfolio/commit/e29707aad536565d551e57fcad37f02ebd852c09))
+
+
+### Improvements
+
+* achievement responsiveness ([08d2eb8](https://github.com/gustavomorinaga/portfolio/commit/08d2eb8d0454eef6c366f647ea85773e22a89fca))
+* implementing translation in achievements ([b5e1bd5](https://github.com/gustavomorinaga/portfolio/commit/b5e1bd52d8aca8347ca01a602238b0a3f4cb03eb))
+
 ### [0.7.13](https://github.com/gustavomorinaga/portfolio/compare/v0.7.12...v0.7.13) (2023-03-17)
 
 
