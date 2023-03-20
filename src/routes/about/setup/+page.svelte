@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon, Metadata } from '$lib/components';
-	import { LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 
 	import { IMAGES_SVG } from '$lib/images';
 
@@ -102,6 +102,8 @@
 			alt: 'Created by Iki from Noun Project'
 		}
 	];
+
+	const handleSetupAchievement = () => ACHIEVEMENTS.unlock('GMD_SETUP');
 </script>
 
 <Metadata
@@ -122,6 +124,7 @@
 					aria-label={$LANG.about.setup.link}
 					target="_blank"
 					rel="noopener noreferrer"
+					on:click={handleSetupAchievement}
 				>
 					{#if component.icon}
 						<figure>

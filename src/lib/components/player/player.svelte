@@ -8,7 +8,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
-	import { LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { containerElement, durationFormatter, getMinDiff } from '$lib/utils';
 	import Portal from 'svelte-portal';
 	import type { IPlaylist } from '$lib/types';
@@ -48,6 +48,7 @@
 	let isLoading = false;
 	let showPlaylist = false;
 	let idleTime = new Date();
+	let songsPlayed = 1;
 
 	$: currentIndex = playlist.findIndex(({ title }) => title === currentTrack.title);
 	$: currentProgress.set(Math.min((10 / duration) * currentTime * 10, 100) || 0);
@@ -88,7 +89,10 @@
 		trackElementRef.onloadedmetadata = () => (isLoading = false);
 		trackElementRef.ondurationchange = () => (duration = trackElementRef.duration);
 		trackElementRef.ontimeupdate = () => (currentTime = trackElementRef.currentTime);
-		trackElementRef.onended = () => handleChangeTrack('next');
+		trackElementRef.onended = () => {
+			handleChangeTrack('next');
+			!ACHIEVEMENTS.unlocked('GMD_SONG') && handleSongAchievement();
+		};
 
 		return Promise.resolve(trackElementRef);
 	};
@@ -205,6 +209,11 @@
 	const handleShowPlayer = () => {
 		showPlayer = !showPlayer;
 		saveStorage();
+	};
+
+	const handleSongAchievement = () => {
+		songsPlayed++;
+		songsPlayed === 3 && ACHIEVEMENTS.unlock('GMD_SONG');
 	};
 
 	onMount(async () => {
@@ -502,7 +511,7 @@
 					@apply flex gap-4 items-center;
 
 					& .artwork {
-						@apply relative w-14 aspect-square overflow-hidden;
+						@apply relative w-14 aspect-square overflow-hidden rounded-sm;
 					}
 
 					& .wrapper {
@@ -624,7 +633,7 @@
 					@apply flex gap-2 items-center w-full link link-hover;
 
 					& .artwork {
-						@apply relative w-12 aspect-square overflow-hidden;
+						@apply relative w-12 aspect-square overflow-hidden rounded-sm;
 					}
 
 					& .wrapper {

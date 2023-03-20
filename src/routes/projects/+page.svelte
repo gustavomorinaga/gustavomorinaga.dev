@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, Metadata } from '$lib/components';
 	import { IMAGES_WEBP } from '$lib/images';
-	import { LANG } from '$lib/stores';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { register } from 'swiper/element/bundle';
 	import type { SwiperOptions } from 'swiper';
 
@@ -87,6 +87,8 @@
 		}
 	];
 
+	const handleProjectAchievement = () => ACHIEVEMENTS.unlock('GMD_PROJECT');
+
 	onMount(() => {
 		register();
 		Object.assign(swiperRef, SWIPER_OPTIONS);
@@ -127,12 +129,22 @@
 							<p>{description}</p>
 
 							<div class="card-actions">
-								<a href={deploy} target="_blank" rel="noopener noreferrer">
+								<a
+									href={deploy}
+									target="_blank"
+									rel="noopener noreferrer"
+									on:click={handleProjectAchievement}
+								>
 									<Icon icon="external-link" size="sm" />
 									{$LANG.projects.links.deploy}
 								</a>
 
-								<a href={repo} target="_blank" rel="noopener noreferrer">
+								<a
+									href={repo}
+									target="_blank"
+									rel="noopener noreferrer"
+									on:click={handleProjectAchievement}
+								>
 									<Icon icon="code" size="sm" />
 									{$LANG.projects.links.code}
 								</a>

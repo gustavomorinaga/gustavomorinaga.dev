@@ -57,7 +57,7 @@
 				translateY: 0
 			});
 
-		handleLogoAchievement();
+		!ACHIEVEMENTS.unlocked('GMD_LOGO') && handleLogoAchievement();
 	};
 
 	const handleLogoAchievement = () => {
@@ -223,7 +223,7 @@
 								@apply tooltip tooltip-bottom;
 
 								& a {
-									@apply btn btn-link btn-sm lg:hover:-translate-y-1 transition-transform duration-300 ease-out;
+									@apply btn btn-link btn-sm md:hover:-translate-y-1 transition-transform duration-300 ease-out;
 								}
 							}
 						}

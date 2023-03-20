@@ -25,15 +25,15 @@
 					</figure>
 
 					<div class="card-body">
-						<header>
-							<h4>{title}</h4>
+						<h1>{title}</h1>
+
+						<div class="description">
 							<span class="xp">
 								<strong>{xp}</strong>
 								XP
 							</span>
-						</header>
-
-						<p>{description}</p>
+							<p>{description}</p>
+						</div>
 					</div>
 				</section>
 			</li>
@@ -43,41 +43,48 @@
 
 <style lang="scss" global>
 	ul.achievements {
-		@apply fixed z-50 left-0 right-0 bottom-8 flex flex-col-reverse items-center gap-2;
+		@apply fixed z-50 left-0 right-0 bottom-0 md:bottom-8 flex flex-col-reverse items-center gap-2;
 
 		& > li {
-			@apply w-fit;
+			@apply w-full md:w-fit;
 
 			& .achievement {
 				@apply card card-compact card-side card-bordered w-full md:w-fit overflow-hidden bg-base-100/50 border-x-0 border-b-0 md:border border-primary backdrop-blur-md shadow-glow shadow-primary/10;
 
 				& figure {
-					@apply pl-2 aspect-square;
+					@apply aspect-square pl-2;
+
+					& img {
+						@apply w-12 md:w-16 h-12 md:h-16;
+					}
 				}
 
 				& .card-body {
-					@apply w-0 pl-2 pr-0 opacity-0;
-					animation: achievement_content--open 3.5s ease-out,
-						achievement_content--close 1s ease-out 3.5s;
+					@apply md:w-0 pl-2 md:pr-0 md:opacity-0;
 
-					& header {
-						@apply card-title font-normal;
-
-						& h4 {
-							@apply pr-8 truncate font-futuristic text-shadow-glow shadow-primary;
-						}
-
-						& .xp {
-							@apply absolute top-2 right-2 badge badge-ghost text-xs text-primary;
-
-							& strong {
-								@apply text-base-content text-base mr-1;
-							}
-						}
+					@media (min-width: 768px) {
+						animation: achievement_content--open 3.5s ease-out,
+							achievement_content--close 1s ease-out 3.5s;
 					}
 
-					& p {
-						@apply truncate;
+					& h1 {
+						@apply truncate font-futuristic text-lg text-shadow-glow shadow-primary;
+					}
+
+					& .description {
+						@apply flex items-center gap-2;
+
+						& .xp {
+							@apply badge badge-ghost text-xs text-primary;
+
+							& strong {
+								@apply text-base-content mr-1;
+							}
+						}
+
+						& p {
+							@apply truncate text-base;
+						}
 					}
 				}
 			}
