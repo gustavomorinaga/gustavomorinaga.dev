@@ -2,11 +2,10 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, PageTransition } from '$lib/components';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { LANG } from '$lib/stores';
 	import { scrollToTop } from '$lib/utils';
 	import type { LayoutServerData } from './$types';
-
-	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	export let data: LayoutServerData;
 

@@ -50,10 +50,10 @@
 			special: false
 		},
 		{
-			title: $LANG.header.bookmark,
+			title: $LANG.header.bookmarks,
 			path: '/bookmarks',
 			icon: 'bookmark',
-			active: false,
+			active: true,
 			special: true
 		}
 	] satisfies IRoute[];

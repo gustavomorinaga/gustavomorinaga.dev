@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { IMAGES_WEBP } from '$lib/images';
 	import { Clock, MeshStandardMaterial, PlaneGeometry } from 'three';
 	import { AmbientLight, Fog, Pass, SpotLight, T, useFrame, useTexture } from '@threlte/core';
 	import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
@@ -10,8 +11,6 @@
 	import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 	import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader';
 	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
-
-	import { IMAGES_WEBP } from '$lib/images';
 
 	export let finished = false;
 

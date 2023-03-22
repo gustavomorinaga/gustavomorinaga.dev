@@ -4,6 +4,7 @@ export const IMAGES_WEBP = {
 	grid: (await import('./texture-grid.webp')).default,
 	metalness: (await import('./texture-metalness.webp')).default,
 	noise: (await import('./texture-noise.webp')).default,
+	mockupPortfolio: (await import('./mockup-portfolio.webp')).default,
 	previewPortfolio: (await import('./preview-portfolio.webp')).default,
 	previewNextPlate: (await import('./preview-next-plate.webp')).default,
 	previewGithubUnfollowerChecker: (await import('./preview-github-unfollow-checker.webp')).default,

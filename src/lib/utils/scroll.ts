@@ -38,7 +38,7 @@ export const scrollIntoView = (event: Event) => {
 	});
 };
 
-export const scrollToTop = (event?: Event & { static?: boolean }) => {
+export const scrollToTop = (event?: (Event & { static?: boolean }) | { static?: boolean }) => {
 	if (!browser) return;
 
 	let animeParams: AnimeParams = {

@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { LANG } from '$lib/stores';
-
 	import { IMAGES_SVG } from '$lib/images';
+	import { LANG } from '$lib/stores';
 </script>
 
 <footer id="footer">

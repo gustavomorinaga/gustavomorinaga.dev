@@ -404,5 +404,63 @@
 				"category": "tool"
 			}
 		]
-	}
+	},
+	"bookmarks": [
+		{
+			"title": "All Contributors",
+			"description": "Recognize all contributors on open-source projects.",
+			"url": "https://allcontributors.org",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "DevDocs",
+			"description": "API Documentation Browser",
+			"url": "https://devdocs.io",
+			"category": "docs",
+			"icon": "book"
+		},
+		{
+			"title": "icongen",
+			"description": "Web and app favicon generator.",
+			"url": "https://cthedot.de/icongen",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "i Rate Regex",
+			"description": "Search and rate regular expressions.",
+			"url": "https://ihateregex.io",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "JSON Hero",
+			"description": "Clean and beautiful JSON viewer with extra features.",
+			"url": "https://jsonhero.io",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "Meta Tags",
+			"description": "Preview, edit and generate meta tags.",
+			"url": "https://metatags.io",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "OpenGraph",
+			"description": "Free meta tag generator.",
+			"url": "https://www.opengraph.xyz",
+			"category": "tools",
+			"icon": "tools"
+		},
+		{
+			"title": "snippet generator",
+			"description": "Snippet generator for your code editor.",
+			"url": "https://snippet-generator.app",
+			"category": "tools",
+			"icon": "tools"
+		}
+	]
 }

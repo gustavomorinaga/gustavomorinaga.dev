@@ -4,12 +4,11 @@
 	import { cubicOut } from 'svelte/easing';
 	import { Carousel, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { animateOnScroll, scrollIntoView, speakText } from '$lib/utils';
 	import { intersect } from '@svelte-put/intersect';
 	import Atropos from 'atropos/svelte';
-
-	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	const baseURL = PUBLIC_DOMAIN;
 

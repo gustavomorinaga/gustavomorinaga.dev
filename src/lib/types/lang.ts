@@ -19,7 +19,7 @@ export interface ILang {
 		blog: string;
 		about: string;
 		projects: string;
-		bookmark: string;
+		bookmarks: string;
 		lang: string;
 	};
 
@@ -183,6 +183,13 @@ export interface ILang {
 		hotcode: {
 			description: string;
 		};
+	};
+
+	bookmarks: {
+		title: string;
+		paragraph: string;
+		small: string;
+		download: string;
 	};
 
 	player: {

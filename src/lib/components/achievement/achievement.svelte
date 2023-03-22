@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { fly, type FlyParams } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import Portal from 'svelte-portal';
-
-	import { IMAGES_SVG } from '$lib/images';
 
 	const TRANSITION_CONFIG: FlyParams = { y: 50, duration: 300, easing: cubicOut };
 </script>

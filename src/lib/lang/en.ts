@@ -24,7 +24,7 @@ export const en: ILang = {
 		blog: 'Blog',
 		about: 'About me',
 		projects: 'Projects',
-		bookmark: 'Bookmarks',
+		bookmarks: 'Bookmarks',
 		lang: 'Change language'
 	},
 
@@ -197,6 +197,13 @@ export const en: ILang = {
 		hotcode: {
 			description: 'A hotsite to attract developers to learn programming.'
 		}
+	},
+
+	bookmarks: {
+		title: 'Bookmarks',
+		paragraph: 'My list of bookmarks that I use constantly.',
+		small: 'You can download all bookmarks and import to your browser.',
+		download: 'Download'
 	},
 
 	player: {

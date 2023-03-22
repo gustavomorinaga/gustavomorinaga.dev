@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Icon, Metadata } from '$lib/components';
-	import { ACHIEVEMENTS, LANG } from '$lib/stores';
-
 	import { IMAGES_SVG } from '$lib/images';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 
 	$: setup = [
 		{
@@ -115,20 +114,20 @@
 	<h1>{$LANG.about.setup.title}</h1>
 
 	<ul class="setup__list">
-		{#each setup as component}
+		{#each setup as { title, description, alt, icon }}
 			<li>
 				<a
 					class="component"
-					href="https://google.com/search?q={component.description.split(' ').join('+')}"
+					href="https://google.com/search?q={description.split(' ').join('+')}"
 					title={$LANG.about.setup.link}
 					aria-label={$LANG.about.setup.link}
 					target="_blank"
 					rel="noopener noreferrer"
 					on:click={handleSetupAchievement}
 				>
-					{#if component.icon}
+					{#if icon}
 						<figure>
-							<img src={component.icon} alt={component.alt} width="64" height="64" loading="lazy" />
+							<img src={icon} {alt} width="64" height="64" loading="lazy" />
 						</figure>
 					{/if}
 
@@ -137,9 +136,9 @@
 					</div>
 
 					<div class="card-body">
-						<h4>{component.title}</h4>
+						<h4>{title}</h4>
 
-						<p>{component.description}</p>
+						<p>{description}</p>
 					</div>
 				</a>
 			</li>
@@ -154,7 +153,7 @@
 		}
 
 		& .setup__list {
-			@apply grid row-auto gap-4 max-h-[35rem] pr-4 overflow-y-auto scrollbar__theme;
+			@apply grid gap-4 max-h-[75vh] md:max-h-[40rem] -mr-5 md:mr-0 pr-4 overflow-y-auto scrollbar__theme;
 
 			& .component {
 				@apply card card-side card-compact card-bordered h-full bg-base-100/50 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;

@@ -9,7 +9,9 @@
 
 <!-- Banner Section -->
 <p align="center">
-  <img src="../../../src/lib/images/webps/preview-portfolio.webp" alt="Portfolio preview" width="512px" />
+  <a href="https://gustavomorinaga.dev">
+    <img src="../../../src/lib/images/webps/mockup-portfolio.webp" alt="Portfolio preview" width="512px" />
+  </a>
 </p>
 <h3 align="center">
   Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.

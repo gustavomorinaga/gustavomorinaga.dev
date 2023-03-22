@@ -2,10 +2,9 @@
 	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
 	import { CubeLoader } from '$lib/components';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { GPU } from '$lib/stores';
 	import { containerElement } from '$lib/utils';
-
-	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;

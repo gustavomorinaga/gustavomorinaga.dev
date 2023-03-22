@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { Icon, Metadata } from '$lib/components';
-	import { ACHIEVEMENTS, LANG } from '$lib/stores';
-
 	import { IMAGES_SVG } from '$lib/images';
+	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 
 	ACHIEVEMENTS.unlock('GMD_404');
 </script>

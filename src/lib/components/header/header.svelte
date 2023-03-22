@@ -2,16 +2,16 @@
 	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
+	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { Icon } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
+	import { IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/types';
 
-	import { IMAGES_SVG } from '$lib/images';
-
-	const baseURL = PUBLIC_DOMAIN;
+	const baseURL = dev ? '' : PUBLIC_DOMAIN;
 	let logoClickedTimes = 0;
 
 	export let routes: IRoute[] = [];
@@ -94,7 +94,7 @@
 						</a>
 					{:else}
 						<a
-							class="w-fit"
+							class="special"
 							class:active={isCurrentRoute(route.path)}
 							class:disabled={!route.active}
 							title={route.title}
@@ -192,15 +192,19 @@
 					@apply relative hidden sm:flex;
 
 					& > a {
-						@apply relative py-6 px-4 font-futuristic text-white shadow-red-500/50 transition-all ease-in lg:hover:text-red-500 lg:hover:text-shadow-glow;
+						@apply relative grid place-items-center py-6 px-4 font-futuristic shadow-primary/50 transition-all ease-in lg:hover:text-primary lg:hover:text-shadow-glow;
 
 						&::before {
 							content: '';
-							@apply absolute z-40 left-0 -bottom-px w-full h-px bg-red-500 shadow-glow shadow-red-500/50 opacity-0 transition-opacity ease-in;
+							@apply absolute z-40 left-0 -bottom-px w-full h-px bg-primary shadow-glow shadow-primary/50 opacity-0 transition-opacity ease-in;
+						}
+
+						&.special {
+							@apply w-fit px-2;
 						}
 
 						&.active {
-							@apply text-red-500 text-shadow-glow shadow-red-500/50;
+							@apply text-primary text-shadow-glow shadow-primary/50;
 
 							&::before {
 								@apply opacity-100;
@@ -214,7 +218,7 @@
 				}
 
 				& .social {
-					@apply hidden md:block z-50;
+					@apply hidden md:block z-50 mx-2;
 
 					& .dropdown-content {
 						@apply translate-x-20;
@@ -234,7 +238,7 @@
 				}
 
 				& .btn__lang {
-					@apply block rounded-full mx-4 md:mr-0 border border-zinc-400;
+					@apply block rounded-full ml-2 mr-4 md:mr-0 border border-zinc-400;
 				}
 			}
 		}
