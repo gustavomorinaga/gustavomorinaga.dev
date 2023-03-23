@@ -1,15 +1,11 @@
 <script lang="ts">
-	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { dev } from '$app/environment';
 	import { Icon } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
-	import { animateOnScroll } from '$lib/utils';
+	import { animateOnScroll, baseURL } from '$lib/utils';
 	import { intersect } from '@svelte-put/intersect';
-
-	const baseURL = dev ? '' : PUBLIC_DOMAIN;
 </script>
 
 <code class="bookmarks">profile<span class="method">.bookmarks()</span>;</code>

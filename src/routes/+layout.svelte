@@ -1,16 +1,13 @@
 <script lang="ts">
 	import '../app.scss';
-	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
-	import { containerElement } from '$lib/utils';
+	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
 	import type { LayoutServerData } from './$types';
-
-	const baseURL = PUBLIC_DOMAIN;
 
 	export let data: LayoutServerData;
 
@@ -57,7 +54,7 @@
 			special: true
 		}
 	] satisfies IRoute[];
-	$: trigger = data.pathname.split('/').slice(1).shift()?.replace('', '/');
+	$: trigger = extractMainPath(data.pathname);
 
 	const handleResize = () => {
 		handleIsMobile();

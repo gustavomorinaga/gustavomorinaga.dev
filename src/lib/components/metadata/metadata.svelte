@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { page } from '$app/stores';
 	import { LANG } from '$lib/stores';
 	import { IMAGES_WEBP } from '$lib/images';
+	import { baseURL } from '$lib/utils';
 
 	export let title = '';
 	export let description = $LANG.metadata.description;
 	export let thumbnail = IMAGES_WEBP.previewPortfolio;
-
-	const baseURL = PUBLIC_DOMAIN;
 
 	$: pageTitle = title ? `${title} » ${$LANG.metadata.title}` : `${$LANG.metadata.title}`;
 </script>

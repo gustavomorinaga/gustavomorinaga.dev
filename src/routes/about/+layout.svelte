@@ -3,15 +3,14 @@
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, PageTransition } from '$lib/components';
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
+	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
-	import { scrollToTop } from '$lib/utils';
+	import { dateFormatter, getAge, scrollToTop } from '$lib/utils';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
 
-	const age = Math.abs(
-		new Date(Date.now() - new Date('2000-10-27').getTime()).getUTCFullYear() - 1970
-	);
+	const age = getAge(profileJSON.birthday);
 </script>
 
 <code class="about">
@@ -53,9 +52,11 @@
 						Gustavo Matheus Morinaga Cardoso
 					</li>
 					<li>
-						<Icon icon="user" />
-						{age}
-						{$LANG.about.details.age}
+						<Icon icon="cake" />
+						{dateFormatter.format(new Date(profileJSON.birthday))}
+
+						({age}
+						{$LANG.about.details.age})
 					</li>
 					<li>
 						<Icon icon="briefcase" />

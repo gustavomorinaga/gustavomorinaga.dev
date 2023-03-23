@@ -142,7 +142,7 @@ module.exports = {
 			{
 				synthwave: {
 					...require('daisyui/src/colors/themes')['[data-theme=black]'],
-					primary: '#EF4444',
+					primary: '#F23F42',
 					secondary: '#F839F8',
 					accent: '#F87139',
 					neutral: '#535353',

@@ -1,22 +1,20 @@
 <script lang="ts">
-	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
-	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { Icon } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
+	import { baseURL, extractMainPath } from '$lib/utils';
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/types';
 
-	const baseURL = dev ? '' : PUBLIC_DOMAIN;
 	let logoClickedTimes = 0;
 
 	export let routes: IRoute[] = [];
 
-	$: isCurrentRoute = (path: string) => $page.url.pathname === path;
+	$: isCurrentRoute = (path: string) => extractMainPath($page.url.pathname) === path;
 
 	const handleLogo = () => {
 		anime
@@ -192,11 +190,16 @@
 					@apply relative hidden sm:flex;
 
 					& > a {
-						@apply relative grid place-items-center py-6 px-4 font-futuristic shadow-primary/50 transition-all ease-in lg:hover:text-primary lg:hover:text-shadow-glow;
+						@apply relative grid place-items-center py-6 px-4 font-futuristic transition duration-300 ease-out hover:before:opacity-100;
 
 						&::before {
 							content: '';
-							@apply absolute z-40 left-0 -bottom-px w-full h-px bg-primary shadow-glow shadow-primary/50 opacity-0 transition-opacity ease-in;
+							@apply absolute -z-10 inset-0 block bg-primary-content/5 my-4 mx-1 rounded-sm opacity-0 blur transition-opacity duration-500 ease-out;
+						}
+
+						&::after {
+							content: '';
+							@apply absolute z-40 inset-x-0 -bottom-px block max-w-0 h-px mx-auto bg-gradient-to-r from-transparent via-primary shadow-glow shadow-primary/10 opacity-0 transition-all duration-300 ease-smooth;
 						}
 
 						&.special {
@@ -206,8 +209,8 @@
 						&.active {
 							@apply text-primary text-shadow-glow shadow-primary/50;
 
-							&::before {
-								@apply opacity-100;
+							&::after {
+								@apply max-w-full opacity-100;
 							}
 						}
 
