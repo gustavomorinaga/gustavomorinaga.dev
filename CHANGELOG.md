@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/gustavomorinaga/portfolio/compare/v0.7.14...v0.8.0) (2023-03-23)
+
+
+### Features
+
+* bookmarks page ([389c359](https://github.com/gustavomorinaga/portfolio/commit/389c359e1a5f335d876912fb145bd9404580eac7))
+
+
+### Improvements
+
+* bookmarks list and date formatters ([809f5a9](https://github.com/gustavomorinaga/portfolio/commit/809f5a9042948da70b4cc7347e37d967858c5ce2))
+
 ### [0.7.14](https://github.com/gustavomorinaga/portfolio/compare/v0.7.13...v0.7.14) (2023-03-20)
 
 
