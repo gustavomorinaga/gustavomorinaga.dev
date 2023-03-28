@@ -6,9 +6,8 @@
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
 	import { dateFormatter, getAge, scrollToTop } from '$lib/utils';
-	import type { LayoutServerData } from './$types';
 
-	export let data: LayoutServerData;
+	export let data;
 
 	const age = getAge(profileJSON.birthday);
 </script>

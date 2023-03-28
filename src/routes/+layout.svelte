@@ -7,9 +7,8 @@
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
 	import type { IRoute } from '$lib/types';
-	import type { LayoutServerData } from './$types';
 
-	export let data: LayoutServerData;
+	export let data;
 
 	let finished: boolean;
 	let isMobile = false;
