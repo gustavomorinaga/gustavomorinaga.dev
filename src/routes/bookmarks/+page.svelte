@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
@@ -8,7 +9,7 @@
 
 	export let data;
 
-	let tag = $page.url.searchParams.get('tag') || 'all';
+	let tag = (browser && $page.url.searchParams.get('tag')) || 'all';
 
 	$: bookmarks = data.bookmarks.items.filter(({ tags }) =>
 		tag !== 'all' ? tags.includes(tag) : true
