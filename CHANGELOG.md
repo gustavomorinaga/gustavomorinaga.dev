@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/gustavomorinaga/portfolio/compare/v0.9.0...v0.9.1) (2023-03-30)
+
+
+### Bug Fixes
+
+* browser hydration for url search params in bookmarks page ([8a52fda](https://github.com/gustavomorinaga/portfolio/commit/8a52fdad40e84e9e25769ce8c6a3444031914aac))
+
 ## [0.9.0](https://github.com/gustavomorinaga/portfolio/compare/v0.8.0...v0.9.0) (2023-03-30)
 
 
