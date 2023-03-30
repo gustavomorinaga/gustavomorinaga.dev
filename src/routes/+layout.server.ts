@@ -1,7 +1,7 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import type { ICMSData, IPlaylist } from '$lib/types';
 
-export async function load({ fetch, url }) {
+export async function load({ fetch, url: { pathname } }) {
 	const [playlist] = await Promise.all([
 		fetch(`${PUBLIC_CMS_URL}/api/playlist-tracks?populate=*`)
 			.then<ICMSData<IPlaylist>>(res => res.json())
@@ -12,5 +12,5 @@ export async function load({ fetch, url }) {
 			})
 	]);
 
-	return { pathname: url.pathname, playlist };
+	return { pathname, playlist };
 }

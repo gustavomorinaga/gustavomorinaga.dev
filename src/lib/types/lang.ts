@@ -188,8 +188,12 @@ export interface ILang {
 	bookmarks: {
 		title: string;
 		paragraph: string;
-		small: string;
-		download: string;
+
+		filters: {
+			[key: string]: string;
+		};
+
+		help: string;
 	};
 
 	player: {

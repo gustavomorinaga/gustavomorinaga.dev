@@ -172,12 +172,12 @@
 			}
 
 			& .details {
-				@apply bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light;
+				@apply bg-base-300 bg-auto bg-no-repeat bg-center bg-blend-hard-light;
 				background-image: var(--low-poly-grid);
 			}
 
 			& .facts {
-				@apply bg-base-100/50;
+				@apply bg-base-100/75;
 			}
 
 			& .options {

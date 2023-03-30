@@ -62,10 +62,10 @@
 		}
 
 		& .knowledge__content {
-			@apply flex flex-wrap gap-4 max-h-[35rem] pr-4 overflow-y-auto scrollbar__theme;
+			@apply flex flex-wrap gap-4 max-h-[75vh] md:max-h-[40rem] -mr-5 md:mr-0 pr-4 overflow-y-auto scrollbar__theme;
 
 			& > article {
-				@apply flex-auto card card-bordered p-8 bg-base-100/50 shadow-lg  backdrop-blur-md;
+				@apply flex-auto card card-bordered p-8 bg-base-100/75 shadow-lg  backdrop-blur-md;
 
 				& h3 {
 					@apply text-2xl font-futuristic text-shadow-glow shadow-primary mb-4;

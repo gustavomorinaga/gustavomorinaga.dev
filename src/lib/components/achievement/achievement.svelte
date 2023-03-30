@@ -48,7 +48,7 @@
 			@apply w-full md:w-fit;
 
 			& .achievement {
-				@apply card card-compact card-side card-bordered w-full md:w-fit overflow-hidden bg-base-100/50 border-x-0 border-b-0 md:border border-primary backdrop-blur-md shadow-glow shadow-primary/10;
+				@apply card card-compact card-side card-bordered w-full md:w-fit overflow-hidden bg-base-100/75 border-x-0 border-b-0 md:border border-primary backdrop-blur-md shadow-glow shadow-primary/10;
 
 				& figure {
 					@apply aspect-square pl-2;

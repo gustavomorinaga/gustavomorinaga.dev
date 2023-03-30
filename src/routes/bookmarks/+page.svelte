@@ -1,12 +1,28 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon } from '$lib/components';
-	import { profileJSON } from '$lib/databases';
+	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { animateOnScroll, baseURL } from '$lib/utils';
-	import { intersect } from '@svelte-put/intersect';
+
+	export let data;
+
+	let tag = $page.url.searchParams.get('tag') || 'all';
+
+	$: bookmarks = data.bookmarks.items.filter(({ tags }) =>
+		tag !== 'all' ? tags.includes(tag) : true
+	);
+
+	const handleFilter = () => {
+		const query = new URLSearchParams($page.url.searchParams);
+		query.set('tag', tag);
+
+		goto(`?${query.toString()}`);
+	};
 </script>
+
+<Metadata title={$LANG.bookmarks.title} description={$LANG.bookmarks.paragraph} />
 
 <code class="bookmarks">profile<span class="method">.bookmarks()</span>;</code>
 
@@ -15,51 +31,51 @@
 
 	<p>{$LANG.bookmarks.paragraph}</p>
 
-	<small>
-		{$LANG.bookmarks.small}
+	<div class="bookmarks__filters">
+		<div class="card-body">
+			<div class="btn-group">
+				{#each data.tags.items as { _id }}
+					<input
+						class="btn btn-sm md:btn-md"
+						type="radio"
+						name="filters"
+						value={_id}
+						data-title={$LANG.bookmarks.filters[_id]}
+						bind:group={tag}
+						on:change={handleFilter}
+					/>
+				{/each}
+			</div>
 
-		<a
-			class="btn btn-primary btn-xs gap-1"
-			href={`${baseURL}/files/htmls/bookmarks-${$LANG.code}.html`}
-			target="_blank"
-			rel="noopener noreferrer"
-			download
-		>
-			<Icon icon="download" size="xs" />
-			{$LANG.bookmarks.download}
-		</a>
-	</small>
+			<small class="info">
+				<Icon icon="help" size="sm" />
+				{$LANG.bookmarks.help}
+			</small>
+		</div>
+	</div>
 
-	<ul>
-		{#each profileJSON.bookmarks as { title, description, url, category, icon }, index}
-			<li
-				style="--order: {index + 1};"
-				use:intersect={{ threshold: 0.5 }}
-				on:intersect={animateOnScroll}
-			>
-				<a
-					class="bookmark"
-					href={url}
-					{title}
-					aria-label={title}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<div class="external">
-						<Icon icon="external-link" />
-					</div>
+	<ul class="bookmarks__list">
+		{#each bookmarks as { title, excerpt, link, cover, tags }}
+			<li>
+				<a href={link} {title} aria-label={title} target="_blank" rel="noopener noreferrer">
+					<article class="bookmark">
+						<figure>
+							<img src={cover} alt={excerpt} />
+						</figure>
 
-					<div class="card-body">
-						<header>
-							<h2>{title}</h2>
-							<span class="category">
-								<Icon {icon} size="xs" />
-								{category}
-							</span>
-						</header>
+						<div class="card-body">
+							<header>
+								<h2>{title}</h2>
+								<ul>
+									{#each tags as tag}
+										<span class="category">{tag}</span>
+									{/each}
+								</ul>
+							</header>
 
-						<p>{description}</p>
-					</div>
+							<p>{excerpt}</p>
+						</div>
+					</article>
 				</a>
 			</li>
 		{/each}
@@ -77,49 +93,70 @@
 		}
 
 		& > p {
-			@apply text-xl mb-2;
+			@apply text-xl mb-8;
 
 			& > a {
 				@apply link-primary link-hover;
 			}
 		}
 
-		& small {
-			@apply flex flex-wrap items-center gap-4 text-base mb-8;
+		& > .bookmarks__filters {
+			@apply sticky z-10 top-16 md:top-[4.5rem] card card-compact card-bordered mb-8 bg-base-100/75 shadow-lg backdrop-blur-md;
+
+			& .card-body {
+				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4;
+
+				& > .btn-group {
+					@apply md:flex-wrap gap-4 -mb-4 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
+
+					& > .btn {
+						@apply shadow;
+						border-radius: var(--rounded-btn) !important;
+					}
+				}
+
+				& > .info {
+					@apply hidden md:flex items-center gap-2 text-sm text-base-content;
+
+					& .icon {
+						@apply text-primary;
+					}
+				}
+			}
 		}
 
-		& > ul {
-			@apply grid grid-cols-1 md:grid-cols-2 gap-4;
+		& > ul.bookmarks__list {
+			@apply grid grid-cols-1 md:grid-cols-3 gap-4;
 
 			& .bookmark {
-				@apply card card-side card-compact card-bordered h-full bg-base-100/50 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
+				@apply card card-compact card-bordered h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
 
 				@media (hover: hover) {
 					&:hover {
 						@apply no-underline border-primary shadow-glow shadow-primary/10;
 
-						& .external {
-							@apply opacity-100;
+						& figure {
+							@apply brightness-100 grayscale-0;
 						}
 					}
 				}
 
 				& figure {
-					@apply items-start my-4 ml-4 text-primary;
-				}
+					@apply relative h-48 border-b border-base-200 brightness-90 grayscale-[0.5] transition duration-300 ease-out;
 
-				& .external {
-					@apply absolute top-2 right-2 text-base-content opacity-0 transition-opacity duration-300 ease-out;
+					& img {
+						@apply object-cover w-full h-full;
+					}
 				}
 
 				& .card-body {
 					@apply max-w-[70vw] md:max-w-full;
 
 					& header {
-						@apply flex items-center gap-2;
+						@apply flex flex-col gap-2;
 
 						& h2 {
-							@apply text-xl text-base-content font-futuristic text-shadow-glow shadow-primary;
+							@apply text-lg text-base-content line-clamp-2 font-futuristic text-shadow-glow shadow-primary;
 						}
 
 						& .category {
@@ -128,7 +165,7 @@
 					}
 
 					& p {
-						@apply text-base text-base-content;
+						@apply text-sm text-base-content line-clamp-2;
 					}
 				}
 			}

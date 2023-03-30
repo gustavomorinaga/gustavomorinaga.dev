@@ -27,7 +27,7 @@ html {
 	}
 
 	&.scrollbar--show {
-		overflow: inherit;
+		overflow: overlay;
 	}
 }
 

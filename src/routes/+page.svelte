@@ -446,7 +446,7 @@
 		@apply relative grid place-items-center min-h-screen;
 
 		& .about__card {
-			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/50 backdrop-blur-md shadow-lg ;
+			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/75 backdrop-blur-md shadow-lg ;
 
 			& > figure {
 				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
@@ -584,7 +584,7 @@
 					@apply transform-none;
 
 					& .service {
-						@apply card card-bordered h-full bg-base-100/50 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 

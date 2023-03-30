@@ -203,9 +203,16 @@ export const pt: ILang = {
 
 	bookmarks: {
 		title: 'Marcadores',
-		paragraph: 'Minha lista de marcadores úteis que uso constantemente.',
-		small: 'Você pode baixar todos os marcadores e importar para o seu navegador.',
-		download: 'Baixar'
+		paragraph: 'Minha lista de marcadores úteis e interessantes que uso constantemente.',
+
+		filters: {
+			all: 'Todos',
+			design: 'Design',
+			devtools: 'Ferramentas',
+			tips: 'Dicas'
+		},
+
+		help: 'Clique para filtrar os marcadores e facilitar a sua vida.'
 	},
 
 	player: {

@@ -201,9 +201,16 @@ export const en: ILang = {
 
 	bookmarks: {
 		title: 'Bookmarks',
-		paragraph: 'My list of bookmarks that I use constantly.',
-		small: 'You can download all bookmarks and import to your browser.',
-		download: 'Download'
+		paragraph: 'My list of useful and interesting bookmarks that I use constantly.',
+
+		filters: {
+			all: 'All',
+			design: 'Design',
+			devtools: 'DevTools',
+			tips: 'Tips'
+		},
+
+		help: 'Click to filter the bookmarks and make your life easier.'
 	},
 
 	player: {
