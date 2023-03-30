@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/gustavomorinaga/portfolio/compare/v0.8.0...v0.9.0) (2023-03-30)
+
+
+### Improvements
+
+* page transition in bookmarks ([e5fbe78](https://github.com/gustavomorinaga/portfolio/commit/e5fbe78b395f33da3b78fef952d874ced13a12f8))
+* removing $types and updating deps ([2b8de21](https://github.com/gustavomorinaga/portfolio/commit/2b8de2111bfcd0eb64be065df82e22a5f92eaa73))
+* using raindrops and returning of 404 redirect ([86a74fd](https://github.com/gustavomorinaga/portfolio/commit/86a74fdb56a6588a7b128394b95247cbe398750a))
+
 ## [0.8.0](https://github.com/gustavomorinaga/portfolio/compare/v0.7.14...v0.8.0) (2023-03-23)
 
 
