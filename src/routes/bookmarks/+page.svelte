@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon, Metadata } from '$lib/components';
+	import { Icon, Metadata, PageTransition } from '$lib/components';
 	import { LANG } from '$lib/stores';
 
 	export let data;
@@ -54,32 +54,34 @@
 		</div>
 	</div>
 
-	<ul class="bookmarks__list">
-		{#each bookmarks as { title, excerpt, link, cover, tags }}
-			<li>
-				<a href={link} {title} aria-label={title} target="_blank" rel="noopener noreferrer">
-					<article class="bookmark">
-						<figure>
-							<img src={cover} alt={excerpt} />
-						</figure>
+	<PageTransition trigger={tag}>
+		<ul class="bookmarks__list">
+			{#each bookmarks as { title, excerpt, link, cover, tags }}
+				<li>
+					<a href={link} {title} aria-label={title} target="_blank" rel="noopener noreferrer">
+						<article class="bookmark">
+							<figure>
+								<img src={cover} alt={excerpt} />
+							</figure>
 
-						<div class="card-body">
-							<header>
-								<h2>{title}</h2>
-								<ul>
-									{#each tags as tag}
-										<span class="category">{tag}</span>
-									{/each}
-								</ul>
-							</header>
+							<div class="card-body">
+								<header>
+									<h2>{title}</h2>
+									<ul>
+										{#each tags as tag}
+											<span class="category">{tag}</span>
+										{/each}
+									</ul>
+								</header>
 
-							<p>{excerpt}</p>
-						</div>
-					</article>
-				</a>
-			</li>
-		{/each}
-	</ul>
+								<p>{excerpt}</p>
+							</div>
+						</article>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</PageTransition>
 </article>
 
 <style lang="scss" global>
@@ -100,7 +102,7 @@
 			}
 		}
 
-		& > .bookmarks__filters {
+		& .bookmarks__filters {
 			@apply sticky z-10 top-16 md:top-[4.5rem] card card-compact card-bordered mb-8 bg-base-100/75 shadow-lg backdrop-blur-md;
 
 			& .card-body {
@@ -125,7 +127,7 @@
 			}
 		}
 
-		& > ul.bookmarks__list {
+		& ul.bookmarks__list {
 			@apply grid grid-cols-1 md:grid-cols-3 gap-4;
 
 			& .bookmark {
