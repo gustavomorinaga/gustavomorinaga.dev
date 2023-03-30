@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/gustavomorinaga/portfolio/compare/v0.9.1...v0.9.2) (2023-03-30)
+
+
+### Bug Fixes
+
+* removing unused bookmarks html files ([c0f9d04](https://github.com/gustavomorinaga/portfolio/commit/c0f9d04de901f4f7d388d8e2076d7c955d63625e))
+
 ### [0.9.1](https://github.com/gustavomorinaga/portfolio/compare/v0.9.0...v0.9.1) (2023-03-30)
 
 
