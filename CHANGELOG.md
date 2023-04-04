@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.4](https://github.com/gustavomorinaga/portfolio/compare/v0.9.3...v0.9.4) (2023-04-04)
+
+
+### Improvements
+
+* minimize tier for notebook gpus ([674fdb7](https://github.com/gustavomorinaga/portfolio/commit/674fdb7d2111acfd4d56f7682885343ec6a32fe7))
+
 ### [0.9.3](https://github.com/gustavomorinaga/portfolio/compare/v0.9.2...v0.9.3) (2023-04-04)
 
 
