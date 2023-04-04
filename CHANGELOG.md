@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.3](https://github.com/gustavomorinaga/portfolio/compare/v0.9.2...v0.9.3) (2023-04-04)
+
+
+### Bug Fixes
+
+* first load background problem ([5e41eb5](https://github.com/gustavomorinaga/portfolio/commit/5e41eb5580bd20baab35f1d22a38e17e1afacc85))
+
+
+### Improvements
+
+* changing gpu tier params ([f2ac2ef](https://github.com/gustavomorinaga/portfolio/commit/f2ac2ef6cdb2b42fe81216c441544a0da69b2c94))
+* typescript structure ([692dac8](https://github.com/gustavomorinaga/portfolio/commit/692dac8ed30658ed36d44d514f7cbe109c7ec157))
+
 ### [0.9.2](https://github.com/gustavomorinaga/portfolio/compare/v0.9.1...v0.9.2) (2023-03-30)
 
 
