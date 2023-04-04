@@ -9,7 +9,7 @@
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
 
-	$: loading = !$GPU.isLowEnd && !finished;
+	$: loading = ($GPU.isThree || $GPU.isMobile) && !finished;
 	$: if (browser) {
 		containerElement && containerElement.classList.toggle('scrollbar--show', finished);
 	}

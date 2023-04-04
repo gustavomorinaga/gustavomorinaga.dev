@@ -24,8 +24,8 @@ export const initializeGPU = () => {
 		change: (detectedGPU: TierResult) =>
 			set({
 				...detectedGPU,
-				isThree: detectedGPU.tier > 2,
-				isLowEnd: detectedGPU.tier <= 1,
+				isThree: detectedGPU.tier >= 2,
+				isLowEnd: detectedGPU.tier < 2,
 				isMobile: detectedGPU.isMobile || false
 			})
 	};
