@@ -1,12 +1,8 @@
 import { get, writable } from 'svelte/store';
 import { createLocalStorage, persist } from '@macfja/svelte-persistent-store';
+import type { IAchievement } from '$lib/ts';
 
-interface IAchievement {
-	_id: string;
-	xp: number;
-}
-
-type TAchievement = typeof ACHIEVEMENTS_DICTIONARY;
+type TAchievements = typeof ACHIEVEMENTS_DICTIONARY;
 
 const ACHIEVEMENTS_DICTIONARY = {
 	GMD_404: {
@@ -48,8 +44,8 @@ export const initAchievement = () => {
 
 	return {
 		subscribe: NOTIFIER.subscribe,
-		unlocked: (key: keyof TAchievement) => get(MAP)[key],
-		unlock: (key: keyof TAchievement, duration = DURATION) => {
+		unlocked: (key: keyof TAchievements) => get(MAP)[key],
+		unlock: (key: keyof TAchievements, duration = DURATION) => {
 			if (get(MAP)[key]) return;
 
 			MAP.update(state => ({ ...state, [key]: true }));

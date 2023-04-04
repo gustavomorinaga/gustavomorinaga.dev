@@ -6,7 +6,7 @@
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
-	import type { IRoute } from '$lib/types';
+	import type { IRoute } from '$lib/ts/interfaces';
 
 	export let data;
 

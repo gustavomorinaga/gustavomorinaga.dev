@@ -1,4 +1,4 @@
-import type { IMedia, ITimestamps } from '$lib/types/cms';
+import type { IMedia, ITimestamps } from './cms';
 
 export interface IPlaylist extends ITimestamps {
 	title: string;

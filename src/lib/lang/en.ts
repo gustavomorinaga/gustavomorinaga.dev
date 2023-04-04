@@ -1,4 +1,4 @@
-import type { ILang } from '$lib/types';
+import type { ILang } from '$lib/ts/interfaces';
 
 const year = new Date().getFullYear();
 

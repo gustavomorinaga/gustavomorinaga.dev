@@ -8,7 +8,7 @@
 	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
 	import { baseURL, extractMainPath } from '$lib/utils';
 	import anime from 'animejs';
-	import type { IRoute } from '$lib/types';
+	import type { IRoute } from '$lib/ts/interfaces';
 
 	let logoClickedTimes = 0;
 

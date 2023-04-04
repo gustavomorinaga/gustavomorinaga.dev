@@ -11,7 +11,7 @@
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { containerElement, durationFormatter, getMinDiff } from '$lib/utils';
 	import Portal from 'svelte-portal';
-	import type { IPlaylist } from '$lib/types';
+	import type { IPlaylist } from '$lib/ts/interfaces';
 
 	export let playlist: IPlaylist[] = [];
 

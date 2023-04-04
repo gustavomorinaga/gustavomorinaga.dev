@@ -1,6 +1,6 @@
 import type { IIcon } from './icon';
 
-interface ITech extends IIcon {
+export interface ITech extends IIcon {
 	title: string;
 	url: string;
 }
