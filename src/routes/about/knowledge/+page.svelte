@@ -33,7 +33,7 @@
 	description={$LANG.about.knowledge.metadata.description}
 />
 
-<article class="knowledge">
+<section class="knowledge">
 	<h1>{$LANG.about.knowledge.title}</h1>
 
 	<div class="knowledge__content">
@@ -53,16 +53,18 @@
 			</article>
 		{/each}
 	</div>
-</article>
+</section>
 
 <style lang="scss" global>
-	article.knowledge {
+	section.knowledge {
+		@apply block;
+
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& .knowledge__content {
-			@apply flex flex-wrap gap-4 max-h-[75vh] md:max-h-[40rem] -mr-5 md:mr-0 pr-4 overflow-y-auto scrollbar__theme;
+			@apply flex flex-wrap gap-4;
 
 			& > article {
 				@apply flex-auto card card-bordered p-8 bg-base-100/75 shadow-lg  backdrop-blur-md;

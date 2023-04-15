@@ -1,5 +1,5 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
-import type { ICMSData, IPlaylist } from '$lib/ts/interfaces';
+import type { ICMSData, IPlaylist } from '$lib/ts';
 
 export async function load({ fetch, url: { pathname } }) {
 	const [playlist] = await Promise.all([

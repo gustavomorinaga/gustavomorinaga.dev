@@ -41,8 +41,6 @@ body {
 	}
 
 	& code {
-		@apply typewriter;
-
 		& span {
 			&.method {
 				@apply text-primary;

@@ -8,7 +8,7 @@
 	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
 	import { baseURL, extractMainPath } from '$lib/utils';
 	import anime from 'animejs';
-	import type { IRoute } from '$lib/ts/interfaces';
+	import type { IRoute } from '$lib/ts';
 
 	let logoClickedTimes = 0;
 
@@ -127,12 +127,12 @@
 							</li>
 						{/each}
 
-						<li data-tip={$LANG.curriculum.title}>
+						<li data-tip={$LANG.resume.title}>
 							<a
-								href={`${baseURL}/files/pdfs/curriculum-${$LANG.code}.pdf`}
+								href={`${baseURL}/files/pdfs/resume-${$LANG.code}.pdf`}
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label={$LANG.curriculum.title}
+								aria-label={$LANG.resume.title}
 							>
 								<Icon icon="file-info" />
 							</a>

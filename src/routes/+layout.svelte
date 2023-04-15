@@ -6,7 +6,7 @@
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
-	import type { IRoute } from '$lib/ts/interfaces';
+	import type { IRoute } from '$lib/ts';
 
 	export let data;
 
@@ -15,7 +15,7 @@
 	let showDrawer = false;
 
 	$: showContent = $GPU.isThree ? finished : true;
-	$: readMode = ['/blog'].includes(data.pathname);
+	$: readMode = data.pathname.includes('/blog/');
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -28,7 +28,7 @@
 			title: $LANG.header.blog,
 			path: '/blog',
 			icon: 'news',
-			active: false,
+			active: true,
 			special: false
 		},
 		{
@@ -127,12 +127,12 @@
 							</li>
 						{/each}
 
-						<li data-tip={$LANG.curriculum.title}>
+						<li data-tip={$LANG.resume.title}>
 							<a
-								href={`${baseURL}/files/pdfs/curriculum-${$LANG.code}.pdf`}
+								href={`${baseURL}/files/pdfs/resume-${$LANG.code}.pdf`}
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label={$LANG.curriculum.title}
+								aria-label={$LANG.resume.title}
 							>
 								<Icon icon="file-download" size="sm" />
 							</a>

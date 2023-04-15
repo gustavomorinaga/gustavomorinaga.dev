@@ -98,9 +98,9 @@
 
 <Metadata title={$LANG.projects.metadata.title} description={$LANG.projects.metadata.description} />
 
-<code class="projects">profile<span class="method">.projects()</span>;</code>
+<code class="typewriter projects">profile<span class="method">.projects()</span>;</code>
 
-<article class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<div class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.projects.title}</h1>
 
 	<p>{@html $LANG.projects.paragraph}</p>
@@ -155,14 +155,14 @@
 			</swiper-slide>
 		{/each}
 	</swiper-container>
-</article>
+</div>
 
 <style lang="scss" global>
 	code.projects {
 		@apply md:mt-16;
 	}
 
-	article.projects {
+	div.projects {
 		@apply min-h-[80vh];
 
 		& > h1 {

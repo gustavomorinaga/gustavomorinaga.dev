@@ -90,7 +90,7 @@
 		</div>
 
 		<div class="blurb__content">
-			<code>profile<span class="method">.welcome()</span>;</code>
+			<code class="typewriter">profile<span class="method">.welcome()</span>;</code>
 
 			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
 				{$LANG.home.blurb.title}
@@ -127,13 +127,13 @@
 					</li>
 				{/each}
 
-				<li class="social" data-tip={$LANG.curriculum.title}>
+				<li class="social" data-tip={$LANG.resume.title}>
 					<a
 						class="btn__social"
-						href={`${baseURL}/files/pdfs/curriculum-${$LANG.code}.pdf`}
+						href={`${baseURL}/files/pdfs/resume-${$LANG.code}.pdf`}
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label={$LANG.curriculum.title}
+						aria-label={$LANG.resume.title}
 					>
 						<Icon icon="file-info" />
 					</a>

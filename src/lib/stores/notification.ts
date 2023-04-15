@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { IIcon } from '$lib/ts/interfaces';
+import type { IIcon } from '$lib/ts';
 
 interface INotification extends IIcon {
 	title: string;

@@ -12,16 +12,10 @@
 	const age = getAge(profileJSON.birthday);
 </script>
 
-<code class="about">
-	profile
+<code class="typewriter about">
+	profile.
 	<span class="method">
-		{#if data.pathname.includes('/setup')}
-			.setup()
-		{:else if data.pathname.includes('/knowledge')}
-			.knowledge()
-		{:else}
-			.about()
-		{/if}
+		{data.pathname.split('/').at(-1)}()
 	</span>;
 </code>
 
@@ -132,17 +126,17 @@
 		& .info__content {
 			@apply relative flex col-span-7 min-h-screen md:min-h-full;
 
-			& .page__transition {
-				@apply absolute inset-0;
+			& > .page__transition {
+				@apply md:min-w-[36.5rem];
 			}
 		}
 
 		& aside {
-			@apply sticky top-48 self-start md:col-start-8 col-span-full flex flex-col gap-4;
+			@apply sticky top-48 self-start md:col-start-8 col-span-full flex flex-col gap-4 mt-16 md:m-0;
 
 			& .details,
 			& .facts {
-				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg  backdrop-blur-md;
+				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg backdrop-blur-md;
 
 				& figure {
 					@apply absolute -top-20 right-0 w-40 h-40 drop-shadow-lg;
@@ -164,7 +158,7 @@
 							}
 
 							& a {
-								@apply link-primary link-hover mx-1;
+								@apply link-primary link-hover;
 							}
 						}
 					}

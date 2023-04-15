@@ -54,6 +54,7 @@
 		"html-minifier": "4.0.0",
 		"husky": "8.0.3",
 		"lint-staged": "13.2.0",
+		"mdsvex": "^0.10.6",
 		"postcss": "8.4.21",
 		"postcss-load-config": "4.0.1",
 		"prettier": "2.8.7",

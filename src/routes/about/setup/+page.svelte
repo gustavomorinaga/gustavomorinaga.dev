@@ -110,7 +110,7 @@
 	description={$LANG.about.setup.metadata.description}
 />
 
-<article class="setup">
+<section class="setup">
 	<h1>{$LANG.about.setup.title}</h1>
 
 	<ul class="setup__list">
@@ -144,18 +144,20 @@
 			</li>
 		{/each}
 	</ul>
-</article>
+</section>
 
 <style lang="scss" global>
-	article.setup {
+	section.setup {
+		@apply block;
+
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
-		& .setup__list {
-			@apply grid gap-4 max-h-[75vh] md:max-h-[40rem] -mr-5 md:mr-0 pr-4 overflow-y-auto scrollbar__theme;
+		& ul.setup__list {
+			@apply flex flex-col gap-4;
 
-			& .component {
+			& a.component {
 				@apply card card-side card-compact card-bordered h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
 
 				@media (hover: hover) {

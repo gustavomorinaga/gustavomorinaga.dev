@@ -1,4 +1,4 @@
-import type { ILang } from '$lib/ts/interfaces';
+import type { ILang } from '$lib/ts';
 
 const year = new Date().getFullYear();
 
@@ -11,7 +11,7 @@ export const pt: ILang = {
 			'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.'
 	},
 
-	curriculum: {
+	resume: {
 		title: 'Currículo'
 	},
 
@@ -81,6 +81,18 @@ export const pt: ILang = {
 					'Crio interações suaves, fluídas e atraentes para o usuário. Sem atrapalhar a navegação.',
 				alt: 'Ícone port Vanda Arief em freeicons.io'
 			}
+		}
+	},
+
+	blog: {
+		title: 'Blog',
+		paragraph:
+			'Aqui você encontra artigos que escrevi sobre tecnologia, programação, design e muito mais.',
+
+		metadata: {
+			title: 'Blog',
+			description:
+				'Aqui você encontra artigos que escrevi sobre tecnologia, programação, design e muito mais.'
 		}
 	},
 
@@ -204,6 +216,11 @@ export const pt: ILang = {
 	bookmarks: {
 		title: 'Marcadores',
 		paragraph: 'Minha lista de marcadores úteis e interessantes que uso constantemente.',
+
+		metadata: {
+			title: 'Marcadores',
+			description: 'Minha lista de marcadores úteis e interessantes que uso constantemente.'
+		},
 
 		filters: {
 			all: 'Todos',

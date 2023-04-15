@@ -30,7 +30,7 @@
 	{#if $GPU.isThree}
 		{#await Promise.all( [import('@threlte/core'), import('./synthwave')] ) then [{ Canvas }, { Synthwave }]}
 			<Canvas>
-				<Synthwave bind:finished />
+				<Synthwave bind:finished bind:readMode />
 			</Canvas>
 		{/await}
 	{/if}

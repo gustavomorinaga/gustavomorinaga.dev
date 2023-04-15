@@ -1,4 +1,4 @@
-import type { ILang } from '$lib/ts/interfaces';
+import type { ILang } from '$lib/ts';
 
 const year = new Date().getFullYear();
 
@@ -11,8 +11,8 @@ export const en: ILang = {
 			'Creative full-stack developer passionate about creating complete, efficient and hi-tech solutions.'
 	},
 
-	curriculum: {
-		title: 'Curriculum'
+	resume: {
+		title: 'Resume'
 	},
 
 	header: {
@@ -80,6 +80,18 @@ export const en: ILang = {
 					'I create smooth, fluid and attractive interactions for the user. Without disturbing navigation.',
 				alt: 'Icon by Vanda Arief on freeicons.io'
 			}
+		}
+	},
+
+	blog: {
+		title: 'Blog',
+		paragraph:
+			'Here you will find articles that I wrote about technology, programming, design and much more.',
+
+		metadata: {
+			title: 'Blog',
+			description:
+				'Here you will find articles that I wrote about technology, programming, design and much more.'
 		}
 	},
 
@@ -202,6 +214,11 @@ export const en: ILang = {
 	bookmarks: {
 		title: 'Bookmarks',
 		paragraph: 'My list of useful and interesting bookmarks that I use constantly.',
+
+		metadata: {
+			title: 'Bookmarks',
+			description: 'My list of useful and interesting bookmarks that I use constantly.'
+		},
 
 		filters: {
 			all: 'All',

@@ -6,7 +6,7 @@ export interface ILang {
 		description: string;
 	};
 
-	curriculum: {
+	resume: {
 		title: string;
 	};
 
@@ -70,6 +70,16 @@ export interface ILang {
 				paragraph: string;
 				alt: string;
 			};
+		};
+	};
+
+	blog: {
+		title: string;
+		paragraph: string;
+
+		metadata: {
+			title: string;
+			description: string;
 		};
 	};
 
@@ -188,6 +198,11 @@ export interface ILang {
 	bookmarks: {
 		title: string;
 		paragraph: string;
+
+		metadata: {
+			title: string;
+			description: string;
+		};
 
 		filters: {
 			[key: string]: string;

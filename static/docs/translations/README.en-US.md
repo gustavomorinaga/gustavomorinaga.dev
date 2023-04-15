@@ -4,7 +4,7 @@
 <!-- markdownlint-disable MD041 -->
 
 <h1 align="center">
-  ▲ Portfolio - Gustavo Morinaga
+  gustavomorinaga.dev
 </h1>
 
 <!-- Banner Section -->
@@ -14,11 +14,11 @@
   </a>
 </p>
 <h3 align="center">
-  My super portfolio built with SvelteKit and served on Vercel.
+  My super website built with SvelteKit and served on Vercel.
   <br>
   <br>
   <a href="https://gustavomorinaga.dev">
-    Click to visit the portfolio
+    Click to visit the website
   </a>
 </h3>
 

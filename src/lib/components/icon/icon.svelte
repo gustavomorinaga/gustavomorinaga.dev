@@ -2,7 +2,7 @@
 	import { fade, type TransitionConfig } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import Icon from '@iconify/svelte';
-	import type { IIcon } from '$lib/ts/interfaces';
+	import type { IIcon } from '$lib/ts';
 
 	export let collection: IIcon['collection'] | string = 'tabler';
 	export let icon: IIcon['icon'] = '';

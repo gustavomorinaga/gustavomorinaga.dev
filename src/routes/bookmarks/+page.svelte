@@ -23,11 +23,14 @@
 	};
 </script>
 
-<Metadata title={$LANG.bookmarks.title} description={$LANG.bookmarks.paragraph} />
+<Metadata
+	title={$LANG.bookmarks.metadata.title}
+	description={$LANG.bookmarks.metadata.description}
+/>
 
-<code class="bookmarks">profile<span class="method">.bookmarks()</span>;</code>
+<code class="typewriter bookmarks">profile<span class="method">.bookmarks()</span>;</code>
 
-<article class="bookmarks" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<div class="bookmarks" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.bookmarks.title}</h1>
 
 	<p>{$LANG.bookmarks.paragraph}</p>
@@ -83,14 +86,14 @@
 			{/each}
 		</ul>
 	</PageTransition>
-</article>
+</div>
 
 <style lang="scss" global>
 	code.bookmarks {
 		@apply md:mt-16;
 	}
 
-	article.bookmarks {
+	div.bookmarks {
 		& > h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}

@@ -13,6 +13,7 @@
 	import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
 
 	export let finished = false;
+	export let readMode = false;
 
 	const [gridTexture, terrainTexture, metalnessTexture] = useTexture([
 		IMAGES_WEBP.grid,
@@ -50,7 +51,7 @@
 	$: (filmFX as any).uniforms['grayscale'].value = Number(!!$page.error);
 
 	useFrame(() => {
-		if ($page.error) return;
+		if ($page.error || readMode) return;
 
 		const newPosition = (clock.getElapsedTime() * 0.075) % 2;
 

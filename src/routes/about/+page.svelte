@@ -13,6 +13,8 @@
 
 <style lang="scss" global>
 	article.history {
+		@apply block;
+
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
