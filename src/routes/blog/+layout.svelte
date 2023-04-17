@@ -4,6 +4,6 @@
 	export let data;
 </script>
 
-<PageTransition goTop trigger={data.pathname}>
+<PageTransition goToTop trigger={data.pathname}>
 	<slot />
 </PageTransition>
