@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import { blur, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Metadata } from '$lib/components';
+	import { Icon, Metadata } from '$lib/components';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { simpleDateFormatter, HOST } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
@@ -12,9 +13,9 @@
 
 	const { tags } = data;
 
-	$: tag = (browser && $page.url.searchParams.get('tag')) || 'all';
+	$: currentTag = (browser && $page.url.searchParams.get('tag')) || 'all';
 	$: posts = data.posts.data.filter(({ tags }) =>
-		tag !== 'all' ? tags.some(t => t.name === tag) : true
+		currentTag !== 'all' ? tags.some(t => t.name === currentTag) : true
 	);
 </script>
 
@@ -31,22 +32,31 @@
 		<aside class="filters">
 			<ul class="menu">
 				<li>
-					<a href="/blog?tag=all" class:active={tag === 'all' || !tag}>Todos</a>
+					<a href="/blog?tag=all" class:active={currentTag === 'all' || !currentTag}>
+						<Icon icon="stack-2" />
+						Todos
+					</a>
 				</li>
-				{#each tags.data as { name }}
+				{#each tags.data as tag (tag.id)}
 					<li>
-						<a href="/blog?tag={name}" class:active={tag === name}>{name}</a>
+						<a href="/blog?tag={tag.name}" class:active={currentTag === tag.name}>
+							<Icon icon={tag.icon} collection={tag.collection} />
+							{tag.name}
+						</a>
 					</li>
 				{/each}
 			</ul>
 		</aside>
 
 		<ul class="posts" in:fly={{ y: 50, duration: 1000, delay: 2600, easing: cubicOut }}>
-			{#each posts as { title, slug, cover, tags, publishedAt }}
-				<li>
-					<a class="post" href="/blog/{slug}" style="--cover: url({HOST + cover.url});">
+			{#each posts as post (post.id)}
+				<li
+					transition:blur={{ easing: cubicOut }}
+					animate:flip={{ duration: 300, easing: cubicOut }}
+				>
+					<a class="post" href="/blog/{post.slug}" style="--cover: url({HOST + post.cover.url});">
 						<div class="card-body">
-							<h2 use:balancer>{title}</h2>
+							<h2 use:balancer>{post.title}</h2>
 
 							<footer>
 								<div class="author">
@@ -66,15 +76,17 @@
 									<time>
 										{simpleDateFormatter({
 											lang: $LANG.code,
-											date: new Date(publishedAt)
+											date: new Date(post.publishedAt)
 										})}
 									</time>
 								</div>
 
 								<ul class="tags">
-									{#if tags && tags?.length}
-										{#each tags as tag}
-											<li class="tag">{tag.name}</li>
+									{#if post.tags && post.tags?.length}
+										{#each post.tags as tag, index}
+											{#if index + 1 <= 3}
+												<li class="tag">{tag.name}</li>
+											{/if}
 										{/each}
 									{/if}
 								</ul>
