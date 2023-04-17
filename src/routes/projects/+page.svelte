@@ -5,6 +5,7 @@
 	import { Icon, Metadata } from '$lib/components';
 	import { IMAGES_WEBP } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
+	import { balancer } from 'svelte-action-balancer';
 	import { register } from 'swiper/element/bundle';
 	import type { SwiperOptions } from 'swiper';
 
@@ -126,7 +127,7 @@
 									<li class="tag">{tag}</li>
 								{/each}
 							</ul>
-							<p>{description}</p>
+							<p use:balancer>{description}</p>
 
 							<div class="card-actions">
 								<a
@@ -229,7 +230,7 @@
 					}
 
 					& .content {
-						@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg  lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
+						@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
 
 						& .card-body {
 							& h2 {
@@ -242,6 +243,10 @@
 								& .tag {
 									@apply badge;
 								}
+							}
+
+							& p {
+								@apply mb-4;
 							}
 
 							& .card-actions {

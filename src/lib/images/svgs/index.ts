@@ -1,4 +1,5 @@
 export const IMAGES_SVG = {
+	bgCurvedLines: (await import('./bg-curved-lines.svg')).default,
 	bgHexagons: (await import('./bg-hexagons.svg')).default,
 	bgLowPolyGrid: (await import('./bg-low-poly-grid.svg')).default,
 	iconCode: (await import('./icon-code.svg')).default,

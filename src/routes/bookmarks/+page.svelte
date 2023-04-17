@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, Metadata, PageTransition } from '$lib/components';
@@ -9,18 +8,12 @@
 
 	export let data;
 
-	let tag = (browser && $page.url.searchParams.get('tag')) || 'all';
+	const { tags } = data;
 
+	$: tag = (browser && $page.url.searchParams.get('tag')) || 'all';
 	$: bookmarks = data.bookmarks.items.filter(({ tags }) =>
 		tag !== 'all' ? tags.includes(tag) : true
 	);
-
-	const handleFilter = () => {
-		const query = new URLSearchParams($page.url.searchParams);
-		query.set('tag', tag);
-
-		goto(`?${query.toString()}`);
-	};
 </script>
 
 <Metadata
@@ -37,19 +30,15 @@
 
 	<div class="bookmarks__filters">
 		<div class="card-body">
-			<div class="btn-group">
-				{#each data.tags.items as { _id }}
-					<input
-						class="btn btn-sm md:btn-md"
-						type="radio"
-						name="filters"
-						value={_id}
-						data-title={$LANG.bookmarks.filters[_id]}
-						bind:group={tag}
-						on:change={handleFilter}
-					/>
+			<ul class="filters">
+				{#each tags.items as { _id }}
+					<li>
+						<a class="btn" class:btn-primary={tag === _id} href="/bookmarks?tag={_id}">
+							{$LANG.bookmarks.filters[_id]}
+						</a>
+					</li>
 				{/each}
-			</div>
+			</ul>
 
 			<small class="info">
 				<Icon icon="help" size="sm" />
@@ -112,13 +101,8 @@
 			& .card-body {
 				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4;
 
-				& > .btn-group {
-					@apply md:flex-wrap gap-4 -mb-4 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
-
-					& > .btn {
-						@apply shadow;
-						border-radius: var(--rounded-btn) !important;
-					}
+				& > ul.filters {
+					@apply flex md:flex-wrap gap-4 -mb-4 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
 				}
 
 				& > .info {

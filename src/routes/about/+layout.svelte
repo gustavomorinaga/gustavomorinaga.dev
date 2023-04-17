@@ -5,11 +5,13 @@
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
-	import { dateFormatter, getAge, scrollToTop } from '$lib/utils';
+	import { dateFormatter, getAge, scrollToTop, speakText } from '$lib/utils';
 
 	export let data;
 
 	const age = getAge(profileJSON.birthday);
+
+	const handleSpeech = () => speakText('Gustavo Morinaga', 'pt-BR');
 </script>
 
 <code class="typewriter about">
@@ -42,11 +44,18 @@
 				<ul>
 					<li>
 						<Icon icon="id-badge-2" />
+
 						Gustavo Matheus Morinaga Cardoso
+
+						{#if $LANG.code === 'en'}
+							<button class="btn__pronounce" on:click={handleSpeech}>
+								<Icon icon="volume" size="xs" />
+							</button>
+						{/if}
 					</li>
 					<li>
 						<Icon icon="cake" />
-						{dateFormatter.format(new Date(profileJSON.birthday))}
+						{dateFormatter({ lang: $LANG.code, date: new Date(profileJSON.birthday) })}
 
 						({age}
 						{$LANG.about.details.age})
@@ -124,7 +133,7 @@
 		@apply grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-8 min-h-[75vh];
 
 		& .info__content {
-			@apply relative flex col-span-7 min-h-screen md:min-h-full;
+			@apply relative flex flex-col md:flex-row md:col-span-7;
 
 			& > .page__transition {
 				@apply md:min-w-[36.5rem];
@@ -132,7 +141,7 @@
 		}
 
 		& aside {
-			@apply sticky top-48 self-start md:col-start-8 col-span-full flex flex-col gap-4 mt-16 md:m-0;
+			@apply sticky top-48 self-start col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
 
 			& .details,
 			& .facts {
@@ -153,12 +162,16 @@
 						& > li {
 							@apply flex items-center text-sm;
 
-							& .icon {
+							& > .icon {
 								@apply text-primary mr-2;
 							}
 
 							& a {
 								@apply link-primary link-hover;
+							}
+
+							& .btn__pronounce {
+								@apply btn btn-outline btn-circle btn-xs w-6 p-0 ml-2 text-primary border-primary hover:btn-primary;
 							}
 						}
 					}

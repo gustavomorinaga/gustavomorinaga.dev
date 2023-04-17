@@ -194,7 +194,7 @@
 
 						&::before {
 							content: '';
-							@apply absolute -z-10 inset-0 block bg-primary-content/5 my-4 mx-1 rounded-sm opacity-0 blur transition-opacity duration-500 ease-out;
+							@apply absolute -z-10 inset-0 block bg-primary-content/5 my-4 mx-1 rounded-box opacity-0 blur transition-opacity duration-500 ease-out;
 						}
 
 						&::after {

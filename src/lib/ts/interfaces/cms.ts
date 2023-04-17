@@ -1,7 +1,7 @@
 export interface ITimestamps {
 	createdAt: Date;
 	updatedAt: Date;
-	publishedAt?: Date;
+	publishedAt: Date;
 }
 
 export interface IMeta {
@@ -19,7 +19,7 @@ export interface ILocalizations {
 	localizations: string[];
 }
 
-export interface IMedia {
+export interface IMedia extends ITimestamps {
 	name: string;
 	alternativeText?: string;
 	caption?: string;
@@ -39,8 +39,6 @@ export interface IMedia {
 	previewUrl?: string;
 	provider: string;
 	provider_metadata?: string;
-	createdAt: Date;
-	updatedAt: Date;
 }
 
 export interface IFormat {

@@ -9,3 +9,4 @@ export * from './raindrop';
 export * from './route';
 export * from './service';
 export * from './social';
+export * from './tag';

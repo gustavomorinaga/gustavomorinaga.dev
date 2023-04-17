@@ -7,6 +7,7 @@
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { animateOnScroll, baseURL, scrollIntoView, speakText } from '$lib/utils';
 	import { intersect } from '@svelte-put/intersect';
+	import { balancer } from 'svelte-action-balancer';
 	import Atropos from 'atropos/svelte';
 
 	$: services = [
@@ -148,7 +149,12 @@
 </section>
 
 <section id="about">
-	<article class="about__card" use:intersect={{ threshold: 0.5 }} on:intersect={animateOnScroll}>
+	<article
+		class="about__card"
+		style="--curved-lines: url({IMAGES_SVG.bgCurvedLines})"
+		use:intersect={{ threshold: 0.5 }}
+		on:intersect={animateOnScroll}
+	>
 		<figure style="--profile: url({IMAGES_WEBP.profile})" />
 
 		<div class="card-body">
@@ -156,9 +162,9 @@
 
 			<h3>{$LANG.home.about.subtitle}</h3>
 
-			<p>{$LANG.home.about.paragraph}</p>
+			<p use:balancer>{$LANG.home.about.paragraph}</p>
 
-			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme">
+			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme" use:balancer>
 				<p>"{$LANG.home.about.quote}"</p>
 
 				<footer>
@@ -267,7 +273,7 @@
 						<div class="card-body">
 							<h3>{service.title}</h3>
 
-							<p>{service.description}</p>
+							<p use:balancer>{service.description}</p>
 						</div>
 					</article>
 				</li>
@@ -446,10 +452,11 @@
 		@apply relative grid place-items-center min-h-screen;
 
 		& .about__card {
-			@apply card card-side card-bordered items-center w-full h-fit bg-base-100/75 backdrop-blur-md shadow-lg ;
+			@apply card card-side card-bordered items-center w-full h-fit bg-cover bg-center bg-no-repeat bg-base-100/75 backdrop-blur-md shadow-lg;
+			background-image: var(--curved-lines);
 
 			& > figure {
-				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-sm bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
+				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-box bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
 				background-image: var(--profile);
 
 				&::before {
@@ -476,7 +483,7 @@
 				}
 
 				& blockquote {
-					@apply mt-2 pl-2 italic border-l-2 border-primary;
+					@apply mt-2 p-4 italic rounded-box overflow-hidden border-l-2 border-primary bg-gradient-to-r from-stone-950/75 to-stone-950/50;
 
 					& footer {
 						& cite {
@@ -512,7 +519,7 @@
 		@apply relative grid place-items-center min-h-screen;
 
 		& .knowledge__content {
-			@apply absolute w-screen py-8 text-center bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-base-200 shadow-2xl ;
+			@apply absolute w-screen py-8 text-center bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-base-200 shadow-2xl;
 			background-image: var(--low-poly-grid);
 
 			& h2 {
@@ -571,7 +578,7 @@
 		@apply relative grid place-items-center min-h-[75vh];
 
 		& .services__content {
-			@apply mt-24 -mb-16 md:mt-0;
+			@apply w-full mt-24 -mb-16 md:mt-0;
 
 			& h2 {
 				@apply mb-8 text-4xl text-center font-futuristic text-shadow-rgb;
@@ -581,10 +588,10 @@
 				@apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8;
 
 				& li {
-					@apply transform-none;
+					@apply col-auto transform-none;
 
 					& .service {
-						@apply card card-bordered h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered w-full h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 

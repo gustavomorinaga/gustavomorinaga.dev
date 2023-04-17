@@ -30,12 +30,12 @@ export interface IRaindropMedia {
 	screenshot: boolean;
 }
 
-export interface ITags {
-	items: ITag[];
+export interface IRaindropTags {
+	items: IRaindropTag[];
 	result: boolean;
 }
 
-export interface ITag {
+export interface IRaindropTag {
 	_id: string;
 	count: number;
 }

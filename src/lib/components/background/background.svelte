@@ -57,7 +57,7 @@
 		}
 
 		&.read__mode {
-			@apply after:opacity-80;
+			@apply after:opacity-100;
 		}
 
 		&.plain {

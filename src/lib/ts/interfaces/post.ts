@@ -1,15 +1,15 @@
-import type { ILocalizations, IMedia } from './cms';
+import type { ILocalizations, IMedia, ITimestamps } from './cms';
+import type { ITag } from './tag';
 
-export interface IPost extends ILocalizations {
+export interface IPost extends ILocalizations, ITimestamps {
+	id: number;
 	title: string;
 	slug: string;
 	content: string;
 	description: string;
 	subtitle: string;
-	tags: string[];
-	createdAt: Date;
-	updatedAt: Date;
-	publishedAt: Date;
+	tags: ITag[];
 	locale: string;
 	cover: IMedia;
+	views: number;
 }

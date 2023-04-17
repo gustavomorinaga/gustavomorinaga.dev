@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { browser, dev } from '$app/environment';
-	import { PUBLIC_CMS_URL } from '$env/static/public';
+	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
@@ -9,13 +8,12 @@
 	import { cubicOut, expoOut } from 'svelte/easing';
 	import { Dropdown, Icon } from '$lib/components';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
-	import { containerElement, durationFormatter, getMinDiff } from '$lib/utils';
+	import { containerElement, durationFormatter, getMinDiff, HOST } from '$lib/utils';
 	import Portal from 'svelte-portal';
 	import type { IPlaylist } from '$lib/ts';
 
 	export let playlist: IPlaylist[] = [];
 
-	const HOST = dev ? PUBLIC_CMS_URL : '';
 	const MAX_IDLE_MINUTES = 3;
 	const INITIAL_STATE = {
 		showPlayer: false,
@@ -52,8 +50,11 @@
 
 	$: currentIndex = playlist.findIndex(({ title }) => title === currentTrack.title);
 	$: currentProgress.set(Math.min((10 / duration) * currentTime * 10, 100) || 0);
-	$: displayedDuration = durationFormatter.format(duration * 1000);
-	$: displayedCurrentTime = durationFormatter.format(currentTime * 1000);
+	$: displayedDuration = durationFormatter({ lang: $LANG.code, date: new Date(duration * 1000) });
+	$: displayedCurrentTime = durationFormatter({
+		lang: $LANG.code,
+		date: new Date(currentTime * 1000)
+	});
 	$: displayedVolume = muted ? 0 : volume * 100;
 	$: volumeStatus =
 		volume >= 0.5 ? 'high' : volume !== 0 ? 'low' : ('off' as 'high' | 'low' | 'off');
@@ -511,7 +512,7 @@
 					@apply flex gap-4 items-center;
 
 					& .artwork {
-						@apply relative w-14 aspect-square overflow-hidden rounded-sm;
+						@apply relative w-14 aspect-square overflow-hidden rounded-box;
 					}
 
 					& .wrapper {
@@ -522,7 +523,7 @@
 						}
 
 						& .duration {
-							@apply inline-block text-xs whitespace-nowrap text-gray-400;
+							@apply tabular-nums inline-block text-xs whitespace-nowrap text-gray-400;
 						}
 					}
 				}
@@ -633,7 +634,7 @@
 					@apply flex gap-2 items-center w-full link link-hover;
 
 					& .artwork {
-						@apply relative w-12 aspect-square overflow-hidden rounded-sm;
+						@apply relative w-12 aspect-square overflow-hidden rounded-box;
 					}
 
 					& .wrapper {
@@ -645,7 +646,7 @@
 	}
 
 	#miniplayer {
-		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-sm bg-base-200 shadow-lg;
+		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-box bg-base-200 shadow-lg;
 
 		&:hover {
 			& .overlay {
