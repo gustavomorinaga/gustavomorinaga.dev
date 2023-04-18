@@ -38,7 +38,7 @@
 
 			<ul class="menu">
 				<li>
-					<a href="/blog" class:bg-primary={!$page.params.value} on:click={scrollToTop}>
+					<a href="/blog" class:active={!$page.params.value} on:click={scrollToTop}>
 						<Icon icon="stack-2" />
 						{$LANG.blog.filters.all}
 					</a>
@@ -46,7 +46,7 @@
 				{#each tags.data as tag (tag.id)}
 					<li>
 						<a
-							class:bg-primary={$page.params.value === tag.value}
+							class:active={$page.params.value === tag.value}
 							href="/blog/tags/{tag.value}"
 							on:click={scrollToTop}
 						>

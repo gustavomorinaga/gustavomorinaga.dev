@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { HOST, estimateReadingTime, simpleDateFormatter } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import type { IPost } from '$lib/ts';
 
 	export let post: IPost;
+
+	const TAG_LIMIT = 3;
 	const { slug, title, cover, content, tags, publishedAt } = post;
 </script>
 
@@ -21,9 +24,7 @@
 				</figure>
 
 				<div>
-					<address>
-						<a href="/about" rel="author">Gustavo Morinaga</a>
-					</address>
+					<strong>Gustavo Morinaga</strong>
 
 					<span>
 						<time>
@@ -41,8 +42,10 @@
 			<ul class="tags">
 				{#if tags && tags?.length}
 					{#each tags as tag, index}
-						{#if index + 1 <= 3}
-							<li class="tag">{tag.label}</li>
+						{#if index + 1 <= TAG_LIMIT}
+							<li class="tag" title={tag.label} aria-label={tag.label}>
+								<Icon icon={tag.icon} collection={tag.collection} size="sm" />
+							</li>
 						{/if}
 					{/each}
 				{/if}
@@ -83,7 +86,7 @@
 					@apply flex items-center;
 
 					& > figure.avatar {
-						@apply mr-2;
+						@apply mr-3;
 
 						& > div {
 							@apply w-10 rounded-full;
@@ -92,14 +95,6 @@
 
 					& > div {
 						@apply block leading-5;
-
-						& address {
-							@apply block text-shadow-lg;
-
-							& a {
-								@apply font-bold not-italic;
-							}
-						}
 
 						& > span {
 							@apply flex items-center gap-2 text-gray-400;
@@ -111,7 +106,7 @@
 					@apply flex items-center gap-2;
 
 					& > li.tag {
-						@apply badge badge-lg shadow-lg;
+						@apply badge badge-ghost badge-lg h-auto py-1 border border-base-300 shadow;
 					}
 				}
 			}

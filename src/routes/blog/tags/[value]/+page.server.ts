@@ -15,9 +15,15 @@ export async function load({ fetch, params: { value } }) {
 	};
 
 	const [posts] = await Promise.all([
-		fetch(`${PUBLIC_CMS_URL}/api/blog-posts?${new URLSearchParams(query.blog).toString()}`).then<
-			ICMSData<IPost>
-		>(res => res.json())
+		fetch(`${PUBLIC_CMS_URL}/api/blog-posts?${new URLSearchParams(query.blog).toString()}`)
+			.then<ICMSData<IPost>>(res => res.json())
+			.then(res => ({
+				...res,
+				data: res.data.map(p => ({
+					...p,
+					tags: p.tags.sort((a, b) => a.value.localeCompare(b.value))
+				}))
+			}))
 	]);
 
 	return { posts, query };
