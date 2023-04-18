@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { blur } from 'svelte/transition';
-	import { Metadata } from '$lib/components';
+	import { CardPost, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { simpleDateFormatter, HOST, estimateReadingTime } from '$lib/utils';
-	import { balancer } from 'svelte-action-balancer';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
@@ -38,48 +36,7 @@
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}
 		<li in:blur={{ duration: 300 }}>
-			<a class="post" href="/blog/{post.slug}" style="--cover: url({HOST + post.cover.url});">
-				<div class="card-body">
-					<h2 use:balancer>{post.title}</h2>
-
-					<footer>
-						<div class="author">
-							<figure class="avatar">
-								<div>
-									<img src="https://github.com/gustavomorinaga.png" alt="Gustavo Morinaga avatar" />
-								</div>
-							</figure>
-
-							<div>
-								<address>
-									<a href="/about" rel="author">Gustavo Morinaga</a>
-								</address>
-
-								<span>
-									<time>
-										{simpleDateFormatter({
-											lang: $LANG.code,
-											date: new Date(post.publishedAt)
-										})}
-									</time>
-									•
-									<time>{estimateReadingTime(post.content)} min</time>
-								</span>
-							</div>
-						</div>
-
-						<ul class="tags">
-							{#if post.tags && post.tags?.length}
-								{#each post.tags as tag, index}
-									{#if index + 1 <= 3}
-										<li class="tag">{tag.label}</li>
-									{/if}
-								{/each}
-							{/if}
-						</ul>
-					</footer>
-				</div>
-			</a>
+			<CardPost {post} />
 		</li>
 	{/each}
 </ul>
