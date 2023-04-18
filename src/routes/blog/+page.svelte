@@ -5,10 +5,9 @@
 	import { blur, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { Icon, Metadata } from '$lib/components';
-	import { ACHIEVEMENTS, LANG } from '$lib/stores';
-	import { simpleDateFormatter, HOST } from '$lib/utils';
+	import { LANG } from '$lib/stores';
+	import { simpleDateFormatter, HOST, scrollToTop, estimateReadingTime } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
-	import { goto } from '$app/navigation';
 	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import type { ICMSData, IPost } from '$lib/ts';
 
@@ -23,25 +22,15 @@
 		currentTag !== 'all' ? tags.some(t => t.name === currentTag) : true
 	);
 
-	const handleLoadMore = () => {
-		const { searchParams } = $page.url;
-
+	const handleLoadMore = async () => {
 		currentPage++;
-		searchParams.set('page', currentPage.toString());
-		goto('/blog?' + searchParams.toString(), { replaceState: true, noScroll: true });
-
-		return handleFetchPosts();
-	};
-
-	const handleFetchPosts = async () => {
-		const { searchParams } = $page.url;
 
 		const [response] = await Promise.all([
 			fetch(
 				`${PUBLIC_CMS_URL}/api/blog-posts?` +
 					new URLSearchParams({
 						...query.blog,
-						'pagination[page]': searchParams.get('page') as string
+						'pagination[page]': currentPage.toString()
 					}).toString()
 			).then<ICMSData<IPost>>(res => res.json())
 		]);
@@ -68,14 +57,22 @@
 
 			<ul class="menu">
 				<li>
-					<a href="/blog?tag=all" class:active={currentTag === 'all' || !currentTag}>
+					<a
+						href="/blog?tag=all"
+						class:active={currentTag === 'all' || !currentTag}
+						on:click={scrollToTop}
+					>
 						<Icon icon="stack-2" />
 						Todos
 					</a>
 				</li>
 				{#each tags.data as tag (tag.id)}
 					<li>
-						<a href="/blog?tag={tag.name}" class:active={currentTag === tag.name}>
+						<a
+							href="/blog?tag={tag.name}"
+							class:active={currentTag === tag.name}
+							on:click={scrollToTop}
+						>
 							<Icon icon={tag.icon} collection={tag.collection} />
 							{tag.name}
 						</a>
@@ -106,16 +103,22 @@
 											</div>
 										</figure>
 
-										<address>
-											<a href="/about" rel="author">Gustavo Morinaga</a>
-										</address>
+										<div>
+											<address>
+												<a href="/about" rel="author">Gustavo Morinaga</a>
+											</address>
 
-										<time>
-											{simpleDateFormatter({
-												lang: $LANG.code,
-												date: new Date(post.publishedAt)
-											})}
-										</time>
+											<span>
+												<time>
+													{simpleDateFormatter({
+														lang: $LANG.code,
+														date: new Date(post.publishedAt)
+													})}
+												</time>
+												•
+												<time>{estimateReadingTime(post.content)} min</time>
+											</span>
+										</div>
 									</div>
 
 									<ul class="tags">
@@ -173,7 +176,7 @@
 			}
 
 			& > section.posts {
-				@apply col-span-full md:col-start-4 flex flex-col gap-8;
+				@apply col-span-full md:col-start-4 flex flex-col gap-8 min-h-[75vh];
 
 				& > ul {
 					@apply flex flex-col gap-4;
@@ -207,24 +210,30 @@
 									@apply flex justify-between mt-auto;
 
 									& .author {
-										@apply flex items-center gap-2;
+										@apply flex items-center;
 
 										& > figure.avatar {
+											@apply mr-2;
+
 											& > div {
-												@apply w-8 rounded-full;
+												@apply w-10 rounded-full;
 											}
 										}
 
-										& address {
-											@apply block text-shadow-lg;
+										& > div {
+											@apply block leading-5;
 
-											& a {
-												@apply font-bold not-italic;
+											& address {
+												@apply block text-shadow-lg;
+
+												& a {
+													@apply font-bold not-italic;
+												}
 											}
-										}
 
-										& time {
-											@apply text-gray-400;
+											& > span {
+												@apply flex items-center gap-2 text-gray-400;
+											}
 										}
 									}
 

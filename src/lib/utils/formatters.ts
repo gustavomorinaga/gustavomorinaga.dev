@@ -16,7 +16,7 @@ export const dateFormatter = ({ lang, date }: IDateFormatter) =>
 export const simpleDateFormatter = ({ lang, date }: IDateFormatter) =>
 	new Intl.DateTimeFormat(lang, {
 		year: 'numeric',
-		month: 'long',
+		month: 'short',
 		day: 'numeric',
 		timeZone: 'UTC'
 	}).format(date);

@@ -173,7 +173,7 @@
 {/if}
 
 <main>
-	<PageTransition goToTop {trigger}>
+	<PageTransition goTop {trigger}>
 		<slot />
 	</PageTransition>
 </main>

@@ -1,7 +1,7 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import type { ICMSData, IPost, ITag } from '$lib/ts';
 
-const LIMIT = 9;
+const PAGE_SIZE = 3;
 
 export async function load({ fetch }) {
 	const query = {
@@ -9,7 +9,7 @@ export async function load({ fetch }) {
 			populate: '*',
 			sort: 'publishedAt:desc',
 			'pagination[page]': String(1),
-			'pagination[pageSize]': String(LIMIT)
+			'pagination[pageSize]': String(PAGE_SIZE)
 		},
 		tags: {
 			sort: 'name'
