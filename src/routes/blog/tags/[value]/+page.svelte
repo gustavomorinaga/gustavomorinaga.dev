@@ -10,8 +10,9 @@
 	export let data;
 
 	const { query } = data;
-	let { posts } = data;
 	let currentPage = 1;
+
+	$: posts = data.posts;
 
 	const handleLoadMore = async () => {
 		currentPage++;

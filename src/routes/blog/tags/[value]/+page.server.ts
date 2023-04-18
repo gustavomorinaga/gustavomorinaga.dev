@@ -1,12 +1,13 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import type { ICMSData, IPost } from '$lib/ts';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 10;
 
-export async function load({ fetch }) {
+export async function load({ fetch, params: { value } }) {
 	const query = {
 		blog: {
 			populate: '*',
+			'filters[tags][value][$in]': value,
 			sort: 'publishedAt:desc',
 			'pagination[page]': String(1),
 			'pagination[pageSize]': String(PAGE_SIZE)

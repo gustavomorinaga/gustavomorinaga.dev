@@ -15,7 +15,7 @@
 	let showDrawer = false;
 
 	$: showContent = $GPU.isThree ? finished : true;
-	$: readMode = data.pathname.includes('/blog/');
+	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -53,7 +53,7 @@
 			special: true
 		}
 	] satisfies IRoute[];
-	$: trigger = extractMainPath(data.pathname);
+	$: trigger = extractMainPath(data.pathname, ['/about', '/blog/tags']);
 
 	const handleResize = () => {
 		handleIsMobile();
