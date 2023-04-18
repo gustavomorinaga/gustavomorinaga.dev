@@ -93,7 +93,15 @@ export const pt: ILang = {
 			title: 'Blog',
 			description:
 				'Aqui você encontra artigos que escrevi sobre tecnologia, programação, design e muito mais.'
-		}
+		},
+
+		placeholder: 'Pesquisar artigos...',
+		filters: {
+			all: 'Todos'
+		},
+
+		empty: 'Nenhum artigo encontrado.',
+		loadMore: 'Carregar mais'
 	},
 
 	about: {

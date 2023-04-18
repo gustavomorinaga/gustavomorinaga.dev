@@ -81,6 +81,14 @@ export interface ILang {
 			title: string;
 			description: string;
 		};
+
+		placeholder: string;
+		filters: {
+			[key: string]: string;
+		};
+
+		empty: string;
+		loadMore: string;
 	};
 
 	about: {

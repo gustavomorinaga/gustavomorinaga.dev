@@ -14,7 +14,8 @@
 
 	export let routes: IRoute[] = [];
 
-	$: isCurrentRoute = (path: string) => extractMainPath($page.url.pathname) === path;
+	$: isCurrentRoute = (path: string) =>
+		extractMainPath({ path: $page.url.pathname, force: true }) === path;
 
 	const handleLogo = () => {
 		anime

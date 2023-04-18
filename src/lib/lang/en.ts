@@ -92,7 +92,15 @@ export const en: ILang = {
 			title: 'Blog',
 			description:
 				'Here you will find articles that I wrote about technology, programming, design and much more.'
-		}
+		},
+
+		placeholder: 'Search post...',
+		filters: {
+			all: 'All'
+		},
+
+		empty: 'No posts found',
+		loadMore: 'Load more'
 	},
 
 	about: {

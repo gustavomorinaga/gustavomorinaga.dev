@@ -53,7 +53,7 @@
 			special: true
 		}
 	] satisfies IRoute[];
-	$: trigger = extractMainPath(data.pathname, ['/about', '/blog/tags']);
+	$: trigger = extractMainPath({ path: data.pathname });
 
 	const handleResize = () => {
 		handleIsMobile();

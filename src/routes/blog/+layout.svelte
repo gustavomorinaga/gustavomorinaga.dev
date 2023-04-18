@@ -20,13 +20,27 @@
 
 	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
 		<aside class="filters">
-			<!-- <input class="search" type="text" name="term" id="term" placeholder="Pesquisar artigos..." /> -->
+			<div class="form-control">
+				<label class="input-group">
+					<span>
+						<Icon icon="search" size="sm" />
+					</span>
+
+					<input
+						class="input input-bordered w-full"
+						type="text"
+						name="term"
+						id="term"
+						placeholder={$LANG.blog.placeholder}
+					/>
+				</label>
+			</div>
 
 			<ul class="menu">
 				<li>
 					<a href="/blog" class:bg-primary={!$page.params.value} on:click={scrollToTop}>
 						<Icon icon="stack-2" />
-						Todos
+						{$LANG.blog.filters.all}
 					</a>
 				</li>
 				{#each tags.data as tag (tag.id)}
@@ -67,7 +81,7 @@
 		}
 
 		& > .blog__layout {
-			@apply grid grid-cols-12 gap-y-4 md:gap-8;
+			@apply grid grid-cols-10 gap-y-4 md:gap-8;
 
 			& > aside.filters {
 				@apply sticky top-24 col-span-3 self-start flex flex-col gap-4;

@@ -88,5 +88,7 @@
 <button
 	class="btn btn-wide mx-auto"
 	disabled={posts.meta.pagination.total <= posts.data.length}
-	on:click={handleLoadMore}>Carregar mais</button
+	on:click={handleLoadMore}
 >
+	{$LANG.blog.loadMore}
+</button>
