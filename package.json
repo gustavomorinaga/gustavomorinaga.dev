@@ -23,6 +23,8 @@
 		"postbuild": "npx svelte-sitemap --out-dir .vercel/output/static --domain https://gustavomorinaga.dev"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "17.6.1",
+		"@commitlint/config-conventional": "17.6.1",
 		"@giscus/svelte": "2.2.8",
 		"@iconify/svelte": "3.1.0",
 		"@iconify/types": "2.0.0",
