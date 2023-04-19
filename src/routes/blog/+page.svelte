@@ -42,7 +42,7 @@
 </ul>
 
 <button
-	class="btn btn-wide mx-auto"
+	class="btn__fetch"
 	disabled={posts.meta.pagination.total <= posts.data.length}
 	on:click={handleLoadMore}
 >

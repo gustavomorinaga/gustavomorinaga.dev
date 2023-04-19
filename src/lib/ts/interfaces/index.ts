@@ -8,5 +8,6 @@ export * from './post';
 export * from './raindrop';
 export * from './route';
 export * from './service';
+export * from './setup';
 export * from './social';
 export * from './tag';

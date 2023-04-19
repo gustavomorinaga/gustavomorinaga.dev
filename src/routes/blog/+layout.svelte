@@ -20,7 +20,7 @@
 
 	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
 		<aside class="filters">
-			<div class="form-control">
+			<!-- <div class="form-control">
 				<label class="input-group">
 					<span>
 						<Icon icon="search" size="sm" />
@@ -34,7 +34,7 @@
 						placeholder={$LANG.blog.placeholder}
 					/>
 				</label>
-			</div>
+			</div> -->
 
 			<ul class="menu">
 				<li>
@@ -103,6 +103,10 @@
 
 					& ul.posts__list {
 						@apply flex flex-col gap-4;
+					}
+
+					& button.btn__fetch {
+						@apply btn btn-wide mx-auto;
 					}
 				}
 			}

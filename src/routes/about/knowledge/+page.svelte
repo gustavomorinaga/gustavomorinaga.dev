@@ -1,31 +1,34 @@
 <script lang="ts">
-	import { Icon, Metadata } from '$lib/components';
+	import { CardKnowledge, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { LANG } from '$lib/stores';
+	import type { IKnowledgePayload } from '$lib/ts';
 
 	$: knowledges = [
-		{ title: $LANG.about.knowledge.languages, knowledge: getKnowledge('techs', 'language') },
-		{ title: $LANG.about.knowledge.runtime, knowledge: getKnowledge('techs', 'runtime') },
-		{ title: $LANG.about.knowledge.libs, knowledge: getKnowledge('techs', 'lib') },
-		{ title: $LANG.about.knowledge.frameworks, knowledge: getKnowledge('techs', 'framework') },
-		{ title: $LANG.about.knowledge.databases, knowledge: getKnowledge('techs', 'database') },
+		{ title: $LANG.about.knowledge.languages, skills: getKnowledge('techs', 'language') },
+		{ title: $LANG.about.knowledge.runtime, skills: getKnowledge('techs', 'runtime') },
+		{ title: $LANG.about.knowledge.libs, skills: getKnowledge('techs', 'lib') },
+		{ title: $LANG.about.knowledge.frameworks, skills: getKnowledge('techs', 'framework') },
+		{ title: $LANG.about.knowledge.databases, skills: getKnowledge('techs', 'database') },
 		{
 			title: $LANG.about.knowledge.versionControl,
-			knowledge: getKnowledge('tools', 'version-control')
+			skills: getKnowledge('tools', 'version-control')
 		},
 		{
 			title: $LANG.about.knowledge.packageManagers,
-			knowledge: getKnowledge('tools', 'package-manager')
+			skills: getKnowledge('tools', 'package-manager')
 		},
-		{ title: $LANG.about.knowledge.platforms, knowledge: getKnowledge('tools', 'platform') },
-		{ title: $LANG.about.knowledge.plugins, knowledge: getKnowledge('tools', 'plugin') },
-		{ title: $LANG.about.knowledge.bundlers, knowledge: getKnowledge('tools', 'bundler') },
-		{ title: $LANG.about.knowledge.compilers, knowledge: getKnowledge('tools', 'compiler') },
-		{ title: $LANG.about.knowledge.tools, knowledge: getKnowledge('tools', 'tool') }
-	];
+		{ title: $LANG.about.knowledge.platforms, skills: getKnowledge('tools', 'platform') },
+		{ title: $LANG.about.knowledge.plugins, skills: getKnowledge('tools', 'plugin') },
+		{ title: $LANG.about.knowledge.bundlers, skills: getKnowledge('tools', 'bundler') },
+		{ title: $LANG.about.knowledge.compilers, skills: getKnowledge('tools', 'compiler') },
+		{ title: $LANG.about.knowledge.tools, skills: getKnowledge('tools', 'tool') }
+	] satisfies IKnowledgePayload[];
 
 	const getKnowledge = (section: 'techs' | 'tools', category: string) =>
-		profileJSON.knowledge[section].filter(t => t.category === category);
+		profileJSON.knowledge[section].filter(
+			t => t.category === category
+		) as IKnowledgePayload['skills'];
 </script>
 
 <Metadata
@@ -33,54 +36,26 @@
 	description={$LANG.about.knowledge.metadata.description}
 />
 
-<section class="knowledge">
+<section class="knowledges">
 	<h1>{$LANG.about.knowledge.title}</h1>
 
-	<div class="knowledge__content">
-		{#each knowledges as { title, knowledge }}
-			<article>
-				<h3>{title}</h3>
-
-				<ul>
-					{#each knowledge as { icon, collection, title, url, color }}
-						<li data-tip={title} style="--icon-color: {color}">
-							<a href={url} target="_blank" rel="noopener noreferrer">
-								<Icon {icon} {collection} size="lg" />
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</article>
+	<div class="knowledges__content">
+		{#each knowledges as knowledge}
+			<CardKnowledge {knowledge} />
 		{/each}
 	</div>
 </section>
 
 <style lang="scss" global>
-	section.knowledge {
+	section.knowledges {
 		@apply block;
 
 		& h1 {
 			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
-		& .knowledge__content {
+		& .knowledges__content {
 			@apply flex flex-wrap gap-4;
-
-			& > article {
-				@apply flex-auto card card-bordered p-8 bg-base-100/75 shadow-lg  backdrop-blur-md;
-
-				& h3 {
-					@apply text-2xl font-futuristic text-shadow-glow shadow-primary mb-4;
-				}
-
-				& > ul {
-					@apply flex flex-wrap gap-8;
-
-					& li {
-						@apply tooltip tooltip-bottom lg:hover:text-[var(--icon-color)] transition-colors duration-700 ease-smooth;
-					}
-				}
-			}
 		}
 	}
 </style>

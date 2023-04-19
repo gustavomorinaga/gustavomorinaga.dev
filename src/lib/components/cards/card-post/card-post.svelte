@@ -7,7 +7,7 @@
 
 	export let post: IPost;
 
-	const TAG_LIMIT = 3;
+	const TAG_LIMIT = 5;
 	const { slug, title, cover, content, tags, publishedAt } = post;
 </script>
 

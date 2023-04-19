@@ -1,11 +1,16 @@
 import type { IIcon } from './icon';
 
-export interface ITech extends IIcon {
+export interface ISkill extends IIcon {
 	title: string;
 	url: string;
 }
 
 export interface IKnowledge {
-	techs: ITech[];
-	tools: ITech[];
+	techs: ISkill[];
+	tools: ISkill[];
+}
+
+export interface IKnowledgePayload {
+	title: string;
+	skills: ISkill[];
 }
