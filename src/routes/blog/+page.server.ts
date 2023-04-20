@@ -1,20 +1,25 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
+import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 3;
 
 export async function load({ fetch }) {
 	const query = {
 		blog: {
-			populate: '*',
-			sort: 'publishedAt:desc',
-			'pagination[page]': String(1),
-			'pagination[pageSize]': String(PAGE_SIZE)
+			populate: ['cover', 'tags'],
+			sort: ['publishedAt:desc'],
+			pagination: {
+				page: 1,
+				pageSize: PAGE_SIZE
+			}
 		}
 	};
 
 	const [posts] = await Promise.all([
-		fetch(`${PUBLIC_CMS_URL}/api/blog-posts?${new URLSearchParams(query.blog).toString()}`)
+		fetch(
+			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(query.blog, { encodeValuesOnly: true })}`
+		)
 			.then<ICMSData<IPost>>(res => res.json())
 			.then(res => ({
 				...res,

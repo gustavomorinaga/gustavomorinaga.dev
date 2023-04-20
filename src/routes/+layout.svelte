@@ -5,6 +5,7 @@
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
+	import { page } from '$app/stores';
 	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
 	import type { IRoute } from '$lib/ts';
 
@@ -15,7 +16,8 @@
 	let showDrawer = false;
 
 	$: showContent = $GPU.isThree ? finished : true;
-	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
+	$: readMode =
+		data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/') && !$page.error;
 	$: routes = [
 		{
 			title: $LANG.header.home,

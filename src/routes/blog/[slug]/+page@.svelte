@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { onMount } from 'svelte';
-	import { Metadata } from '$lib/components';
+	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { simpleDateFormatter, HOST } from '$lib/utils';
+	import { afterNavigate } from '$app/navigation';
 
 	export let data;
 
 	const { post } = data;
+	let previousPathname = '/blog';
 
 	const registerView = async () => {
 		return await fetch(`${PUBLIC_CMS_URL}/api/blog-posts/${post.id}`, {
@@ -19,6 +21,8 @@
 		});
 	};
 
+	afterNavigate(({ from }) => (previousPathname = from?.url.pathname || ''));
+
 	onMount(async () => {
 		await registerView();
 	});
@@ -28,6 +32,12 @@
 
 <article class="post">
 	<header style="--cover: url({HOST + post.cover.url});">
+		<a class="btn btn-link" href={previousPathname}>
+			<Icon icon="arrow-left" />
+
+			Go back
+		</a>
+
 		<div>
 			<h1>{post.title}</h1>
 			<p>{post.subtitle}</p>

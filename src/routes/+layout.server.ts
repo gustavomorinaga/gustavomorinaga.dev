@@ -14,3 +14,6 @@ export async function load({ fetch, url: { pathname } }) {
 
 	return { pathname, playlist };
 }
+
+export const prerender = true;
+export const ssr = true;

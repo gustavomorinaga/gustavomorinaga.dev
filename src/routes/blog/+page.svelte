@@ -3,6 +3,7 @@
 	import { blur } from 'svelte/transition';
 	import { CardPost, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
+	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
@@ -17,10 +18,13 @@
 		const [response] = await Promise.all([
 			fetch(
 				`${PUBLIC_CMS_URL}/api/blog-posts?` +
-					new URLSearchParams({
+					qs.stringify({
 						...query.blog,
-						'pagination[page]': currentPage.toString()
-					}).toString()
+						pagination: {
+							...query.blog.pagination,
+							page: currentPage
+						}
+					})
 			).then<ICMSData<IPost>>(res => res.json())
 		]);
 
