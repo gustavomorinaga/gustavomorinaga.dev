@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, estimateReadingTime, simpleDateFormatter } from '$lib/utils';
+	import { HOST, estimateReadingTime, dateFormatter } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import type { IPost } from '$lib/ts';
 
@@ -28,9 +28,10 @@
 
 					<span>
 						<time>
-							{simpleDateFormatter({
+							{dateFormatter({
 								lang: $LANG.code,
-								date: new Date(publishedAt)
+								date: new Date(publishedAt),
+								dateStyle: 'medium'
 							})}
 						</time>
 						•

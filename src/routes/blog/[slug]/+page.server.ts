@@ -1,6 +1,5 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
-import { estimateReadingTime } from '$lib/utils';
-import { compile } from 'mdsvex';
+import { compileMarkdown, estimateReadingTime } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
@@ -24,8 +23,9 @@ export const load = async ({ fetch, params: { slug } }) => {
 			.then(res => res.data[0])
 			.then(async res => ({
 				...res,
-				content: (await compile(res.content))?.code,
-				readingTime: estimateReadingTime(res.content)
+				content: await compileMarkdown(res.content),
+				readingTime: estimateReadingTime(res.content),
+				tags: res.tags.sort((a, b) => a.value.localeCompare(b.value))
 			}))
 	]);
 

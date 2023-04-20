@@ -335,7 +335,7 @@
 							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
 
 							& .btn__social {
-								@apply btn-link btn-sm text-shadow-md ;
+								@apply btn-link btn-sm drop-shadow;
 							}
 						}
 					}
@@ -527,7 +527,7 @@
 			}
 
 			& p {
-				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md ;
+				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
 			}
 
 			& .knowledge {
@@ -660,7 +660,7 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md ;
+		@apply absolute bottom-8 drop-shadow-md animate-bounce;
 	}
 
 	html.low__end {

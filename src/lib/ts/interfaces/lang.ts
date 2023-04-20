@@ -91,6 +91,10 @@ export interface ILang {
 		loadMore: string;
 	};
 
+	post: {
+		goBack: string;
+	};
+
 	about: {
 		title: string;
 		paragraph: string;

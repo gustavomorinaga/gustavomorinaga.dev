@@ -103,6 +103,10 @@ export const en: ILang = {
 		loadMore: 'Load more'
 	},
 
+	post: {
+		goBack: 'Go back'
+	},
+
 	about: {
 		title: 'About me',
 		paragraph:

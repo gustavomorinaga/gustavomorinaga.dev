@@ -104,6 +104,10 @@ export const pt: ILang = {
 		loadMore: 'Carregar mais'
 	},
 
+	post: {
+		goBack: 'Voltar'
+	},
+
 	about: {
 		title: 'Sobre mim',
 		paragraph:

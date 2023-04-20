@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.scss';
+	import '$lib/styles/global.scss';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
