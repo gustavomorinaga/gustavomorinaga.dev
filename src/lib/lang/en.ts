@@ -104,7 +104,9 @@ export const en: ILang = {
 	},
 
 	post: {
-		goBack: 'Go back'
+		goBack: 'Go back',
+
+		read: 'read'
 	},
 
 	about: {

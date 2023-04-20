@@ -93,6 +93,8 @@ export interface ILang {
 
 	post: {
 		goBack: string;
+
+		read: string;
 	};
 
 	about: {

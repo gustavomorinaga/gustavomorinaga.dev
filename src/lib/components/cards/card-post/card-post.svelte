@@ -35,7 +35,7 @@
 							})}
 						</time>
 						•
-						<time>{estimateReadingTime(content)} min</time>
+						<span>{estimateReadingTime(content)} min</span>
 					</span>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 
 		& .card-body {
 			& > h2 {
-				@apply text-3xl font-futuristic mb-8 text-shadow-glow shadow-primary;
+				@apply text-3xl font-futuristic mb-8 text-shadow-lg shadow-black/75;
 			}
 
 			& > footer {
@@ -98,7 +98,7 @@
 						@apply block leading-5;
 
 						& > span {
-							@apply flex items-center gap-2 text-gray-400;
+							@apply flex items-center gap-2 text-stone-400;
 						}
 					}
 				}

@@ -105,7 +105,9 @@ export const pt: ILang = {
 	},
 
 	post: {
-		goBack: 'Voltar'
+		goBack: 'Voltar',
+
+		read: 'de leitura'
 	},
 
 	about: {

@@ -4,12 +4,13 @@
 	import { onMount } from 'svelte';
 	import { Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, dateFormatter } from '$lib/utils';
+	import { HOST, dateFormatter, estimateReadingTime } from '$lib/utils';
 	import { afterNavigate } from '$app/navigation';
 	import { balancer } from 'svelte-action-balancer';
 
 	export let data;
 
+	const TAG_LIMIT = 5;
 	const { post } = data;
 	let previousPathname = '/blog';
 
@@ -30,7 +31,7 @@
 	});
 </script>
 
-<Metadata title={post.title} description={post.description} />
+<Metadata title={post.title} description={post.description} thumbnail={post.cover.url} />
 
 <article class="post">
 	<header style="--cover: url({HOST + post.cover.url});">
@@ -45,27 +46,53 @@
 				<h1 use:balancer>{post.title}</h1>
 				<p use:balancer>{post.subtitle}</p>
 
-				<div class="author">
-					<a href="/about">
-						<figure class="avatar">
-							<div>
-								<img src="https://github.com/gustavomorinaga.png" alt="Gustavo Morinaga avatar" />
-							</div>
-						</figure>
-					</a>
+				<div class="details">
+					<span class="author">
+						<a href="/about">
+							<figure class="avatar">
+								<div>
+									<img src="https://github.com/gustavomorinaga.png" alt="Gustavo Morinaga avatar" />
+								</div>
+							</figure>
+						</a>
 
-					<div class="author__content">
-						<address>
-							<a href="/about" rel="author">Gustavo Morinaga</a>
-						</address>
-						<time>
-							{dateFormatter({
-								lang: $LANG.code,
-								date: new Date(post.publishedAt),
-								dateStyle: 'full'
-							})}
-						</time>
-					</div>
+						<div class="author__content">
+							<address>
+								<a href="/about" rel="author">Gustavo Morinaga</a>
+							</address>
+
+							<span>
+								<time>
+									{dateFormatter({
+										lang: $LANG.code,
+										date: new Date(post.publishedAt),
+										dateStyle: 'full'
+									})}
+								</time>
+								•
+								<span>{estimateReadingTime(post.content)} min {$LANG.post.read}</span>
+							</span>
+						</div>
+					</span>
+
+					<ul class="tags">
+						{#if post.tags && post.tags?.length}
+							{#each post.tags as tag, index}
+								{#if index + 1 <= TAG_LIMIT}
+									<li>
+										<a
+											class="tag"
+											href="/blog/tags/{tag.value}"
+											title={tag.label}
+											aria-label={tag.label}
+										>
+											<Icon icon={tag.icon} collection={tag.collection} />
+										</a>
+									</li>
+								{/if}
+							{/each}
+						{/if}
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -100,33 +127,57 @@
 				& > div {
 					@apply block;
 
-					& h1 {
+					& > h1 {
 						@apply text-5xl font-bold mt-8 mb-4 text-shadow-lg shadow-black/75;
 
 						& + p {
-							@apply text-2xl text-stone-400 mb-8 text-shadow-lg shadow-black/75;
+							@apply text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
 						}
 					}
 
-					& div.author {
+					& ul.tags {
 						@apply flex items-center gap-2;
 
-						& figure.avatar {
-							@apply block;
+						& > li {
+							& > a.tag {
+								@apply badge badge-ghost badge-lg h-auto py-1 border border-base-300 shadow;
 
-							& > div {
-								@apply w-10 rounded-full;
+								@media (hover: hover) {
+									&:hover {
+										@apply border-primary shadow-glow shadow-primary/10;
+									}
+								}
 							}
 						}
+					}
 
-						& > div.author__content {
-							@apply block;
+					& > .details {
+						@apply flex items-center justify-between gap-4;
 
-							& address {
+						& span.author {
+							@apply flex items-center gap-2;
+
+							& figure.avatar {
+								@apply block card-bordered rounded-full;
+
+								& > div {
+									@apply w-10 rounded-full;
+								}
+							}
+
+							& > div.author__content {
 								@apply block;
 
-								& a {
-									@apply font-bold not-italic;
+								& address {
+									@apply block;
+
+									& a {
+										@apply font-bold not-italic;
+									}
+								}
+
+								& > span {
+									@apply flex items-center gap-2 text-stone-400;
 								}
 							}
 						}
