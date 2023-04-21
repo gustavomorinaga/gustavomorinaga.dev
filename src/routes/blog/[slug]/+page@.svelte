@@ -11,20 +11,25 @@
 	export let data;
 
 	const TAG_LIMIT = 5;
-	const { post } = data;
-	let previousPathname = '/blog';
+	const ROOT_PATHNAME = '/blog';
+	const POST_PATHNAME = '/blog/[slug]';
+	const { post, relatedPosts } = data;
+	let previousPathname = ROOT_PATHNAME;
 
-	const registerView = async () => {
-		return await fetch(`${PUBLIC_CMS_URL}/api/blog-posts/${post.id}`, {
+	const registerView = async () =>
+		await fetch(`${PUBLIC_CMS_URL}/api/blog-posts/${post.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ data: { views: post.views + 1 } })
 		});
-	};
 
-	afterNavigate(({ from }) => (previousPathname = from?.url.pathname || previousPathname));
+	afterNavigate(({ from }) => {
+		const isPostPathname = from?.route.id?.includes(POST_PATHNAME);
+
+		previousPathname = !isPostPathname ? from?.url.pathname || previousPathname : ROOT_PATHNAME;
+	});
 
 	onMount(async () => {
 		await registerView();
@@ -70,7 +75,7 @@
 									})}
 								</time>
 								•
-								<span>{estimateReadingTime(post.content)} min {$LANG.post.read}</span>
+								<span>{post.readingTime} min {$LANG.post.read}</span>
 							</span>
 						</div>
 					</span>
@@ -98,9 +103,36 @@
 		</div>
 	</header>
 
-	<section class="content">
-		{@html post.content}
-	</section>
+	<div>
+		<section class="content">
+			{@html post.content}
+		</section>
+
+		<aside class="related">
+			<p>Artigos relacionados</p>
+
+			<ul>
+				{#each relatedPosts.data as relatedPost}
+					<li>
+						<a href="/blog/{relatedPost.slug}" use:balancer>
+							{relatedPost.title}
+						</a>
+						<span>
+							<time>
+								{dateFormatter({
+									lang: $LANG.code,
+									date: new Date(relatedPost.publishedAt),
+									dateStyle: 'medium'
+								})}
+							</time>
+							•
+							<span>{estimateReadingTime(relatedPost.content)} min</span>
+						</span>
+					</li>
+				{/each}
+			</ul>
+		</aside>
+	</div>
 </article>
 
 <style lang="scss" global>
@@ -186,173 +218,201 @@
 			}
 		}
 
-		& > section.content {
-			@for $i from 1 through 6 {
-				& > h#{$i} {
-					@apply text-primary font-bold mb-4;
-				}
-			}
+		& > div {
+			@apply grid grid-cols-12 gap-4;
 
-			& > h2 {
-				@apply text-3xl mt-12 mb-4;
-			}
+			& > section.content {
+				@apply col-span-8;
 
-			& > h3 {
-				@apply text-2xl mt-8;
-			}
-
-			& > h4 {
-				@apply text-xl mt-8;
-			}
-
-			& > h5 {
-				@apply text-lg mt-8;
-			}
-
-			& > h6 {
-				@apply text-base mt-8;
-			}
-
-			& p {
-				@apply text-lg;
-			}
-
-			p:not(:last-child),
-			dl:not(:last-child),
-			ol:not(:last-child),
-			ul:not(:last-child),
-			blockquote:not(:last-child),
-			pre:not(:last-child),
-			table:not(:last-child),
-			img:not(:last-child) {
-				@apply mb-8;
-			}
-
-			& a {
-				@apply link-primary link-hover;
-			}
-
-			& > ul {
-				@apply list-disc;
-
-				&,
-				& > ul,
-				& > ul > ul {
-					@apply list-inside marker:text-primary mb-8;
-				}
-
-				& > ul {
-					list-style-type: circle;
-
-					& > ul {
-						list-style-type: square;
+				@for $i from 1 through 6 {
+					& > h#{$i} {
+						@apply text-primary font-bold mb-4;
 					}
 				}
-			}
 
-			& > ol {
-				@apply list-decimal;
-
-				&,
-				& > ol,
-				& > ol > ol {
-					@apply list-inside marker:text-primary mb-8;
+				& > h2 {
+					@apply text-3xl mt-12 mb-4;
 				}
 
-				& > ol {
-					list-style-type: lower-alpha;
-
-					& > ol {
-						list-style-type: lower-roman;
-					}
+				& > h3 {
+					@apply text-2xl mt-8;
 				}
-			}
 
-			& li {
-				@apply text-lg;
-			}
-
-			& li + li {
-				@apply mt-2;
-			}
-
-			& > blockquote {
-				@apply block p-8 mb-8 rounded-box bg-base-100/75 border-l-4 border-primary;
-
-				& > p {
-					@apply block;
+				& > h4 {
+					@apply text-xl mt-8;
 				}
-			}
 
-			& dd {
-				@apply ml-8;
-			}
-
-			& figure {
-				@apply text-center mx-auto;
-
-				&:not(:first-child) {
-					@apply mt-8;
+				& > h5 {
+					@apply text-lg mt-8;
 				}
-				&:not(:last-child) {
+
+				& > h6 {
+					@apply text-base mt-8;
+				}
+
+				& p {
+					@apply text-lg;
+				}
+
+				p:not(:last-child),
+				dl:not(:last-child),
+				ol:not(:last-child),
+				ul:not(:last-child),
+				blockquote:not(:last-child),
+				pre:not(:last-child),
+				table:not(:last-child),
+				img:not(:last-child) {
 					@apply mb-8;
 				}
 
-				& > img {
-					@apply inline-block;
+				& a {
+					@apply link-primary link-hover;
 				}
 
-				& > figcaption {
-					@apply italic;
-				}
-			}
+				& > ul {
+					@apply list-disc;
 
-			img,
-			video {
-				@apply rounded-box mx-auto;
-			}
+					&,
+					& > ul,
+					& > ul > ul {
+						@apply list-inside marker:text-primary mb-8;
+					}
 
-			sup,
-			sub {
-				@apply text-sm;
-			}
+					& > ul {
+						list-style-type: circle;
 
-			& table {
-				@apply table-auto w-full text-left border-collapse card-bordered rounded-box;
-
-				& > thead {
-					@apply bg-base-200/75;
-
-					& > tr {
-						@apply border-b border-base-200;
-
-						& > th {
-							@apply px-4 py-2;
+						& > ul {
+							list-style-type: square;
 						}
 					}
 				}
 
-				& > tbody {
-					& > tr {
-						@apply odd:bg-base-100/75 even:bg-base-100/50;
+				& > ol {
+					@apply list-decimal;
 
-						& > td {
-							@apply px-4 py-2;
+					&,
+					& > ol,
+					& > ol > ol {
+						@apply list-inside marker:text-primary mb-8;
+					}
+
+					& > ol {
+						list-style-type: lower-alpha;
+
+						& > ol {
+							list-style-type: lower-roman;
 						}
+					}
+				}
+
+				& li {
+					@apply text-lg;
+				}
+
+				& li + li {
+					@apply mt-2;
+				}
+
+				& > blockquote {
+					@apply block p-8 mb-8 rounded-box bg-base-100/75 border-l-4 border-primary;
+
+					& > p {
+						@apply block;
+					}
+				}
+
+				& dd {
+					@apply ml-8;
+				}
+
+				& figure {
+					@apply text-center mx-auto;
+
+					&:not(:first-child) {
+						@apply mt-8;
+					}
+					&:not(:last-child) {
+						@apply mb-8;
+					}
+
+					& > img {
+						@apply inline-block;
+					}
+
+					& > figcaption {
+						@apply italic;
+					}
+				}
+
+				img,
+				video {
+					@apply rounded-box mx-auto;
+				}
+
+				sup,
+				sub {
+					@apply text-sm;
+				}
+
+				& table {
+					@apply table-auto w-full text-left border-collapse card-bordered rounded-box;
+
+					& > thead {
+						@apply bg-base-200/75;
+
+						& > tr {
+							@apply border-b border-base-200;
+
+							& > th {
+								@apply px-4 py-2;
+							}
+						}
+					}
+
+					& > tbody {
+						& > tr {
+							@apply odd:bg-base-100/75 even:bg-base-100/50;
+
+							& > td {
+								@apply px-4 py-2;
+							}
+						}
+					}
+				}
+
+				& code:not([class]) {
+					@apply inline px-1 rounded-box card-bordered bg-base-200/75 text-base text-primary;
+				}
+
+				& .file-title {
+					@apply py-2 px-4 text-base font-bold text-base-content bg-base-200/75 rounded-t-box card-bordered;
+					margin-bottom: 0 !important;
+
+					& + pre {
+						@apply mt-0 rounded-t-none border-t-0;
 					}
 				}
 			}
 
-			& code:not([class]) {
-				@apply inline px-1 rounded-box card-bordered bg-base-100/75 text-base text-primary;
-			}
+			& > aside.related {
+				@apply col-span-4 px-4 border-l border-base-200;
 
-			& .file-title {
-				@apply py-2 px-4 text-base font-bold text-base-content bg-base-200/75 rounded-t-box card-bordered;
-				margin-bottom: 0 !important;
+				& > p {
+					@apply text-stone-400 mb-4;
+				}
 
-				& + pre {
-					@apply mt-0 rounded-t-none border-t-0;
+				& > ul {
+					@apply flex flex-col gap-4 mb-8;
+
+					& > li {
+						& > a {
+							@apply link link-hover link-primary text-base font-bold;
+						}
+
+						& > span {
+							@apply flex items-center gap-2 text-stone-400 text-sm;
+						}
+					}
 				}
 			}
 		}
