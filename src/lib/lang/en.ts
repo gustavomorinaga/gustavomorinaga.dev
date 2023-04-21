@@ -106,7 +106,25 @@ export const en: ILang = {
 	post: {
 		goBack: 'Go back',
 
-		read: 'read'
+		read: 'read',
+
+		options: {
+			share: 'Share',
+			newsletter: 'Subscribe',
+			comments: 'Comments'
+		},
+		related: 'Related posts',
+
+		newsletter: {
+			title: 'Liked this post?',
+			paragraph:
+				'Subscribe to receive notifications by email when there is new content. No commitment, cancel at any time.',
+
+			form: {
+				placeholder: 'your.email@example.com',
+				subscribe: 'Subscribe'
+			}
+		}
 	},
 
 	about: {

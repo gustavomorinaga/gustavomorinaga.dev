@@ -20,21 +20,21 @@
 
 	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
 		<aside class="filters">
-			<!-- <div class="form-control">
-				<label class="input-group">
+			<div class="form-control">
+				<label>
 					<span>
 						<Icon icon="search" size="sm" />
 					</span>
 
 					<input
-						class="input input-bordered w-full"
+						class="search"
 						type="text"
 						name="term"
 						id="term"
 						placeholder={$LANG.blog.placeholder}
 					/>
 				</label>
-			</div> -->
+			</div>
 
 			<ul class="menu">
 				<li>
@@ -86,7 +86,17 @@
 			& > aside.filters {
 				@apply sticky top-24 col-span-3 self-start flex flex-col gap-4;
 
-				& > input.search {
+				& > div.form-control {
+					& > label {
+						@apply input-group;
+
+						& > input.search {
+							@apply input input-bordered w-full;
+						}
+					}
+				}
+
+				& input.search {
 					@apply input input-bordered;
 				}
 

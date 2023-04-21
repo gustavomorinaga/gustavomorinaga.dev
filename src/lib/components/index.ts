@@ -7,6 +7,7 @@ export * from './cookie-consent';
 export * from './drawer';
 export * from './dropdown';
 export * from './footer';
+export * from './giscus';
 export * from './header';
 export * from './icon';
 export * from './loaders';

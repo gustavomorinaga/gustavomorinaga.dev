@@ -1,10 +1,18 @@
 <script lang="ts">
 	import '$lib/styles/prism.scss';
-	import { PUBLIC_CMS_URL } from '$env/static/public';
+	import {
+		PUBLIC_CATEGORY_ID,
+		PUBLIC_CMS_URL,
+		PUBLIC_REPO,
+		PUBLIC_REPO_ID,
+		PUBLIC_USERNAME
+	} from '$env/static/public';
 	import { onMount } from 'svelte';
-	import { Icon, Metadata } from '$lib/components';
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
+	import { Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, dateFormatter, estimateReadingTime } from '$lib/utils';
+	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
 	import { afterNavigate } from '$app/navigation';
 	import { balancer } from 'svelte-action-balancer';
 
@@ -14,6 +22,11 @@
 	const ROOT_PATHNAME = '/blog';
 	const POST_PATHNAME = '/blog/[slug]';
 	const { post, relatedPosts } = data;
+	const shareableData = {
+		title: post.title,
+		text: post.description,
+		url: $page.url.href
+	};
 	let previousPathname = ROOT_PATHNAME;
 
 	const registerView = async () =>
@@ -104,14 +117,35 @@
 	</header>
 
 	<div>
-		<section class="content">
+		<section class="content pb-16">
 			{@html post.content}
 		</section>
 
-		<aside class="related">
-			<p>Artigos relacionados</p>
+		<aside>
+			<ul class="options">
+				{#if browser ? navigator.canShare && navigator.canShare(shareableData) : false}
+					<li data-tip={$LANG.post.options.share}>
+						<button on:click={() => navigator.share(shareableData)}>
+							<Icon icon="share" size="sm" />
+						</button>
+					</li>
+				{/if}
 
-			<ul>
+				<li data-tip={$LANG.post.options.newsletter}>
+					<a href="#newsletter" on:click|preventDefault={scrollIntoView}>
+						<Icon icon="news" size="sm" />
+					</a>
+				</li>
+				<li data-tip={$LANG.post.options.comments}>
+					<a href="#comments" on:click|preventDefault={scrollIntoView}>
+						<Icon icon="message" size="sm" />
+					</a>
+				</li>
+			</ul>
+
+			<p>{$LANG.post.related}</p>
+
+			<ul class="related">
 				{#each relatedPosts.data as relatedPost}
 					<li>
 						<a href="/blog/{relatedPost.slug}" use:balancer>
@@ -133,6 +167,41 @@
 			</ul>
 		</aside>
 	</div>
+
+	<section id="newsletter">
+		<div class="card-body">
+			<h2>{$LANG.post.newsletter.title}</h2>
+
+			<p use:balancer>
+				{$LANG.post.newsletter.paragraph}
+			</p>
+
+			<div class="form-control">
+				<label class="input-group">
+					<input
+						class="input input-bordered w-80"
+						type="text"
+						name="term"
+						id="term"
+						placeholder={$LANG.post.newsletter.form.placeholder}
+					/>
+
+					<button class="btn btn-primary">{$LANG.post.newsletter.form.subscribe}</button>
+				</label>
+			</div>
+		</div>
+	</section>
+
+	<Giscus
+		id="comments"
+		repo="{PUBLIC_USERNAME}/{PUBLIC_REPO}"
+		repoId={PUBLIC_REPO_ID}
+		category="Comments"
+		categoryId={PUBLIC_CATEGORY_ID}
+		theme="dark"
+		lang={$LANG.code}
+		loading="lazy"
+	/>
 </article>
 
 <style lang="scss" global>
@@ -222,7 +291,7 @@
 			@apply grid grid-cols-12 gap-4;
 
 			& > section.content {
-				@apply col-span-8;
+				@apply col-span-8 pr-4 border-r border-base-200;
 
 				@for $i from 1 through 6 {
 					& > h#{$i} {
@@ -394,14 +463,27 @@
 				}
 			}
 
-			& > aside.related {
-				@apply col-span-4 px-4 border-l border-base-200;
+			& > aside {
+				@apply col-span-4 sticky top-24 self-start mb-8;
+
+				& > ul.options {
+					@apply grid grid-flow-col gap-2 mb-8;
+
+					& > li {
+						@apply md:tooltip md:tooltip-bottom;
+
+						& > button,
+						& > a {
+							@apply btn btn-block btn-sm;
+						}
+					}
+				}
 
 				& > p {
 					@apply text-stone-400 mb-4;
 				}
 
-				& > ul {
+				& > ul.related {
 					@apply flex flex-col gap-4 mb-8;
 
 					& > li {
@@ -413,6 +495,22 @@
 							@apply flex items-center gap-2 text-stone-400 text-sm;
 						}
 					}
+				}
+			}
+		}
+
+		& > section#newsletter {
+			@apply card card-bordered mb-16 bg-primary/5 backdrop-blur-sm;
+
+			& > .card-body {
+				@apply place-items-center text-center;
+
+				& > h2 {
+					@apply text-4xl mb-4 font-futuristic text-shadow-rgb;
+				}
+
+				& > p {
+					@apply text-lg mb-4;
 				}
 			}
 		}

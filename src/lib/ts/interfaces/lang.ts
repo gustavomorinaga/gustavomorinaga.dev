@@ -95,6 +95,23 @@ export interface ILang {
 		goBack: string;
 
 		read: string;
+
+		options: {
+			share: string;
+			newsletter: string;
+			comments: string;
+		};
+		related: string;
+
+		newsletter: {
+			title: string;
+			paragraph: string;
+
+			form: {
+				placeholder: string;
+				subscribe: string;
+			};
+		};
 	};
 
 	about: {

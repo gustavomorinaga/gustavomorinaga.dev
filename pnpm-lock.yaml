@@ -7,9 +7,6 @@ devDependencies:
   '@commitlint/config-conventional':
     specifier: 17.6.1
     version: 17.6.1
-  '@giscus/svelte':
-    specifier: 2.2.8
-    version: 2.2.8(svelte@3.57.0)
   '@iconify/svelte':
     specifier: 3.1.0
     version: 3.1.0(svelte@3.57.0)
@@ -97,6 +94,9 @@ devDependencies:
   eslint-plugin-svelte3:
     specifier: 4.0.0
     version: 4.0.0(eslint@8.36.0)(svelte@3.57.0)
+  giscus:
+    specifier: ^1.2.8
+    version: 1.2.8
   html-minifier:
     specifier: 4.0.0
     version: 4.0.0
@@ -814,15 +814,6 @@ packages:
   /@eslint/js@8.36.0:
     resolution: {integrity: sha512-lxJ9R5ygVm8ZWgYdUweoq5ownDlJ4upvoWmO4eLxBYHdMo+vZ/Rx0EN6MbKWDJOSUGrqJy2Gt+Dyv/VKml0fjg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
-
-  /@giscus/svelte@2.2.8(svelte@3.57.0):
-    resolution: {integrity: sha512-uyvaYcNWr7d++6xcHA3sHajF6TJr5gVDPIiAQSKnUXoYkfpjgRkDuka3sxRUq+rVE/zUv740cdwj7U9YbsbWzw==}
-    peerDependencies:
-      svelte: ^3
-    dependencies:
-      giscus: 1.2.8
-      svelte: 3.57.0
     dev: true
 
   /@humanwhocodes/config-array@0.11.8:
