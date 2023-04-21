@@ -346,7 +346,7 @@
 
 				img,
 				video {
-					@apply rounded-box mx-auto;
+					@apply card-bordered rounded-box mx-auto;
 				}
 
 				sup,
