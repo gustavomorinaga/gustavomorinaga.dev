@@ -51,7 +51,7 @@
 							on:click={scrollToTop}
 						>
 							<Icon icon={tag.icon} collection={tag.collection} />
-							{tag.label}
+							<span>{tag.label}</span>
 						</a>
 					</li>
 				{/each}
@@ -81,10 +81,10 @@
 		}
 
 		& > .blog__layout {
-			@apply grid grid-cols-10 gap-y-4 md:gap-8;
+			@apply grid md:grid-cols-10 gap-y-4 md:gap-8;
 
 			& > aside.filters {
-				@apply sticky top-24 col-span-3 self-start flex flex-col gap-4;
+				@apply md:sticky md:top-24 md:col-span-3 self-start flex flex-col gap-4;
 
 				& > div.form-control {
 					& > label {
@@ -101,12 +101,22 @@
 				}
 
 				& > ul.menu {
-					@apply card-bordered rounded-box overflow-hidden bg-base-100/75 shadow-lg backdrop-blur-md;
+					@apply menu-horizontal md:menu-vertical flex-nowrap md:max-w-none w-full overflow-x-auto md:overflow-hidden
+						card-bordered rounded-box overflow-hidden bg-base-100/75 shadow-lg backdrop-blur-md scrollbar__theme scrollbar-track-base-200;
+					max-width: calc(100vw - 2rem);
+
+					& > li {
+						& > a {
+							& > span {
+								@apply hidden md:block;
+							}
+						}
+					}
 				}
 			}
 
 			& > section.posts {
-				@apply col-span-full md:col-start-4 min-h-[75vh];
+				@apply md:col-span-full md:col-start-4 min-h-[75vh];
 
 				& > .page__transition {
 					@apply flex flex-col gap-8;

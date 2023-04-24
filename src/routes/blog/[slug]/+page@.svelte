@@ -10,7 +10,8 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { Giscus, Icon, Metadata } from '$lib/components';
+	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
+	import { IMAGES_SVG } from '$lib/images';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
 	import { afterNavigate } from '$app/navigation';
@@ -168,29 +169,7 @@
 		</aside>
 	</div>
 
-	<section id="newsletter">
-		<div class="card-body">
-			<h2>{$LANG.post.newsletter.title}</h2>
-
-			<p use:balancer>
-				{$LANG.post.newsletter.paragraph}
-			</p>
-
-			<div class="form-control">
-				<label class="input-group">
-					<input
-						class="input input-bordered w-80"
-						type="text"
-						name="term"
-						id="term"
-						placeholder={$LANG.post.newsletter.form.placeholder}
-					/>
-
-					<button class="btn btn-primary">{$LANG.post.newsletter.form.subscribe}</button>
-				</label>
-			</div>
-		</div>
-	</section>
+	<CardNewsletter />
 
 	<Giscus
 		id="comments"
@@ -206,7 +185,7 @@
 
 <style lang="scss" global>
 	article.post {
-		@apply block -mt-8;
+		@apply block -mt-10 md:-mt-8;
 
 		& > header {
 			@apply relative z-20 block w-screen min-h-[24rem] p-8 mb-8 bg-cover bg-no-repeat bg-center overflow-hidden;
@@ -229,10 +208,10 @@
 					@apply block;
 
 					& > h1 {
-						@apply text-5xl font-bold mt-8 mb-4 text-shadow-lg shadow-black/75;
+						@apply text-2xl md:text-5xl font-bold mt-8 mb-4 text-shadow-lg shadow-black/75;
 
 						& + p {
-							@apply text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
+							@apply text-lg md:text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
 						}
 					}
 
@@ -253,32 +232,32 @@
 					}
 
 					& > .details {
-						@apply flex items-center justify-between gap-4;
+						@apply flex flex-col md:flex-row md:items-center md:justify-between gap-4;
 
 						& span.author {
-							@apply flex items-center gap-2;
+							@apply flex md:items-center gap-2;
 
 							& figure.avatar {
-								@apply block card-bordered rounded-full;
+								@apply flex self-start md:block card-bordered rounded-full mt-1 md:m-0;
 
 								& > div {
-									@apply w-10 rounded-full;
+									@apply w-8 md:w-10 rounded-full;
 								}
 							}
 
 							& > div.author__content {
-								@apply block;
+								@apply block w-full;
 
 								& address {
 									@apply block;
 
 									& a {
-										@apply font-bold not-italic;
+										@apply text-sm md:text-base font-bold not-italic;
 									}
 								}
 
 								& > span {
-									@apply flex items-center gap-2 text-stone-400;
+									@apply text-sm md:text-base flex flex-wrap md:items-center gap-x-2 text-stone-400;
 								}
 							}
 						}
@@ -288,10 +267,10 @@
 		}
 
 		& > div {
-			@apply grid grid-cols-12 gap-4;
+			@apply md:grid md:grid-cols-12 gap-4;
 
 			& > section.content {
-				@apply col-span-8 pr-4 border-r border-base-200;
+				@apply md:col-span-8 md:pr-4 md:border-r md:border-base-200;
 
 				@for $i from 1 through 6 {
 					& > h#{$i} {
@@ -300,19 +279,19 @@
 				}
 
 				& > h2 {
-					@apply text-3xl mt-12 mb-4;
+					@apply text-2xl md:text-3xl mt-12 mb-4;
 				}
 
 				& > h3 {
-					@apply text-2xl mt-8;
+					@apply text-xl md:text-2xl mt-8;
 				}
 
 				& > h4 {
-					@apply text-xl mt-8;
+					@apply text-lg md:text-xl mt-8;
 				}
 
 				& > h5 {
-					@apply text-lg mt-8;
+					@apply text-base md:text-lg mt-8;
 				}
 
 				& > h6 {
@@ -320,7 +299,7 @@
 				}
 
 				& p {
-					@apply text-lg;
+					@apply md:text-lg;
 				}
 
 				p:not(:last-child),
@@ -375,7 +354,7 @@
 				}
 
 				& li {
-					@apply text-lg;
+					@apply md:text-lg;
 				}
 
 				& li + li {
@@ -383,7 +362,7 @@
 				}
 
 				& > blockquote {
-					@apply block p-8 mb-8 rounded-box bg-base-100/75 border-l-4 border-primary;
+					@apply block p-4 md:p-8 mb-8 rounded-box bg-base-100/75 border-l-4 border-primary;
 
 					& > p {
 						@apply block;
@@ -392,6 +371,10 @@
 
 				& dd {
 					@apply ml-8;
+				}
+
+				& kbd {
+					@apply kbd-sm;
 				}
 
 				& figure {
@@ -450,11 +433,11 @@
 				}
 
 				& code:not([class]) {
-					@apply inline px-1 rounded-box card-bordered bg-base-200/75 text-base text-primary;
+					@apply inline px-1 rounded-box card-bordered bg-base-200/75 text-sm md:text-base text-primary;
 				}
 
 				& .file-title {
-					@apply py-2 px-4 text-base font-bold text-base-content bg-base-200/75 rounded-t-box card-bordered;
+					@apply py-2 px-4 text-sm md:text-base font-bold text-base-content bg-base-200/75 rounded-t-box card-bordered;
 					margin-bottom: 0 !important;
 
 					& + pre {
@@ -464,7 +447,7 @@
 			}
 
 			& > aside {
-				@apply col-span-4 sticky top-24 self-start mb-8;
+				@apply md:col-span-4 md:sticky md:top-24 self-start mb-8 border-t border-base-200 md:border-none pt-8 md:p-0;
 
 				& > ul.options {
 					@apply grid grid-flow-col gap-2 mb-8;
@@ -495,22 +478,6 @@
 							@apply flex items-center gap-2 text-stone-400 text-sm;
 						}
 					}
-				}
-			}
-		}
-
-		& > section#newsletter {
-			@apply card card-bordered mb-16 bg-primary/5 backdrop-blur-sm;
-
-			& > .card-body {
-				@apply place-items-center text-center;
-
-				& > h2 {
-					@apply text-4xl mb-4 font-futuristic text-shadow-rgb;
-				}
-
-				& > p {
-					@apply text-lg mb-4;
 				}
 			}
 		}

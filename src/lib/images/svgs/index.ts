@@ -2,6 +2,7 @@ export const IMAGES_SVG = {
 	bgCurvedLines: (await import('./bg-curved-lines.svg')).default,
 	bgHexagons: (await import('./bg-hexagons.svg')).default,
 	bgLowPolyGrid: (await import('./bg-low-poly-grid.svg')).default,
+	bgPolygonScatter: (await import('./bg-polygon-scatter.svg')).default,
 	iconCode: (await import('./icon-code.svg')).default,
 	iconCooler: (await import('./icon-cooler.svg')).default,
 	iconCPU: (await import('./icon-cpu.svg')).default,

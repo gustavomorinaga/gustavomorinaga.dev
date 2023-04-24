@@ -77,11 +77,11 @@
 
 		& .card-body {
 			& > h2 {
-				@apply text-3xl font-futuristic mb-8 text-shadow-lg shadow-black/75;
+				@apply text-xl md:text-3xl font-futuristic mb-4 text-shadow-lg shadow-black/75;
 			}
 
 			& > footer {
-				@apply flex justify-between mt-auto;
+				@apply flex flex-col-reverse md:flex-row justify-between gap-4 mt-auto;
 
 				& .author {
 					@apply flex items-center;
@@ -90,7 +90,7 @@
 						@apply mr-3;
 
 						& > div {
-							@apply w-10 rounded-full;
+							@apply w-8 md:w-10 rounded-full;
 						}
 					}
 

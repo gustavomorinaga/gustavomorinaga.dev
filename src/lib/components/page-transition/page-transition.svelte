@@ -7,10 +7,10 @@
 
 	export let ref: HTMLElement | null = null;
 	export let goTop = false;
+	export let animate = true;
 	export let trigger: any;
 	export let effect = blur;
 	export let duration = 500;
-	export let animate = true;
 
 	$: if (goTop && trigger) setTimeout(() => scrollToTop({ static: true }), duration);
 
