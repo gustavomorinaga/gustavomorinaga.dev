@@ -125,9 +125,10 @@
 		<aside>
 			<ul class="options">
 				{#if browser ? navigator.canShare && navigator.canShare(shareableData) : false}
-					<li data-tip={$LANG.post.options.share}>
+					<li class="cta">
 						<button on:click={() => navigator.share(shareableData)}>
 							<Icon icon="share" size="sm" />
+							{$LANG.post.options.share}
 						</button>
 					</li>
 				{/if}
@@ -450,14 +451,26 @@
 				@apply md:col-span-4 md:sticky md:top-24 self-start mb-8 border-t border-base-200 md:border-none pt-8 md:p-0;
 
 				& > ul.options {
-					@apply grid grid-flow-col gap-2 mb-8;
+					// @apply grid grid-flow-col gap-2 mb-8;
+					@apply flex flex-wrap gap-2 mb-8;
 
 					& > li {
-						@apply md:tooltip md:tooltip-bottom;
-
 						& > button,
 						& > a {
-							@apply btn btn-block btn-sm;
+							@apply btn btn-block btn-sm gap-1;
+						}
+
+						&.cta {
+							@apply flex-grow;
+
+							& > button,
+							& > a {
+								@apply btn-primary;
+							}
+						}
+
+						&:not(.cta) {
+							@apply md:tooltip md:tooltip-bottom;
 						}
 					}
 				}

@@ -6,7 +6,7 @@
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { page } from '$app/stores';
-	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
+	import { baseURL, containerElement, extractMainPath, logoASCII } from '$lib/utils';
 	import type { IRoute } from '$lib/ts';
 
 	export let data;
@@ -77,6 +77,8 @@
 
 		handleIsMobile();
 		showDrawer = isMobile;
+
+		console.log(logoASCII);
 	});
 </script>
 
