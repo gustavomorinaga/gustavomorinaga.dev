@@ -6,8 +6,8 @@
 	import type { IPost } from '$lib/ts';
 
 	export let post: IPost;
+	export let tagLimit = 5;
 
-	const TAG_LIMIT = 5;
 	const { slug, title, cover, content, tags, publishedAt } = post;
 </script>
 
@@ -43,7 +43,7 @@
 			<ul class="tags">
 				{#if tags && tags?.length}
 					{#each tags as tag, index}
-						{#if index + 1 <= TAG_LIMIT}
+						{#if index + 1 <= tagLimit}
 							<li class="tag" title={tag.label} aria-label={tag.label}>
 								<Icon icon={tag.icon} collection={tag.collection} size="sm" />
 							</li>

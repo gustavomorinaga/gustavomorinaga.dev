@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Carousel, Icon, Metadata } from '$lib/components';
+	import { CarouselBrands, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
@@ -206,7 +206,7 @@
 
 		<p>{$LANG.home.knowledge.paragraph}</p>
 
-		<Carousel speed={7500}>
+		<CarouselBrands speed={7500}>
 			<svelte:fragment slot="slides">
 				{#each profileJSON.knowledge.techs as tech}
 					<a
@@ -222,9 +222,9 @@
 					</a>
 				{/each}
 			</svelte:fragment>
-		</Carousel>
+		</CarouselBrands>
 
-		<Carousel speed={7500} reverse>
+		<CarouselBrands speed={7500} reverse>
 			<svelte:fragment slot="slides">
 				{#each profileJSON.knowledge.tools as tool}
 					<a
@@ -240,7 +240,7 @@
 					</a>
 				{/each}
 			</svelte:fragment>
-		</Carousel>
+		</CarouselBrands>
 
 		<a class="cta" href="/about/knowledge">
 			{$LANG.home.knowledge.moreDetails}

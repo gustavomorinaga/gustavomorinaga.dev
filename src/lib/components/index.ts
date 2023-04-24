@@ -2,7 +2,7 @@ export * from './achievement';
 export * from './analytics';
 export * from './background';
 export * from './cards';
-export * from './carousel';
+export * from './carousels';
 export * from './cookie-consent';
 export * from './drawer';
 export * from './dropdown';

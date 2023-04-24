@@ -84,7 +84,7 @@
 			@apply grid md:grid-cols-10 gap-y-4 md:gap-8;
 
 			& > aside.filters {
-				@apply md:sticky md:top-24 md:col-span-3 self-start flex flex-col gap-4;
+				@apply md:sticky md:top-24 md:col-span-3 self-start flex flex-col gap-4 mb-8 md:mb-0;
 
 				& > div.form-control {
 					& > label {
@@ -119,14 +119,16 @@
 				@apply md:col-span-full md:col-start-4 min-h-[75vh];
 
 				& > .page__transition {
-					@apply flex flex-col gap-8;
+					& > h2 {
+						@apply text-3xl font-futuristic text-shadow-rgb mb-8;
+					}
 
 					& ul.posts__list {
 						@apply flex flex-col gap-4;
 					}
 
 					& button.btn__fetch {
-						@apply btn btn-wide mx-auto;
+						@apply btn btn-wide flex mt-8 mx-auto;
 					}
 				}
 			}

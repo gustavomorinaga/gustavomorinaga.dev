@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { blur } from 'svelte/transition';
-	import { CardPost, Metadata } from '$lib/components';
+	import { CardPost, CarouselFeaturedPosts, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
 
-	const { query } = data;
+	const { featured, query } = data;
 	let { posts } = data;
 	let currentPage = 1;
 
@@ -36,6 +36,14 @@
 </script>
 
 <Metadata title={$LANG.blog.metadata.title} description={$LANG.blog.metadata.description} />
+
+<h2>Tag</h2>
+
+<CarouselFeaturedPosts slides={featured.data} />
+
+<div class="divider" />
+
+<h2>Latest</h2>
 
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}
