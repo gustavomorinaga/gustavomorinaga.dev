@@ -139,6 +139,14 @@
 				"category": "database"
 			},
 			{
+				"title": "PostgreSQL",
+				"url": "https://www.postgresql.org",
+				"icon": "postgresql",
+				"collection": "simple-icons",
+				"color": "#4169E1",
+				"category": "database"
+			},
+			{
 				"title": "MongoDB",
 				"url": "https://www.mongodb.com",
 				"icon": "mongodb",
@@ -152,6 +160,14 @@
 				"icon": "firebase",
 				"collection": "simple-icons",
 				"color": "#FFCA28",
+				"category": "database"
+			},
+			{
+				"title": "Redis",
+				"url": "https://redis.io",
+				"icon": "redis",
+				"collection": "simple-icons",
+				"color": "#DC382D",
 				"category": "database"
 			},
 			{
@@ -344,6 +360,14 @@
 				"title": "Vercel",
 				"url": "https://vercel.com",
 				"icon": "vercel",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
+				"category": "platform"
+			},
+			{
+				"title": "Railway",
+				"url": "https://railway.app",
+				"icon": "railway",
 				"collection": "simple-icons",
 				"color": "#FFFFFF",
 				"category": "platform"
