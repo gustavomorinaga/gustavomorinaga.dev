@@ -99,6 +99,7 @@ export const en: ILang = {
 			all: 'All'
 		},
 
+		latest: 'Latest',
 		empty: 'No posts found',
 		loadMore: 'Load more'
 	},

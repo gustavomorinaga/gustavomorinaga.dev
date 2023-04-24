@@ -38,13 +38,11 @@
 
 <Metadata title={$LANG.blog.metadata.title} description={$LANG.blog.metadata.description} />
 
-<h2>Tag</h2>
-
 <CarouselFeaturedPosts slides={featured.data} />
 
 <div class="divider" />
 
-<h2>Latest</h2>
+<h2>{$LANG.blog.latest}</h2>
 
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}

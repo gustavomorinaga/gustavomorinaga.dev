@@ -100,6 +100,7 @@ export const pt: ILang = {
 			all: 'Todos'
 		},
 
+		latest: 'Recentes',
 		empty: 'Nenhum artigo encontrado.',
 		loadMore: 'Carregar mais'
 	},

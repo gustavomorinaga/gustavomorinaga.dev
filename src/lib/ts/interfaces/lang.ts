@@ -87,6 +87,7 @@ export interface ILang {
 			[key: string]: string;
 		};
 
+		latest: string;
 		empty: string;
 		loadMore: string;
 	};
