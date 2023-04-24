@@ -63,10 +63,10 @@
 				@apply border-x-0 md:border;
 
 				& .card-body {
-					@apply px-9 md:px-8;
+					@apply px-12 md:px-8;
 
 					& > h2 {
-						@apply text-2xl;
+						@apply text-xl md:text-2xl;
 					}
 
 					& > footer {

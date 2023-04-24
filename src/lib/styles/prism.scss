@@ -1,6 +1,6 @@
 code[class*='language-'],
 pre[class*='language-'] {
-	@apply text-left whitespace-pre break-normal text-gray-300 text-sm font-mono hyphens-none;
+	@apply text-left whitespace-pre break-normal text-gray-300 text-sm font-mono hyphens-none selection:bg-base-300;
 	word-spacing: normal;
 
 	-moz-tab-size: 4;
