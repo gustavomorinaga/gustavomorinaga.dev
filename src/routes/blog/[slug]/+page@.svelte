@@ -32,14 +32,18 @@
 
 	$: canShare = browser && navigator.canShare && navigator.canShare(shareableData);
 
-	const registerView = async () =>
-		await fetch(`${PUBLIC_CMS_URL}/api/blog-posts/${post.id}`, {
+	const registerView = async () => {
+		const postView = post.postViews.at(0);
+		if (!postView) return;
+
+		await fetch(`${PUBLIC_CMS_URL}/api/post-views/${postView.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ data: { views: post.views + 1 } })
+			body: JSON.stringify({ data: { views: postView.views + 1 } })
 		});
+	};
 
 	afterNavigate(({ from }) => {
 		const isPostPathname = from?.route.id?.includes(POST_PATHNAME);

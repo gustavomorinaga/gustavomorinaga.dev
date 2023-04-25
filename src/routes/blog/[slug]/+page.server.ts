@@ -16,7 +16,7 @@ export const load = async ({ fetch, params: { slug } }) => {
 			}
 		},
 		relatedPosts: {
-			sort: ['views:desc'],
+			sort: ['postViews.views:desc'],
 			pagination: {
 				page: 1,
 				pageSize: PAGE_SIZE

@@ -11,6 +11,9 @@ export interface IPost extends ILocalizations, ITimestamps {
 	tags: ITag[];
 	locale: string;
 	cover: IMedia;
-	views: number;
+	postViews: {
+		id: number;
+		views: number;
+	}[];
 	readingTime: number;
 }

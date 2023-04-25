@@ -19,7 +19,7 @@ export async function load({ fetch }) {
 		},
 		featured: {
 			populate: ['cover', 'tags'],
-			sort: ['views:desc'],
+			sort: ['postViews.views:desc'],
 			pagination: {
 				page: 1,
 				pageSize: PAGE_SIZE_OPTIONS.featured
