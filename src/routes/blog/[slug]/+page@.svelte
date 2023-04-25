@@ -11,7 +11,6 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
-	import { IMAGES_SVG } from '$lib/images';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
 	import { afterNavigate } from '$app/navigation';

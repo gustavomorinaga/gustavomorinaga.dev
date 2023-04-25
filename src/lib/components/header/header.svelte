@@ -75,11 +75,12 @@
 
 		const { clientHeight, scrollTop } = containerElement as HTMLElement;
 		const { offsetHeight } = document.querySelector('article.post section.content') as HTMLElement;
-		const TOTAL = 100;
-		const progress = (scrollTop / (offsetHeight + screen.height - clientHeight)) * TOTAL;
-		readingScrollOverpassed = progress > TOTAL;
+		const MIN = 0;
+		const MAX = 100;
+		const progress = Math.round((scrollTop / (offsetHeight + screen.height - clientHeight)) * MAX);
+		readingScrollOverpassed = progress > MAX || progress === MIN;
 
-		readingProgress.set(!readingScrollOverpassed ? progress : TOTAL);
+		if (progress <= MAX) readingProgress.set(progress);
 	};
 
 	const handleSocialAchievement = () => ACHIEVEMENTS.unlock('GMD_SOCIAL');
@@ -179,7 +180,8 @@
 				class="progress__bar"
 				class:opacity-0={readingScrollOverpassed}
 				style="width: {$readingProgress}%;"
-				in:fade={{ delay: 500 }}
+				in:fade={{ duration: 300, delay: 1000, easing: expoOut }}
+				out:fade={{ duration: 300, easing: expoOut }}
 			/>
 		{/if}
 	</div>
