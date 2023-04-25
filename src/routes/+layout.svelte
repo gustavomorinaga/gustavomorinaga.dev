@@ -92,7 +92,7 @@
 
 {#if showContent}
 	{#await import('$lib/components/header') then { Header }}
-		<Header routes={routes.filter(r => r.path !== '/')} />
+		<Header routes={routes.filter(r => r.path !== '/')} {readMode} />
 	{/await}
 
 	{#if showDrawer}

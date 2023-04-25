@@ -18,11 +18,17 @@ export const animateOnScroll = (e: CustomEvent<IntersectDetail>) => {
 	target.classList.toggle('observe--show', isIntersecting);
 };
 
-export const scrollIntoView = (event: Event) => {
+export const scrollIntoView = (event: Event | string) => {
 	if (!browser) return;
 
-	const target = event.currentTarget as HTMLAnchorElement;
-	const anchor = target.getAttribute('href');
+	let anchor = null;
+	if (event instanceof Event) {
+		const target = event.currentTarget as HTMLAnchorElement;
+		anchor = target.getAttribute('href');
+	}
+
+	if (typeof event === 'string') anchor = encodeURI(event);
+
 	if (!anchor) return;
 
 	const element = document.querySelector(anchor) as HTMLElement;
@@ -34,7 +40,7 @@ export const scrollIntoView = (event: Event) => {
 		targets: containerElement,
 		duration: prefersReducedMotion ? 500 : 1000,
 		easing: prefersReducedMotion ? 'linear' : 'easeOutQuart',
-		scrollTop: element.offsetTop + (header.offsetHeight || 0)
+		scrollTop: element.offsetTop + (header?.offsetHeight || 0)
 	});
 };
 

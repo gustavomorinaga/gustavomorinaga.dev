@@ -123,7 +123,9 @@
 						>
 							<Icon icon={socialLink.icon} />
 
-							{index === 0 ? socialLink.title : ''}
+							{#if index === 0}
+								{socialLink.title}
+							{/if}
 						</a>
 					</li>
 				{/each}

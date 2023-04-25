@@ -30,6 +30,8 @@
 	};
 	let previousPathname = ROOT_PATHNAME;
 
+	$: canShare = browser && navigator.canShare && navigator.canShare(shareableData);
+
 	const registerView = async () =>
 		await fetch(`${PUBLIC_CMS_URL}/api/blog-posts/${post.id}`, {
 			method: 'PUT',
@@ -45,7 +47,11 @@
 		previousPathname = !isPostPathname ? from?.url.pathname || previousPathname : ROOT_PATHNAME;
 	});
 
+	const sharePost = async () => await navigator.share(shareableData);
+
 	onMount(async () => {
+		scrollIntoView($page.url.hash);
+
 		await registerView();
 	});
 </script>
@@ -124,9 +130,9 @@
 
 		<aside>
 			<ul class="options">
-				{#if browser ? navigator.canShare && navigator.canShare(shareableData) : false}
+				{#if canShare}
 					<li class="cta">
-						<button on:click={() => navigator.share(shareableData)}>
+						<button on:click={sharePost}>
 							<Icon icon="share" size="sm" />
 							{$LANG.post.options.share}
 						</button>
@@ -276,6 +282,18 @@
 				@for $i from 1 through 6 {
 					& > h#{$i} {
 						@apply text-primary font-bold mb-4;
+
+						& > a.heading-link {
+							@apply font-normal no-underline -ml-7 mr-2 opacity-0 transition duration-300 ease-out;
+						}
+
+						@media (hover: hover) {
+							&:hover {
+								& > a.heading-link {
+									@apply opacity-50 hover:opacity-100;
+								}
+							}
+						}
 					}
 				}
 
