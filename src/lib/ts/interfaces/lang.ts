@@ -1,5 +1,5 @@
 export interface ILang {
-	code: string;
+	code: 'en' | 'pt';
 
 	metadata: {
 		title: string;
