@@ -14,7 +14,7 @@ export const GET = async ({ fetch }) => {
 		fetch(
 			`${PUBLIC_CMS_URL}/api/playlist-tracks?${qs.stringify(query.playlist, {
 				encodeValuesOnly: true
-			})}}`
+			})}`
 		)
 			.then<ICMSData<IPlaylistTrack[]>>(res => res.json())
 			.catch(error => {
