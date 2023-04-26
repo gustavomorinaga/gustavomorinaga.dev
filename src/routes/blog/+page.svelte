@@ -1,31 +1,19 @@
 <script lang="ts">
-	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { blur } from 'svelte/transition';
 	import { CardPost, CarouselFeaturedPosts, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
 
-	const { featured, query } = data;
-	let { posts } = data;
+	const { posts, featured } = data;
 	let currentPage = 1;
 
 	const handleLoadMore = async () => {
 		currentPage++;
 
 		const [response] = await Promise.all([
-			fetch(
-				`${PUBLIC_CMS_URL}/api/blog-posts?` +
-					qs.stringify({
-						...query.blog,
-						pagination: {
-							...query.blog.pagination,
-							page: currentPage
-						}
-					})
-			).then<ICMSData<IPost>>(res => res.json())
+			fetch(`/api/posts?page=${currentPage}}`).then<ICMSData<IPost[]>>(res => res.json())
 		]);
 
 		posts.data = [...posts.data, ...response.data];

@@ -2,7 +2,6 @@
 	import '$lib/styles/prism.scss';
 	import {
 		PUBLIC_CATEGORY_ID,
-		PUBLIC_CMS_URL,
 		PUBLIC_REPO,
 		PUBLIC_REPO_ID,
 		PUBLIC_USERNAME
@@ -11,11 +10,11 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
-	import { IMAGES_SVG } from '$lib/images';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
 	import { afterNavigate } from '$app/navigation';
 	import { balancer } from 'svelte-action-balancer';
+	import type { IPostView } from '$lib/ts';
 
 	export let data;
 
@@ -33,15 +32,15 @@
 	$: canShare = browser && navigator.canShare && navigator.canShare(shareableData);
 
 	const registerView = async () => {
-		const postView = post.postViews.at(0);
+		let postView = post?.postViews?.at(0);
 		if (!postView) return;
 
-		await fetch(`${PUBLIC_CMS_URL}/api/post-views/${postView.id}`, {
+		await fetch(`/api/posts/${post.slug}/view`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ data: { views: postView.views + 1 } })
+			body: JSON.stringify({ id: postView.id })
 		});
 	};
 
@@ -105,7 +104,7 @@
 					</span>
 
 					<ul class="tags">
-						{#if post.tags && post.tags?.length}
+						{#if post.tags && post.tags.length}
 							{#each post.tags as tag, index}
 								{#if index + 1 <= TAG_LIMIT}
 									<li>
@@ -155,28 +154,30 @@
 				</li>
 			</ul>
 
-			<p>{$LANG.post.related}</p>
+			{#if relatedPosts.data && relatedPosts.data.length}
+				<p>{$LANG.post.related}</p>
 
-			<ul class="related">
-				{#each relatedPosts.data as relatedPost}
-					<li>
-						<a href="/blog/{relatedPost.slug}" use:balancer>
-							{relatedPost.title}
-						</a>
-						<span>
-							<time>
-								{dateFormatter({
-									lang: $LANG.code,
-									date: new Date(relatedPost.publishedAt),
-									dateStyle: 'medium'
-								})}
-							</time>
-							•
-							<span>{estimateReadingTime(relatedPost.content)} min</span>
-						</span>
-					</li>
-				{/each}
-			</ul>
+				<ul class="related">
+					{#each relatedPosts.data as relatedPost}
+						<li>
+							<a href="/blog/{relatedPost.slug}" use:balancer>
+								{relatedPost.title}
+							</a>
+							<span>
+								<time>
+									{dateFormatter({
+										lang: $LANG.code,
+										date: new Date(relatedPost.publishedAt),
+										dateStyle: 'medium'
+									})}
+								</time>
+								•
+								<span>{estimateReadingTime(relatedPost.content)} min</span>
+							</span>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</aside>
 	</div>
 

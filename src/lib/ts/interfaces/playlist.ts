@@ -1,6 +1,6 @@
 import type { IMedia, ITimestamps } from './cms';
 
-export interface IPlaylist extends ITimestamps {
+export interface IPlaylistTrack extends ITimestamps {
 	title: string;
 	author: string;
 	url: string;

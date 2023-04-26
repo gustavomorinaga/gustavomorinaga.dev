@@ -54,6 +54,6 @@ export interface IFormat {
 }
 
 export interface ICMSData<T = unknown> {
-	data: T[];
+	data: T;
 	meta: IMeta;
 }

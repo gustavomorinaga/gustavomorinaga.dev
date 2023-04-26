@@ -1,19 +1,16 @@
-import { PUBLIC_CMS_URL } from '$env/static/public';
-import type { ICMSData, IPlaylist } from '$lib/ts';
+import type { ICMSData, IPlaylistTrack } from '$lib/ts';
 
 export const prerender = true;
 export const ssr = true;
 
 export async function load({ fetch, url: { pathname } }) {
-	const [playlist] = await Promise.all([
-		fetch(`${PUBLIC_CMS_URL}/api/playlist-tracks?populate=*`)
-			.then<ICMSData<IPlaylist>>(res => res.json())
-			.catch(error => {
-				console.error(error);
+	const playlist = await fetch('/api/playlist')
+		.then<ICMSData<IPlaylistTrack[]>>(res => res.json())
+		.catch(error => {
+			console.error(error);
 
-				return null;
-			})
-	]);
+			return null;
+		});
 
 	return { pathname, playlist };
 }
