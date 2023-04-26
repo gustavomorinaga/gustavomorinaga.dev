@@ -53,6 +53,13 @@
 			icon: 'bookmark',
 			active: true,
 			special: true
+		},
+		{
+			title: $LANG.header.feed,
+			path: '/feed.xml',
+			icon: 'rss',
+			active: true,
+			special: true
 		}
 	] satisfies IRoute[];
 	$: trigger = extractMainPath({ path: data.pathname });

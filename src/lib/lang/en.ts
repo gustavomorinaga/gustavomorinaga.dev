@@ -25,6 +25,7 @@ export const en: ILang = {
 		about: 'About me',
 		projects: 'Projects',
 		bookmarks: 'Bookmarks',
+		feed: 'Feed',
 		lang: 'Change language'
 	},
 

@@ -20,6 +20,7 @@ export interface ILang {
 		about: string;
 		projects: string;
 		bookmarks: string;
+		feed: string;
 		lang: string;
 	};
 

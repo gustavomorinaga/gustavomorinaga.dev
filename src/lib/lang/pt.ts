@@ -25,6 +25,7 @@ export const pt: ILang = {
 		about: 'Sobre mim',
 		projects: 'Projetos',
 		bookmarks: 'Marcadores',
+		feed: 'Feed',
 		lang: 'Trocar idioma'
 	},
 
