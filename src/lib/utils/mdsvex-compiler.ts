@@ -16,6 +16,7 @@ const autolinkHeadings = () =>
 	});
 
 const CONFIG: MdsvexCompileOptions = {
+	extensions: ['.svelte'],
 	rehypePlugins: [
 		rehypeSlug,
 		autolinkHeadings,

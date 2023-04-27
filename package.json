@@ -68,6 +68,7 @@
 		"rehype-autolink-headings": "^6.1.1",
 		"rehype-external-links": "^2.0.1",
 		"rehype-slug": "^5.1.0",
+		"rollup-plugin-node-polyfills": "^0.2.1",
 		"sass": "1.62.1",
 		"standard-version": "9.5.0",
 		"svelte": "3.58.0",
