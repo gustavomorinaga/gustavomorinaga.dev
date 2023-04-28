@@ -45,5 +45,5 @@ export const GET = async ({ fetch }) => {
 
 	const xml = builder.build(feed);
 
-	return new Response(xml, { headers: { 'content-type': 'text/xml' } });
+	return new Response(xml, { headers: { 'Content-Type': 'text/xml' } });
 };
