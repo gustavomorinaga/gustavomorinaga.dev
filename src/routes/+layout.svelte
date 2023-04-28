@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
+	import { dev } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
@@ -30,7 +31,7 @@
 			title: $LANG.header.blog,
 			path: '/blog',
 			icon: 'news',
-			active: true,
+			active: dev,
 			special: false
 		},
 		{
