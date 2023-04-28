@@ -45,5 +45,11 @@ export const GET = async ({ fetch }) => {
 
 	const xml = builder.build(feed);
 
-	return new Response(xml, { headers: { 'Content-Type': 'text/xml' } });
+	return new Response(xml, {
+		headers: {
+			'Content-Type': 'application/xml',
+			'Cache-Control':
+				'public, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=3600'
+		}
+	});
 };
