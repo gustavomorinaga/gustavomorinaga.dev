@@ -8,6 +8,8 @@ const builder = new XMLBuilder({
 	cdataPropName: 'cdata'
 });
 
+export const prerender = true;
+
 export const GET = async ({ fetch }) => {
 	const { posts } = await fetch('/api/posts').then<{ posts: ICMSData<IPost[]> }>(res => res.json());
 
