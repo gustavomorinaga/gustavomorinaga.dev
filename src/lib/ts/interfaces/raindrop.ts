@@ -1,6 +1,5 @@
 export interface IRaindrops {
 	collectionId: string;
-	count: number;
 	items: IRaindrop[];
 	result: boolean;
 }
@@ -37,5 +36,4 @@ export interface IRaindropTags {
 
 export interface IRaindropTag {
 	_id: string;
-	count: number;
 }

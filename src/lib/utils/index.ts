@@ -1,3 +1,4 @@
+export * from './array';
 export * from './ascii';
 export * from './date';
 export * from './formatters';
@@ -7,5 +8,4 @@ export * from './reading-time';
 export * from './reduced-motion';
 export * from './routing';
 export * from './scroll';
-export * from './sort';
 export * from './speech';

@@ -7,16 +7,11 @@ export async function load({ fetch }) {
 		fetch('/api/bookmarks/tags').then<IRaindropTags>(res => res.json())
 	]);
 
-	const mappedTags = [
-		...tags.items,
-		{ _id: 'all', count: tags.items.reduce((acc, curr) => acc + curr.count, 0) }
-	];
-
 	return {
 		bookmarks,
 		tags: {
 			...tags,
-			items: sortBy(mappedTags, '_id')
+			items: sortBy([{ _id: 'all' }, ...tags.items], '_id')
 		}
 	};
 }
