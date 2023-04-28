@@ -15,8 +15,8 @@ export interface IPagination {
 	total: number;
 }
 
-export interface ILocalizations {
-	localizations: string[];
+export interface ILocalizations<T = unknown> {
+	localizations: string[] | T[];
 }
 
 export interface IMedia extends ITimestamps {
@@ -54,6 +54,6 @@ export interface IFormat {
 }
 
 export interface ICMSData<T = unknown> {
-	data: T[];
+	data: T;
 	meta: IMeta;
 }

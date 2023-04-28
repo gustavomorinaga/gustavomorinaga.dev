@@ -5,6 +5,7 @@ export * from './knowledge';
 export * from './lang';
 export * from './playlist';
 export * from './post';
+export * from './project';
 export * from './raindrop';
 export * from './route';
 export * from './service';

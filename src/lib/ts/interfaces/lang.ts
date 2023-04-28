@@ -1,5 +1,5 @@
 export interface ILang {
-	code: string;
+	code: 'en' | 'pt';
 
 	metadata: {
 		title: string;
@@ -20,6 +20,7 @@ export interface ILang {
 		about: string;
 		projects: string;
 		bookmarks: string;
+		feed: string;
 		lang: string;
 	};
 
@@ -87,8 +88,32 @@ export interface ILang {
 			[key: string]: string;
 		};
 
+		latest: string;
 		empty: string;
 		loadMore: string;
+	};
+
+	post: {
+		goBack: string;
+
+		read: string;
+
+		options: {
+			share: string;
+			newsletter: string;
+			comments: string;
+		};
+		related: string;
+
+		newsletter: {
+			title: string;
+			paragraph: string;
+
+			form: {
+				placeholder: string;
+				subscribe: string;
+			};
+		};
 	};
 
 	about: {

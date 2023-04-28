@@ -20,21 +20,21 @@
 
 	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
 		<aside class="filters">
-			<!-- <div class="form-control">
-				<label class="input-group">
+			<div class="form-control">
+				<label>
 					<span>
 						<Icon icon="search" size="sm" />
 					</span>
 
 					<input
-						class="input input-bordered w-full"
+						class="search"
 						type="text"
 						name="term"
 						id="term"
 						placeholder={$LANG.blog.placeholder}
 					/>
 				</label>
-			</div> -->
+			</div>
 
 			<ul class="menu">
 				<li>
@@ -51,7 +51,7 @@
 							on:click={scrollToTop}
 						>
 							<Icon icon={tag.icon} collection={tag.collection} />
-							{tag.label}
+							<span>{tag.label}</span>
 						</a>
 					</li>
 				{/each}
@@ -81,32 +81,54 @@
 		}
 
 		& > .blog__layout {
-			@apply grid grid-cols-10 gap-y-4 md:gap-8;
+			@apply grid md:grid-cols-10 gap-y-4 md:gap-8;
 
 			& > aside.filters {
-				@apply sticky top-24 col-span-3 self-start flex flex-col gap-4;
+				@apply md:sticky md:top-24 md:col-span-3 self-start flex flex-col gap-4 mb-8 md:mb-0;
 
-				& > input.search {
+				& > div.form-control {
+					& > label {
+						@apply input-group;
+
+						& > input.search {
+							@apply input input-bordered w-full;
+						}
+					}
+				}
+
+				& input.search {
 					@apply input input-bordered;
 				}
 
 				& > ul.menu {
-					@apply card-bordered rounded-box overflow-hidden bg-base-100/75 shadow-lg backdrop-blur-md;
+					@apply menu-horizontal md:menu-vertical flex-nowrap md:max-w-none w-full overflow-x-auto md:overflow-hidden
+						card-bordered rounded-box overflow-hidden bg-base-100/75 shadow-lg backdrop-blur-md scrollbar__theme scrollbar-track-base-200;
+					max-width: calc(100vw - 2rem);
+
+					& > li {
+						& > a {
+							& > span {
+								@apply hidden md:block;
+							}
+						}
+					}
 				}
 			}
 
 			& > section.posts {
-				@apply col-span-full md:col-start-4 min-h-[75vh];
+				@apply md:col-span-full md:col-start-4 min-h-[75vh];
 
 				& > .page__transition {
-					@apply flex flex-col gap-8;
+					& > h2 {
+						@apply text-3xl font-futuristic text-shadow-rgb mb-8;
+					}
 
 					& ul.posts__list {
 						@apply flex flex-col gap-4;
 					}
 
 					& button.btn__fetch {
-						@apply btn btn-wide mx-auto;
+						@apply btn btn-wide flex mt-8 mx-auto;
 					}
 				}
 			}

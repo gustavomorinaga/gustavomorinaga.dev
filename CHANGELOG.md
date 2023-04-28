@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/gustavomorinaga/portfolio/compare/v0.9.4...v1.0.0) (2023-04-28)
+
+
+### Features
+
+* adding commitlint ([2da0851](https://github.com/gustavomorinaga/portfolio/commit/2da08511b6fe8d12a7b09c5698ac3637a183cea3))
+* autolink heading and reading progress ([b136de4](https://github.com/gustavomorinaga/portfolio/commit/b136de4a7a66060b5cebdb2da778eed70e2aac73))
+* balanced texts and tags filter ([12e5356](https://github.com/gustavomorinaga/portfolio/commit/12e535663cf6dea150502ea21dc1adfcf559dc2b))
+* blog first steps ([30b9535](https://github.com/gustavomorinaga/portfolio/commit/30b9535d6cff43ff0e9e0648d069dc42aa4b40a3))
+* blog options, newsletter and comments ([f4d3c09](https://github.com/gustavomorinaga/portfolio/commit/f4d3c0967503db2ed2f386f3b858068fcb352dbe))
+* blog pagination ([3c6037f](https://github.com/gustavomorinaga/portfolio/commit/3c6037fec62cdb51c41d732de0e9f710c6075acf))
+* featured posts and split carousels into components ([425ac33](https://github.com/gustavomorinaga/portfolio/commit/425ac331ce1c399ac287c293d70f6c0e4444ad9b))
+* reading time on blog posts ([98e39dc](https://github.com/gustavomorinaga/portfolio/commit/98e39dc27ca9aefea77531d4fe88dd2d7fb8006d))
+* related posts ([370ffb2](https://github.com/gustavomorinaga/portfolio/commit/370ffb22810754b19f590289f715be4733888bf4))
+* rss feed generator ([c15751d](https://github.com/gustavomorinaga/portfolio/commit/c15751dec61670b4668a8edc1fb2ef998f834c8c))
+* tags and estimate reading time on blog post ([613be13](https://github.com/gustavomorinaga/portfolio/commit/613be13b3ba2cdf7077a0be16710c3bb64529439))
+
+
+### Bug Fixes
+
+* adding commitlint to husky hook ([d6e7c1a](https://github.com/gustavomorinaga/portfolio/commit/d6e7c1a391396f3054d142bbc61c2d6b79b288d4))
+* blog route fix ([465b185](https://github.com/gustavomorinaga/portfolio/commit/465b18509a9334adf5c4eac0fcd6d7f9c5f9a112))
+* disable prerender on blog pages ([a8873c2](https://github.com/gustavomorinaga/portfolio/commit/a8873c29e2fb7a82b262d5d2e411eba13152a59c))
+* enabling prerender blog pages ([bada508](https://github.com/gustavomorinaga/portfolio/commit/bada508686f30679db2108d8dfd7a718eb7afcbf))
+* extra spacing on ascii logo ([a6d9a99](https://github.com/gustavomorinaga/portfolio/commit/a6d9a9979140ea13886c7613b92517f1202e552e))
+* mdsvex compiler ([e6bcc61](https://github.com/gustavomorinaga/portfolio/commit/e6bcc617420817a1773a2355c327039ab7f22f1a))
+* playlist populate ([ab2aa0c](https://github.com/gustavomorinaga/portfolio/commit/ab2aa0c34c1a124d0501f23779bec58e0273f969))
+* reading progress condition fading ([f54834c](https://github.com/gustavomorinaga/portfolio/commit/f54834c53068ca616d642fbb331cb56a40fa0308))
+* setting en and pt as language choices on lang interface ([4f98cd4](https://github.com/gustavomorinaga/portfolio/commit/4f98cd4c7160755b6c63144513b773792d8b3a6f))
+
+
+### Styles
+
+* blog responsiveness ([bfd590d](https://github.com/gustavomorinaga/portfolio/commit/bfd590d40e9aa6278c022aeaae6581a34e1f9286))
+* bordered media content on blog post ([7c1f479](https://github.com/gustavomorinaga/portfolio/commit/7c1f479870ca3b296eac8baa51d099e069e82a4b))
+* code text color selection ([70f22c2](https://github.com/gustavomorinaga/portfolio/commit/70f22c2da0ccea45503b527735f84af82367839e))
+* logo ascii print and share button cta ([4cebb62](https://github.com/gustavomorinaga/portfolio/commit/4cebb629bc54a1e26e07922501abd7f0076e1245))
+* prism as code highlighter and other changes ([a75ed91](https://github.com/gustavomorinaga/portfolio/commit/a75ed915562471912feffd0e98866b89409c8086))
+
+
+### Improvements
+
+* adding new platform and database skills ([d992ebf](https://github.com/gustavomorinaga/portfolio/commit/d992ebfbf8961b620963d7619af339447abac498))
+* animate on filter blog tags ([871e989](https://github.com/gustavomorinaga/portfolio/commit/871e98981171c162a0adbb2ad23e481c92274787))
+* blog lang ([f5332e7](https://github.com/gustavomorinaga/portfolio/commit/f5332e7480e7ab1d86a9e5386aded0dfa9f467c4))
+* blog routing and layout inherit ([d2fa93a](https://github.com/gustavomorinaga/portfolio/commit/d2fa93a64d2c97d0d887c479771c3f4c5bae88f5))
+* navigating back on blog post to main blog route ([dbd1074](https://github.com/gustavomorinaga/portfolio/commit/dbd10749cab843947d8154ca5bdc03cc368928c8))
+* sort tags in card post ([7aee331](https://github.com/gustavomorinaga/portfolio/commit/7aee3312b0f52d6d58f9fb6e8e3c2fd1ea05f075))
+* splitting cards into components ([e5d9711](https://github.com/gustavomorinaga/portfolio/commit/e5d9711fdcb8294431b3ce3f41cde6b1d8548008))
+* splitting knowledge and setup into card components ([2384d5e](https://github.com/gustavomorinaga/portfolio/commit/2384d5e2652300276af782547395738c5bcac0ea))
+* splitting post into layout and page ([5e7c3f2](https://github.com/gustavomorinaga/portfolio/commit/5e7c3f21f1842a6e3386824679ea7e1186f4a52f))
+* using api route for backend logic ([bc8e261](https://github.com/gustavomorinaga/portfolio/commit/bc8e261f8fbd7a7f7605487c57c95545cd808c9d))
+* using new cms post view count ([cfdd394](https://github.com/gustavomorinaga/portfolio/commit/cfdd394597861618bbdabd06ba8cc9962ec9d166))
+
 ### [0.9.4](https://github.com/gustavomorinaga/portfolio/compare/v0.9.3...v0.9.4) (2023-04-04)
 
 

@@ -55,7 +55,11 @@
 					</li>
 					<li>
 						<Icon icon="cake" />
-						{dateFormatter({ lang: $LANG.code, date: new Date(profileJSON.birthday) })}
+						{dateFormatter({
+							lang: $LANG.code,
+							date: new Date(profileJSON.birthday),
+							dateStyle: 'short'
+						})}
 
 						({age}
 						{$LANG.about.details.age})

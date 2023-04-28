@@ -1,14 +1,9 @@
-import { RAINDROP_URL, RAINDROP_COLLECTION_ID, RAINDROP_API_KEY } from '$env/static/private';
 import type { IRaindrops, IRaindropTags } from '$lib/ts';
 
 export async function load({ fetch }) {
 	const [bookmarks, tags] = await Promise.all([
-		fetch(`${RAINDROP_URL}/raindrops/${RAINDROP_COLLECTION_ID}?sort=title&perpage=50`, {
-			headers: { Authorization: `Bearer ${RAINDROP_API_KEY}` }
-		}).then<IRaindrops>(res => res.json()),
-		fetch(`${RAINDROP_URL}/tags/${RAINDROP_COLLECTION_ID}`, {
-			headers: { Authorization: `Bearer ${RAINDROP_API_KEY}` }
-		}).then<IRaindropTags>(res => res.json())
+		fetch('/api/bookmarks').then<IRaindrops>(res => res.json()),
+		fetch('/api/bookmarks/tags').then<IRaindropTags>(res => res.json())
 	]);
 
 	return {

@@ -25,6 +25,7 @@ export const pt: ILang = {
 		about: 'Sobre mim',
 		projects: 'Projetos',
 		bookmarks: 'Marcadores',
+		feed: 'Feed',
 		lang: 'Trocar idioma'
 	},
 
@@ -100,8 +101,33 @@ export const pt: ILang = {
 			all: 'Todos'
 		},
 
+		latest: 'Recentes',
 		empty: 'Nenhum artigo encontrado.',
 		loadMore: 'Carregar mais'
+	},
+
+	post: {
+		goBack: 'Voltar',
+
+		read: 'de leitura',
+
+		options: {
+			share: 'Compartilhar',
+			newsletter: 'Inscrever-se',
+			comments: 'Comentários'
+		},
+		related: 'Artigos relacionados',
+
+		newsletter: {
+			title: 'Gostou do conteúdo?',
+			paragraph:
+				'Inscreva-se para receber notificações por e-mail quando tiver conteúdo novo. Sem compromisso, cancele a qualquer momento.',
+
+			form: {
+				placeholder: 'seu.email@exemplo.com',
+				subscribe: 'Inscrever-se'
+			}
+		}
 	},
 
 	about: {

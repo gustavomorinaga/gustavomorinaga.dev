@@ -1,18 +1,22 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-	import { expoOut } from 'svelte/easing';
 	import { page } from '$app/stores';
+	import { tweened } from 'svelte/motion';
+	import { fade, fly } from 'svelte/transition';
+	import { expoOut } from 'svelte/easing';
 	import { Icon } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, DRAWER, LANG } from '$lib/stores';
-	import { baseURL, extractMainPath } from '$lib/utils';
+	import { baseURL, containerElement, extractMainPath } from '$lib/utils';
 	import anime from 'animejs';
 	import type { IRoute } from '$lib/ts';
 
-	let logoClickedTimes = 0;
-
+	export let readMode = false;
 	export let routes: IRoute[] = [];
+
+	const readingProgress = tweened(0, { duration: 300, easing: expoOut });
+	let readingScrollOverpassed = false;
+	let logoClickedTimes = 0;
 
 	$: isCurrentRoute = (path: string) =>
 		extractMainPath({ path: $page.url.pathname, force: true }) === path;
@@ -66,8 +70,23 @@
 
 	const handleLanguage = () => LANG.change($LANG.code === 'pt' ? 'en' : 'pt');
 
+	const handleOnScroll = () => {
+		if (!readMode) return;
+
+		const { clientHeight, scrollTop } = containerElement as HTMLElement;
+		const { offsetHeight } = document.querySelector('article.post section.content') as HTMLElement;
+		const MIN = 0;
+		const MAX = 100;
+		const progress = Math.round((scrollTop / (offsetHeight + screen.height - clientHeight)) * MAX);
+		readingScrollOverpassed = progress > MAX || progress === MIN;
+
+		if (progress <= MAX) readingProgress.set(progress);
+	};
+
 	const handleSocialAchievement = () => ACHIEVEMENTS.unlock('GMD_SOCIAL');
 </script>
+
+<svelte:window on:scroll={handleOnScroll} />
 
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
@@ -155,6 +174,16 @@
 				/>
 			</button>
 		</div>
+
+		{#if readMode}
+			<span
+				class="progress__bar"
+				class:opacity-0={readingScrollOverpassed}
+				style="width: {$readingProgress}%;"
+				in:fade={{ duration: 300, delay: 1000, easing: expoOut }}
+				out:fade={{ duration: 300, easing: expoOut }}
+			/>
+		{/if}
 	</div>
 </header>
 
@@ -244,6 +273,10 @@
 				& .btn__lang {
 					@apply block rounded-full ml-2 mr-4 md:mr-0 border border-zinc-400;
 				}
+			}
+
+			& span.progress__bar {
+				@apply absolute left-0 right-0 -bottom-[2px] h-[2px] bg-primary shadow-glow shadow-primary/10 transition-opacity duration-300 ease-out;
 			}
 		}
 	}

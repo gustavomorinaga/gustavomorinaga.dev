@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Carousel, Icon, Metadata } from '$lib/components';
+	import { CarouselBrands, Icon, Metadata } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
@@ -123,7 +123,9 @@
 						>
 							<Icon icon={socialLink.icon} />
 
-							{index === 0 ? socialLink.title : ''}
+							{#if index === 0}
+								{socialLink.title}
+							{/if}
 						</a>
 					</li>
 				{/each}
@@ -206,7 +208,7 @@
 
 		<p>{$LANG.home.knowledge.paragraph}</p>
 
-		<Carousel speed={7500}>
+		<CarouselBrands speed={7500}>
 			<svelte:fragment slot="slides">
 				{#each profileJSON.knowledge.techs as tech}
 					<a
@@ -222,9 +224,9 @@
 					</a>
 				{/each}
 			</svelte:fragment>
-		</Carousel>
+		</CarouselBrands>
 
-		<Carousel speed={7500} reverse>
+		<CarouselBrands speed={7500} reverse>
 			<svelte:fragment slot="slides">
 				{#each profileJSON.knowledge.tools as tool}
 					<a
@@ -240,7 +242,7 @@
 					</a>
 				{/each}
 			</svelte:fragment>
-		</Carousel>
+		</CarouselBrands>
 
 		<a class="cta" href="/about/knowledge">
 			{$LANG.home.knowledge.moreDetails}
@@ -335,7 +337,7 @@
 							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
 
 							& .btn__social {
-								@apply btn-link btn-sm text-shadow-md ;
+								@apply btn-link btn-sm drop-shadow;
 							}
 						}
 					}
@@ -527,7 +529,7 @@
 			}
 
 			& p {
-				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md ;
+				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
 			}
 
 			& .knowledge {
@@ -660,7 +662,7 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-8 drop-shadow-md animate-bounce text-shadow-md ;
+		@apply absolute bottom-8 drop-shadow-md animate-bounce;
 	}
 
 	html.low__end {

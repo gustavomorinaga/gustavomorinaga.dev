@@ -1,6 +1,5 @@
 import { building } from '$app/environment';
 import { minify, type Options } from 'html-minifier';
-import type { Handle } from '@sveltejs/kit';
 
 const MINIFICATION_CONFIG = {
 	collapseBooleanAttributes: true,
@@ -23,7 +22,7 @@ const MINIFICATION_CONFIG = {
 
 const PRELOAD = ['font', 'css', 'js', 'asset'];
 
-export const handle = (async ({ resolve, event }) => {
+export const handle = async ({ resolve, event }) => {
 	let page = '';
 
 	return await resolve(event, {
@@ -34,4 +33,4 @@ export const handle = (async ({ resolve, event }) => {
 			if (done) return building ? minify(page, MINIFICATION_CONFIG) : page;
 		}
 	});
-}) satisfies Handle;
+};

@@ -53,11 +53,11 @@
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-80 transition-opacity ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-80 transition ease-out duration-300;
 		}
 
 		&.read__mode {
-			@apply after:opacity-100;
+			@apply after:bg-zinc-950 after:opacity-100;
 		}
 
 		&.plain {

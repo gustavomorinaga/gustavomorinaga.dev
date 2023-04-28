@@ -1,15 +1,12 @@
 <script lang="ts">
-	import { PUBLIC_CMS_URL } from '$env/static/public';
 	import { blur } from 'svelte/transition';
-	import { CardPost, Metadata } from '$lib/components';
+	import { CardPost, CarouselFeaturedPosts, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { simpleDateFormatter, HOST, estimateReadingTime } from '$lib/utils';
-	import { balancer } from 'svelte-action-balancer';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
 
-	const { query } = data;
+	const { featured } = data;
 	let currentPage = 1;
 
 	$: posts = data.posts;
@@ -18,13 +15,7 @@
 		currentPage++;
 
 		const [response] = await Promise.all([
-			fetch(
-				`${PUBLIC_CMS_URL}/api/blog-posts?` +
-					new URLSearchParams({
-						...query.blog,
-						'pagination[page]': currentPage.toString()
-					}).toString()
-			).then<ICMSData<IPost>>(res => res.json())
+			fetch(`/api/posts?page=${currentPage}}`).then<ICMSData<IPost[]>>(res => res.json())
 		]);
 
 		posts.data = [...posts.data, ...response.data];
@@ -35,6 +26,12 @@
 </script>
 
 <Metadata title={$LANG.blog.metadata.title} description={$LANG.blog.metadata.description} />
+
+<CarouselFeaturedPosts slides={featured.data} />
+
+<div class="divider" />
+
+<h2>{$LANG.blog.latest}</h2>
 
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}

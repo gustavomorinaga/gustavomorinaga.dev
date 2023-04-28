@@ -10,14 +10,14 @@
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
 	import { containerElement, durationFormatter, getMinDiff, HOST } from '$lib/utils';
 	import Portal from 'svelte-portal';
-	import type { IPlaylist } from '$lib/ts';
+	import type { IPlaylistTrack } from '$lib/ts';
 
-	export let playlist: IPlaylist[] = [];
+	export let playlist: IPlaylistTrack[] = [];
 
 	const MAX_IDLE_MINUTES = 3;
 	const INITIAL_STATE = {
 		showPlayer: false,
-		currentTrack: playlist[0],
+		currentTrack: playlist.at(0) as IPlaylistTrack,
 		currentTime: 0,
 		muted: false,
 		volume: 0.1,

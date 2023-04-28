@@ -25,6 +25,7 @@ export const en: ILang = {
 		about: 'About me',
 		projects: 'Projects',
 		bookmarks: 'Bookmarks',
+		feed: 'Feed',
 		lang: 'Change language'
 	},
 
@@ -99,8 +100,33 @@ export const en: ILang = {
 			all: 'All'
 		},
 
+		latest: 'Latest',
 		empty: 'No posts found',
 		loadMore: 'Load more'
+	},
+
+	post: {
+		goBack: 'Go back',
+
+		read: 'read',
+
+		options: {
+			share: 'Share',
+			newsletter: 'Subscribe',
+			comments: 'Comments'
+		},
+		related: 'Related posts',
+
+		newsletter: {
+			title: 'Liked this post?',
+			paragraph:
+				'Subscribe to receive notifications by email when there is new content. No commitment, cancel at any time.',
+
+			form: {
+				placeholder: 'your.email@example.com',
+				subscribe: 'Subscribe'
+			}
+		}
 	},
 
 	about: {

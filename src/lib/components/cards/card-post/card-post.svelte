@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, estimateReadingTime, simpleDateFormatter } from '$lib/utils';
+	import { HOST, estimateReadingTime, dateFormatter } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import type { IPost } from '$lib/ts';
 
 	export let post: IPost;
+	export let tagLimit = 5;
 
-	const TAG_LIMIT = 5;
 	const { slug, title, cover, content, tags, publishedAt } = post;
 </script>
 
@@ -28,13 +28,14 @@
 
 					<span>
 						<time>
-							{simpleDateFormatter({
+							{dateFormatter({
 								lang: $LANG.code,
-								date: new Date(publishedAt)
+								date: new Date(publishedAt),
+								dateStyle: 'medium'
 							})}
 						</time>
 						•
-						<time>{estimateReadingTime(content)} min</time>
+						<span>{estimateReadingTime(content)} min</span>
 					</span>
 				</div>
 			</div>
@@ -42,7 +43,7 @@
 			<ul class="tags">
 				{#if tags && tags?.length}
 					{#each tags as tag, index}
-						{#if index + 1 <= TAG_LIMIT}
+						{#if index + 1 <= tagLimit}
 							<li class="tag" title={tag.label} aria-label={tag.label}>
 								<Icon icon={tag.icon} collection={tag.collection} size="sm" />
 							</li>
@@ -76,11 +77,11 @@
 
 		& .card-body {
 			& > h2 {
-				@apply text-3xl font-futuristic mb-8 text-shadow-glow shadow-primary;
+				@apply text-xl md:text-3xl font-futuristic mb-4 text-shadow-lg shadow-black/75;
 			}
 
 			& > footer {
-				@apply flex justify-between mt-auto;
+				@apply flex flex-col-reverse md:flex-row justify-between gap-4 mt-auto;
 
 				& .author {
 					@apply flex items-center;
@@ -89,7 +90,7 @@
 						@apply mr-3;
 
 						& > div {
-							@apply w-10 rounded-full;
+							@apply w-8 md:w-10 rounded-full;
 						}
 					}
 
@@ -97,7 +98,7 @@
 						@apply block leading-5;
 
 						& > span {
-							@apply flex items-center gap-2 text-gray-400;
+							@apply flex items-center gap-2 text-stone-400;
 						}
 					}
 				}
