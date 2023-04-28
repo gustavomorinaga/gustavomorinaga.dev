@@ -1,3 +1,4 @@
+import { sortBy } from '$lib/utils';
 import type { IRaindrops, IRaindropTags } from '$lib/ts';
 
 export async function load({ fetch }) {
@@ -6,14 +7,16 @@ export async function load({ fetch }) {
 		fetch('/api/bookmarks/tags').then<IRaindropTags>(res => res.json())
 	]);
 
+	const mappedTags = [
+		...tags.items,
+		{ _id: 'all', count: tags.items.reduce((acc, curr) => acc + curr.count, 0) }
+	];
+
 	return {
 		bookmarks,
 		tags: {
 			...tags,
-			items: [
-				...tags.items,
-				{ _id: 'all', count: tags.items.reduce((acc, curr) => acc + curr.count, 0) }
-			].sort((a, b) => a._id.localeCompare(b._id))
+			items: sortBy(mappedTags, '_id')
 		}
 	};
 }

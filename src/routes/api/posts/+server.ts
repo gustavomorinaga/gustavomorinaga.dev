@@ -1,5 +1,6 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import { json } from '@sveltejs/kit';
+import { sortBy } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
@@ -12,6 +13,8 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 	const page = Number(searchParams.get('page')) || 1;
 	const tag = searchParams.get('tag');
 
+	const filterByTag = { filters: { tags: { value: { $in: [tag] } } } };
+
 	const query = {
 		blog: {
 			populate: ['cover', 'tags'],
@@ -20,7 +23,7 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 				page,
 				pageSize: PAGE_SIZE_OPTIONS.page
 			},
-			...(tag && { filters: { tags: { value: { $in: [tag] } } } })
+			...(tag && filterByTag)
 		},
 		featured: {
 			populate: ['cover', 'tags'],
@@ -29,7 +32,7 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 				page,
 				pageSize: PAGE_SIZE_OPTIONS.featured
 			},
-			...(tag && { filters: { tags: { value: { $in: [tag] } } } })
+			...(tag && filterByTag)
 		}
 	};
 
@@ -44,7 +47,7 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 				...res,
 				data: res.data.map(p => ({
 					...p,
-					tags: p.tags.sort((a, b) => a.value.localeCompare(b.value))
+					tags: sortBy(p.tags, 'value')
 				}))
 			}))
 	]);

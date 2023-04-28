@@ -1,6 +1,6 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import { json } from '@sveltejs/kit';
-import { estimateReadingTime } from '$lib/utils';
+import { estimateReadingTime, sortBy } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
@@ -25,7 +25,7 @@ export const GET = async ({ fetch, params: { slug } }) => {
 			.then(async res => ({
 				...res,
 				readingTime: estimateReadingTime(res.content),
-				tags: res.tags.sort((a, b) => a.value.localeCompare(b.value))
+				tags: sortBy(res.tags, 'value')
 			}))
 	]);
 

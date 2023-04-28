@@ -7,4 +7,5 @@ export * from './reading-time';
 export * from './reduced-motion';
 export * from './routing';
 export * from './scroll';
+export * from './sort';
 export * from './speech';
