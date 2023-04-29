@@ -124,7 +124,10 @@ export const en: ILang = {
 
 			form: {
 				placeholder: 'your.email@example.com',
-				subscribe: 'Subscribe'
+				subscribe: 'Subscribe',
+				loading: 'Sending...',
+				success: 'Subscribed successfully!',
+				error: 'Something went wrong, try again later.'
 			}
 		}
 	},

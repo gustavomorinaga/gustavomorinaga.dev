@@ -50,6 +50,7 @@
 		"browserslist-to-esbuild": "1.2.0",
 		"cssnano": "6.0.0",
 		"daisyui": "2.51.6",
+		"deep-email-validator": "^0.1.21",
 		"detect-gpu": "5.0.21",
 		"eslint": "8.39.0",
 		"eslint-config-prettier": "8.8.0",

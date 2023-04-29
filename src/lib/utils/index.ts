@@ -2,6 +2,7 @@ export * from './array';
 export * from './ascii';
 export * from './date';
 export * from './formatters';
+export * from './forms';
 export * from './host';
 export * from './mdsvex';
 export * from './reading-time';

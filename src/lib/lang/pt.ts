@@ -125,7 +125,10 @@ export const pt: ILang = {
 
 			form: {
 				placeholder: 'seu.email@exemplo.com',
-				subscribe: 'Inscrever-se'
+				subscribe: 'Inscrever-se',
+				loading: 'Enviando...',
+				success: 'Inscrição realizada com sucesso!',
+				error: 'Erro ao realizar inscrição.'
 			}
 		}
 	},

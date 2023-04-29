@@ -112,6 +112,9 @@ export interface ILang {
 			form: {
 				placeholder: string;
 				subscribe: string;
+				loading: string;
+				success: string;
+				error: string;
 			};
 		};
 	};
