@@ -1,10 +1,12 @@
 <script lang="ts">
+	import '$lib/styles/prism.scss';
+
 	export let data;
-	const { compiledContent } = data;
+	const { content } = data;
 </script>
 
 <section class="content">
-	{@html compiledContent}
+	{@html content}
 </section>
 
 <style lang="scss" global>

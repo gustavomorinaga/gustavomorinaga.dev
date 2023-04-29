@@ -11,7 +11,10 @@ const config = {
 	preprocess: seqPreprocessor([vitePreprocess(), preprocess(), preprocessThrelte()]),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		prerender: {
+			handleMissingId: 'ignore'
+		}
 	}
 };
 

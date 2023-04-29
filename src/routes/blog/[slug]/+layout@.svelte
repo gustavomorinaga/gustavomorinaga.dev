@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '$lib/styles/prism.scss';
 	import {
 		PUBLIC_CATEGORY_ID,
 		PUBLIC_REPO,
@@ -8,19 +7,19 @@
 	} from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
-	import { afterNavigate } from '$app/navigation';
 	import { balancer } from 'svelte-action-balancer';
 
 	export let data;
+	const { post, relatedPosts } = data;
 
 	const TAG_LIMIT = 5;
 	const ROOT_PATHNAME = '/blog';
 	const POST_PATHNAME = '/blog/[slug]';
-	const { post, relatedPosts } = data;
 	const shareableData = {
 		title: post.title,
 		text: post.description,
