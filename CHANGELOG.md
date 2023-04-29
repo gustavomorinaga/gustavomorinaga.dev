@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/gustavomorinaga/portfolio/compare/v1.0.0...v1.0.1) (2023-04-29)
+
+
+### Bug Fixes
+
+* adding prerender to feed.xml route ([ddefdc8](https://github.com/gustavomorinaga/portfolio/commit/ddefdc8bcb4904b44c7c621f6d591fd6319ac26c))
+* change feed.xml response ([48d747a](https://github.com/gustavomorinaga/portfolio/commit/48d747ae069c976db39c43d5a1319162eca31530))
+* content-type label ([b95af53](https://github.com/gustavomorinaga/portfolio/commit/b95af53418e000e8d2a9762fd29e1352133b6f50))
+* is sort array exists ([3d59a7a](https://github.com/gustavomorinaga/portfolio/commit/3d59a7afb011644d6b8083b053cceac0630cf9be))
+* pnpm overrides prismjs ([cb75153](https://github.com/gustavomorinaga/portfolio/commit/cb751532916b91fb278a311d4b898847a68c37c7))
+* regenerate package lock ([616a51e](https://github.com/gustavomorinaga/portfolio/commit/616a51ef0896150b38f936398d82bee0f2af7d37))
+* removing vercel config to enable feed.xml ([1527565](https://github.com/gustavomorinaga/portfolio/commit/15275657e18c1a2d18e4982fc364f44641b51884))
+
+
+### Improvements
+
+* change sort file into array file ([3acddae](https://github.com/gustavomorinaga/portfolio/commit/3acddaeaba8b87d3d457130fb0099b998ab46511))
+* newsletter subscription api ([59195dd](https://github.com/gustavomorinaga/portfolio/commit/59195dd3ebc225ea58c0cdbd56c91556460e9115))
+* prerender blog pages again ([a5020ff](https://github.com/gustavomorinaga/portfolio/commit/a5020ffd729f8ab10934fcf90857738381dfcbbf))
+* sort by ([e8fd993](https://github.com/gustavomorinaga/portfolio/commit/e8fd99387bfad18167d99c0bf229c77c62c44300))
+
 ## [1.0.0](https://github.com/gustavomorinaga/portfolio/compare/v0.9.4...v1.0.0) (2023-04-28)
 
 
