@@ -7,4 +7,10 @@
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Karla:ital,wght@0,400;0,700;1,400&family=Orbitron&display=swap"
 	/>
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS Feed"
+		href="https://gustavomorinaga.dev/feed.xml"
+	/>
 </svelte:head>

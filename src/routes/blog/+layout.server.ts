@@ -2,6 +2,8 @@ import { PUBLIC_CMS_URL } from '$env/static/public';
 import qs from 'qs';
 import type { ICMSData, ITag } from '$lib/ts';
 
+export const prerender = false;
+
 export async function load({ fetch }) {
 	const query = {
 		tags: {
