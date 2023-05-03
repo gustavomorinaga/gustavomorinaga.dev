@@ -4,7 +4,7 @@ export * from './date';
 export * from './formatters';
 export * from './forms';
 export * from './host';
-export * from './mdsvex';
+export * from './markdown';
 export * from './reading-time';
 export * from './reduced-motion';
 export * from './routing';

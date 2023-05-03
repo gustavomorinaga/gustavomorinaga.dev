@@ -23,3 +23,8 @@ export const COMPILER_CONFIG: MdsvexCompileOptions = {
 		rehypeExternalLinks
 	] as MdsvexCompileOptions['rehypePlugins']
 };
+
+export const clearExtraContent = (content = '') =>
+	content
+		.replace(/>{@html `<code class="language-/g, '><code class="language-')
+		.replace(/<\/code>`}<\/pre>/g, '</code></pre>');
