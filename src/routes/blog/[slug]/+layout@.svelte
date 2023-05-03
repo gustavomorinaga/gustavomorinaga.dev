@@ -11,7 +11,7 @@
 	import { page } from '$app/stores';
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
+	import { HOST, dateFormatter, scrollIntoView } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
@@ -188,7 +188,7 @@
 									})}
 								</time>
 								•
-								<span>{estimateReadingTime(relatedPost.content)} min</span>
+								<span>{post.readingTime} min</span>
 							</span>
 						</li>
 					{/each}
