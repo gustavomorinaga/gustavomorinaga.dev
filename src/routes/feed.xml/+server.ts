@@ -18,7 +18,14 @@ export const GET = async ({ fetch }) => {
 		description: {
 			cdata: `<img src="${post.cover.url}" /> ${post?.description}`
 		},
-		pubDate: new Date(post.publishedAt).toUTCString()
+		author: 'me@gustavomorinaga.dev (Gustavo Morinaga)',
+		pubDate: new Date(post.publishedAt).toUTCString(),
+		...(post.tags.length && {
+			category: post.tags.map(tag => ({
+				'@_domain': `https://gustavomorinaga.dev/blog/tags/${tag.value}`,
+				cdata: tag.label
+			}))
+		})
 	}));
 
 	const feed = {
