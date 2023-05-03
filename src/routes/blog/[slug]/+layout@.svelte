@@ -13,9 +13,11 @@
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, estimateReadingTime, scrollIntoView } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
+	import qs from 'qs';
+	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
-	const { post, relatedPosts } = data;
+	const { post } = data;
 
 	const TAG_LIMIT = 5;
 	const ROOT_PATHNAME = '/blog';
@@ -26,6 +28,7 @@
 		url: $page.url.href
 	};
 	let previousPathname = ROOT_PATHNAME;
+	let relatedPosts: IPost[];
 
 	$: canShare = browser && navigator.canShare && navigator.canShare(shareableData);
 
@@ -50,10 +53,27 @@
 
 	const sharePost = async () => await navigator.share(shareableData);
 
-	onMount(async () => {
-		scrollIntoView($page.url.hash);
+	const loadRelatedPosts = async () => {
+		const query = {
+			tags: post.tags.map(t => t.value)
+		};
 
-		await registerView();
+		relatedPosts = await fetch(
+			`/api/posts/${post.slug}/related?${qs.stringify(query, {
+				encodeValuesOnly: true,
+				arrayFormat: 'repeat'
+			})}`
+		)
+			.then<ICMSData<IPost[]>>(res => res.json())
+			.then(res => res.data);
+
+		return relatedPosts;
+	};
+
+	onMount(async () => {
+		await Promise.all([loadRelatedPosts(), registerView()]);
+
+		scrollIntoView($page.url.hash);
 	});
 </script>
 
@@ -150,11 +170,11 @@
 				</li>
 			</ul>
 
-			{#if relatedPosts.data && relatedPosts.data.length}
+			{#if relatedPosts && relatedPosts.length}
 				<p>{$LANG.post.related}</p>
 
 				<ul class="related">
-					{#each relatedPosts.data as relatedPost}
+					{#each relatedPosts as relatedPost}
 						<li>
 							<a href="/blog/{relatedPost.slug}" use:balancer>
 								{relatedPost.title}

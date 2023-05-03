@@ -18,8 +18,7 @@
 	let playlist: IPlaylistTrack[] = [];
 
 	$: showContent = $GPU.isThree ? finished : true;
-	$: readMode =
-		data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/') && !$page.error;
+	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -84,6 +83,8 @@
 
 				return [];
 			});
+
+		return playlist;
 	};
 
 	onMount(async () => {
