@@ -2,11 +2,11 @@
 	import '$lib/styles/prism.scss';
 
 	export let data;
-	const { post } = data;
+	const { content } = data;
 </script>
 
 <section class="content">
-	{@html post.content}
+	{@html content}
 </section>
 
 <style lang="scss" global>
