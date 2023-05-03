@@ -1,8 +1,5 @@
 lockfileVersion: '6.0'
 
-overrides:
-  prismjs: 1.29.0
-
 devDependencies:
   '@commitlint/cli':
     specifier: 17.6.1
