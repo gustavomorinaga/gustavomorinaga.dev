@@ -4,8 +4,6 @@ import type { ICMSData, IPost } from '$lib/ts';
 
 const PAGE_SIZE = 3;
 
-export const prerender = true;
-
 export const load = async ({ fetch, params: { slug } }) => {
 	const post = await fetch(`/api/posts/${slug}`).then<IPost>(res => res.json());
 

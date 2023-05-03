@@ -8,13 +8,14 @@
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { page } from '$app/stores';
 	import { baseURL, containerElement, extractMainPath, logoASCII } from '$lib/utils';
-	import type { IRoute } from '$lib/ts';
+	import type { ICMSData, IPlaylistTrack, IRoute } from '$lib/ts';
 
 	export let data;
 
 	let finished: boolean;
 	let isMobile = false;
 	let showDrawer = false;
+	let playlist: IPlaylistTrack[] = [];
 
 	$: showContent = $GPU.isThree ? finished : true;
 	$: readMode =
@@ -74,6 +75,17 @@
 
 	const handleIsMobile = () => (isMobile = window.matchMedia('(max-width: 640px)').matches);
 
+	const loadPlaylist = async () => {
+		playlist = await fetch('/api/playlist')
+			.then<ICMSData<IPlaylistTrack[]>>(res => res.json())
+			.then(res => res.data)
+			.catch(error => {
+				console.error(error);
+
+				return [];
+			});
+	};
+
 	onMount(async () => {
 		if (!$GPU?.gpu) {
 			const detectedGPU = await getGPUTier();
@@ -85,6 +97,8 @@
 
 		handleIsMobile();
 		showDrawer = isMobile;
+
+		await loadPlaylist();
 
 		console.log(logoASCII);
 	});
@@ -159,9 +173,9 @@
 		<ScrollTop />
 	{/await}
 
-	{#if data.playlist && data.playlist.meta.pagination.pageCount}
+	{#if playlist.length}
 		{#await import('$lib/components/player') then { Player }}
-			<Player playlist={data.playlist.data} />
+			<Player {playlist} />
 		{/await}
 	{/if}
 
