@@ -22,7 +22,7 @@ export const GET = async ({ fetch }) => {
 		pubDate: new Date(post.publishedAt).toUTCString(),
 		...(post.tags.length && {
 			category: post.tags.map(tag => ({
-				'@_domain': `https://gustavomorinaga.dev/blog/tags/${tag.value}`,
+				'@_domain': `${PUBLIC_DOMAIN}/blog/tags/${tag.value}`,
 				cdata: tag.label
 			}))
 		})
