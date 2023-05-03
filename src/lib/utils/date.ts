@@ -1,3 +1,5 @@
+export const dateIsValid = (date: Date | string) => !Number.isNaN(new Date(date).getTime());
+
 export const getAge = (date: Date | string) =>
 	Math.abs(new Date(Date.now() - new Date(date).getTime()).getUTCFullYear() - 1970);
 

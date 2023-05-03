@@ -31,7 +31,7 @@ export const GET = async ({ fetch, params: { slug } }) => {
 					readingTime: estimateReadingTime(res.content),
 					tags: sortBy(res.tags, 'value'),
 					content: clearExtraContent(compiledContent?.code)
-				};
+				} as IPost;
 			})
 	]);
 

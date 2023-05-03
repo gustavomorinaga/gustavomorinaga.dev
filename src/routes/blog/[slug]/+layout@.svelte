@@ -11,7 +11,7 @@
 	import { page } from '$app/stores';
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, dateFormatter, scrollIntoView } from '$lib/utils';
+	import { HOST, dateFormatter, dateIsValid, scrollIntoView } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
@@ -74,6 +74,8 @@
 		await Promise.all([loadRelatedPosts(), registerView()]);
 
 		scrollIntoView($page.url.hash);
+
+		console.log(post);
 	});
 </script>
 
@@ -108,14 +110,16 @@
 							</address>
 
 							<span>
-								<time>
-									{dateFormatter({
-										lang: $LANG.code,
-										date: new Date(post.publishedAt),
-										dateStyle: 'full'
-									})}
-								</time>
-								•
+								{#if dateIsValid(post.publishedAt)}
+									<time>
+										{dateFormatter({
+											lang: $LANG.code,
+											date: new Date(post.publishedAt),
+											dateStyle: 'full'
+										})}
+									</time>
+									•
+								{/if}
 								<span>{post.readingTime} min {$LANG.post.read}</span>
 							</span>
 						</div>
