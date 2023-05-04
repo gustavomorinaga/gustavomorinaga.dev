@@ -77,7 +77,12 @@
 	});
 </script>
 
-<Metadata title={post.title} description={post.description} thumbnail={post.cover.url} />
+<Metadata
+	title={post.title}
+	description={post.description}
+	thumbnail={post.cover.url}
+	thumbnailIsExternal
+/>
 
 <article class="post">
 	<header style="--cover: url({HOST + post.cover.url});">
