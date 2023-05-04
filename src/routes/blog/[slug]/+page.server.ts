@@ -1,11 +1,9 @@
-import { COMPILER_CONFIG, clearExtraContent } from '$lib/utils';
-import { compile } from 'mdsvex';
+import { compileContent } from '$lib/utils';
 
 export const load = async ({ parent }) => {
 	const data = await parent();
 
-	const compiledContent = await compile(data.post.content, COMPILER_CONFIG);
-	const content = clearExtraContent(compiledContent?.code);
+	const content = await compileContent(data.post.content);
 
 	return { content };
 };
