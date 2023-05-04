@@ -7,7 +7,6 @@
 	import { scrollToTop } from '$lib/utils';
 
 	export let data;
-
 	const { tags } = data;
 </script>
 

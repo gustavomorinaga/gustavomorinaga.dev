@@ -5,9 +5,9 @@
 	import { cubicOut } from 'svelte/easing';
 	import { CardBookmark, Icon, Metadata, PageTransition } from '$lib/components';
 	import { LANG } from '$lib/stores';
+	import { scrollToTop } from '$lib/utils';
 
 	export let data;
-
 	const { tags } = data;
 
 	$: tag = (browser && $page.url.searchParams.get('tag')) || 'all';
@@ -33,7 +33,12 @@
 			<ul class="filters">
 				{#each tags.items as { _id }}
 					<li>
-						<a class="btn" class:btn-primary={tag === _id} href="/bookmarks?tag={_id}">
+						<a
+							class="btn"
+							class:btn-primary={tag === _id}
+							href="/bookmarks?tag={_id}"
+							on:click={scrollToTop}
+						>
 							{$LANG.bookmarks.filters[_id]}
 						</a>
 					</li>

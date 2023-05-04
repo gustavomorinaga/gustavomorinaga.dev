@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
-	import { dev } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
@@ -13,10 +13,11 @@
 
 	let finished: boolean;
 	let isMobile = false;
-	let showDrawer = false;
 	let playlist: IPlaylistTrack[] = [];
 
 	$: showContent = $GPU.isThree ? finished : true;
+	$: showDrawer = isMobile;
+	$: trigger = extractMainPath({ path: data.pathname });
 	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
 	$: routes = [
 		{
@@ -62,16 +63,11 @@
 			special: true
 		}
 	] satisfies IRoute[];
-	$: trigger = extractMainPath({ path: data.pathname });
+	$: isMobile = browser ? window.matchMedia('(max-width: 640px)').matches : false;
+	$: if (browser && containerElement)
+		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 
-	const handleResize = () => {
-		handleIsMobile();
-		showDrawer = isMobile;
-
-		!showDrawer && DRAWER.set(false);
-	};
-
-	const handleIsMobile = () => (isMobile = window.matchMedia('(max-width: 640px)').matches);
+	const handleResize = () => !showDrawer && DRAWER.set(false);
 
 	const loadPlaylist = async () => {
 		playlist = await fetch('/api/playlist')
@@ -93,14 +89,9 @@
 			GPU.change(detectedGPU);
 		}
 
-		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
-
-		handleIsMobile();
-		showDrawer = isMobile;
+		console.log(logoASCII);
 
 		await loadPlaylist();
-
-		console.log(logoASCII);
 	});
 </script>
 

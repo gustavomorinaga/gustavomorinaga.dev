@@ -5,8 +5,8 @@
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
-
 	const { posts, featured } = data;
+
 	let currentPage = 1;
 
 	const handleLoadMore = async () => {
