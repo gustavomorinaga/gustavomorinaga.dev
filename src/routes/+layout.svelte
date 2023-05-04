@@ -6,7 +6,6 @@
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
-	import { page } from '$app/stores';
 	import { baseURL, containerElement, extractMainPath, logoASCII } from '$lib/utils';
 	import type { ICMSData, IPlaylistTrack, IRoute } from '$lib/ts';
 
