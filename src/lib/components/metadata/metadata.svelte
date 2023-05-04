@@ -7,8 +7,10 @@
 	export let title = '';
 	export let description = $LANG.metadata.description;
 	export let thumbnail = IMAGES_WEBP.previewPortfolio;
+	export let thumbnailIsExternal = false;
 
 	$: pageTitle = title ? `${title} » ${$LANG.metadata.title}` : `${$LANG.metadata.title}`;
+	$: thumbnailURL = thumbnailIsExternal ? thumbnail : `${baseURL}${thumbnail}`;
 </script>
 
 <svelte:head>
@@ -21,15 +23,14 @@
 	<meta property="og:url" content="{baseURL}{$page.url.pathname}" />
 	<meta property="og:title" content={pageTitle} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content="{baseURL}{thumbnail}" />
-	<meta property="og:image" content="{baseURL}{thumbnail}" />
-	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image" content={thumbnailURL} />
+	<meta property="og:image:type" content="image/jpg" />
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="{baseURL}{$page.url.pathname}" />
 	<meta property="twitter:title" content={pageTitle} />
 	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content="{baseURL}{thumbnail}" />
+	<meta property="twitter:image" content={thumbnailURL} />
 
 	<slot />
 </svelte:head>

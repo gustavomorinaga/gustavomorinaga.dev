@@ -74,12 +74,10 @@
 		await Promise.all([loadRelatedPosts(), registerView()]);
 
 		scrollIntoView($page.url.hash);
-
-		console.log(post);
 	});
 </script>
 
-<Metadata title={post.title} description={post.description} thumbnail={post?.cover?.url} />
+<Metadata title={post.title} description={post.description} thumbnail={post.cover.url} />
 
 <article class="post">
 	<header style="--cover: url({HOST + post.cover.url});">
