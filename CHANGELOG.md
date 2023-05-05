@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/gustavomorinaga/portfolio/compare/v1.0.1...v1.0.2) (2023-05-05)
+
+
+### Features
+
+* isr for blog page ([2e1333c](https://github.com/gustavomorinaga/portfolio/commit/2e1333c941b4d5d2077a5e0095b2a41804374bf0))
+
+
+### Bug Fixes
+
+* adding prerender to layout blog page ([1f6785d](https://github.com/gustavomorinaga/portfolio/commit/1f6785d49f8edd65a9dbec1227a95e61da4b2d5b))
+* blog search prerender and rel feed.xml ([583a6d1](https://github.com/gustavomorinaga/portfolio/commit/583a6d16e30e824ec26adff6ba4d3ecf575b962e))
+* blog slug prerender ([01fd797](https://github.com/gustavomorinaga/portfolio/commit/01fd797eb196412ce4b1fd11ead7c22dd010ff58))
+* change category domain to public domain ([65d2b74](https://github.com/gustavomorinaga/portfolio/commit/65d2b74ea73c05ed453a7e2c2384c67dfbf9ce70))
+* load related posts on client side ([b0a340e](https://github.com/gustavomorinaga/portfolio/commit/b0a340ec0cea5bd6aca98093ee94398bfacc84fa))
+* og blog image ([d2916bf](https://github.com/gustavomorinaga/portfolio/commit/d2916bfbea4f99243a28926a282b5cdb929a4512))
+* page transition bug on blog slug layout ([edf6f37](https://github.com/gustavomorinaga/portfolio/commit/edf6f370a841d95b982070e8342ca7cd83901ca4))
+* post cover undefined ([33ae627](https://github.com/gustavomorinaga/portfolio/commit/33ae627b519c224d4082973e3849908d5e5d81ed))
+* prerender isr ([a644a44](https://github.com/gustavomorinaga/portfolio/commit/a644a44b86501803db91f14c81c731fccd5b0071))
+* reading time post ([a785a83](https://github.com/gustavomorinaga/portfolio/commit/a785a833772ab575b7ca66aec85ad20f9018889a))
+* remove prismjs override pnpm ([cde9c8e](https://github.com/gustavomorinaga/portfolio/commit/cde9c8ea69a4dc4d1f6ec245b905de9dc9d254e8))
+* removing prerender auto ([8f791d4](https://github.com/gustavomorinaga/portfolio/commit/8f791d44e7c2b824b2f7d0bda0722d39066b07bc))
+* removing prerender option in blog slug ([f4b0375](https://github.com/gustavomorinaga/portfolio/commit/f4b03752b5241cecff8dfa5163218d28166b6460))
+* removing rollup-plugin-node-polyfills ([80910bb](https://github.com/gustavomorinaga/portfolio/commit/80910bb4660704955c709898adf686dd8bfc14a3))
+* thumb in blog slug is external ([7b227de](https://github.com/gustavomorinaga/portfolio/commit/7b227deaa1ae08a9e85d79294df5516031ebb0f5))
+* turning off prerender on layout blog page ([2f9a33d](https://github.com/gustavomorinaga/portfolio/commit/2f9a33d04d763578181987261ba76861c880ecbf))
+
+
+### Styles
+
+* entire app responsiveness ([d273535](https://github.com/gustavomorinaga/portfolio/commit/d273535264bd5507232fdd6b74f94fdde2fd51ec))
+
+
+### Improvements
+
+* adding category to rss feed item ([58368d9](https://github.com/gustavomorinaga/portfolio/commit/58368d97a4c09ddc463d374efd947d52227a1620))
+* adding markdown table support ([08526ea](https://github.com/gustavomorinaga/portfolio/commit/08526ea922785f0d116e4293b3fb08d90d14d866))
+* clear extra compiled markdown ([c1770a3](https://github.com/gustavomorinaga/portfolio/commit/c1770a3664724554142dc560f2b0a57d625c3d48))
+* error handler in blog slug server ([741d19e](https://github.com/gustavomorinaga/portfolio/commit/741d19e072b94b46b047dafc70aa448ad8c7efba))
+* fetch playlist on client side ([ce04f19](https://github.com/gustavomorinaga/portfolio/commit/ce04f19360e69ea1f7b6dbd60735f5e4b3f4581f))
+* show drawer as observable ([ea8f870](https://github.com/gustavomorinaga/portfolio/commit/ea8f8703d0f70454da5240d777d2eea679560ff6))
+* swap mdsvex to unified ([fb9caf3](https://github.com/gustavomorinaga/portfolio/commit/fb9caf385eddc24d352bb1399f722f7ce3eecce7))
+
 ### [1.0.1](https://github.com/gustavomorinaga/portfolio/compare/v1.0.0...v1.0.1) (2023-04-29)
 
 
