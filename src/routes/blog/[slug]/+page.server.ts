@@ -1,5 +1,6 @@
 import { compileContent } from '$lib/utils';
 import type { IPost } from '$lib/ts';
+import { error } from '@sveltejs/kit';
 
 export const prerender = false;
 export const config = {
@@ -9,8 +10,11 @@ export const config = {
 };
 
 export const load = async ({ fetch, params: { slug } }) => {
-	const post = await fetch(`/api/posts/${slug}`).then<IPost>(res => res.json());
-	const content = await compileContent(post.content);
+	const post = await fetch(`/api/posts/${slug}`);
+	if (!post.ok) throw error(404, 'Not Found');
 
-	return { post, content };
+	const data: IPost = await post.json();
+	const content = await compileContent(data.content);
+
+	return { post: data, content };
 };

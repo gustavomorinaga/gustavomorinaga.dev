@@ -1,12 +1,13 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
 	import { browser, dev } from '$app/environment';
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { getGPUTier } from 'detect-gpu';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { ACHIEVEMENTS, COOKIE_CONSENT, DRAWER, GPU, LANG, NOTIFICATIONS } from '$lib/stores';
 	import { baseURL, containerElement, extractMainPath, logoASCII } from '$lib/utils';
+	import { getGPUTier } from 'detect-gpu';
 	import type { ICMSData, IPlaylistTrack, IRoute } from '$lib/ts';
 
 	export let data;
@@ -18,7 +19,8 @@
 	$: showContent = $GPU.isThree ? finished : true;
 	$: showDrawer = isMobile;
 	$: trigger = extractMainPath({ path: data.pathname });
-	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
+	$: readMode =
+		data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/') && !$page.error;
 	$: if (browser && containerElement)
 		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 	$: routes = [
