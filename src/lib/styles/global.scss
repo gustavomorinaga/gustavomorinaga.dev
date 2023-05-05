@@ -40,7 +40,9 @@ body {
 		background-image: url('$lib/images/webps/texture-noise.webp');
 	}
 
-	& code {
+	& code.typewriter {
+		@apply text-sm md:text-base;
+
 		& span {
 			&.method {
 				@apply text-primary;

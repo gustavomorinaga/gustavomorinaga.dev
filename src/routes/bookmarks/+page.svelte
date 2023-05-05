@@ -33,12 +33,7 @@
 			<ul class="filters">
 				{#each tags.items as { _id }}
 					<li>
-						<a
-							class="btn"
-							class:btn-primary={tag === _id}
-							href="/bookmarks?tag={_id}"
-							on:click={scrollToTop}
-						>
+						<a class:current={tag === _id} href="/bookmarks?tag={_id}" on:click={scrollToTop}>
 							{$LANG.bookmarks.filters[_id]}
 						</a>
 					</li>
@@ -70,11 +65,11 @@
 
 	div.bookmarks {
 		& > h1 {
-			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& > p {
-			@apply text-xl mb-8;
+			@apply text-base md:text-xl mb-8;
 
 			& > a {
 				@apply link-primary link-hover;
@@ -89,9 +84,19 @@
 
 				& > ul.filters {
 					@apply flex md:flex-wrap gap-4 -mb-4 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
+
+					& > li {
+						& > a {
+							@apply btn btn-sm md:btn-md;
+
+							&.current {
+								@apply btn-primary;
+							}
+						}
+					}
 				}
 
-				& > .info {
+				& > small.info {
 					@apply hidden md:flex items-center gap-2 text-sm text-base-content;
 
 					& .icon {

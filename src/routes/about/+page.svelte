@@ -19,7 +19,7 @@
 		@apply block;
 
 		& h1 {
-			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& > span {

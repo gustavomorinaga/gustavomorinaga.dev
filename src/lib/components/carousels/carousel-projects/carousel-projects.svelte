@@ -157,14 +157,14 @@
 
 					& .card-body {
 						& h2 {
-							@apply text-3xl font-futuristic text-shadow-glow shadow-primary;
+							@apply text-xl md:text-3xl font-futuristic text-shadow-glow shadow-primary;
 						}
 
 						& .tags {
 							@apply flex flex-wrap gap-1 mb-2;
 
 							& .tag {
-								@apply badge;
+								@apply badge badge-sm md:badge-md;
 							}
 						}
 

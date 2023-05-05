@@ -166,8 +166,8 @@
 
 			<p use:balancer>{$LANG.home.about.paragraph}</p>
 
-			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme" use:balancer>
-				<p>"{$LANG.home.about.quote}"</p>
+			<blockquote cite="https://www.pensador.com/autor/david_ribeiro_guilherme">
+				<p use:balancer>"{$LANG.home.about.quote}"</p>
 
 				<footer>
 					<cite title="Pensador">
@@ -304,7 +304,7 @@
 				@apply relative before:absolute before:-z-10 before:inset-0 before:rounded-full before:bg-black/50 before:blur-xl;
 
 				& h1 {
-					@apply flex flex-col text-3xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
+					@apply flex flex-col text-2xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
 
 					& .name {
 						@apply relative w-fit pr-12 underline underline-offset-[7px];
@@ -316,7 +316,7 @@
 				}
 
 				& p {
-					@apply text-xl mb-12 md:mb-16;
+					@apply text-base md:text-xl mb-12 md:mb-16;
 				}
 
 				& .socials {
@@ -329,7 +329,7 @@
 							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
 
 							& .btn__social {
-								@apply btn-block md:w-36 shadow-md  lg:hover:shadow-lg;
+								@apply btn-block md:w-36 shadow-md lg:hover:shadow-lg;
 							}
 						}
 
@@ -337,7 +337,7 @@
 							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
 
 							& .btn__social {
-								@apply btn-link btn-sm drop-shadow;
+								@apply btn-link btn-sm px-2 drop-shadow;
 							}
 						}
 					}
@@ -474,14 +474,14 @@
 			}
 
 			& .card-body {
-				@apply max-w-lg lg:max-w-2xl mr-auto p-4;
+				@apply md:max-w-lg lg:max-w-2xl mr-auto p-4;
 
 				& h2 {
-					@apply mb-2 text-4xl font-futuristic text-shadow-rgb;
+					@apply mb-2 text-2xl md:text-4xl font-futuristic text-shadow-rgb;
 				}
 
 				& h3 {
-					@apply mb-4 text-xl;
+					@apply mb-4 text-base md:text-xl text-white;
 				}
 
 				& blockquote {
@@ -529,7 +529,7 @@
 			}
 
 			& p {
-				@apply text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
+				@apply text-base md:text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
 			}
 
 			& .knowledge {
@@ -583,7 +583,7 @@
 			@apply w-full mt-24 -mb-16 md:mt-0;
 
 			& h2 {
-				@apply mb-8 text-4xl text-center font-futuristic text-shadow-rgb;
+				@apply mb-8 text-2xl md:text-4xl text-center font-futuristic text-shadow-rgb;
 			}
 
 			& .services__list {
@@ -593,14 +593,14 @@
 					@apply col-auto transform-none;
 
 					& .service {
-						@apply card card-bordered w-full h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg  lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card card-bordered w-full h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 
 						--perspective: 1000px;
 
 						& figure {
-							@apply w-16 h-16 mt-8 mx-8 aspect-square;
+							@apply w-12 md:w-16 h-12 md:h-16 mt-8 mx-8 aspect-square;
 
 							& > img {
 								@apply drop-shadow-sm shadow-primary;
@@ -608,7 +608,11 @@
 						}
 
 						& h3 {
-							@apply text-2xl font-futuristic text-shadow-glow shadow-primary;
+							@apply text-xl md:text-2xl font-futuristic text-shadow-glow shadow-primary;
+						}
+
+						& p {
+							@apply text-base;
 						}
 					}
 

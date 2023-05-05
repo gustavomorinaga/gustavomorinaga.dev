@@ -72,11 +72,11 @@
 
 	div.blog {
 		& > h1 {
-			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& > p {
-			@apply text-xl mb-8;
+			@apply text-base md:text-xl mb-8;
 		}
 
 		& > .blog__layout {
@@ -119,7 +119,7 @@
 
 				& > .page__transition {
 					& > h2 {
-						@apply text-3xl font-futuristic text-shadow-rgb mb-8;
+						@apply text-xl md:text-3xl font-futuristic text-shadow-rgb mb-8;
 					}
 
 					& ul.posts__list {

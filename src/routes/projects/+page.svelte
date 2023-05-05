@@ -69,11 +69,11 @@
 		@apply min-h-[80vh];
 
 		& > h1 {
-			@apply text-4xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
 		& > p {
-			@apply text-xl mb-8 md:mb-16;
+			@apply text-base md:text-xl mb-8 md:mb-16;
 
 			& > a {
 				@apply link-primary link-hover;

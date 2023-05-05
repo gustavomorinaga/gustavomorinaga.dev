@@ -10,11 +10,16 @@
 
 			<span class="powered-by">
 				Powered by
-				<a class="w-16 mr-1" href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+				<a class="deploy" href="https://vercel.com" target="_blank" rel="noopener noreferrer">
 					<img src={IMAGES_SVG.logoVercel} width="64" height="14" alt="Vercel logotype" />
 				</a>
 				|
-				<a class="w-24" href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">
+				<a
+					class="framework"
+					href="https://kit.svelte.dev"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<img src={IMAGES_SVG.logoSvelteKit} width="96" height="19" alt="SvelteKit logotype" />
 				</a>
 			</span>
@@ -29,13 +34,20 @@
 		@apply relative z-20 block bg-black border-t border-base-100;
 
 		& .footer__wrapper {
-			@apply footer footer-center p-4 text-base-content;
+			@apply footer footer-center p-4 text-xs md:text-base text-base-content;
 
 			& > div {
 				@apply flex items-center justify-between flex-col md:flex-row max-w-screen-lg w-full;
 
 				& .powered-by {
 					@apply flex items-center gap-1;
+
+					& > a.deploy {
+						@apply w-12 md:w-16 mr-1;
+					}
+					& > a.framework {
+						@apply w-20 md:w-24;
+					}
 				}
 			}
 		}

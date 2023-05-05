@@ -30,7 +30,7 @@
 				{height}
 				color="inherit"
 				aria-label={label}
-				{ariaHidden}
+				aria-hidden={ariaHidden}
 			/>
 		</div>
 	{/key}

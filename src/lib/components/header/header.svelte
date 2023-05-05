@@ -202,7 +202,7 @@
 				}
 
 				& .logo {
-					@apply relative flex flex-col items-center w-52 h-fit mx-auto md:ml-0;
+					@apply relative flex flex-col items-center w-40 md:w-52 h-fit mx-auto md:ml-0;
 
 					& > * {
 						@apply focus:outline-none;
@@ -212,7 +212,7 @@
 						@apply w-full h-8 drop-shadow-md;
 					}
 					& #slogan {
-						@apply w-full h-6 -mt-3 z-10 drop-shadow-md;
+						@apply w-full h-5 md:h-6 -mt-3 z-10 drop-shadow-md;
 					}
 				}
 

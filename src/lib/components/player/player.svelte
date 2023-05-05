@@ -684,7 +684,7 @@
 	}
 
 	.btn__player {
-		@apply inline-flex md:hidden fixed z-40 right-0 md:right-8 bottom-24 btn rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
+		@apply inline-flex md:hidden fixed z-40 right-0 md:right-8 bottom-24 btn btn-sm rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
 
 		&::before {
 			content: '';

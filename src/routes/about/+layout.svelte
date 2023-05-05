@@ -152,12 +152,12 @@
 				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg backdrop-blur-md;
 
 				& figure {
-					@apply absolute -top-20 right-0 w-40 h-40 drop-shadow-lg;
+					@apply absolute -top-20 right-0 w-32 md:w-40 h-32 md:h-40 drop-shadow-lg;
 				}
 
 				& .card-body {
 					& h3 {
-						@apply text-2xl font-futuristic text-shadow-rgb mb-4;
+						@apply text-xl md:text-2xl font-futuristic text-shadow-rgb mb-4;
 					}
 
 					& > ul {
@@ -167,7 +167,7 @@
 							@apply flex items-center text-sm;
 
 							& > .icon {
-								@apply text-primary mr-2;
+								@apply text-primary mr-2 self-start;
 							}
 
 							& a {

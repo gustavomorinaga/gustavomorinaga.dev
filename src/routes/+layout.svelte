@@ -19,6 +19,8 @@
 	$: showDrawer = isMobile;
 	$: trigger = extractMainPath({ path: data.pathname });
 	$: readMode = data.pathname.includes('/blog/') && !data.pathname.includes('/blog/tags/');
+	$: if (browser && containerElement)
+		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 	$: routes = [
 		{
 			title: $LANG.header.home,
@@ -63,11 +65,14 @@
 			special: true
 		}
 	] satisfies IRoute[];
-	$: isMobile = browser ? window.matchMedia('(max-width: 640px)').matches : false;
-	$: if (browser && containerElement)
-		(containerElement as HTMLElement).classList.toggle('low__end', $GPU.isLowEnd);
 
-	const handleResize = () => !showDrawer && DRAWER.set(false);
+	const handleIsMobile = () => (isMobile = window.matchMedia('(max-width: 640px)').matches);
+
+	const handleResize = () => {
+		handleIsMobile();
+
+		!showDrawer && DRAWER.set(false);
+	};
 
 	const loadPlaylist = async () => {
 		playlist = await fetch('/api/playlist')
@@ -88,6 +93,8 @@
 
 			GPU.change(detectedGPU);
 		}
+
+		handleIsMobile();
 
 		console.log(logoASCII);
 
@@ -214,10 +221,10 @@
 		}
 
 		& .social {
-			@apply flex flex-wrap justify-center;
+			@apply flex flex-wrap justify-between;
 
 			& li {
-				@apply btn btn-link btn-sm;
+				@apply btn btn-link btn-sm px-2;
 			}
 		}
 	}
