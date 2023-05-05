@@ -72,8 +72,6 @@
 
 	onMount(async () => {
 		await Promise.all([loadRelatedPosts(), registerView()]);
-
-		scrollIntoView($page.url.hash);
 	});
 </script>
 

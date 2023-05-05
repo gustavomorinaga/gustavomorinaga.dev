@@ -27,7 +27,7 @@ export const scrollIntoView = (event: Event | string) => {
 		anchor = target.getAttribute('href');
 	}
 
-	if (typeof event === 'string') anchor = encodeURI(event);
+	if (typeof event === 'string') anchor = decodeURI(event);
 
 	if (!anchor) return;
 

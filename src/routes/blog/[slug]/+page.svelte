@@ -1,8 +1,15 @@
 <script lang="ts">
 	import '$lib/styles/prism.scss';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { scrollIntoView } from '$lib/utils';
 
 	export let data;
 	const { content } = data;
+
+	onMount(() => {
+		$page.url.hash && scrollIntoView($page.url.hash);
+	});
 </script>
 
 <section class="content">

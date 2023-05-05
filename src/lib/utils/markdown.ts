@@ -1,7 +1,8 @@
 import { unified, type Plugin } from 'unified';
 import remarkParse from 'remark-parse';
-import rehypePrism from '@mapbox/rehype-prism';
+import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
+import rehypePrism from '@mapbox/rehype-prism';
 import rehypeFormat from 'rehype-format';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -12,7 +13,8 @@ const autolinkHeadings = () =>
 	rehypeAutolinkHeadings({
 		behavior: 'prepend',
 		properties: {
-			class: 'heading-link'
+			class: 'heading-link',
+			href: 'hello'
 		},
 		content: {
 			type: 'text',
@@ -21,14 +23,17 @@ const autolinkHeadings = () =>
 	});
 
 export const COMPILER_CONFIG = {
-	rehypePlugins: [rehypeFormat, rehypeSlug, autolinkHeadings, rehypeExternalLinks] as Plugin[]
+	remarkPLugins: [remarkParse, remarkGfm] as Plugin[],
+	rehypePlugins: [rehypeFormat, rehypeSlug, autolinkHeadings] as Plugin[]
 };
 
 export const markdownProcessor = unified()
-	.use(remarkParse)
+	.data('settings', { fragment: true })
+	.use(COMPILER_CONFIG.remarkPLugins)
 	.use(remarkRehype, { allowDangerousHtml: true })
 	.use(rehypePrism, { ignoreMissing: true, alias: { markup: ['svelte'] } })
 	.use(COMPILER_CONFIG.rehypePlugins)
+	.use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] })
 	.use(rehypeStringify, { allowDangerousHtml: true });
 
 export const compileContent = async (content: string) => {
