@@ -13,6 +13,7 @@
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, dateIsValid, scrollIntoView } from '$lib/utils';
+	import { toc, createTocStore, toclink } from '@svelte-put/toc';
 	import { balancer } from 'svelte-action-balancer';
 	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';
@@ -33,6 +34,10 @@
 
 	$: canShare = browser && navigator.canShare && navigator.canShare(shareableData);
 
+	const tocStore = createTocStore();
+
+	const sharePost = async () => await navigator.share(shareableData);
+
 	const registerView = async () => {
 		let postView = post?.postViews?.at(0);
 		if (!postView) return;
@@ -45,14 +50,6 @@
 			body: JSON.stringify({ id: postView.id })
 		});
 	};
-
-	afterNavigate(({ from }) => {
-		const isPostPathname = from?.route.id?.includes(POST_PATHNAME);
-
-		previousPathname = !isPostPathname ? from?.url.pathname || previousPathname : ROOT_PATHNAME;
-	});
-
-	const sharePost = async () => await navigator.share(shareableData);
 
 	const loadRelatedPosts = async () => {
 		const query = {
@@ -70,6 +67,12 @@
 
 		return relatedPosts;
 	};
+
+	afterNavigate(({ from }) => {
+		const isPostPathname = from?.route.id?.includes(POST_PATHNAME);
+
+		previousPathname = !isPostPathname ? from?.url.pathname || previousPathname : ROOT_PATHNAME;
+	});
 
 	onMount(async () => {
 		await Promise.all([loadRelatedPosts(), registerView()]);
@@ -153,7 +156,7 @@
 	</header>
 
 	<div>
-		<section class="content">
+		<section class="content" use:toc={{ store: tocStore, observe: true, anchor: false }}>
 			{@html content}
 		</section>
 
@@ -179,6 +182,32 @@
 					</a>
 				</li>
 			</ul>
+
+			{#if Object.values($tocStore.items).length}
+				<p>Table of Contents</p>
+
+				<ul class="toc menu menu-compact">
+					{#each Object.values($tocStore.items) as { id, text }}
+						<!-- <li>
+							<a
+								class="level-{tocItem.element.tagName.toLowerCase()}"
+								rel="bookmark"
+								use:toclink={{
+									store: tocStore,
+									tocItem: { ...tocItem, text: tocItem.text.replace('#', '') },
+									observe: true
+								}}
+							/>
+						</li> -->
+						<li>
+							<a href="#{id}" data-toc-link-active={$tocStore.activeItem?.id === id} rel="bookmark">
+								<Icon icon="chevron-right" size="sm" />
+								<span>{text.replace('#', '')}</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 
 			{#if relatedPosts && relatedPosts.length}
 				<p>{$LANG.post.related}</p>
@@ -312,10 +341,10 @@
 
 				@for $i from 1 through 6 {
 					& > h#{$i} {
-						@apply text-primary font-bold mb-4;
+						@apply relative text-primary font-bold mb-4;
 
 						& > a.heading-link {
-							@apply font-normal no-underline -ml-7 mr-2 opacity-0 transition duration-300 ease-out;
+							@apply absolute inline-block font-normal no-underline mr-2 -translate-x-7 opacity-0 transition duration-300 ease-out;
 						}
 
 						@media (hover: hover) {
@@ -525,6 +554,44 @@
 
 				& > p {
 					@apply text-stone-400 mb-4;
+				}
+
+				& > ul.toc {
+					@apply card-bordered rounded-box bg-base-100/75 mb-8 overflow-hidden;
+
+					& > li {
+						& > a {
+							@apply active:bg-base-300 transition duration-300 ease-out;
+
+							& .icon {
+								@apply -ml-8 transition-all duration-300 ease-out;
+							}
+							& > span {
+								@apply line-clamp-1;
+							}
+
+							// $levels: (
+							// 	'h3': 6,
+							// 	'h4': 8,
+							// 	'h5': 10,
+							// 	'h6': 12
+							// );
+
+							// @each $level, $value in $levels {
+							// 	&.level-#{$level} {
+							// 		@apply pl-#{$value};
+							// 	}
+							// }
+
+							&[data-toc-link-active='true'] {
+								@apply btn-active text-primary;
+
+								& .icon {
+									@apply ml-0;
+								}
+							}
+						}
+					}
 				}
 
 				& > ul.related {

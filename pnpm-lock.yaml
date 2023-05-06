@@ -28,6 +28,9 @@ devDependencies:
   '@svelte-put/intersect':
     specifier: 2.0.0
     version: 2.0.0
+  '@svelte-put/toc':
+    specifier: ^3.0.2
+    version: 3.0.2(svelte@3.58.0)
   '@sveltejs/adapter-vercel':
     specifier: 2.4.3
     version: 2.4.3(@sveltejs/kit@1.15.10)
@@ -860,6 +863,14 @@ packages:
 
   /@svelte-put/intersect@2.0.0:
     resolution: {integrity: sha512-tlqDJYNK0aSydj9aYC+N+Dcav8EeIvmAlOLoODh+BMVGPSQN8iJJXc67PZegMyIld0xZ905IIv+dztH6kcccFw==}
+    dev: true
+
+  /@svelte-put/toc@3.0.2(svelte@3.58.0):
+    resolution: {integrity: sha512-d2RKDzIXLJivHsVD2quI0QBtrnvoFa3sYw5mC11mzV69uX8UmwD+vnkZ94/a/EHBAQjDXnplOK073fkXOtU2hg==}
+    peerDependencies:
+      svelte: ^3.55.0
+    dependencies:
+      svelte: 3.58.0
     dev: true
 
   /@sveltejs/adapter-vercel@2.4.3(@sveltejs/kit@1.15.10):

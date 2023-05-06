@@ -32,6 +32,7 @@
 		"@playwright/test": "1.33.0",
 		"@svelte-put/clickoutside": "2.0.0",
 		"@svelte-put/intersect": "2.0.0",
+		"@svelte-put/toc": "^3.0.2",
 		"@sveltejs/adapter-vercel": "2.4.3",
 		"@sveltejs/kit": "1.15.10",
 		"@tailwindcss/typography": "0.5.9",
