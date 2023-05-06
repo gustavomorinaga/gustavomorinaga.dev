@@ -66,7 +66,7 @@
 			@apply max-w-[70vw] md:max-w-full;
 
 			& h4 {
-				@apply text-xl text-base-content font-futuristic text-shadow-glow shadow-primary;
+				@apply text-lg md:text-xl text-base-content font-futuristic text-shadow-glow shadow-primary;
 			}
 
 			& p {
