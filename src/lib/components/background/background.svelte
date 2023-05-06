@@ -1,18 +1,13 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
 	import { CubeLoader } from '$lib/components';
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { GPU } from '$lib/stores';
-	import { containerElement } from '$lib/utils';
 
 	export let finished = $GPU.isLowEnd || false;
 	export let readMode: boolean;
 
 	$: loading = !$GPU.isLowEnd && !finished;
-	$: if (browser) {
-		containerElement && containerElement.classList.toggle('scrollbar--show', finished);
-	}
 </script>
 
 {#if loading}

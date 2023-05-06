@@ -56,12 +56,4 @@
 			transform: translateX(calc(-9rem * var(--num-slides)));
 		}
 	}
-
-	html.low__end {
-		& .carousel {
-			& .carousel__wrapper {
-				@apply animate-none;
-			}
-		}
-	}
 </style>

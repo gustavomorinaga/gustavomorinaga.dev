@@ -278,7 +278,7 @@
 			}
 
 			& span.progress__bar {
-				@apply absolute left-0 right-0 -bottom-[2px] h-[2px] bg-primary shadow-glow shadow-primary/10 transition-opacity duration-300 ease-out;
+				@apply absolute left-0 right-0 -bottom-px h-px bg-primary shadow-glow shadow-primary/10 transition-opacity duration-300 ease-out;
 			}
 		}
 	}

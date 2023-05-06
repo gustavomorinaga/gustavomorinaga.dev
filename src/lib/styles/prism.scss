@@ -13,11 +13,11 @@ pre[class*='language-'] {
 }
 
 pre[class*='language-'] {
-	@apply relative my-2 p-4 bg-base-100/75 rounded-box card-bordered;
+	@apply relative my-2 p-4 bg-base-100/75 rounded-box card-bordered overflow-x-auto scrollbar__theme scrollbar-track-base-200;
 }
 
 code[class*='language-'] {
-	@apply block overflow-x-auto scrollbar__theme scrollbar-track-base-200;
+	@apply block;
 }
 
 .language-css > code,

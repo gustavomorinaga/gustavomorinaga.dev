@@ -670,19 +670,31 @@
 	}
 
 	html.low__end {
-		& #about {
+		& section#blurb {
+			& > .blurb__wrapper {
+				& > .blurb__content {
+					@apply before:hidden;
+				}
+			}
+		}
+
+		& section#about {
 			& .about__card {
 				@apply backdrop-blur-none;
 			}
 		}
 
-		& #knowledge {
+		& section#knowledge {
 			& .knowledge__content {
 				@apply bg-none bg-base-100;
+
+				& > p {
+					@apply text-shadow-[none];
+				}
 			}
 		}
 
-		& #services {
+		& section#services {
 			& .services__list {
 				& .service {
 					@apply duration-1000;

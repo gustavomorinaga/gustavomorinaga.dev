@@ -23,7 +23,7 @@
 
 <style lang="scss" global>
 	article.knowledge {
-		@apply flex-auto card card-bordered p-8 bg-base-100/75 shadow-lg  backdrop-blur-md;
+		@apply flex-auto card card-bordered p-8 bg-base-100/75 shadow-lg backdrop-blur-md;
 
 		& h3 {
 			@apply text-2xl font-futuristic text-shadow-glow shadow-primary mb-4;

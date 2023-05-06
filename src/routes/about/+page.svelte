@@ -42,4 +42,14 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& article.history {
+			& > span {
+				& p {
+					@apply before:hidden;
+				}
+			}
+		}
+	}
 </style>

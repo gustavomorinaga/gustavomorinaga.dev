@@ -5,7 +5,8 @@
 @import 'atropos/scss';
 
 html {
-	@apply overflow-hidden bg-base-300;
+	@apply overflow-x-hidden bg-base-300;
+	overflow: overlay;
 
 	&:not(.low__end) {
 		& .observe__scroll {
@@ -24,10 +25,6 @@ html {
 				@apply transition-none;
 			}
 		}
-	}
-
-	&.scrollbar--show {
-		overflow: overlay;
 	}
 }
 

@@ -145,7 +145,7 @@
 		}
 
 		& aside {
-			@apply sticky top-48 self-start md:col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
+			@apply sticky top-48 md:self-start md:col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
 
 			& .details,
 			& .facts {
@@ -210,7 +210,7 @@
 	}
 
 	html.low__end {
-		& .infos {
+		& section.infos {
 			& aside {
 				& .details {
 					@apply bg-base-200 bg-none;
