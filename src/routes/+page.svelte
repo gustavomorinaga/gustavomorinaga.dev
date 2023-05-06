@@ -183,7 +183,7 @@
 			</blockquote>
 
 			<div class="card-actions">
-				<a href="/about" class="cta">
+				<a href="/about" class="cta" rel="me">
 					{$LANG.home.about.moreDetails}
 
 					<Icon icon="chevron-right" />

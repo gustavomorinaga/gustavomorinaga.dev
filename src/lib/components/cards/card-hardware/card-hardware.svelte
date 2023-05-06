@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
+	import { balancer } from 'svelte-action-balancer';
 	import type { IHardware } from '$lib/ts';
 
 	export let hardware: IHardware;
@@ -32,7 +33,7 @@
 	<div class="card-body">
 		<h4>{title}</h4>
 
-		<p>{description}</p>
+		<p use:balancer>{description}</p>
 	</div>
 </a>
 
@@ -59,12 +60,10 @@
 		}
 
 		& .external {
-			@apply absolute top-2 right-2 text-base-content opacity-0 transition-opacity duration-300 ease-out;
+			@apply hidden md:block absolute top-2 right-2 text-base-content opacity-0 transition-opacity duration-300 ease-out;
 		}
 
 		& .card-body {
-			@apply max-w-[70vw] md:max-w-full;
-
 			& h4 {
 				@apply text-lg md:text-xl text-base-content font-futuristic text-shadow-glow shadow-primary;
 			}

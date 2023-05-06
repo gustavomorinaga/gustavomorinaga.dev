@@ -64,7 +64,8 @@
 			path: '/feed.xml',
 			icon: 'rss',
 			active: true,
-			special: true
+			special: true,
+			external: true
 		}
 	] satisfies IRoute[];
 

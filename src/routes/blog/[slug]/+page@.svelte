@@ -100,7 +100,7 @@
 
 				<div class="details">
 					<span class="author">
-						<a href="/about">
+						<a href="/about" rel="author">
 							<figure class="avatar">
 								<div>
 									<img src="https://github.com/gustavomorinaga.png" alt="Gustavo Morinaga avatar" />

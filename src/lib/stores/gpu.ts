@@ -5,10 +5,9 @@ import type { TierResult } from 'detect-gpu';
 export interface IGraphicsState extends Partial<TierResult> {
 	isThree: boolean;
 	isLowEnd: boolean;
-	isMobile: boolean;
 }
 
-const INITIAL_STATE: IGraphicsState = { isThree: false, isLowEnd: false, isMobile: false };
+const INITIAL_STATE: IGraphicsState = { isThree: false, isLowEnd: false };
 
 export const initializeGPU = () => {
 	const { subscribe, set } = persist<IGraphicsState>(
@@ -24,9 +23,8 @@ export const initializeGPU = () => {
 		change: (detectedGPU: TierResult) =>
 			set({
 				...detectedGPU,
-				isThree: detectedGPU.tier >= 1,
-				isLowEnd: detectedGPU.tier < 1,
-				isMobile: detectedGPU.isMobile || false
+				isThree: detectedGPU.tier >= 2,
+				isLowEnd: detectedGPU.tier < 2
 			})
 	};
 };

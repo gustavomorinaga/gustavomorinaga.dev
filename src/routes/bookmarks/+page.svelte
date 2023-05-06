@@ -33,7 +33,12 @@
 			<ul class="filters">
 				{#each tags.items as { _id }}
 					<li>
-						<a class:current={tag === _id} href="/bookmarks?tag={_id}" on:click={scrollToTop}>
+						<a
+							class:current={tag === _id}
+							href="/bookmarks?tag={_id}"
+							rel="tag"
+							on:click={scrollToTop}
+						>
 							{$LANG.bookmarks.filters[_id]}
 						</a>
 					</li>

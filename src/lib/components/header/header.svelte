@@ -118,6 +118,8 @@
 							title={route.title}
 							aria-label={route.title}
 							href={route.path}
+							target={route.external ? '_blank' : ''}
+							rel={route.external ? 'noopener noreferrer' : ''}
 						>
 							<Icon icon={route.icon} />
 						</a>

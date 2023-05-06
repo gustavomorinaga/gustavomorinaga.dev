@@ -1,9 +1,10 @@
 {
-	"name": "portfolio",
+	"name": "gustavomorinaga.dev",
 	"version": "1.0.2",
 	"type": "module",
 	"author": "Gustavo Morinaga <me@gustavomorinaga.dev>",
-	"description": "My super portfolio built with SvelteKit and served on Vercel",
+	"description": "My super website built with SvelteKit and served on Vercel",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev --open",
 		"build": "vite build",
@@ -19,8 +20,7 @@
 		"release-as-minor": "pnpm run release --release-as minor",
 		"release-as-patch": "pnpm run release --release-as patch",
 		"push-release": "git push --follow-tags origin main",
-		"prepare": "husky install",
-		"postbuild": "npx svelte-sitemap --out-dir .vercel/output/static --domain https://gustavomorinaga.dev"
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.6.1",
@@ -83,7 +83,6 @@
 		"svelte-portal": "2.2.0",
 		"svelte-preprocess": "5.0.3",
 		"svelte-sequential-preprocessor": "1.0.0",
-		"svelte-sitemap": "2.6.0",
 		"swiper": "9.2.4",
 		"tailwind-scrollbar": "3.0.0",
 		"tailwindcss": "3.3.2",

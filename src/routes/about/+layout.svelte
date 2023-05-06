@@ -134,7 +134,7 @@
 	}
 
 	section.infos {
-		@apply grid grid-cols-1 md:grid-cols-12 gap-y-4 md:gap-8 min-h-[75vh];
+		@apply flex flex-col md:grid md:grid-cols-12 gap-y-4 md:gap-8 min-h-[75vh];
 
 		& .info__content {
 			@apply relative flex flex-col md:flex-row md:col-span-7;
@@ -145,7 +145,7 @@
 		}
 
 		& aside {
-			@apply sticky top-48 self-start col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
+			@apply sticky top-48 self-start md:col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
 
 			& .details,
 			& .facts {

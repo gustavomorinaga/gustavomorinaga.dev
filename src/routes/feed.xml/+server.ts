@@ -1,12 +1,13 @@
 import { PUBLIC_DOMAIN } from '$env/static/public';
-import { XMLBuilder } from 'fast-xml-parser';
+import { xmlBuilder } from '$lib/utils';
 import type { ICMSData, IPost } from '$lib/ts';
 
-const builder = new XMLBuilder({
-	ignoreAttributes: false,
-	format: true,
-	cdataPropName: 'cdata'
-});
+export const prerender = false;
+export const config = {
+	isr: {
+		expiration: 60 * 60 // 1 hour
+	}
+};
 
 export const GET = async ({ fetch }) => {
 	const { posts } = await fetch('/api/posts').then<{ posts: ICMSData<IPost[]> }>(res => res.json());
@@ -30,7 +31,7 @@ export const GET = async ({ fetch }) => {
 
 	const feed = {
 		rss: {
-			'@_xmlns:atom': 'http://www.w3.org/2005/Atom',
+			'@_xmlns:atom': 'https://www.w3.org/2005/Atom',
 			'@_version': '2.0',
 			channel: {
 				'atom:link': {
@@ -50,13 +51,12 @@ export const GET = async ({ fetch }) => {
 		}
 	};
 
-	const xml = builder.build(feed);
+	const xml = xmlBuilder.build(feed);
 
 	return new Response(xml, {
 		headers: {
 			'Content-Type': 'application/xml',
-			'Cache-Control':
-				'public, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=3600'
+			'Cache-Control': `public, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=${config.isr.expiration}`
 		}
 	});
 };

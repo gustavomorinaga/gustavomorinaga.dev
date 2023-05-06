@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 export const prerender = false;
 export const config = {
 	isr: {
-		expiration: 60
+		expiration: 60 * 60 // 1 hour
 	}
 };
 

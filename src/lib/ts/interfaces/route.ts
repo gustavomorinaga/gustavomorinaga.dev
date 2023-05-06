@@ -4,4 +4,5 @@ export interface IRoute {
 	icon: string;
 	active?: boolean;
 	special?: boolean;
+	external?: boolean;
 }
