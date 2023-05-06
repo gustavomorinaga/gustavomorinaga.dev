@@ -1,6 +1,6 @@
 {
 	"name": "gustavomorinaga.dev",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"type": "module",
 	"author": "Gustavo Morinaga <me@gustavomorinaga.dev>",
 	"description": "My super website built with SvelteKit and served on Vercel",

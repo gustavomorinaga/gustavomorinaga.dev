@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/gustavomorinaga/portfolio/compare/v1.0.2...v1.0.3) (2023-05-06)
+
+
+### Styles
+
+* heading size on knowledges and setup pages ([570ff3e](https://github.com/gustavomorinaga/portfolio/commit/570ff3e6a09841f2acfcc424167bb6b17064d17b))
+
+
+### Improvements
+
+* using correct post images in metadata ([4866f2b](https://github.com/gustavomorinaga/portfolio/commit/4866f2b00a0344d3b60491366bea05a8a0ffb798))
+* using custom sitemap implementation ([3bc392a](https://github.com/gustavomorinaga/portfolio/commit/3bc392a07c03c03c396d88044b23a91c40422ad3))
+
 ### [1.0.2](https://github.com/gustavomorinaga/portfolio/compare/v1.0.1...v1.0.2) (2023-05-05)
 
 
