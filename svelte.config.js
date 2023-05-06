@@ -11,7 +11,7 @@ const config = {
 	preprocess: seqPreprocessor([vitePreprocess(), preprocess(), preprocessThrelte()]),
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({ runtime: 'edge' }),
 		prerender: {
 			handleMissingId: 'ignore'
 		}

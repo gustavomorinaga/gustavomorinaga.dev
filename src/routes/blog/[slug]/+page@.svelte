@@ -81,12 +81,12 @@
 <Metadata
 	title={post.title}
 	description={post.description}
-	thumbnail={post.cover.url}
+	thumbnail={post.cover.formats.small?.url}
 	thumbnailIsExternal
 />
 
 <article class="post">
-	<header style="--cover: url({HOST + post.cover.url});">
+	<header style="--cover: url({HOST + post.cover.formats.large?.url});">
 		<div class="wrapper">
 			<a class="btn__previous" href={previousPathname}>
 				<Icon icon="arrow-left" size="sm" />

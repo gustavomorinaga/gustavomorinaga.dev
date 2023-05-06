@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, estimateReadingTime, dateFormatter } from '$lib/utils';
+	import { HOST, estimateReadingTime, dateFormatter, dateIsValid } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
 	import type { IPost } from '$lib/ts';
 
@@ -11,7 +11,7 @@
 	const { slug, title, cover, content, tags, publishedAt } = post;
 </script>
 
-<a class="post" href="/blog/{slug}" style="--cover: url({HOST + cover.url});">
+<a class="post" href="/blog/{slug}" style="--cover: url({HOST + cover.formats.medium?.url});">
 	<div class="card-body">
 		<h2 use:balancer>{title}</h2>
 
@@ -27,14 +27,16 @@
 					<strong>Gustavo Morinaga</strong>
 
 					<span>
-						<time>
-							{dateFormatter({
-								lang: $LANG.code,
-								date: new Date(publishedAt),
-								dateStyle: 'medium'
-							})}
-						</time>
-						•
+						{#if dateIsValid(publishedAt)}
+							<time>
+								{dateFormatter({
+									lang: $LANG.code,
+									date: new Date(publishedAt),
+									dateStyle: 'medium'
+								})}
+							</time>
+							•
+						{/if}
 						<span>{estimateReadingTime(content)} min</span>
 					</span>
 				</div>

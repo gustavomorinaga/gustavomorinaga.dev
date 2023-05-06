@@ -79,12 +79,7 @@
 	const loadPlaylist = async () => {
 		playlist = await fetch('/api/playlist')
 			.then<ICMSData<IPlaylistTrack[]>>(res => res.json())
-			.then(res => res.data)
-			.catch(error => {
-				console.error(error);
-
-				return [];
-			});
+			.then(res => res.data);
 
 		return playlist;
 	};
@@ -173,7 +168,7 @@
 		<ScrollTop />
 	{/await}
 
-	{#if playlist.length}
+	{#if playlist?.length}
 		{#await import('$lib/components/player') then { Player }}
 			<Player {playlist} />
 		{/await}
@@ -185,13 +180,13 @@
 		{/await}
 	{/if}
 
-	{#if $NOTIFICATIONS.length}
+	{#if $NOTIFICATIONS?.length}
 		{#await import('$lib/components/notification') then { Notification }}
 			<Notification />
 		{/await}
 	{/if}
 
-	{#if $ACHIEVEMENTS.length}
+	{#if $ACHIEVEMENTS?.length}
 		{#await import('$lib/components/achievement') then { Achievement }}
 			<Achievement />
 		{/await}
