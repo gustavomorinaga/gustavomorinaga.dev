@@ -12,7 +12,8 @@ export interface IPost extends ILocalizations, ITimestamps {
 	locale: string;
 	cover: IMedia;
 	postViews?: IPostView[];
-	readingTime: number;
+	views?: number;
+	readingTime?: number;
 }
 
 export interface IPostView extends ITimestamps {

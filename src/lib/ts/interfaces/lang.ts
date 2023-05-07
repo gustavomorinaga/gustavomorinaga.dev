@@ -97,6 +97,7 @@ export interface ILang {
 		goBack: string;
 
 		read: string;
+		views: string;
 
 		toc: string;
 		options: {

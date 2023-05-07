@@ -127,6 +127,7 @@
 									•
 								{/if}
 								<span>{post.readingTime} min {$LANG.post.read}</span>
+								• <span>{post.views} {$LANG.post.views}</span>
 							</span>
 						</div>
 					</span>
@@ -282,7 +283,7 @@
 					}
 
 					& ul.tags {
-						@apply flex items-center gap-2;
+						@apply flex items-center justify-center md:justify-start gap-2;
 
 						& > li {
 							& > a.tag {

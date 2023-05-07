@@ -109,6 +109,7 @@ export const en: ILang = {
 		goBack: 'Go back',
 
 		read: 'read',
+		views: 'views',
 
 		toc: 'Table of contents',
 		options: {

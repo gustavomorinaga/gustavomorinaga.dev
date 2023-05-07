@@ -110,6 +110,7 @@ export const pt: ILang = {
 		goBack: 'Voltar',
 
 		read: 'de leitura',
+		views: 'visualizações',
 
 		toc: 'Sumário',
 		options: {
