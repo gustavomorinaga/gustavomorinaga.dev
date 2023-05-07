@@ -4,7 +4,7 @@
 			@apply relative text-primary font-bold mb-4;
 
 			& > a.heading-link {
-				@apply absolute inline-block font-normal no-underline mr-2 -translate-x-7 opacity-0 transition duration-300 ease-out;
+				@apply absolute hidden md:inline-block font-normal no-underline pr-2 -translate-x-7 opacity-0 transition duration-300 ease-out;
 			}
 
 			@media (hover: hover) {

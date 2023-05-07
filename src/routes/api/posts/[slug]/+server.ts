@@ -23,7 +23,7 @@ export const GET = async ({ fetch, params: { slug } }) => {
 			.then<ICMSData<IPost[]>>(res => res.json())
 			.then(res => res.data.at(0) as IPost)
 			.then(
-				async res =>
+				res =>
 					({
 						...res,
 						readingTime: estimateReadingTime(res.content),

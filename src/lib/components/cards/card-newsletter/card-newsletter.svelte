@@ -98,11 +98,11 @@
 			@apply max-w-2xl place-items-center text-center mx-auto;
 
 			& > h2 {
-				@apply text-4xl mb-4 font-futuristic text-shadow-rgb;
+				@apply text-xl md:text-4xl mb-4 font-futuristic text-shadow-rgb;
 			}
 
 			& > p {
-				@apply text-lg mb-4;
+				@apply text-base md:text-lg mb-4;
 			}
 
 			& > form {

@@ -222,7 +222,7 @@
 										})}
 									</time>
 									•
-									<span>{post.readingTime} min</span>
+									<span>{relatedPost.readingTime} min</span>
 								</span>
 							</li>
 						{/each}

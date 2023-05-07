@@ -1,5 +1,6 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
 import { json } from '@sveltejs/kit';
+import { estimateReadingTime } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
@@ -33,7 +34,12 @@ export const GET = async ({ fetch, params: { slug }, url: { searchParams } }) =>
 			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(query.relatedPosts, {
 				encodeValuesOnly: true
 			})}`
-		).then<ICMSData<IPost[]>>(res => res.json())
+		)
+			.then<ICMSData<IPost[]>>(res => res.json())
+			.then(res => ({
+				...res,
+				data: res.data.map(p => ({ ...p, readingTime: estimateReadingTime(p.content) }))
+			}))
 	]);
 
 	return json(relatedPosts);
