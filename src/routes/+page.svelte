@@ -285,6 +285,8 @@
 </section>
 
 <style lang="scss" global>
+	@import 'atropos/scss';
+
 	section#blurb {
 		@apply relative hero h-gutter-header -mt-4;
 		place-items: flex-start center;

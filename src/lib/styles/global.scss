@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'atropos/scss';
-
 html {
 	@apply overflow-x-hidden bg-base-300;
 	overflow: overlay;

@@ -98,6 +98,7 @@ export interface ILang {
 
 		read: string;
 
+		toc: string;
 		options: {
 			share: string;
 			newsletter: string;

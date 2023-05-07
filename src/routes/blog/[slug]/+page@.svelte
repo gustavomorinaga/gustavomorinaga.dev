@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '$lib/styles/prism.scss';
 	import {
 		PUBLIC_CATEGORY_ID,
 		PUBLIC_REPO,
@@ -184,54 +183,51 @@
 			</ul>
 
 			{#if Object.values($tocStore.items).length}
-				<p>Table of Contents</p>
+				<section class="toc">
+					<div class="divider">{$LANG.post.toc}</div>
 
-				<ul class="toc menu menu-compact">
-					{#each Object.values($tocStore.items) as { id, text }}
-						<!-- <li>
-							<a
-								class="level-{tocItem.element.tagName.toLowerCase()}"
-								rel="bookmark"
-								use:toclink={{
-									store: tocStore,
-									tocItem: { ...tocItem, text: tocItem.text.replace('#', '') },
-									observe: true
-								}}
-							/>
-						</li> -->
-						<li>
-							<a href="#{id}" data-toc-link-active={$tocStore.activeItem?.id === id} rel="bookmark">
-								<Icon icon="chevron-right" size="sm" />
-								<span>{text.replace('#', '')}</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
+					<ul class="menu menu-compact">
+						{#each Object.values($tocStore.items) as { id, text }}
+							<li>
+								<a
+									href="#{id}"
+									data-toc-link-active={$tocStore.activeItem?.id === id}
+									rel="bookmark"
+								>
+									<Icon icon="arrow-badge-right" size="sm" />
+									<span>{text.replace('#', '')}</span>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</section>
 			{/if}
 
 			{#if relatedPosts && relatedPosts.length}
-				<p>{$LANG.post.related}</p>
+				<section class="related">
+					<div class="divider">{$LANG.post.related}</div>
 
-				<ul class="related">
-					{#each relatedPosts as relatedPost}
-						<li>
-							<a href="/blog/{relatedPost.slug}" use:balancer>
-								{relatedPost.title}
-							</a>
-							<span>
-								<time>
-									{dateFormatter({
-										lang: $LANG.code,
-										date: new Date(relatedPost.publishedAt),
-										dateStyle: 'medium'
-									})}
-								</time>
-								•
-								<span>{post.readingTime} min</span>
-							</span>
-						</li>
-					{/each}
-				</ul>
+					<ul>
+						{#each relatedPosts as relatedPost}
+							<li>
+								<a href="/blog/{relatedPost.slug}" use:balancer>
+									{relatedPost.title}
+								</a>
+								<span>
+									<time>
+										{dateFormatter({
+											lang: $LANG.code,
+											date: new Date(relatedPost.publishedAt),
+											dateStyle: 'medium'
+										})}
+									</time>
+									•
+									<span>{post.readingTime} min</span>
+								</span>
+							</li>
+						{/each}
+					</ul>
+				</section>
 			{/if}
 		</aside>
 	</div>
@@ -251,6 +247,9 @@
 </article>
 
 <style lang="scss" global>
+	@use '$lib/styles/prism' as p;
+	@use '$lib/styles/markdown' as m;
+
 	article.post {
 		@apply block -mt-10 md:-mt-8;
 
@@ -278,7 +277,7 @@
 						@apply text-2xl md:text-5xl font-bold mt-8 mb-4 text-shadow-lg shadow-black/75;
 
 						& + p {
-							@apply text-lg md:text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
+							@apply text-base md:text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
 						}
 					}
 
@@ -338,191 +337,8 @@
 
 			& > section.content {
 				@apply md:col-span-8 md:pr-4 pb-16 md:border-r md:border-base-200;
-
-				@for $i from 1 through 6 {
-					& > h#{$i} {
-						@apply relative text-primary font-bold mb-4;
-
-						& > a.heading-link {
-							@apply absolute inline-block font-normal no-underline mr-2 -translate-x-7 opacity-0 transition duration-300 ease-out;
-						}
-
-						@media (hover: hover) {
-							&:hover {
-								& > a.heading-link {
-									@apply opacity-50 hover:opacity-100;
-								}
-							}
-						}
-					}
-				}
-
-				& > h2 {
-					@apply text-2xl md:text-3xl mt-12 mb-4;
-				}
-
-				& > h3 {
-					@apply text-xl md:text-2xl mt-8;
-				}
-
-				& > h4 {
-					@apply text-lg md:text-xl mt-8;
-				}
-
-				& > h5 {
-					@apply text-base md:text-lg mt-8;
-				}
-
-				& > h6 {
-					@apply text-base mt-8;
-				}
-
-				& p {
-					@apply md:text-lg;
-				}
-
-				p:not(:last-child),
-				dl:not(:last-child),
-				ol:not(:last-child),
-				ul:not(:last-child),
-				blockquote:not(:last-child),
-				pre:not(:last-child),
-				table:not(:last-child),
-				img:not(:last-child) {
-					@apply mb-8;
-				}
-
-				& a {
-					@apply link-primary link-hover;
-				}
-
-				& > ul {
-					@apply list-disc;
-
-					&,
-					& > ul,
-					& > ul > ul {
-						@apply list-inside marker:text-primary mb-8;
-					}
-
-					& > ul {
-						list-style-type: circle;
-
-						& > ul {
-							list-style-type: square;
-						}
-					}
-				}
-
-				& > ol {
-					@apply list-decimal;
-
-					&,
-					& > ol,
-					& > ol > ol {
-						@apply list-inside marker:text-primary mb-8;
-					}
-
-					& > ol {
-						list-style-type: lower-alpha;
-
-						& > ol {
-							list-style-type: lower-roman;
-						}
-					}
-				}
-
-				& li {
-					@apply md:text-lg;
-				}
-
-				& li + li {
-					@apply mt-2;
-				}
-
-				& > blockquote {
-					@apply block p-4 md:p-8 mb-8 rounded-box bg-base-100/75 border-l-4 border-primary;
-
-					& > p {
-						@apply block;
-					}
-				}
-
-				& dd {
-					@apply ml-8;
-				}
-
-				& kbd {
-					@apply kbd-sm;
-				}
-
-				& figure {
-					@apply text-center mx-auto;
-
-					&:not(:first-child) {
-						@apply mt-8;
-					}
-					&:not(:last-child) {
-						@apply mb-8;
-					}
-
-					& > img {
-						@apply inline-block;
-					}
-
-					& > figcaption {
-						@apply italic;
-					}
-				}
-
-				img,
-				video {
-					@apply card-bordered rounded-box mx-auto;
-				}
-
-				sup,
-				sub {
-					@apply text-sm;
-				}
-
-				& table {
-					@apply table-auto w-full text-left border-collapse card-bordered rounded-box;
-
-					& > thead {
-						@apply bg-base-200/75;
-
-						& > tr {
-							@apply border-b border-base-200;
-
-							& > th {
-								@apply px-4 py-2;
-							}
-						}
-					}
-
-					& > tbody {
-						& > tr {
-							@apply odd:bg-base-100/75 even:bg-base-100/50;
-
-							& > td {
-								@apply px-4 py-2;
-							}
-						}
-					}
-				}
-
-				& code:not([class]) {
-					@apply inline px-1 rounded-box card-bordered bg-base-200/75 text-sm md:text-base text-primary;
-				}
-
-				& .file-title {
-					@apply py-2 px-4 text-sm md:text-base font-bold text-base-content bg-base-200/75 rounded-t-box card-bordered;
-					margin-bottom: 0 !important;
-
-					& + pre {
-						@apply mt-0 rounded-t-none border-t-0;
-					}
-				}
+				@include p.prism;
+				@include m.markdown;
 			}
 
 			& > aside {
@@ -552,58 +368,56 @@
 					}
 				}
 
-				& > p {
-					@apply text-stone-400 mb-4;
-				}
+				& > section {
+					& > .divider {
+						@apply text-stone-400;
+					}
 
-				& > ul.toc {
-					@apply card-bordered rounded-box bg-base-100/75 mb-8 overflow-hidden;
+					&.toc {
+						@apply hidden md:block;
 
-					& > li {
-						& > a {
-							@apply active:bg-base-300 transition duration-300 ease-out;
+						& > ul {
+							@apply card-bordered rounded-box bg-base-100/75 mb-8 overflow-hidden;
 
-							& .icon {
-								@apply -ml-8 transition-all duration-300 ease-out;
-							}
-							& > span {
-								@apply line-clamp-1;
-							}
+							& > li {
+								& > a {
+									@apply active:bg-base-300 transition duration-300 ease-out;
 
-							// $levels: (
-							// 	'h3': 6,
-							// 	'h4': 8,
-							// 	'h5': 10,
-							// 	'h6': 12
-							// );
+									& .icon {
+										@apply -ml-8 opacity-0 transition-all duration-300 ease-out;
+									}
+									& > span {
+										@apply line-clamp-1;
+									}
 
-							// @each $level, $value in $levels {
-							// 	&.level-#{$level} {
-							// 		@apply pl-#{$value};
-							// 	}
-							// }
+									&[data-toc-link-active='true'] {
+										@apply btn-active text-primary;
 
-							&[data-toc-link-active='true'] {
-								@apply btn-active text-primary;
-
-								& .icon {
-									@apply ml-0;
+										& .icon {
+											@apply ml-0 opacity-100;
+										}
+										& > span {
+											@apply font-semibold;
+										}
+									}
 								}
 							}
 						}
 					}
-				}
 
-				& > ul.related {
-					@apply flex flex-col gap-4 mb-8;
+					&.related {
+						& > ul {
+							@apply flex flex-col gap-4 mb-8;
 
-					& > li {
-						& > a {
-							@apply link link-hover link-primary text-base font-bold;
-						}
+							& > li {
+								& > a {
+									@apply link link-hover link-primary text-base font-bold;
+								}
 
-						& > span {
-							@apply flex items-center gap-2 text-stone-400 text-sm;
+								& > span {
+									@apply flex items-center gap-2 text-stone-400 text-sm;
+								}
+							}
 						}
 					}
 				}

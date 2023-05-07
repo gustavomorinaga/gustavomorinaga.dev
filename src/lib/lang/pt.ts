@@ -111,6 +111,7 @@ export const pt: ILang = {
 
 		read: 'de leitura',
 
+		toc: 'Sumário',
 		options: {
 			share: 'Compartilhar',
 			newsletter: 'Inscrever-se',

@@ -110,6 +110,7 @@ export const en: ILang = {
 
 		read: 'read',
 
+		toc: 'Table of contents',
 		options: {
 			share: 'Share',
 			newsletter: 'Subscribe',
