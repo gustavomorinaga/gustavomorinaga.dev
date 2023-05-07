@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/gustavomorinaga/portfolio/compare/v1.0.3...v1.0.4) (2023-05-07)
+
+
+### Features
+
+* post table of content ([52597f2](https://github.com/gustavomorinaga/portfolio/commit/52597f2a898bbbc5e4809e7a430924f0d947bd45))
+
+
+### Bug Fixes
+
+* removing runtime edge ([dafd218](https://github.com/gustavomorinaga/portfolio/commit/dafd2180a03522d9df6d2b6e9c1e7bbf2062fe62))
+
+
+### Styles
+
+* low end fixes ([7218ae5](https://github.com/gustavomorinaga/portfolio/commit/7218ae51ea7822f332a029ec26003d63121c9a52))
+* optimizing scss imports and mixins ([d5a55a7](https://github.com/gustavomorinaga/portfolio/commit/d5a55a72e7036ad9206de01cff8c56406c5b2e82))
+
 ### [1.0.3](https://github.com/gustavomorinaga/portfolio/compare/v1.0.2...v1.0.3) (2023-05-06)
 
 
