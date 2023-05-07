@@ -127,8 +127,14 @@ export const en: ILang = {
 				placeholder: 'your.email@example.com',
 				subscribe: 'Subscribe',
 				loading: 'Sending...',
-				success: 'Subscribed successfully!',
-				error: 'Something went wrong, try again later.'
+				success: {
+					title: "You've successfully subscribed!",
+					paragraph: 'Nice! Now you start newsletters about new posts.'
+				},
+				error: {
+					title: 'Something went wrong!',
+					paragraph: 'An error occurred while trying to subscribe you. Please try again later.'
+				}
 			}
 		}
 	},

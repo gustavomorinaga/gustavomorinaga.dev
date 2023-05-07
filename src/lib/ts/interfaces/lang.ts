@@ -114,8 +114,14 @@ export interface ILang {
 				placeholder: string;
 				subscribe: string;
 				loading: string;
-				success: string;
-				error: string;
+				success: {
+					title: string;
+					paragraph: string;
+				};
+				error: {
+					title: string;
+					paragraph: string;
+				};
 			};
 		};
 	};

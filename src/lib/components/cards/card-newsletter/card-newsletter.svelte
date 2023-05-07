@@ -66,27 +66,37 @@
 					</button>
 				</label>
 			</div>
-		</form>
 
-		{#if showFeedback}
-			<div class="alert" class:success class:error transition:fade={{ duration: 300 }}>
-				<div>
-					{#if success}
-						<Icon icon="mail-check" />
-						<span>{$LANG.post.newsletter.form.success}</span>
-					{:else}
-						<Icon icon="mail-x" />
-						<span>{$LANG.post.newsletter.form.error}</span>
-					{/if}
+			{#if showFeedback}
+				<div class="alert" class:success class:error transition:fade={{ duration: 300 }}>
+					<div>
+						{#if success}
+							<div>
+								<strong>
+									<Icon icon="mail-check" />
+									{$LANG.post.newsletter.form.success.title}
+								</strong>
+								<p>{$LANG.post.newsletter.form.success.paragraph}</p>
+							</div>
+						{:else}
+							<div>
+								<strong>
+									<Icon icon="mail-x" />
+									{$LANG.post.newsletter.form.error.title}
+								</strong>
+								<p>{$LANG.post.newsletter.form.error.paragraph}</p>
+							</div>
+						{/if}
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</form>
 	</div>
 </section>
 
 <style lang="scss" global>
 	section#newsletter {
-		@apply card card-bordered mb-16 bg-primary/5;
+		@apply card card-bordered card-compact md:card-normal mb-16 bg-primary/5;
 
 		&::before {
 			content: '';
@@ -106,7 +116,7 @@
 			}
 
 			& > form {
-				@apply w-full md:w-auto;
+				@apply w-full md:max-w-lg;
 
 				& > div.form-control {
 					@apply w-full md:w-auto;
@@ -115,7 +125,7 @@
 						@apply flex-col md:flex-row;
 
 						& > input.input {
-							@apply input-bordered md:w-80;
+							@apply input-bordered w-full;
 						}
 
 						& > button {
@@ -123,14 +133,20 @@
 						}
 					}
 				}
-			}
 
-			& > div.alert {
-				&.success {
-					@apply alert-success;
-				}
-				&.error {
-					@apply alert-error;
+				& > div.alert {
+					@apply mt-4 text-left;
+
+					&.success {
+						@apply alert-success;
+					}
+					&.error {
+						@apply alert-error;
+					}
+
+					& strong {
+						@apply flex items-center gap-1;
+					}
 				}
 			}
 		}

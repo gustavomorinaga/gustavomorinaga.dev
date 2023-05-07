@@ -128,8 +128,14 @@ export const pt: ILang = {
 				placeholder: 'seu.email@exemplo.com',
 				subscribe: 'Inscrever-se',
 				loading: 'Enviando...',
-				success: 'Inscrição realizada com sucesso!',
-				error: 'Erro ao realizar inscrição.'
+				success: {
+					title: 'Inscrição realizada com sucesso!',
+					paragraph: 'Legal! Agora você receberá notificações sobre novos artigos.'
+				},
+				error: {
+					title: 'Algo deu errado!',
+					paragraph: 'Ocorreu um erro ao tentar inscrevê-lo. Por favor, tente novamente mais tarde.'
+				}
 			}
 		}
 	},
