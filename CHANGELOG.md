@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/gustavomorinaga/portfolio/compare/v1.0.4...v1.0.5) (2023-05-07)
+
+
+### Features
+
+* post views ([3c2c863](https://github.com/gustavomorinaga/portfolio/commit/3c2c863b0770baee29e4bda1c4d7245006a4e33d))
+
+
+### Bug Fixes
+
+* related posts reading time ([897aef1](https://github.com/gustavomorinaga/portfolio/commit/897aef13ef3ce153e43808749d2ad11d2434f3b4))
+
+
+### Styles
+
+* better newsletter form responsiveness ([aedeee0](https://github.com/gustavomorinaga/portfolio/commit/aedeee070f34fcab70e33d3066253472dbcc9153))
+
 ### [1.0.4](https://github.com/gustavomorinaga/portfolio/compare/v1.0.3...v1.0.4) (2023-05-07)
 
 
