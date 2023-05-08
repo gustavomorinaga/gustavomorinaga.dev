@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/gustavomorinaga/portfolio/compare/v1.0.5...v1.1.0) (2023-05-08)
+
+
+### Features
+
+* timeline page ([67661b1](https://github.com/gustavomorinaga/portfolio/commit/67661b18d82c801393e06ec7fbafdcdc0bbfcfac))
+
+
+### Styles
+
+* projects motion instruction size ([ad7f009](https://github.com/gustavomorinaga/portfolio/commit/ad7f009e234d38dd2691e793a88a48800b958a1e))
+
 ### [1.0.5](https://github.com/gustavomorinaga/portfolio/compare/v1.0.4...v1.0.5) (2023-05-07)
 
 
