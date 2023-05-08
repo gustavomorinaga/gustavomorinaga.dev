@@ -59,21 +59,21 @@
 
 <style lang="scss" global>
 	a.post {
-		@apply z-10 card card-bordered min-h-[10rem] bg-cover bg-center bg-no-repeat shadow-lg transition duration-700 ease-smooth;
-		background-image: var(--cover);
+		@apply z-10 card card-bordered min-h-[10rem] overflow-hidden shadow-lg transition duration-700 ease-smooth;
 
 		&::before {
+			content: '';
+			@apply absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-smooth;
+			background-image: var(--cover);
+		}
+		&::after {
 			content: '';
 			@apply absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/90 to-black/60;
 		}
 
 		@media (hover: hover) {
 			&:hover {
-				@apply no-underline border-primary shadow-glow shadow-primary/10;
-
-				& .external {
-					@apply opacity-100;
-				}
+				@apply border-primary shadow-glow shadow-primary/10 before:scale-105;
 			}
 		}
 

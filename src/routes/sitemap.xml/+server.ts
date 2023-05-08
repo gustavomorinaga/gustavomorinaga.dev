@@ -20,6 +20,7 @@ export const GET = async ({ fetch }) => {
 		'/about',
 		'/about/knowledge',
 		'/about/setup',
+		'/about/timeline',
 		'/blog',
 		'/bookmarks',
 		'/projects'

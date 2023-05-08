@@ -37,4 +37,10 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& article.knowledge {
+			@apply backdrop-blur-none;
+		}
+	}
 </style>

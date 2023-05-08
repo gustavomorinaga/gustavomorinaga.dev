@@ -73,4 +73,10 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& a.hardware {
+			@apply backdrop-blur-none;
+		}
+	}
 </style>

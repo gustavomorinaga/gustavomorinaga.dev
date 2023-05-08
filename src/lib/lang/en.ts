@@ -171,7 +171,8 @@ export const en: ILang = {
 		actions: {
 			knowledge: 'Knowledge',
 			setup: 'Setup',
-			about: 'About me'
+			about: 'About me',
+			timeline: 'Timeline'
 		},
 
 		knowledge: {
@@ -222,6 +223,59 @@ export const en: ILang = {
 			audioInterface: 'Audio interface',
 			headset: 'Headset',
 			microphone: 'Microphone'
+		},
+
+		// translate pt to en
+		timeline: {
+			title: 'Timeline',
+
+			metadata: {
+				title: 'Timeline',
+				description:
+					'Here I briefly tell my journey as a full-stack developer and some fun facts about myself.'
+			},
+
+			events: {
+				highSchool: {
+					title: 'Graduated from high school',
+					description: 'I completed my high school studies'
+				},
+				startEtec: {
+					title: 'Started a technical course',
+					description: 'I started studying Informatics at Etec São Roque'
+				},
+				endEtec: {
+					title: 'Graduated from technical course',
+					description: 'I completed my studies of Informatics at Etec São Roque'
+				},
+				startFatec: {
+					title: 'Started a graduation course',
+					description: 'I started studying Systems for Internet at Fatec São Roque'
+				},
+				endFatec: {
+					title: 'Graduated from graduation course',
+					description: 'I completed my studies of Systems for Internet at Fatec São Roque'
+				},
+				internshipADV: {
+					title: 'Started an internship',
+					description: 'I started working as an intern at ADV Tecnologia'
+				},
+				startADV: {
+					title: 'Started my first job',
+					description: 'I started working as a front-end developer at ADV Tecnologia'
+				},
+				promoADV: {
+					title: 'Promotion',
+					description: 'I was promoted to full-stack developer at ADV Tecnologia'
+				},
+				websiteLaunch: {
+					title: 'Launched my website',
+					description:
+						'I launched my personal website, with the goal of sharing my work and knowledge'
+				}
+			},
+
+			visit: 'Visit'
 		}
 	},
 

@@ -1,15 +1,39 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { page } from '$app/stores';
 	import { Icon, PageTransition } from '$lib/components';
-	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { profileJSON } from '$lib/databases';
+	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
 	import { LANG } from '$lib/stores';
 	import { dateFormatter, getAge, scrollToTop, speakText } from '$lib/utils';
 
 	export let data;
 
 	const age = getAge(profileJSON.birthday);
+
+	$: routes = [
+		{
+			name: $LANG.about.actions.about,
+			path: '/about',
+			icon: 'info-circle'
+		},
+		{
+			name: $LANG.about.actions.knowledge,
+			path: '/about/knowledge',
+			icon: 'topology-full'
+		},
+		{
+			name: $LANG.about.actions.timeline,
+			path: '/about/timeline',
+			icon: 'timeline-event-text'
+		},
+		{
+			name: $LANG.about.actions.setup,
+			path: '/about/setup',
+			icon: 'devices-pc'
+		}
+	];
 
 	const handleSpeech = () => speakText('Gustavo Morinaga', 'pt-BR');
 </script>
@@ -112,18 +136,12 @@
 		</div>
 
 		<div class="options" in:fly={{ y: 50, duration: 1000, delay: 2900, easing: cubicOut }}>
-			<a class="cta" href="/about/knowledge" on:click={scrollToTop}>
-				<Icon icon="topology-full" />
-				{$LANG.about.actions.knowledge}
-			</a>
-
-			<a href="/about/setup" data-tip={$LANG.about.actions.setup} on:click={scrollToTop}>
-				<Icon icon="devices-pc" />
-			</a>
-
-			<a href="/about" data-tip={$LANG.about.actions.about} on:click={scrollToTop}>
-				<Icon icon="info-circle" />
-			</a>
+			{#each routes as route}
+				<a href={route.path} class:current={route.path === data.pathname} on:click={scrollToTop}>
+					<Icon icon={route.icon} />
+					<span>{route.name}</span>
+				</a>
+			{/each}
 		</div>
 	</aside>
 </section>
@@ -192,17 +210,17 @@
 			}
 
 			& .options {
-				@apply flex gap-4;
+				@apply grid grid-flow-col md:grid-flow-dense md:grid-cols-2 gap-4;
 
 				& > a {
-					@apply btn shadow-md  lg:hover:shadow-lg;
+					@apply btn flex-1 gap-1 shadow-md lg:hover:shadow-lg;
 
-					&.cta {
-						@apply flex-grow btn-primary gap-2;
+					&.current {
+						@apply btn-primary;
 					}
 
-					&:not(.cta) {
-						@apply tooltip tooltip-bottom inline-flex;
+					& > span {
+						@apply hidden md:block;
 					}
 				}
 			}

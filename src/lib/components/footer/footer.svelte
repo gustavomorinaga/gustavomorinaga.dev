@@ -34,7 +34,7 @@
 		@apply relative z-20 block bg-black border-t border-base-100;
 
 		& .footer__wrapper {
-			@apply footer footer-center p-4 text-xs md:text-base text-base-content;
+			@apply footer footer-center p-4 text-xs md:text-sm text-base-content;
 
 			& > div {
 				@apply flex items-center justify-between flex-col md:flex-row max-w-screen-lg w-full;

@@ -172,7 +172,8 @@ export const pt: ILang = {
 		actions: {
 			knowledge: 'Conhecimentos',
 			setup: 'Equipamento',
-			about: 'Sobre mim'
+			about: 'Sobre mim',
+			timeline: 'Linha do tempo'
 		},
 
 		knowledge: {
@@ -223,6 +224,59 @@ export const pt: ILang = {
 			audioInterface: 'Interface de áudio',
 			headset: 'Headset',
 			microphone: 'Microfone'
+		},
+
+		timeline: {
+			title: 'Linha do tempo',
+
+			metadata: {
+				title: 'Linha do tempo',
+				description:
+					'Aqui conto brevemente a minha jornada de desenvolvedor full-stack e algumas curiosidades sobre mim.'
+			},
+
+			events: {
+				highSchool: {
+					title: 'Concluí o ensino médio',
+					description: 'Completei os estudos do ensino médio'
+				},
+				startEtec: {
+					title: 'Ingressei num curso técnico',
+					description: 'Comecei a estudar Técnico de Informática na Etec São Roque'
+				},
+				endEtec: {
+					title: 'Concluí o curso técnico',
+					description: 'Completei os estudos de Técnico de Informática na Etec São Roque'
+				},
+				startFatec: {
+					title: 'Ingressei num curso superior',
+					description: 'Comecei a estudar Sistemas para Internet na Fatec São Roque'
+				},
+				endFatec: {
+					title: 'Graduação',
+					description:
+						'Consegui concluir minha graduação em Sistemas para Internet na Fatec São Roque'
+				},
+				internshipADV: {
+					title: 'Ingressei num estágio',
+					description: 'Comecei a trabalhar como estagiário na ADV Tecnologia'
+				},
+				startADV: {
+					title: 'Primeiro emprego',
+					description: 'Comecei a trabalhar como desenvolvedor front-end na ADV Tecnologia'
+				},
+				promoADV: {
+					title: 'Promoção',
+					description: 'Fui promovido a desenvolvedor full-stack na ADV Tecnologia'
+				},
+				websiteLaunch: {
+					title: 'Lançamento do meu site',
+					description:
+						'Lancei meu website pessoal, com o objetivo de compartilhar meu trabalho e conhecimento'
+				}
+			},
+
+			visit: 'Visitar'
 		}
 	},
 

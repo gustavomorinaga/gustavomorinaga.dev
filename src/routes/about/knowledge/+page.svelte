@@ -50,11 +50,11 @@
 	section.knowledges {
 		@apply block;
 
-		& h1 {
+		& > h1 {
 			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
-		& .knowledges__content {
+		& > div.knowledges__content {
 			@apply flex flex-wrap gap-4;
 		}
 	}

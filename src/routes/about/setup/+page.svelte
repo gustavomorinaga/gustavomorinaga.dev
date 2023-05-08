@@ -112,7 +112,7 @@
 <section class="setup">
 	<h1>{$LANG.about.setup.title}</h1>
 
-	<ul class="setup__list">
+	<ul class="components">
 		{#each setup as hardware}
 			<li>
 				<CardHardware {hardware} />
@@ -125,11 +125,11 @@
 	section.setup {
 		@apply block;
 
-		& h1 {
+		& > h1 {
 			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
 
-		& ul.setup__list {
+		& > ul.components {
 			@apply flex flex-col gap-4;
 		}
 	}

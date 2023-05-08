@@ -77,4 +77,12 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& a.bookmark {
+			& > article {
+				@apply backdrop-blur-none;
+			}
+		}
+	}
 </style>

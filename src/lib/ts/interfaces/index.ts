@@ -12,3 +12,4 @@ export * from './service';
 export * from './setup';
 export * from './social';
 export * from './tag';
+export * from './timeline';

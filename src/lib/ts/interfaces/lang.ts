@@ -157,6 +157,7 @@ export interface ILang {
 			knowledge: string;
 			setup: string;
 			about: string;
+			timeline: string;
 		};
 
 		knowledge: {
@@ -206,6 +207,24 @@ export interface ILang {
 			audioInterface: string;
 			headset: string;
 			microphone: string;
+		};
+
+		timeline: {
+			title: string;
+
+			metadata: {
+				title: string;
+				description: string;
+			};
+
+			events: {
+				[key: string]: {
+					title: string;
+					description: string;
+				};
+			};
+
+			visit: string;
 		};
 	};
 
