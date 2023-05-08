@@ -140,7 +140,7 @@
 				@apply relative grayscale-[25] brightness-75 transition duration-300 ease-out;
 
 				& figure {
-					@apply -z-10 mockup-window w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg  transition duration-300 ease-out;
+					@apply -z-10 mockup-window pointer-events-none w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg transition duration-300 ease-out;
 
 					&::after {
 						content: '';

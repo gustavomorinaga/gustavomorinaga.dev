@@ -46,26 +46,26 @@
 
 <code class="typewriter projects">profile<span class="method">.projects()</span>;</code>
 
-<div class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<section class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.projects.title}</h1>
 
 	<p>{@html $LANG.projects.paragraph}</p>
 
-	<span class="motion__instruction">
-		<Icon icon="arrow-narrow-left" />
+	<div class="motion__instruction">
+		<Icon icon="arrow-narrow-left" size="sm" />
 		{$LANG.projects.gesture}
-		<Icon icon="arrow-narrow-right" />
-	</span>
+		<Icon icon="arrow-narrow-right" size="sm" />
+	</div>
 
 	<CarouselProjects {projects} />
-</div>
+</section>
 
 <style lang="scss" global>
 	code.projects {
 		@apply md:mt-16;
 	}
 
-	div.projects {
+	section.projects {
 		@apply min-h-[80vh];
 
 		& > h1 {
@@ -81,7 +81,7 @@
 		}
 
 		& .motion__instruction {
-			@apply flex md:hidden justify-center gap-2 p-4;
+			@apply flex md:hidden justify-center gap-2 p-4 text-sm;
 
 			& .icon {
 				@apply text-primary;
