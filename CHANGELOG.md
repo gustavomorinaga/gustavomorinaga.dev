@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/gustavomorinaga/portfolio/compare/v1.1.0...v1.1.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* card-knowledge translation ([cd24ada](https://github.com/gustavomorinaga/portfolio/commit/cd24ada49512741a21da80bb2c708a3dbaab3469))
+
+
+### Improvements
+
+* all svgs optimized ([e64a436](https://github.com/gustavomorinaga/portfolio/commit/e64a436ae6386f36da459b9e64aad69180ed946b))
+* disable noise overlay on low end ([fbf065e](https://github.com/gustavomorinaga/portfolio/commit/fbf065ee01c24cada3efac48dab43b9dba4eb6a1))
+* footer translation change ([dae9910](https://github.com/gustavomorinaga/portfolio/commit/dae9910a58e8a8efbfd949cb2a348acd93a85cd7))
+* some components improved on low end ([3b6dee4](https://github.com/gustavomorinaga/portfolio/commit/3b6dee47bcd8d277833659aa0678975a684eee73))
+
 ## [1.1.0](https://github.com/gustavomorinaga/portfolio/compare/v1.0.5...v1.1.0) (2023-05-08)
 
 
