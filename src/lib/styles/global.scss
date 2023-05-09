@@ -24,6 +24,12 @@ html {
 			}
 		}
 	}
+
+	&.low__end {
+		& body {
+			@apply before:hidden;
+		}
+	}
 }
 
 body {
