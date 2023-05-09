@@ -136,7 +136,7 @@
 				}
 			}
 
-			& .project {
+			& article.project {
 				@apply relative grayscale-[25] brightness-75 transition duration-300 ease-out;
 
 				& figure {
@@ -152,7 +152,7 @@
 					}
 				}
 
-				& .content {
+				& div.content {
 					@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
 
 					& .card-body {

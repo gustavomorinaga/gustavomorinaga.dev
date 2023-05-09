@@ -129,4 +129,16 @@
 			}
 		}
 	}
+
+	html.low__end {
+		& div.blog {
+			& > .blog__layout {
+				& > aside.filters {
+					& > ul.menu {
+						@apply backdrop-blur-none;
+					}
+				}
+			}
+		}
+	}
 </style>

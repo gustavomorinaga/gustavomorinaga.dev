@@ -23,7 +23,7 @@
 
 <code class="typewriter bookmarks">profile<span class="method">.bookmarks()</span>;</code>
 
-<div class="bookmarks" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<section class="bookmarks" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.bookmarks.title}</h1>
 
 	<p>{$LANG.bookmarks.paragraph}</p>
@@ -61,14 +61,14 @@
 			{/each}
 		</ul>
 	</PageTransition>
-</div>
+</section>
 
 <style lang="scss" global>
 	code.bookmarks {
 		@apply md:mt-16;
 	}
 
-	div.bookmarks {
+	section.bookmarks {
 		& > h1 {
 			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
 		}
@@ -113,6 +113,14 @@
 
 		& ul.bookmarks__list {
 			@apply grid grid-cols-1 md:grid-cols-3 gap-4;
+		}
+	}
+
+	html.low__end {
+		& section.bookmarks {
+			& .bookmarks__filters {
+				@apply bg-base-100 backdrop-blur-none;
+			}
 		}
 	}
 </style>
