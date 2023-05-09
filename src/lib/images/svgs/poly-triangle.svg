@@ -1,1 +1,1 @@
-<svg id="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 100 100" > <polygon points="50 2, 98 98, 2 98" fill="#000000" stroke="#EF4343" stroke-width="1" /> </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100"><path stroke="#EF4343" d="m50 2 48 96H2z"/></svg>
