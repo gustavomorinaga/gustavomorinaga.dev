@@ -300,7 +300,10 @@ export interface ILang {
 
 	scrollTop: string;
 
-	footer: string;
+	footer: {
+		developedBy: string;
+		poweredBy: string;
+	};
 
 	cookieConsent: {
 		title: string;

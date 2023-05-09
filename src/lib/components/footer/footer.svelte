@@ -6,10 +6,10 @@
 <footer id="footer">
 	<div class="footer__wrapper">
 		<div>
-			<p>{$LANG.footer}</p>
+			<p>{$LANG.footer.developedBy}</p>
 
 			<span class="powered-by">
-				Powered by
+				{$LANG.footer.poweredBy}
 				<a class="deploy" href="https://vercel.com" target="_blank" rel="noopener noreferrer">
 					<img src={IMAGES_SVG.logoVercel} width="64" height="14" alt="Vercel logotype" />
 				</a>
