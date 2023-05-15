@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/gustavomorinaga/portfolio/compare/v1.1.1...v1.1.2) (2023-05-15)
+
+
+### Features
+
+* new post released tag ([7b63826](https://github.com/gustavomorinaga/portfolio/commit/7b63826964c249eb813d28a4b11fb281557167b2))
+
 ### [1.1.1](https://github.com/gustavomorinaga/portfolio/compare/v1.1.0...v1.1.1) (2023-05-09)
 
 
