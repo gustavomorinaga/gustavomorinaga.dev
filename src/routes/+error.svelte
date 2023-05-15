@@ -3,8 +3,11 @@
 	import { Icon, Metadata } from '$lib/components';
 	import { IMAGES_SVG } from '$lib/images';
 	import { ACHIEVEMENTS, LANG } from '$lib/stores';
+	import { onMount } from 'svelte';
 
-	ACHIEVEMENTS.unlock('GMD_404');
+	onMount(() => {
+		ACHIEVEMENTS.unlock('GMD_404');
+	});
 </script>
 
 <Metadata title={$page.error?.message} description={$LANG.error.paragraph} />

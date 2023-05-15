@@ -10,7 +10,7 @@ export const config = {
 };
 
 export const GET = async ({ fetch }) => {
-	const { posts } = await fetch('/api/posts').then<{ posts: ICMSData<IPost[]> }>(res => res.json());
+	const posts = await fetch('/api/posts').then<ICMSData<IPost[]>>(res => res.json());
 
 	const item = posts.data.map(post => ({
 		guid: `${PUBLIC_DOMAIN}/blog/${post.slug}`,

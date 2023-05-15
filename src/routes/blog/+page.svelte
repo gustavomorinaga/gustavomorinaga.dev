@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition';
-	import { CardPost, CarouselFeaturedPosts, Metadata } from '$lib/components';
+	import { CardPost, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import type { ICMSData, IPost } from '$lib/ts';
 
 	export let data;
-	const { posts, featured } = data;
+	const { posts } = data;
 
 	let currentPage = 1;
 
@@ -25,11 +25,7 @@
 
 <Metadata title={$LANG.blog.metadata.title} description={$LANG.blog.metadata.description} />
 
-<CarouselFeaturedPosts slides={featured.data} />
-
-<div class="divider" />
-
-<h2>{$LANG.blog.latest}</h2>
+<h2>{$LANG.blog.filters.all}</h2>
 
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}

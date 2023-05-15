@@ -8,3 +8,6 @@ export const getMinDiff = (startDate: Date, endDate = new Date()) => {
 
 	return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInMinute);
 };
+
+export const diffDays = (startDate: Date, endDate: Date) =>
+	Math.ceil(Math.abs(startDate.valueOf() - endDate.valueOf()) / (1000 * 60 * 60 * 24));

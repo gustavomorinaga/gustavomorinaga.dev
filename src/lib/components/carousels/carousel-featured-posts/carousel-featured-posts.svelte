@@ -37,7 +37,7 @@
 <swiper-container bind:this={swiperRef} init="false" class="featured">
 	{#each slides as post (post.id)}
 		<swiper-slide>
-			<CardPost {post} tagLimit={3} />
+			<CardPost {post} tagLimit={3} tagSize="md" />
 		</swiper-slide>
 	{/each}
 </swiper-container>
@@ -60,25 +60,27 @@
 			}
 
 			& a.post {
-				@apply border-x-0 md:border;
+				@apply md:min-h-[14rem] border-x-0 md:border;
 
 				& .card-body {
 					@apply px-12 md:px-8;
 
-					& > h2 {
-						@apply text-xl md:text-2xl;
+					& > header {
+						& > h3 {
+							@apply text-xl md:text-3xl;
+						}
 					}
 
 					& > footer {
 						& .author {
 							& > figure.avatar {
 								& > div {
-									@apply w-8;
+									@apply w-10;
 								}
 							}
 
 							& > div {
-								@apply text-sm;
+								@apply text-base;
 							}
 						}
 					}

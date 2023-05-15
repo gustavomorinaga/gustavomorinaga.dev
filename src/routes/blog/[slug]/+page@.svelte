@@ -12,7 +12,7 @@
 	import { CardNewsletter, Giscus, Icon, Metadata } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { HOST, dateFormatter, dateIsValid, scrollIntoView } from '$lib/utils';
-	import { toc, createTocStore, toclink } from '@svelte-put/toc';
+	import { toc, createTocStore } from '@svelte-put/toc';
 	import { balancer } from 'svelte-action-balancer';
 	import qs from 'qs';
 	import type { ICMSData, IPost } from '$lib/ts';

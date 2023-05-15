@@ -4,10 +4,7 @@ import { sortBy } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
-const PAGE_SIZE_OPTIONS = {
-	page: 10,
-	featured: 5
-};
+const PAGE_SIZE = 10;
 
 export const GET = async ({ fetch, url: { searchParams } }) => {
 	const page = Number(searchParams.get('page')) || 1;
@@ -21,26 +18,15 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 			sort: ['publishedAt:desc'],
 			pagination: {
 				page,
-				pageSize: PAGE_SIZE_OPTIONS.page
-			},
-			...(tag && filterByTag)
-		},
-		featured: {
-			populate: ['cover', 'tags'],
-			sort: ['postViews.views:desc'],
-			pagination: {
-				page,
-				pageSize: PAGE_SIZE_OPTIONS.featured
+				pageSize: PAGE_SIZE
 			},
 			...(tag && filterByTag)
 		}
 	};
 
-	const currentQuery = searchParams.get('featured') ? query.featured : query.blog;
-
 	const [posts] = await Promise.all([
 		fetch(
-			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(currentQuery, { encodeValuesOnly: true })}`
+			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(query.blog, { encodeValuesOnly: true })}`
 		)
 			.then<ICMSData<IPost[]>>(res => res.json())
 			.then(res => ({
@@ -52,5 +38,5 @@ export const GET = async ({ fetch, url: { searchParams } }) => {
 			}))
 	]);
 
-	return json({ posts, query: currentQuery });
+	return json(posts);
 };

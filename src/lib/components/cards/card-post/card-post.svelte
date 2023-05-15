@@ -1,19 +1,32 @@
 <script lang="ts">
 	import { Icon } from '$lib/components';
 	import { LANG } from '$lib/stores';
-	import { HOST, estimateReadingTime, dateFormatter, dateIsValid } from '$lib/utils';
+	import { HOST, estimateReadingTime, dateFormatter, dateIsValid, diffDays } from '$lib/utils';
 	import { balancer } from 'svelte-action-balancer';
-	import type { IPost } from '$lib/ts';
+	import type { IIcon, IPost } from '$lib/ts';
+
+	const NEW_POST_RELEASE_DAYS_LIMIT = 7;
 
 	export let post: IPost;
 	export let tagLimit = 5;
+	export let tagSize: IIcon['size'] = 'sm';
 
 	const { slug, title, cover, content, tags, publishedAt } = post;
+
+	const publishDateIsValid = dateIsValid(publishedAt);
+	const isNewPost =
+		publishDateIsValid && diffDays(new Date(publishedAt), new Date()) < NEW_POST_RELEASE_DAYS_LIMIT;
 </script>
 
 <a class="post" href="/blog/{slug}" style="--cover: url({HOST + cover.formats.medium?.url});">
 	<div class="card-body">
-		<h2 use:balancer>{title}</h2>
+		<header>
+			{#if isNewPost}
+				<span class="new">Novo</span>
+			{/if}
+
+			<h3 use:balancer>{title}</h3>
+		</header>
 
 		<footer>
 			<div class="author">
@@ -27,7 +40,7 @@
 					<strong>Gustavo Morinaga</strong>
 
 					<span>
-						{#if dateIsValid(publishedAt)}
+						{#if publishDateIsValid}
 							<time>
 								{dateFormatter({
 									lang: $LANG.code,
@@ -47,7 +60,7 @@
 					{#each tags as tag, index}
 						{#if index + 1 <= tagLimit}
 							<li class="tag" title={tag.label} aria-label={tag.label}>
-								<Icon icon={tag.icon} collection={tag.collection} size="sm" />
+								<Icon icon={tag.icon} collection={tag.collection} size={tagSize} />
 							</li>
 						{/if}
 					{/each}
@@ -77,26 +90,36 @@
 		}
 
 		& .card-body {
-			& > h2 {
-				@apply text-xl md:text-3xl font-futuristic mb-4 text-shadow-lg shadow-black/75;
+			@apply justify-stretch;
+
+			& > header {
+				@apply flex flex-col flex-grow gap-4;
+
+				& > span.new {
+					@apply badge badge-primary badge-lg uppercase font-semibold;
+				}
+
+				& > h3 {
+					@apply text-xl md:text-2xl font-futuristic h-full mt-auto mb-4 text-shadow-lg shadow-black/75;
+				}
 			}
 
 			& > footer {
-				@apply flex flex-col-reverse md:flex-row justify-between gap-4 mt-auto;
+				@apply flex flex-col-reverse md:flex-row justify-between gap-4;
 
 				& .author {
 					@apply flex items-center;
 
 					& > figure.avatar {
-						@apply mr-3;
+						@apply mr-3 card-bordered rounded-full;
 
 						& > div {
-							@apply w-8 md:w-10 rounded-full;
+							@apply w-8 rounded-full;
 						}
 					}
 
 					& > div {
-						@apply block leading-5;
+						@apply block text-sm leading-5;
 
 						& > span {
 							@apply flex items-center gap-2 text-stone-400;

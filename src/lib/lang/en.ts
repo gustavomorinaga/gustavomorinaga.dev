@@ -380,6 +380,10 @@ export const en: ILang = {
 			title: 'Hello World!',
 			description: 'Click on a social network to get in touch'
 		},
+		GMD_BLOG: {
+			title: 'Ravenous Reader',
+			description: 'Read 3 blog posts'
+		},
 		GMD_PROJECT: {
 			title: 'Project Explorer',
 			description: "Visit or view a project's code"

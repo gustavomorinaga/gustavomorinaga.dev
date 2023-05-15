@@ -1,4 +1,4 @@
-import type { ICMSData, ITag } from '$lib/ts';
+import type { ICMSData, IPost, ITag } from '$lib/ts';
 
 export const prerender = false;
 export const config = {
@@ -8,7 +8,10 @@ export const config = {
 };
 
 export async function load({ fetch }) {
-	const [tags] = await Promise.all([fetch('/api/tags').then<ICMSData<ITag[]>>(res => res.json())]);
+	const [featured, tags] = await Promise.all([
+		fetch('/api/posts/featured').then<ICMSData<IPost[]>>(res => res.json()),
+		fetch('/api/tags').then<ICMSData<ITag[]>>(res => res.json())
+	]);
 
-	return { tags };
+	return { featured, tags };
 }

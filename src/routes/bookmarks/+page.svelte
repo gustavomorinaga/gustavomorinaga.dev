@@ -85,10 +85,10 @@
 			@apply sticky z-10 top-16 md:top-[4.5rem] card card-compact card-bordered mb-8 bg-base-100/75 shadow-lg backdrop-blur-md;
 
 			& .card-body {
-				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4;
+				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4 px-0 md:px-4;
 
 				& > ul.filters {
-					@apply flex md:flex-wrap gap-4 -mb-4 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
+					@apply flex md:flex-wrap gap-4 -mb-4 px-4 md:px-0 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
 
 					& > li {
 						& > a {

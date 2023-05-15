@@ -1,15 +1,16 @@
 import { PUBLIC_CMS_URL } from '$env/static/public';
+import { json } from '@sveltejs/kit';
 import { sortBy } from '$lib/utils';
 import qs from 'qs';
 import type { ICMSData, IPost } from '$lib/ts';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
-export async function load({ fetch }) {
+export const GET = async ({ fetch }) => {
 	const query = {
-		blog: {
+		featured: {
 			populate: ['cover', 'tags'],
-			sort: ['publishedAt:desc'],
+			sort: ['postViews.views:desc'],
 			pagination: {
 				page: 1,
 				pageSize: PAGE_SIZE
@@ -17,9 +18,9 @@ export async function load({ fetch }) {
 		}
 	};
 
-	const [posts] = await Promise.all([
+	const [featured] = await Promise.all([
 		fetch(
-			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(query.blog, { encodeValuesOnly: true })}`
+			`${PUBLIC_CMS_URL}/api/blog-posts?${qs.stringify(query.featured, { encodeValuesOnly: true })}`
 		)
 			.then<ICMSData<IPost[]>>(res => res.json())
 			.then(res => ({
@@ -31,5 +32,5 @@ export async function load({ fetch }) {
 			}))
 	]);
 
-	return { posts };
-}
+	return json(featured);
+};

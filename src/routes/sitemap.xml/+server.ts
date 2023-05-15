@@ -10,8 +10,8 @@ export const config = {
 };
 
 export const GET = async ({ fetch }) => {
-	const [{ posts }, tags] = await Promise.all([
-		fetch('/api/posts').then<{ posts: ICMSData<IPost[]> }>(res => res.json()),
+	const [posts, tags] = await Promise.all([
+		fetch('/api/posts').then<ICMSData<IPost[]>>(res => res.json()),
 		fetch('/api/tags').then<ICMSData<ITag[]>>(res => res.json())
 	]);
 

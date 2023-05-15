@@ -17,6 +17,10 @@ const ACHIEVEMENTS_DICTIONARY = {
 		_id: 'GMD_SOCIAL',
 		xp: 150
 	},
+	GMD_BLOG: {
+		_id: 'GMD_BLOG',
+		xp: 100
+	},
 	GMD_PROJECT: {
 		_id: 'GMD_PROJECT',
 		xp: 100

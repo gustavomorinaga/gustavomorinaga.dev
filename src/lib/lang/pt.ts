@@ -382,6 +382,10 @@ export const pt: ILang = {
 			title: 'Olá mundo!',
 			description: 'Clique uma rede social para entrar em contato'
 		},
+		GMD_BLOG: {
+			title: 'Leitor Voraz',
+			description: 'Leia 3 artigos do blog'
+		},
 		GMD_PROJECT: {
 			title: 'Explorador de Projetos',
 			description: 'Visite ou veja código de um projeto'

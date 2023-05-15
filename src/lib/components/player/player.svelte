@@ -92,7 +92,7 @@
 		trackElementRef.ontimeupdate = () => (currentTime = trackElementRef.currentTime);
 		trackElementRef.onended = () => {
 			handleChangeTrack('next');
-			!ACHIEVEMENTS.unlocked('GMD_SONG') && handleSongAchievement();
+			handleSongAchievement();
 		};
 
 		return Promise.resolve(trackElementRef);
@@ -213,6 +213,8 @@
 	};
 
 	const handleSongAchievement = () => {
+		if (ACHIEVEMENTS.unlocked('GMD_SONG')) return;
+
 		songsPlayed++;
 		songsPlayed === 3 && ACHIEVEMENTS.unlock('GMD_SONG');
 	};

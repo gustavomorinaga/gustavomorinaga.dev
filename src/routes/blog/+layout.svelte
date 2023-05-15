@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { Icon, PageTransition } from '$lib/components';
+	import { CarouselFeaturedPosts, Icon, PageTransition } from '$lib/components';
 	import { LANG } from '$lib/stores';
 	import { scrollToTop } from '$lib/utils';
 
 	export let data;
-	const { tags } = data;
+	const { featured, tags } = data;
 </script>
 
 <code class="typewriter blog">profile<span class="method">.blog()</span>;</code>
@@ -16,6 +16,10 @@
 	<h1>{$LANG.blog.title}</h1>
 
 	<p>{$LANG.blog.paragraph}</p>
+
+	<CarouselFeaturedPosts slides={featured.data} />
+
+	<div class="divider" />
 
 	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
 		<aside class="filters">
@@ -76,7 +80,7 @@
 		}
 
 		& > p {
-			@apply text-base md:text-xl mb-8;
+			@apply text-base md:text-xl mb-12;
 		}
 
 		& > .blog__layout {

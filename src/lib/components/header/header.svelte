@@ -60,10 +60,12 @@
 				translateY: 0
 			});
 
-		!ACHIEVEMENTS.unlocked('GMD_LOGO') && handleLogoAchievement();
+		handleLogoAchievement();
 	};
 
 	const handleLogoAchievement = () => {
+		if (ACHIEVEMENTS.unlocked('GMD_LOGO')) return;
+
 		logoClickedTimes++;
 		logoClickedTimes === 5 && ACHIEVEMENTS.unlock('GMD_LOGO');
 	};
