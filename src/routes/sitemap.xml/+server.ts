@@ -26,17 +26,17 @@ export const GET = async ({ fetch }) => {
 		'/projects'
 	].map(page => ({
 		loc: `${PUBLIC_DOMAIN}${page}`,
-		lastmod: new Date().toUTCString()
+		lastmod: new Date().toISOString()
 	}));
 
 	const tagsPages = tags.data.map(tag => ({
 		loc: `${PUBLIC_DOMAIN}/blog/tag/${tag.value}`,
-		lastmod: new Date(tag.updatedAt).toUTCString()
+		lastmod: new Date(tag.updatedAt).toISOString()
 	}));
 
 	const postsPages = posts.data.map(post => ({
 		loc: `${PUBLIC_DOMAIN}/blog/${post.slug}`,
-		lastmod: new Date(post.updatedAt).toUTCString()
+		lastmod: new Date(post.updatedAt).toISOString()
 	}));
 
 	const sitemap = {
