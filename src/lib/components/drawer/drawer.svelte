@@ -38,6 +38,10 @@
 			@apply pointer-events-auto;
 
 			& .drawer-side {
+				& .drawer-overlay {
+					@apply opacity-100;
+				}
+
 				& .drawer-side-content {
 					@apply translate-y-0;
 				}
@@ -45,14 +49,20 @@
 		}
 
 		& .drawer-side {
+			@apply visible justify-items-stretch;
 			overflow: hidden !important;
 
+			& > * {
+				@apply col-start-1 row-start-1;
+			}
+
 			& .drawer-overlay {
-				@apply bg-black/50 backdrop-blur-sm;
+				@apply sticky inset-y-0 place-self-stretch bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-500 ease-out;
 			}
 
 			& .drawer-side-content {
-				@apply h-fit translate-y-full mt-auto mx-2 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg;
+				@apply h-fit translate-y-full mt-auto mx-4 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg
+					transition-transform duration-500 ease-smooth;
 				--tw-translate-x: 0px !important;
 			}
 		}

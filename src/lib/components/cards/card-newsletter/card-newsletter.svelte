@@ -49,15 +49,15 @@
 
 		<form on:submit|preventDefault={handleSubmit}>
 			<div class="form-control">
-				<label class="input-group">
+				<label class="join join-vertical md:join-horizontal">
 					<input
-						class="input"
+						class="input join-item"
 						type="email"
 						name="email"
 						id="email"
 						placeholder={$LANG.post.newsletter.form.placeholder}
 					/>
-					<button class:loading type="submit">
+					<button class="join-item" class:loading type="submit">
 						{#if loading}
 							{$LANG.post.newsletter.form.loading}
 						{:else}
@@ -121,7 +121,7 @@
 				& > div.form-control {
 					@apply w-full md:w-auto;
 
-					& > label.input-group {
+					& > label.join {
 						@apply flex-col md:flex-row;
 
 						& > input.input {
