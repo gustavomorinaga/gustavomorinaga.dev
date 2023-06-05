@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin');
 const customPlugin = plugin(({ addComponents, matchUtilities, theme }) => {
 	addComponents({
 		'.scrollbar__theme': {
-			'@apply scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus':
+			'@apply scrollbar-thin scrollbar-thumb-primary hover:scrollbar-thumb-primary-focus scrollbar-track-transparent scroll-smooth':
 				{}
 		},
 		'.typewriter': {
@@ -141,7 +141,7 @@ module.exports = {
 		themes: [
 			{
 				synthwave: {
-					...require('daisyui/src/colors/themes')['[data-theme=black]'],
+					...require('daisyui/src/theming/themes')['[data-theme=black]'],
 					primary: '#F23F42',
 					secondary: '#F839F8',
 					accent: '#F87139',

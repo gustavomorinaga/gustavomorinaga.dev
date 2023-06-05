@@ -93,7 +93,7 @@
 <header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
 		<div class="header__content">
-			<button class="btn__drawer" on:click={() => DRAWER.set(true)}>
+			<button class="btn__drawer" class:focus={$DRAWER} on:click={() => DRAWER.set(true)}>
 				<Icon icon="menu-2" />
 			</button>
 
@@ -202,7 +202,11 @@
 				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 sm:px-8 lg:px-0;
 
 				& .btn__drawer {
-					@apply inline-flex sm:hidden btn btn-ghost drawer-button;
+					@apply btn btn-ghost inline-flex sm:hidden;
+
+					&.focus {
+						@apply btn-neutral;
+					}
 				}
 
 				& .logo {

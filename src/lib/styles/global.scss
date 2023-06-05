@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 html {
-	@apply overflow-x-hidden bg-base-300;
-	overflow: overlay;
+	@apply bg-base-300;
 
 	&:not(.low__end) {
 		& .observe__scroll {
@@ -33,7 +32,8 @@ html {
 }
 
 body {
-	@apply relative min-h-screen scrollbar__theme text-base-content selection:bg-primary cursor-default;
+	@apply relative min-h-screen overflow-x-hidden scrollbar__theme text-base-content selection:bg-primary cursor-default;
+	overflow-y: overlay;
 
 	&::before {
 		content: '';
