@@ -46,7 +46,7 @@
 
 <code class="typewriter projects">profile<span class="method">.projects()</span>;</code>
 
-<section class="projects" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<section class="projects" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.projects.title}</h1>
 
 	<p>{@html $LANG.projects.paragraph}</p>

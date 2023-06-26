@@ -32,7 +32,7 @@
 		<div
 			id="{id}__content"
 			class="dropdown__content"
-			transition:effect={{ duration, easing }}
+			transition:effect|global={{ duration, easing }}
 			use:clickoutside={{ enabled: showContent, options: { passive: true } }}
 			on:clickoutside={toggleShow}
 		>

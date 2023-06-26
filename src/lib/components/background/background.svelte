@@ -11,7 +11,11 @@
 </script>
 
 {#if loading}
-	<div class="loader" transition:fade style="--hexagons-pattern: url({IMAGES_SVG.bgHexagons})">
+	<div
+		class="loader"
+		transition:fade|global
+		style="--hexagons-pattern: url({IMAGES_SVG.bgHexagons})"
+	>
 		<CubeLoader />
 	</div>
 {/if}

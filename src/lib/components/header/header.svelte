@@ -90,7 +90,7 @@
 
 <svelte:window on:scroll={handleOnScroll} />
 
-<header id="header" in:fly={{ duration: 1000, y: -100, easing: expoOut }}>
+<header id="header" in:fly|global={{ duration: 1000, y: -100, easing: expoOut }}>
 	<div class="header__wrapper">
 		<div class="header__content">
 			<button class="btn__drawer" class:focus={$DRAWER} on:click={() => DRAWER.set(true)}>
@@ -184,8 +184,8 @@
 				class="progress__bar"
 				class:opacity-0={readingScrollOverpassed}
 				style="width: {$readingProgress}%;"
-				in:fade={{ duration: 300, delay: 1000, easing: expoOut }}
-				out:fade={{ duration: 300, easing: expoOut }}
+				in:fade|global={{ duration: 300, delay: 1000, easing: expoOut }}
+				out:fade|global={{ duration: 300, easing: expoOut }}
 			/>
 		{/if}
 	</div>

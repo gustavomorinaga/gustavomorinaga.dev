@@ -29,7 +29,7 @@
 
 <ul class="posts__list">
 	{#each posts.data as post (post.id)}
-		<li in:blur={{ duration: 300 }}>
+		<li in:blur|global={{ duration: 300 }}>
 			<CardPost {post} />
 		</li>
 	{/each}

@@ -12,7 +12,7 @@
 
 {#if !$COOKIE_CONSENT.accepted}
 	<Portal>
-		<section id="cookie-consent" transition:fly={TRANSITION_CONFIG}>
+		<section id="cookie-consent" transition:fly|global={TRANSITION_CONFIG}>
 			<div class="card-body">
 				<header>
 					<Icon icon="cookie" />

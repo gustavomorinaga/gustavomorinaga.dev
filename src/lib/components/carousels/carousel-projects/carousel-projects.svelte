@@ -164,7 +164,7 @@
 							@apply flex flex-wrap gap-1 mb-2;
 
 							& .tag {
-								@apply badge badge-sm md:badge-md;
+								@apply badge badge-neutral badge-sm md:badge-md;
 							}
 						}
 

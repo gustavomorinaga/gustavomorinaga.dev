@@ -46,7 +46,10 @@
 </code>
 
 <section class="infos">
-	<div class="info__content" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+	<div
+		class="info__content"
+		in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}
+	>
 		<PageTransition trigger={data.pathname}>
 			<slot />
 		</PageTransition>
@@ -56,7 +59,7 @@
 		<div
 			class="details"
 			style="--low-poly-grid: url({IMAGES_SVG.bgLowPolyGrid})"
-			in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}
+			in:fly|global={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}
 		>
 			<figure>
 				<img src={IMAGES_WEBP.avatar} width="160" height="160" alt="Ready Player Me Avatar" />
@@ -106,7 +109,7 @@
 			</div>
 		</div>
 
-		<div class="facts" in:fly={{ y: 50, duration: 1000, delay: 2600, easing: cubicOut }}>
+		<div class="facts" in:fly|global={{ y: 50, duration: 1000, delay: 2600, easing: cubicOut }}>
 			<div class="card-body">
 				<h3>{$LANG.about.facts.title}</h3>
 
@@ -135,7 +138,7 @@
 			</div>
 		</div>
 
-		<div class="options" in:fly={{ y: 50, duration: 1000, delay: 2900, easing: cubicOut }}>
+		<div class="options" in:fly|global={{ y: 50, duration: 1000, delay: 2900, easing: cubicOut }}>
 			{#each routes as route}
 				<a href={route.path} class:current={route.path === data.pathname} on:click={scrollToTop}>
 					<Icon icon={route.icon} />

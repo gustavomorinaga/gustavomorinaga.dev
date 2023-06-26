@@ -78,7 +78,7 @@
 		"remark-rehype": "10.1.0",
 		"sass": "1.63.6",
 		"standard-version": "9.5.0",
-		"svelte": "3.59.1",
+		"svelte": "4.0.0",
 		"svelte-action-balancer": "1.0.4",
 		"svelte-check": "3.4.3",
 		"svelte-portal": "2.2.0",

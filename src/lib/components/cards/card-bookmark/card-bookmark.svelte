@@ -67,7 +67,7 @@
 					}
 
 					& .category {
-						@apply badge gap-1;
+						@apply badge badge-neutral gap-1;
 					}
 				}
 

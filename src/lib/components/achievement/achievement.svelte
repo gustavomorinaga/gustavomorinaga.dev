@@ -11,7 +11,7 @@
 <Portal>
 	<ul class="achievements">
 		{#each $ACHIEVEMENTS as { _id, xp }}
-			<li transition:fly={TRANSITION_CONFIG}>
+			<li transition:fly|global={TRANSITION_CONFIG}>
 				<section class="achievement">
 					<figure>
 						<img

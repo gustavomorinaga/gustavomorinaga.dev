@@ -68,7 +68,7 @@
 			</div>
 
 			{#if showFeedback}
-				<div class="alert" class:success class:error transition:fade={{ duration: 300 }}>
+				<div class="alert" class:success class:error transition:fade|global={{ duration: 300 }}>
 					<div>
 						{#if success}
 							<div>

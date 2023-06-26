@@ -23,7 +23,7 @@
 
 <code class="typewriter bookmarks">profile<span class="method">.bookmarks()</span>;</code>
 
-<section class="bookmarks" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<section class="bookmarks" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.bookmarks.title}</h1>
 
 	<p>{$LANG.bookmarks.paragraph}</p>

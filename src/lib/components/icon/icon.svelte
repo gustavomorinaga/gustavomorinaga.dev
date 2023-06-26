@@ -23,7 +23,7 @@
 
 <div class="icon {size}">
 	{#key icon}
-		<div class="icon__wrapper" transition:motion={motionConfig}>
+		<div class="icon__wrapper" transition:motion|global={motionConfig}>
 			<Icon
 				icon={`${collection}:${icon}`}
 				{width}

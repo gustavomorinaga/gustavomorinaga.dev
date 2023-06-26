@@ -24,8 +24,8 @@
 		<div
 			bind:this={ref}
 			class="page__transition"
-			in:effect|local={{ duration, delay: duration, easing: quintOut }}
-			out:effect|local={{ duration, easing: quintOut }}
+			in:effect={{ duration, delay: duration, easing: quintOut }}
+			out:effect={{ duration, easing: quintOut }}
 		>
 			<slot />
 		</div>

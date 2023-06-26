@@ -49,7 +49,7 @@
 		<div
 			class="blurb__image"
 			style="--triangle: url({IMAGES_SVG.polyTriangle}); --profile-cropped: url({IMAGES_WEBP.profileCropped});"
-			in:fade={{ delay: 2000, easing: cubicOut }}
+			in:fade|global={{ delay: 2000, easing: cubicOut }}
 		>
 			<div class="mobile__profile">
 				<figure class="triangle" />
@@ -93,7 +93,7 @@
 		<div class="blurb__content">
 			<code class="typewriter">profile<span class="method">.welcome()</span>;</code>
 
-			<h1 in:fly={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
+			<h1 in:fly|global={{ x: -150, duration: 1000, delay: 2000, easing: cubicOut }}>
 				{$LANG.home.blurb.title}
 				<span class="name">
 					Gustavo Morinaga
@@ -106,11 +106,14 @@
 				</span>
 			</h1>
 
-			<p in:fly={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
+			<p in:fly|global={{ x: -200, duration: 1000, delay: 2050, easing: cubicOut }}>
 				{$LANG.home.blurb.paragraph}
 			</p>
 
-			<ul class="socials" in:fly={{ x: -250, duration: 1000, delay: 2100, easing: cubicOut }}>
+			<ul
+				class="socials"
+				in:fly|global={{ x: -250, duration: 1000, delay: 2100, easing: cubicOut }}
+			>
 				{#each profileJSON.social as socialLink, index}
 					<li class="social" class:cta={index === 0} data-tip={socialLink.title}>
 						<a

@@ -11,7 +11,7 @@
 <Portal>
 	<ul class="notifications">
 		{#each $NOTIFICATIONS as { title, description, icon, collection, size }}
-			<li transition:fly={TRANSITION_CONFIG}>
+			<li transition:fly|global={TRANSITION_CONFIG}>
 				<section class="notification">
 					<div class="card-body">
 						<header>

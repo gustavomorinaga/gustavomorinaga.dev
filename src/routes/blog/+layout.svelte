@@ -12,7 +12,7 @@
 
 <code class="typewriter blog">profile<span class="method">.blog()</span>;</code>
 
-<div class="blog" in:fly={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
+<div class="blog" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.blog.title}</h1>
 
 	<p>{$LANG.blog.paragraph}</p>
@@ -21,7 +21,10 @@
 
 	<div class="divider" />
 
-	<div class="blog__layout" in:fly={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}>
+	<div
+		class="blog__layout"
+		in:fly|global={{ y: 50, duration: 1000, delay: 2300, easing: cubicOut }}
+	>
 		<aside class="filters">
 			<!-- <div class="form-control">
 				<label>
@@ -61,7 +64,7 @@
 			</ul>
 		</aside>
 
-		<section class="posts" in:fly={{ y: 50, duration: 1000, delay: 2600, easing: cubicOut }}>
+		<section class="posts" in:fly|global={{ y: 50, duration: 1000, delay: 2600, easing: cubicOut }}>
 			<PageTransition trigger={data.pathname}>
 				<slot />
 			</PageTransition>
@@ -108,6 +111,10 @@
 						& > a {
 							& > span {
 								@apply hidden md:block;
+							}
+
+							&.active {
+								@apply btn-primary;
 							}
 						}
 					}

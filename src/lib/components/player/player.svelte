@@ -231,8 +231,8 @@
 		<div
 			id="player"
 			bind:this={playerRef}
-			in:fly={{ duration: 1000, y: 100, easing: expoOut }}
-			out:fly={{ duration: 1000, y: 100, easing: expoOut }}
+			in:fly|global={{ duration: 1000, y: 100, easing: expoOut }}
+			out:fly|global={{ duration: 1000, y: 100, easing: expoOut }}
 		>
 			<div class="player__wrapper">
 				<div class="progress__wrapper" class:refreshing={isLoading}>
@@ -421,7 +421,11 @@
 			</div>
 		</div>
 	{:else}
-		<div id="miniplayer" in:fade={{ duration: 300, easing: cubicOut }} out:fade={{ duration: 100 }}>
+		<div
+			id="miniplayer"
+			in:fade|global={{ duration: 300, easing: cubicOut }}
+			out:fade|global={{ duration: 100 }}
+		>
 			<figure class="artwork">
 				<img
 					src={HOST + currentTrack.cover.formats.thumbnail.url}
@@ -456,8 +460,8 @@
 			title={$LANG.player.show}
 			aria-label={$LANG.player.show}
 			on:click={handleShowPlayer}
-			in:fade={{ duration: 300, easing: cubicOut }}
-			out:fade={{ duration: 100 }}
+			in:fade|global={{ duration: 300, easing: cubicOut }}
+			out:fade|global={{ duration: 100 }}
 		>
 			<Icon icon="music" />
 		</button>
