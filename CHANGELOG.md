@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.5](https://github.com/gustavomorinaga/portfolio/compare/v1.1.4...v1.1.5) (2023-06-26)
+
+
+### Features
+
+* prettier-plugin-tailwindcss ([9bac1f1](https://github.com/gustavomorinaga/portfolio/commit/9bac1f1e24092d1f64f9b5b3fe598621ac08c8fb))
+
 ### [1.1.4](https://github.com/gustavomorinaga/portfolio/compare/v1.1.3...v1.1.4) (2023-06-05)
 
 ### [1.1.3](https://github.com/gustavomorinaga/portfolio/compare/v1.1.2...v1.1.3) (2023-05-15)
