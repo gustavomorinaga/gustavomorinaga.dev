@@ -19,7 +19,7 @@
 		@apply block;
 
 		& h1 {
-			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply mb-8 font-futuristic text-3xl text-shadow-rgb md:text-5xl;
 		}
 
 		& > span {
@@ -28,17 +28,17 @@
 
 				&::before {
 					content: '';
-					@apply absolute -z-10 inset-0 rounded-2xl bg-black/50 blur-xl;
+					@apply absolute inset-0 -z-10 rounded-2xl bg-black/50 blur-xl;
 				}
 			}
 
 			& br {
 				content: '';
-				@apply block mb-4;
+				@apply mb-4 block;
 			}
 
 			& a {
-				@apply link-primary link-hover;
+				@apply link-hover link-primary;
 			}
 		}
 	}

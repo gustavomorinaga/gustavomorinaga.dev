@@ -334,7 +334,7 @@
 				</div>
 
 				<div class="right-controls">
-					<div class="dropdown dropdown-top dropdown-hover">
+					<div class="dropdown-hover dropdown-top dropdown">
 						<label
 							class="btn__volume"
 							tabindex="-1"
@@ -470,13 +470,13 @@
 
 <style lang="scss" global>
 	#player {
-		@apply fixed z-40 left-0 right-0 bottom-0 bg-base-100/75 backdrop-blur-md shadow-lg;
+		@apply fixed bottom-0 left-0 right-0 z-40 bg-base-100/75 shadow-lg backdrop-blur-md;
 
 		& .player__wrapper {
-			@apply flex items-center justify-between sm:gap-2 pt-5 px-4 pb-4;
+			@apply flex items-center justify-between px-4 pb-4 pt-5 sm:gap-2;
 
 			& .progress__wrapper {
-				@apply absolute top-0 left-0 right-0 flex items-center gap-2 w-full transition-opacity duration-300 ease-out;
+				@apply absolute left-0 right-0 top-0 flex w-full items-center gap-2 transition-opacity duration-300 ease-out;
 
 				&:not(.refreshing):hover {
 					@apply -top-[0.40rem];
@@ -491,20 +491,20 @@
 				}
 
 				&.refreshing {
-					@apply opacity-50 pointer-events-none;
+					@apply pointer-events-none opacity-50;
 				}
 
 				& .progress__bar {
-					@apply range range-primary range-xs w-full h-1;
+					@apply range range-primary range-xs h-1 w-full;
 
 					&::-webkit-slider-thumb {
-						@apply bg-[hsl(var(--p))] rounded-none opacity-100 transition ease-out;
+						@apply rounded-none bg-[hsl(var(--p))] opacity-100 transition ease-out;
 					}
 				}
 			}
 
 			& .info {
-				@apply hidden sm:flex w-48;
+				@apply hidden w-48 sm:flex;
 
 				@media (hover: hover) {
 					&:hover {
@@ -515,10 +515,10 @@
 				}
 
 				& .info__wrapper {
-					@apply flex gap-4 items-center;
+					@apply flex items-center gap-4;
 
 					& .artwork {
-						@apply relative w-14 aspect-square overflow-hidden rounded-box;
+						@apply rounded-box relative aspect-square w-14 overflow-hidden;
 					}
 
 					& .wrapper {
@@ -529,29 +529,29 @@
 						}
 
 						& .duration {
-							@apply tabular-nums inline-block text-xs whitespace-nowrap text-gray-400;
+							@apply inline-block whitespace-nowrap text-xs tabular-nums text-gray-400;
 						}
 					}
 				}
 			}
 
 			& .controls {
-				@apply flex items-center w-full sm:w-fit sm:-translate-x-7;
+				@apply flex w-full items-center sm:w-fit sm:-translate-x-7;
 
 				& .btn__prev,
 				& .btn__next {
-					@apply btn btn-ghost btn-sm;
+					@apply btn-ghost btn-sm btn;
 				}
 
 				& .btn__prev {
-					@apply order-3 sm:order-2 ml-auto sm:ml-0;
+					@apply order-3 ml-auto sm:order-2 sm:ml-0;
 				}
 				& .btn__next {
-					@apply order-5 sm:order-4 mr-auto sm:mr-0;
+					@apply order-5 mr-auto sm:order-4 sm:mr-0;
 				}
 
 				& .btn__play {
-					@apply btn btn-circle btn-primary order-4 sm:order-3 mx-2;
+					@apply btn-primary btn-circle btn order-4 mx-2 sm:order-3;
 
 					&.loading {
 						@apply before:m-0;
@@ -560,10 +560,10 @@
 
 				& .btn__repeat,
 				& .btn__shuffle {
-					@apply btn btn-ghost btn-sm;
+					@apply btn-ghost btn-sm btn;
 
 					&.active {
-						@apply text-primary text-shadow-glow shadow-primary;
+						@apply text-primary shadow-primary text-shadow-glow;
 					}
 				}
 
@@ -579,14 +579,14 @@
 				@apply flex items-center;
 
 				& .btn__volume {
-					@apply hidden sm:inline-flex btn btn-ghost btn-sm;
+					@apply btn-ghost btn-sm btn hidden sm:inline-flex;
 				}
 
 				& .volume__wrapper {
-					@apply relative z-50 h-[9.25rem] w-12 bg-base-100 border border-solid border-base-200;
+					@apply relative z-50 h-[9.25rem] w-12 border border-solid border-base-200 bg-base-100;
 
 					& .volume {
-						@apply range range-primary range-xs absolute inset-0 w-28 h-4 -rotate-90 origin-center -translate-x-8 translate-y-16;
+						@apply range range-primary range-xs absolute inset-0 h-4 w-28 origin-center -translate-x-8 translate-y-16 -rotate-90;
 
 						&::-webkit-slider-thumb {
 							@apply rounded-none bg-white;
@@ -595,7 +595,7 @@
 				}
 
 				& .btn__collapse {
-					@apply btn btn-ghost btn-sm;
+					@apply btn-ghost btn-sm btn;
 				}
 			}
 		}
@@ -603,22 +603,22 @@
 
 	#playlist {
 		& .dropdown__trigger {
-			@apply btn btn-ghost btn-sm;
+			@apply btn-ghost btn-sm btn;
 
 			&.active {
-				@apply text-primary text-shadow-glow shadow-primary;
+				@apply text-primary shadow-primary text-shadow-glow;
 			}
 		}
 	}
 
 	#playlist__content {
-		@apply z-30 left-0 sm:left-4 md:left-auto right-0 sm:right-4 -bottom-3 sm:bottom-3 card card-bordered md:w-96 h-96 overflow-y-auto -translate-y-24 bg-base-100/75 border-x-0 border-b-0 md:border border-white/10 shadow-md backdrop-blur-md scrollbar__theme;
+		@apply card-bordered card scrollbar__theme -bottom-3 left-0 right-0 z-30 h-96 -translate-y-24 overflow-y-auto border-x-0 border-b-0 border-white/10 bg-base-100/75 shadow-md backdrop-blur-md sm:bottom-3 sm:left-4 sm:right-4 md:left-auto md:w-96 md:border;
 
 		& .playlist__wrapper {
 			@apply flex flex-col;
 
 			& .track {
-				@apply p-2 border-white/10 transition-colors ease-out;
+				@apply border-white/10 p-2 transition-colors ease-out;
 
 				&:not(:last-child) {
 					border-bottom-width: 1px;
@@ -637,14 +637,14 @@
 				}
 
 				& button {
-					@apply flex gap-2 items-center w-full link link-hover;
+					@apply link-hover link flex w-full items-center gap-2;
 
 					& .artwork {
-						@apply relative w-12 aspect-square overflow-hidden rounded-box;
+						@apply rounded-box relative aspect-square w-12 overflow-hidden;
 					}
 
 					& .wrapper {
-						@apply flex flex-col text-sm text-left;
+						@apply flex flex-col text-left text-sm;
 					}
 				}
 			}
@@ -652,7 +652,7 @@
 	}
 
 	#miniplayer {
-		@apply hidden md:block fixed z-40 right-0 md:right-8 bottom-20 p-px overflow-hidden rounded-box bg-base-200 shadow-lg;
+		@apply rounded-box fixed bottom-20 right-0 z-40 hidden overflow-hidden bg-base-200 p-px shadow-lg md:right-8 md:block;
 
 		&:hover {
 			& .overlay {
@@ -669,14 +669,14 @@
 		}
 
 		& .overlay {
-			@apply absolute inset-0 grid place-items-center bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-out;
+			@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 ease-out;
 
 			&.show {
 				@apply opacity-100;
 			}
 
 			& .btn__bar {
-				@apply btn btn-square btn-ghost grid place-items-center w-full h-full hover:bg-transparent hover:border-transparent;
+				@apply btn-ghost btn-square btn grid h-full w-full place-items-center hover:border-transparent hover:bg-transparent;
 
 				&::before {
 					margin: 0 !important;
@@ -685,16 +685,16 @@
 		}
 
 		& .progress__bar {
-			@apply absolute left-0 right-0 bottom-0 h-[2px] bg-primary transition-opacity duration-300 ease-out;
+			@apply absolute bottom-0 left-0 right-0 h-[2px] bg-primary transition-opacity duration-300 ease-out;
 		}
 	}
 
 	.btn__player {
-		@apply inline-flex md:hidden fixed z-40 right-0 md:right-8 bottom-24 btn btn-sm rounded-l-full md:btn-circle btn-primary outline outline-black shadow-md lg:hover:before:text-primary-focus;
+		@apply btn-primary btn-sm btn fixed bottom-24 right-0 z-40 inline-flex rounded-l-full shadow-md outline outline-black md:btn-circle md:right-8 md:hidden lg:hover:before:text-primary-focus;
 
 		&::before {
 			content: '';
-			@apply absolute -z-20 -top-4 w-9 h-8 opacity-0 text-primary bg-no-repeat transition-all duration-200 pointer-events-none select-none;
+			@apply pointer-events-none absolute -top-4 -z-20 h-8 w-9 select-none bg-no-repeat text-primary opacity-0 transition-all duration-200;
 
 			--c: linear-gradient(currentColor 0 0);
 			background: var(--c) 0% 100%, var(--c) 50% 100%, var(--c) 100% 100%;

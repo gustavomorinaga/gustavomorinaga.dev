@@ -187,7 +187,7 @@
 				<section class="toc">
 					<div class="divider">{$LANG.post.toc}</div>
 
-					<ul class="menu menu-compact">
+					<ul class="menu-compact menu">
 						{#each Object.values($tocStore.items) as { id, text }}
 							<li>
 								<a
@@ -252,10 +252,10 @@
 	@use '$lib/styles/markdown' as m;
 
 	article.post {
-		@apply block -mt-10 md:-mt-8;
+		@apply -mt-10 block md:-mt-8;
 
 		& > header {
-			@apply relative z-20 block w-screen min-h-[24rem] p-8 mb-8 bg-cover bg-no-repeat bg-center overflow-hidden;
+			@apply relative z-20 mb-8 block min-h-[24rem] w-screen overflow-hidden bg-cover bg-center bg-no-repeat p-8;
 			background-image: var(--cover);
 			margin-left: calc(-50vw + 50%);
 
@@ -265,29 +265,29 @@
 			}
 
 			& > div.wrapper {
-				@apply block max-w-5xl mx-auto;
+				@apply mx-auto block max-w-5xl;
 
 				& > a.btn__previous {
-					@apply btn btn-ghost btn-sm gap-1 drop-shadow-lg text-shadow-lg shadow-black;
+					@apply btn-ghost btn-sm btn gap-1 shadow-black drop-shadow-lg text-shadow-lg;
 				}
 
 				& > div {
 					@apply block;
 
 					& > h1 {
-						@apply text-2xl md:text-5xl font-bold mt-8 mb-4 text-shadow-lg shadow-black/75;
+						@apply mb-4 mt-8 text-2xl font-bold shadow-black/75 text-shadow-lg md:text-5xl;
 
 						& + p {
-							@apply text-base md:text-2xl text-stone-400 mb-12 text-shadow-lg shadow-black/75;
+							@apply mb-12 text-base text-stone-400 shadow-black/75 text-shadow-lg md:text-2xl;
 						}
 					}
 
 					& ul.tags {
-						@apply flex items-center justify-center md:justify-start gap-2;
+						@apply flex items-center justify-center gap-2 md:justify-start;
 
 						& > li {
 							& > a.tag {
-								@apply badge badge-ghost badge-lg h-auto py-1 border border-base-300 shadow;
+								@apply badge badge-ghost badge-lg h-auto border border-base-300 py-1 shadow;
 
 								@media (hover: hover) {
 									&:hover {
@@ -299,16 +299,16 @@
 					}
 
 					& > .details {
-						@apply flex flex-col md:flex-row md:items-center md:justify-between gap-4;
+						@apply flex flex-col gap-4 md:flex-row md:items-center md:justify-between;
 
 						& span.author {
-							@apply flex md:items-center gap-2;
+							@apply flex gap-2 md:items-center;
 
 							& figure.avatar {
-								@apply flex self-start md:block card-bordered rounded-full mt-1 md:m-0;
+								@apply card-bordered mt-1 flex self-start rounded-full md:m-0 md:block;
 
 								& > div {
-									@apply w-8 md:w-10 rounded-full;
+									@apply w-8 rounded-full md:w-10;
 								}
 							}
 
@@ -319,12 +319,12 @@
 									@apply block;
 
 									& a {
-										@apply text-sm md:text-base font-bold not-italic;
+										@apply text-sm font-bold not-italic md:text-base;
 									}
 								}
 
 								& > span {
-									@apply text-sm md:text-base flex flex-wrap md:items-center gap-x-2 text-stone-400;
+									@apply flex flex-wrap gap-x-2 text-sm text-stone-400 md:items-center md:text-base;
 								}
 							}
 						}
@@ -334,24 +334,24 @@
 		}
 
 		& > div {
-			@apply md:grid md:grid-cols-12 gap-4;
+			@apply gap-4 md:grid md:grid-cols-12;
 
 			& > section.content {
-				@apply md:col-span-8 md:pr-4 pb-16 md:border-r md:border-base-200;
+				@apply pb-16 md:col-span-8 md:border-r md:border-base-200 md:pr-4;
 				@include p.prism;
 				@include m.markdown;
 			}
 
 			& > aside {
-				@apply md:col-span-4 md:sticky md:top-24 self-start mb-8 border-t border-base-200 md:border-none pt-8 md:p-0;
+				@apply mb-8 self-start border-t border-base-200 pt-8 md:sticky md:top-24 md:col-span-4 md:border-none md:p-0;
 
 				& > ul.options {
-					@apply flex flex-wrap gap-2 mb-8;
+					@apply mb-8 flex flex-wrap gap-2;
 
 					& > li {
 						& > button,
 						& > a {
-							@apply btn btn-block btn-sm gap-1;
+							@apply btn-sm btn-block btn gap-1;
 						}
 
 						&.cta {
@@ -378,11 +378,11 @@
 						@apply hidden md:block;
 
 						& > ul {
-							@apply card-bordered rounded-box bg-base-100/75 mb-8 overflow-hidden;
+							@apply card-bordered rounded-box mb-8 overflow-hidden bg-base-100/75;
 
 							& > li {
 								& > a {
-									@apply active:bg-base-300 transition duration-300 ease-out;
+									@apply transition duration-300 ease-out active:bg-base-300;
 
 									& .icon {
 										@apply -ml-8 opacity-0 transition-all duration-300 ease-out;
@@ -408,15 +408,15 @@
 
 					&.related {
 						& > ul {
-							@apply flex flex-col gap-4 mb-8;
+							@apply mb-8 flex flex-col gap-4;
 
 							& > li {
 								& > a {
-									@apply link link-hover link-primary text-base font-bold;
+									@apply link-hover link-primary link text-base font-bold;
 								}
 
 								& > span {
-									@apply flex items-center gap-2 text-stone-400 text-sm;
+									@apply flex items-center gap-2 text-sm text-stone-400;
 								}
 							}
 						}

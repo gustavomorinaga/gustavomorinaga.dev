@@ -37,7 +37,7 @@
 		}
 
 		& > div {
-			@apply absolute w-full h-full bg-primary/20 border-solid border-primary;
+			@apply absolute h-full w-full border-solid border-primary bg-primary/20;
 			border-width: var(--borders-size);
 
 			&:nth-of-type(1) {

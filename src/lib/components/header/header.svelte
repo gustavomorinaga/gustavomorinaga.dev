@@ -129,7 +129,7 @@
 				{/each}
 			</nav>
 
-			<div class="social dropdown dropdown-left dropdown-bottom dropdown-hover">
+			<div class="social dropdown-bottom dropdown-left dropdown-hover dropdown">
 				<label title="Social" aria-label="Social" tabindex="-1">
 					<input type="checkbox" hidden aria-hidden="true" />
 					<Icon icon="social" />
@@ -196,13 +196,13 @@
 		@apply relative z-40 h-[4.5rem];
 
 		& .header__wrapper {
-			@apply border-b border-base-200 fixed z-50 top-0 left-0 right-0 bg-base-100/75 backdrop-blur-md shadow-lg;
+			@apply fixed left-0 right-0 top-0 z-50 border-b border-base-200 bg-base-100/75 shadow-lg backdrop-blur-md;
 
 			& .header__content {
-				@apply flex justify-between sm:justify-start items-center max-w-screen-lg min-h-16 mx-auto my-0 px-2 sm:px-8 lg:px-0;
+				@apply min-h-16 mx-auto my-0 flex max-w-screen-lg items-center justify-between px-2 sm:justify-start sm:px-8 lg:px-0;
 
 				& .btn__drawer {
-					@apply btn btn-ghost inline-flex sm:hidden;
+					@apply btn-ghost btn inline-flex sm:hidden;
 
 					&.focus {
 						@apply btn-neutral;
@@ -210,17 +210,17 @@
 				}
 
 				& .logo {
-					@apply relative flex flex-col items-center w-40 md:w-52 h-fit mx-auto md:ml-0;
+					@apply relative mx-auto flex h-fit w-40 flex-col items-center md:ml-0 md:w-52;
 
 					& > * {
 						@apply focus:outline-none;
 					}
 
 					& #logo {
-						@apply w-full h-8 drop-shadow-md;
+						@apply h-8 w-full drop-shadow-md;
 					}
 					& #slogan {
-						@apply w-full h-5 md:h-6 -mt-3 z-10 drop-shadow-md;
+						@apply z-10 -mt-3 h-5 w-full drop-shadow-md md:h-6;
 					}
 				}
 
@@ -228,16 +228,16 @@
 					@apply relative hidden sm:flex;
 
 					& > a {
-						@apply relative grid place-items-center py-6 px-4 font-futuristic transition duration-300 ease-out hover:before:opacity-100;
+						@apply relative grid place-items-center px-4 py-6 font-futuristic transition duration-300 ease-out hover:before:opacity-100;
 
 						&::before {
 							content: '';
-							@apply absolute -z-10 inset-0 block bg-primary-content/5 my-4 mx-1 rounded-box opacity-0 blur transition-opacity duration-500 ease-out;
+							@apply rounded-box absolute inset-0 -z-10 mx-1 my-4 block bg-primary-content/5 opacity-0 blur transition-opacity duration-500 ease-out;
 						}
 
 						&::after {
 							content: '';
-							@apply absolute z-40 inset-x-0 -bottom-px block max-w-0 h-px mx-auto bg-gradient-to-r from-transparent via-primary shadow-glow shadow-primary/10 opacity-0 transition-all duration-300 ease-smooth;
+							@apply absolute inset-x-0 -bottom-px z-40 mx-auto block h-px max-w-0 bg-gradient-to-r from-transparent via-primary opacity-0 shadow-glow shadow-primary/10 transition-all duration-300 ease-smooth;
 						}
 
 						&.special {
@@ -245,7 +245,7 @@
 						}
 
 						&.active {
-							@apply text-primary text-shadow-glow shadow-primary/50;
+							@apply text-primary shadow-primary/50 text-shadow-glow;
 
 							&::after {
 								@apply max-w-full opacity-100;
@@ -259,19 +259,19 @@
 				}
 
 				& .social {
-					@apply hidden md:block z-50 mx-2;
+					@apply z-50 mx-2 hidden md:block;
 
 					& .dropdown-content {
 						@apply translate-x-20;
 
 						& ul {
-							@apply card card-side card-bordered mt-8 p-2 bg-base-100 shadow-lg;
+							@apply card-bordered card card-side mt-8 bg-base-100 p-2 shadow-lg;
 
 							& li {
 								@apply tooltip tooltip-bottom;
 
 								& a {
-									@apply btn btn-link btn-sm md:hover:-translate-y-1 transition-transform duration-300 ease-out;
+									@apply btn-link btn-sm btn transition-transform duration-300 ease-out md:hover:-translate-y-1;
 								}
 							}
 						}
@@ -279,12 +279,12 @@
 				}
 
 				& .btn__lang {
-					@apply block rounded-full ml-2 mr-4 md:mr-0 border border-zinc-400;
+					@apply ml-2 mr-4 block rounded-full border border-zinc-400 md:mr-0;
 				}
 			}
 
 			& span.progress__bar {
-				@apply absolute left-0 right-0 -bottom-px h-px bg-primary shadow-glow shadow-primary/10 transition-opacity duration-300 ease-out;
+				@apply absolute -bottom-px left-0 right-0 h-px bg-primary shadow-glow shadow-primary/10 transition-opacity duration-300 ease-out;
 			}
 		}
 	}

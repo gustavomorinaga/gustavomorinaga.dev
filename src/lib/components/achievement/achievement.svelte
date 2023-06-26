@@ -42,24 +42,24 @@
 
 <style lang="scss" global>
 	ul.achievements {
-		@apply fixed z-50 left-0 right-0 bottom-0 md:bottom-8 flex flex-col-reverse items-center gap-2 md:mx-4;
+		@apply fixed bottom-0 left-0 right-0 z-50 flex flex-col-reverse items-center gap-2 md:bottom-8 md:mx-4;
 
 		& > li {
 			@apply w-full md:w-fit;
 
 			& .achievement {
-				@apply card card-compact card-side card-bordered w-full md:w-fit overflow-hidden bg-base-100/75 border-x-0 border-b-0 md:border border-primary backdrop-blur-md shadow-glow shadow-primary/10;
+				@apply card-bordered card card-side card-compact w-full overflow-hidden border-x-0 border-b-0 border-primary bg-base-100/75 shadow-glow shadow-primary/10 backdrop-blur-md md:w-fit md:border;
 
 				& figure {
 					@apply aspect-square pl-2;
 
 					& img {
-						@apply w-12 md:w-16 h-12 md:h-16;
+						@apply h-12 w-12 md:h-16 md:w-16;
 					}
 				}
 
 				& .card-body {
-					@apply md:w-0 pl-2 md:pr-0 md:opacity-0;
+					@apply pl-2 md:w-0 md:pr-0 md:opacity-0;
 
 					@media (min-width: 768px) {
 						animation: achievement_content--open 3.5s ease-out,
@@ -67,7 +67,7 @@
 					}
 
 					& h1 {
-						@apply truncate font-futuristic text-lg text-shadow-glow shadow-primary;
+						@apply truncate font-futuristic text-lg shadow-primary text-shadow-glow;
 					}
 
 					& .description {
@@ -77,7 +77,7 @@
 							@apply badge badge-ghost text-xs text-primary;
 
 							& strong {
-								@apply text-base-content mr-1;
+								@apply mr-1 text-base-content;
 							}
 						}
 

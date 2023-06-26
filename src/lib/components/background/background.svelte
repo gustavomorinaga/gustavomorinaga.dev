@@ -47,12 +47,12 @@
 	}
 
 	.background__container {
-		@apply fixed -z-10 inset-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat;
+		@apply fixed inset-0 -z-10 h-full w-full overflow-hidden bg-cover bg-center bg-no-repeat;
 		background-image: var(--universe);
 
 		&::after {
 			content: '';
-			@apply absolute inset-0 z-0 block bg-black opacity-80 transition ease-out duration-300;
+			@apply absolute inset-0 z-0 block bg-black opacity-80 transition duration-300 ease-out;
 		}
 
 		&.read__mode {

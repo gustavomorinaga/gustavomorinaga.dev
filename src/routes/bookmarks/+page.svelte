@@ -21,7 +21,7 @@
 	description={$LANG.bookmarks.metadata.description}
 />
 
-<code class="typewriter bookmarks">profile<span class="method">.bookmarks()</span>;</code>
+<code class="bookmarks typewriter">profile<span class="method">.bookmarks()</span>;</code>
 
 <section class="bookmarks" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.bookmarks.title}</h1>
@@ -70,29 +70,29 @@
 
 	section.bookmarks {
 		& > h1 {
-			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply mb-8 font-futuristic text-3xl text-shadow-rgb md:text-5xl;
 		}
 
 		& > p {
-			@apply text-base md:text-xl mb-8;
+			@apply mb-8 text-base md:text-xl;
 
 			& > a {
-				@apply link-primary link-hover;
+				@apply link-hover link-primary;
 			}
 		}
 
 		& .bookmarks__filters {
-			@apply sticky z-10 top-16 md:top-[4.5rem] card card-compact card-bordered mb-8 bg-base-100/75 shadow-lg backdrop-blur-md;
+			@apply card-bordered card card-compact sticky top-16 z-10 mb-8 bg-base-100/75 shadow-lg backdrop-blur-md md:top-[4.5rem];
 
 			& .card-body {
 				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4 px-0 md:px-4;
 
 				& > ul.filters {
-					@apply flex md:flex-wrap gap-4 -mb-4 px-4 md:px-0 pb-2 md:m-0 md:p-0 overflow-x-scroll md:overflow-visible scrollbar__theme;
+					@apply scrollbar__theme -mb-4 flex gap-4 overflow-x-scroll px-4 pb-2 md:m-0 md:flex-wrap md:overflow-visible md:p-0 md:px-0;
 
 					& > li {
 						& > a {
-							@apply btn btn-sm md:btn-md;
+							@apply btn-sm btn md:btn-md;
 
 							&.current {
 								@apply btn-primary;
@@ -102,7 +102,7 @@
 				}
 
 				& > small.info {
-					@apply hidden md:flex items-center gap-2 text-sm text-base-content;
+					@apply hidden items-center gap-2 text-sm text-base-content md:flex;
 
 					& .icon {
 						@apply text-primary;
@@ -112,7 +112,7 @@
 		}
 
 		& ul.bookmarks__list {
-			@apply grid grid-cols-1 md:grid-cols-3 gap-4;
+			@apply grid grid-cols-1 gap-4 md:grid-cols-3;
 		}
 	}
 

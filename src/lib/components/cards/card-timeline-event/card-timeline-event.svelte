@@ -41,18 +41,18 @@
 
 <style lang="scss" global>
 	article.event {
-		@apply card card-side card-compact card-bordered bg-base-100/75 backdrop-blur-md shadow-lg;
+		@apply card-bordered card card-side card-compact bg-base-100/75 shadow-lg backdrop-blur-md;
 
 		& > figure {
-			@apply pl-4 py-4 text-primary;
+			@apply py-4 pl-4 text-primary;
 		}
 
 		& > .card-body {
 			& > header {
-				@apply flex flex-col md:flex-row justify-between gap-x-4 gap-y-1;
+				@apply flex flex-col justify-between gap-x-4 gap-y-1 md:flex-row;
 
 				& > h2 {
-					@apply text-lg font-futuristic text-shadow-glow shadow-primary;
+					@apply font-futuristic text-lg shadow-primary text-shadow-glow;
 				}
 
 				& > time {
@@ -66,8 +66,8 @@
 
 			& > .card-actions {
 				& > a {
-					@apply btn btn-outline btn-sm gap-1 text-primary border-base-200
-						hover:bg-primary/10 hover:border-base-200 hover:text-primary;
+					@apply btn-outline btn-sm btn gap-1 border-base-200 text-primary
+						hover:border-base-200 hover:bg-primary/10 hover:text-primary;
 				}
 			}
 		}

@@ -61,7 +61,7 @@
 				<figure class="profile" data-atropos-offset="0" />
 
 				<div
-					class="popup top-10 left-12 before:from-primary before:to-black"
+					class="popup left-12 top-10 before:from-primary before:to-black"
 					data-atropos-offset="14"
 				>
 					<div class="popup__content">
@@ -70,7 +70,7 @@
 					</div>
 				</div>
 				<div
-					class="popup top-72 left-0 before:from-secondary before:to-black"
+					class="popup left-0 top-72 before:from-secondary before:to-black"
 					data-atropos-offset="16"
 				>
 					<div class="popup__content">

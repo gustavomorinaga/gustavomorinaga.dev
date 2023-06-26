@@ -49,7 +49,7 @@
 
 		<form on:submit|preventDefault={handleSubmit}>
 			<div class="form-control">
-				<label class="join join-vertical md:join-horizontal">
+				<label class="join-vertical join md:join-horizontal">
 					<input
 						class="input join-item"
 						type="email"
@@ -96,7 +96,7 @@
 
 <style lang="scss" global>
 	section#newsletter {
-		@apply card card-bordered card-compact md:card-normal mb-16 bg-primary/5;
+		@apply card-bordered card card-compact mb-16 bg-primary/5 md:card-normal;
 
 		&::before {
 			content: '';
@@ -105,14 +105,14 @@
 		}
 
 		& > .card-body {
-			@apply max-w-2xl place-items-center text-center mx-auto;
+			@apply mx-auto max-w-2xl place-items-center text-center;
 
 			& > h2 {
-				@apply text-xl md:text-4xl mb-4 font-futuristic text-shadow-rgb;
+				@apply mb-4 font-futuristic text-xl text-shadow-rgb md:text-4xl;
 			}
 
 			& > p {
-				@apply text-base md:text-lg mb-4;
+				@apply mb-4 text-base md:text-lg;
 			}
 
 			& > form {
@@ -129,7 +129,7 @@
 						}
 
 						& > button {
-							@apply btn btn-primary min-w-[10rem] rounded-t-none md:rounded-tr-box md:rounded-l-none;
+							@apply btn-primary btn min-w-[10rem] rounded-t-none md:rounded-tr-box md:rounded-l-none;
 						}
 					}
 				}

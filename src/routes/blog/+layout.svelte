@@ -10,7 +10,7 @@
 	const { featured, tags } = data;
 </script>
 
-<code class="typewriter blog">profile<span class="method">.blog()</span>;</code>
+<code class="blog typewriter">profile<span class="method">.blog()</span>;</code>
 
 <div class="blog" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.blog.title}</h1>
@@ -79,18 +79,18 @@
 
 	div.blog {
 		& > h1 {
-			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply mb-8 font-futuristic text-3xl text-shadow-rgb md:text-5xl;
 		}
 
 		& > p {
-			@apply text-base md:text-xl mb-12;
+			@apply mb-12 text-base md:text-xl;
 		}
 
 		& > .blog__layout {
-			@apply grid md:grid-cols-10 gap-y-4 md:gap-8;
+			@apply grid gap-y-4 md:grid-cols-10 md:gap-8;
 
 			& > aside.filters {
-				@apply md:sticky md:top-24 md:col-span-3 self-start flex flex-col gap-4 mb-8 md:mb-0;
+				@apply mb-8 flex flex-col gap-4 self-start md:sticky md:top-24 md:col-span-3 md:mb-0;
 
 				// & > div.form-control {
 				// 	& > label {
@@ -103,8 +103,8 @@
 				// }
 
 				& > ul.menu {
-					@apply menu-horizontal md:menu-vertical flex-nowrap md:max-w-none w-full overflow-x-auto md:overflow-hidden
-						card-bordered rounded-box overflow-hidden bg-base-100/75 shadow-lg backdrop-blur-md scrollbar__theme scrollbar-track-base-200;
+					@apply card-bordered rounded-box menu-horizontal scrollbar__theme w-full flex-nowrap overflow-hidden
+						overflow-x-auto bg-base-100/75 shadow-lg backdrop-blur-md scrollbar-track-base-200 md:menu-vertical md:max-w-none md:overflow-hidden;
 					max-width: calc(100vw - 2rem);
 
 					& > li {
@@ -122,11 +122,11 @@
 			}
 
 			& > section.posts {
-				@apply md:col-span-full md:col-start-4 min-h-[75vh];
+				@apply min-h-[75vh] md:col-span-full md:col-start-4;
 
 				& > .page__transition {
 					& > h2 {
-						@apply text-xl md:text-3xl font-futuristic text-shadow-rgb mb-8;
+						@apply mb-8 font-futuristic text-xl text-shadow-rgb md:text-3xl;
 					}
 
 					& ul.posts__list {
@@ -134,7 +134,7 @@
 					}
 
 					& button.btn__fetch {
-						@apply btn btn-wide flex mt-8 mx-auto;
+						@apply btn-wide btn mx-auto mt-8 flex;
 					}
 				}
 			}

@@ -38,7 +38,7 @@
 	const handleSpeech = () => speakText('Gustavo Morinaga', 'pt-BR');
 </script>
 
-<code class="typewriter about">
+<code class="about typewriter">
 	profile.
 	<span class="method">
 		{data.pathname.split('/').at(-1)}()
@@ -155,10 +155,10 @@
 	}
 
 	section.infos {
-		@apply flex flex-col md:grid md:grid-cols-12 gap-y-4 md:gap-8 min-h-[75vh];
+		@apply flex min-h-[75vh] flex-col gap-y-4 md:grid md:grid-cols-12 md:gap-8;
 
 		& .info__content {
-			@apply relative flex flex-col md:flex-row md:col-span-7;
+			@apply relative flex flex-col md:col-span-7 md:flex-row;
 
 			& > .page__transition {
 				@apply md:min-w-[36.5rem];
@@ -166,19 +166,19 @@
 		}
 
 		& aside {
-			@apply sticky top-48 md:self-start md:col-span-full md:col-start-8 flex flex-col gap-4 mt-16 md:m-0;
+			@apply sticky top-48 mt-16 flex flex-col gap-4 md:col-span-full md:col-start-8 md:m-0 md:self-start;
 
 			& .details,
 			& .facts {
-				@apply card card-bordered card-compact md:card-normal h-fit shadow-lg backdrop-blur-md;
+				@apply card-bordered card card-compact h-fit shadow-lg backdrop-blur-md md:card-normal;
 
 				& figure {
-					@apply absolute -top-20 right-0 w-32 md:w-40 h-32 md:h-40 drop-shadow-lg;
+					@apply absolute -top-20 right-0 h-32 w-32 drop-shadow-lg md:h-40 md:w-40;
 				}
 
 				& .card-body {
 					& h3 {
-						@apply text-xl md:text-2xl font-futuristic text-shadow-rgb mb-4;
+						@apply mb-4 font-futuristic text-xl text-shadow-rgb md:text-2xl;
 					}
 
 					& > ul {
@@ -188,15 +188,15 @@
 							@apply flex items-center text-sm;
 
 							& > .icon {
-								@apply text-primary mr-2 self-start;
+								@apply mr-2 self-start text-primary;
 							}
 
 							& a {
-								@apply link-primary link-hover;
+								@apply link-hover link-primary;
 							}
 
 							& .btn__pronounce {
-								@apply btn btn-outline btn-circle btn-xs w-6 p-0 ml-2 text-primary border-primary hover:btn-primary;
+								@apply btn-outline btn-xs btn-circle btn ml-2 w-6 border-primary p-0 text-primary hover:btn-primary;
 							}
 						}
 					}
@@ -204,7 +204,7 @@
 			}
 
 			& .details {
-				@apply bg-base-300 bg-auto bg-no-repeat bg-center bg-blend-hard-light;
+				@apply bg-base-300 bg-auto bg-center bg-no-repeat bg-blend-hard-light;
 				background-image: var(--low-poly-grid);
 			}
 
@@ -213,7 +213,7 @@
 			}
 
 			& .options {
-				@apply grid grid-flow-col md:grid-flow-dense md:grid-cols-2 gap-4;
+				@apply grid grid-flow-col gap-4 md:grid-flow-dense md:grid-cols-2;
 
 				& > a {
 					@apply btn flex-1 gap-1 shadow-md lg:hover:shadow-lg;

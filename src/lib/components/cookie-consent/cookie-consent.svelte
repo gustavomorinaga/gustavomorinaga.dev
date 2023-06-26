@@ -32,7 +32,7 @@
 
 <style lang="scss" global>
 	section#cookie-consent {
-		@apply fixed z-50 left-0 right-0 bottom-0 md:left-8 md:bottom-20 card card-compact card-bordered max-w-full md:max-w-sm bg-base-100/75 border-x-0 border-b-0 md:border backdrop-blur-md shadow-lg transition-all duration-300 ease-out;
+		@apply card-bordered card card-compact fixed bottom-0 left-0 right-0 z-50 max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md transition-all duration-300 ease-out md:bottom-20 md:left-8 md:max-w-sm md:border;
 
 		& .card-body {
 			& header {
@@ -43,13 +43,13 @@
 				}
 
 				& h4 {
-					@apply font-futuristic text-shadow-glow shadow-primary;
+					@apply font-futuristic shadow-primary text-shadow-glow;
 				}
 			}
 
 			& .card-actions {
 				& .cta {
-					@apply btn btn-block btn-primary btn-sm;
+					@apply btn-primary btn-block btn-sm btn;
 				}
 			}
 		}

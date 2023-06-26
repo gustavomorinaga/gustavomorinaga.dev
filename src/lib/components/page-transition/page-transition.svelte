@@ -36,6 +36,6 @@
 
 <style lang="scss">
 	div.page__transition {
-		@apply block w-full h-full;
+		@apply block h-full w-full;
 	}
 </style>

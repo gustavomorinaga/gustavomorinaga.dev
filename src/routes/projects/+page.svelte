@@ -44,7 +44,7 @@
 
 <Metadata title={$LANG.projects.metadata.title} description={$LANG.projects.metadata.description} />
 
-<code class="typewriter projects">profile<span class="method">.projects()</span>;</code>
+<code class="projects typewriter">profile<span class="method">.projects()</span>;</code>
 
 <section class="projects" in:fly|global={{ y: 50, duration: 1000, delay: 2000, easing: cubicOut }}>
 	<h1>{$LANG.projects.title}</h1>
@@ -69,19 +69,19 @@
 		@apply min-h-[80vh];
 
 		& > h1 {
-			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply mb-8 font-futuristic text-3xl text-shadow-rgb md:text-5xl;
 		}
 
 		& > p {
-			@apply text-base md:text-xl mb-8 md:mb-16;
+			@apply mb-8 text-base md:mb-16 md:text-xl;
 
 			& > a {
-				@apply link-primary link-hover;
+				@apply link-hover link-primary;
 			}
 		}
 
 		& .motion__instruction {
-			@apply flex md:hidden justify-center gap-2 p-4 text-sm;
+			@apply flex justify-center gap-2 p-4 text-sm md:hidden;
 
 			& .icon {
 				@apply text-primary;

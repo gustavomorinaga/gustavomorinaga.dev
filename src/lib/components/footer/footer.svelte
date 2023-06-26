@@ -31,19 +31,19 @@
 
 <style lang="scss">
 	#footer {
-		@apply relative z-20 block bg-black border-t border-base-100;
+		@apply relative z-20 block border-t border-base-100 bg-black;
 
 		& .footer__wrapper {
-			@apply footer footer-center p-4 text-xs md:text-sm text-base-content;
+			@apply footer footer-center p-4 text-xs text-base-content md:text-sm;
 
 			& > div {
-				@apply flex items-center justify-between flex-col md:flex-row max-w-screen-lg w-full;
+				@apply flex w-full max-w-screen-lg flex-col items-center justify-between md:flex-row;
 
 				& .powered-by {
 					@apply flex items-center gap-1;
 
 					& > a.deploy {
-						@apply w-12 md:w-16 mr-1;
+						@apply mr-1 w-12 md:w-16;
 					}
 					& > a.framework {
 						@apply w-20 md:w-24;
@@ -53,7 +53,7 @@
 		}
 
 		& #player-offset {
-			@apply block w-screen h-0;
+			@apply block h-0 w-screen;
 		}
 	}
 </style>

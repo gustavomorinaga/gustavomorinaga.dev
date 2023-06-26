@@ -30,10 +30,10 @@
 
 <style lang="scss" global>
 	.notifications {
-		@apply fixed z-50 top-0 md:top-24 right-0 md:right-8 flex flex-col-reverse gap-2;
+		@apply fixed right-0 top-0 z-50 flex flex-col-reverse gap-2 md:right-8 md:top-24;
 
 		& .notification {
-			@apply card card-compact card-bordered max-w-full md:max-w-sm bg-base-100/75 border-x-0 border-b-0 md:border backdrop-blur-md shadow-lg transition-all duration-300 ease-out;
+			@apply card-bordered card card-compact max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md transition-all duration-300 ease-out md:max-w-sm md:border;
 
 			& .card-body {
 				& header {
@@ -44,7 +44,7 @@
 					}
 
 					& h4 {
-						@apply font-futuristic text-shadow-glow shadow-primary;
+						@apply font-futuristic shadow-primary text-shadow-glow;
 					}
 				}
 			}

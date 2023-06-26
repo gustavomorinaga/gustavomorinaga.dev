@@ -126,7 +126,7 @@
 		@apply block;
 
 		& > h1 {
-			@apply text-3xl md:text-5xl font-futuristic text-shadow-rgb mb-8;
+			@apply mb-8 font-futuristic text-3xl text-shadow-rgb md:text-5xl;
 		}
 
 		& > ul.components {

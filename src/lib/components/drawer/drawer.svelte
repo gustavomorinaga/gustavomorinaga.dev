@@ -32,7 +32,7 @@
 
 <style lang="scss" global>
 	.drawer {
-		@apply fixed inset-0 z-[90] pointer-events-none;
+		@apply pointer-events-none fixed inset-0 z-[90];
 
 		&.show {
 			@apply pointer-events-auto;
@@ -57,11 +57,11 @@
 			}
 
 			& .drawer-overlay {
-				@apply sticky inset-y-0 place-self-stretch bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-500 ease-out;
+				@apply sticky inset-y-0 place-self-stretch bg-black/50 opacity-0 backdrop-blur-sm transition-opacity duration-500 ease-out;
 			}
 
 			& .drawer-side-content {
-				@apply h-fit translate-y-full mt-auto mx-4 p-4 overflow-hidden bg-base-100 border border-b-0 border-base-200 rounded-t-lg shadow-lg
+				@apply mx-4 mt-auto h-fit translate-y-full overflow-hidden rounded-t-lg border border-b-0 border-base-200 bg-base-100 p-4 shadow-lg
 					transition-transform duration-500 ease-smooth;
 				--tw-translate-x: 0px !important;
 			}

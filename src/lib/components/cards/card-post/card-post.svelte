@@ -72,7 +72,7 @@
 
 <style lang="scss" global>
 	a.post {
-		@apply z-10 card card-bordered min-h-[10rem] overflow-hidden shadow-lg transition duration-700 ease-smooth;
+		@apply card-bordered card z-10 min-h-[10rem] overflow-hidden shadow-lg transition duration-700 ease-smooth;
 		&::before {
 			content: '';
 			@apply absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-smooth;
@@ -93,25 +93,25 @@
 			@apply justify-stretch;
 
 			& > header {
-				@apply flex flex-col flex-grow gap-4;
+				@apply flex flex-grow flex-col gap-4;
 
 				& > span.new {
-					@apply badge badge-primary badge-lg uppercase font-semibold;
+					@apply badge badge-primary badge-lg font-semibold uppercase;
 				}
 
 				& > h3 {
-					@apply text-xl md:text-2xl font-futuristic h-full mt-auto mb-4 text-shadow-lg shadow-black/75;
+					@apply mb-4 mt-auto h-full font-futuristic text-xl shadow-black/75 text-shadow-lg md:text-2xl;
 				}
 			}
 
 			& > footer {
-				@apply flex flex-col-reverse md:flex-row justify-between gap-4;
+				@apply flex flex-col-reverse justify-between gap-4 md:flex-row;
 
 				& .author {
 					@apply flex items-center;
 
 					& > figure.avatar {
-						@apply mr-3 card-bordered rounded-full;
+						@apply card-bordered mr-3 rounded-full;
 
 						& > div {
 							@apply w-8 rounded-full;
@@ -131,7 +131,7 @@
 					@apply flex items-center gap-2;
 
 					& > li.tag {
-						@apply badge badge-ghost badge-lg h-auto py-1 border border-base-300 shadow;
+						@apply badge badge-ghost badge-lg h-auto border border-base-300 py-1 shadow;
 					}
 				}
 			}

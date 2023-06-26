@@ -25,18 +25,18 @@
 
 <style lang="scss" global>
 	article.knowledge {
-		@apply flex-auto card card-compact md:card-normal card-bordered bg-base-100/75 shadow-lg backdrop-blur-md;
+		@apply card-bordered card card-compact flex-auto bg-base-100/75 shadow-lg backdrop-blur-md md:card-normal;
 
 		& > .card-body {
 			& h3 {
-				@apply text-xl md:text-2xl font-futuristic text-shadow-glow shadow-primary mb-4;
+				@apply mb-4 font-futuristic text-xl shadow-primary text-shadow-glow md:text-2xl;
 			}
 
 			& > ul {
 				@apply flex flex-wrap gap-4 md:gap-8;
 
 				& li {
-					@apply tooltip tooltip-bottom lg:hover:text-[var(--icon-color)] transition-colors duration-700 ease-smooth;
+					@apply tooltip tooltip-bottom transition-colors duration-700 ease-smooth lg:hover:text-[var(--icon-color)];
 				}
 			}
 		}

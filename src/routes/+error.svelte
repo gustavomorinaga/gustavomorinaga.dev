@@ -45,13 +45,13 @@
 		@apply min-h-[75vh];
 
 		& .hero-content {
-			@apply max-w-none w-full flex-col md:flex-row-reverse justify-between;
+			@apply w-full max-w-none flex-col justify-between md:flex-row-reverse;
 
 			& .window {
-				@apply mockup-window bg-base-100 border border-base-200 md:animate-float;
+				@apply mockup-window border border-base-200 bg-base-100 md:animate-float;
 
 				& .window__content {
-					@apply grid place-items-center w-80 h-40 md:w-96 md:h-48 p-4 font-futuristic bg-base-200 bg-cover bg-no-repeat bg-center bg-blend-hard-light border-t border-base-200 text-error;
+					@apply grid h-40 w-80 place-items-center border-t border-base-200 bg-base-200 bg-cover bg-center bg-no-repeat p-4 font-futuristic text-error bg-blend-hard-light md:h-48 md:w-96;
 					background-image: var(--low-poly-grid);
 				}
 			}
@@ -61,22 +61,22 @@
 
 				&::before {
 					content: '';
-					@apply absolute -z-10 inset-0 rounded-2xl bg-black/50 blur-xl;
+					@apply absolute inset-0 -z-10 rounded-2xl bg-black/50 blur-xl;
 				}
 
 				& h1 {
-					@apply text-5xl font-futuristic text-shadow-rgb mb-4;
+					@apply mb-4 font-futuristic text-5xl text-shadow-rgb;
 				}
 
 				& p {
-					@apply text-2xl mb-16;
+					@apply mb-16 text-2xl;
 				}
 
 				& nav {
 					@apply flex gap-2;
 
 					& a {
-						@apply btn btn-primary btn-block md:btn-wide;
+						@apply btn-primary btn-block btn md:btn-wide;
 
 						&:hover {
 							& .icon {

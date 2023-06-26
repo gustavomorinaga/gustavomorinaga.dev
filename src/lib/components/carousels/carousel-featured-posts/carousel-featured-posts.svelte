@@ -44,7 +44,7 @@
 
 <style lang="scss" global>
 	swiper-container.featured {
-		@apply max-w-[100vw] my-0 -mx-4 md:mx-0 md:px-12;
+		@apply -mx-4 my-0 max-w-[100vw] md:mx-0 md:px-12;
 
 		--swiper-navigation-size: 1.5rem;
 		--swiper-navigation-top-offset: calc(50% - 1.5rem);
@@ -60,7 +60,7 @@
 			}
 
 			& a.post {
-				@apply md:min-h-[14rem] border-x-0 md:border;
+				@apply border-x-0 md:min-h-[14rem] md:border;
 
 				& .card-body {
 					@apply px-12 md:px-8;

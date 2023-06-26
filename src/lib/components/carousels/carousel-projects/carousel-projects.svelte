@@ -124,23 +124,23 @@
 		& swiper-slide {
 			&.swiper-slide-active {
 				& .project {
-					@apply grayscale-0 brightness-100;
+					@apply brightness-100 grayscale-0;
 
 					& figure {
-						@apply xl:scale-125 after:opacity-0;
+						@apply after:opacity-0 xl:scale-125;
 					}
 
 					& .content {
-						@apply lg:opacity-100 lg:translate-y-0;
+						@apply lg:translate-y-0 lg:opacity-100;
 					}
 				}
 			}
 
 			& article.project {
-				@apply relative grayscale-[25] brightness-75 transition duration-300 ease-out;
+				@apply relative brightness-75 grayscale-[25] transition duration-300 ease-out;
 
 				& figure {
-					@apply -z-10 mockup-window pointer-events-none w-full pt-3 before:mb-3 bg-base-100 border border-base-200 shadow-lg transition duration-300 ease-out;
+					@apply mockup-window pointer-events-none -z-10 w-full border border-base-200 bg-base-100 pt-3 shadow-lg transition duration-300 ease-out before:mb-3;
 
 					&::after {
 						content: '';
@@ -153,15 +153,15 @@
 				}
 
 				& div.content {
-					@apply card z-20 lg:-mt-12 bg-base-100 shadow-lg lg:opacity-0 lg:translate-y-16 transition duration-300 ease-out;
+					@apply card z-20 bg-base-100 shadow-lg transition duration-300 ease-out lg:-mt-12 lg:translate-y-16 lg:opacity-0;
 
 					& .card-body {
 						& h2 {
-							@apply text-xl md:text-3xl font-futuristic text-shadow-glow shadow-primary;
+							@apply font-futuristic text-xl shadow-primary text-shadow-glow md:text-3xl;
 						}
 
 						& .tags {
-							@apply flex flex-wrap gap-1 mb-2;
+							@apply mb-2 flex flex-wrap gap-1;
 
 							& .tag {
 								@apply badge badge-neutral badge-sm md:badge-md;
@@ -176,8 +176,8 @@
 							@apply justify-end;
 
 							& > a {
-								@apply btn btn-outline btn-sm gap-1 text-primary border-base-200
-									hover:bg-primary/10 hover:border-base-200 hover:text-primary;
+								@apply btn-outline btn-sm btn gap-1 border-base-200 text-primary
+									hover:border-base-200 hover:bg-primary/10 hover:text-primary;
 							}
 						}
 					}

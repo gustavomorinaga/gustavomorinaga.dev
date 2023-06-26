@@ -39,11 +39,11 @@
 
 <style lang="scss" global>
 	a.hardware {
-		@apply card card-side card-compact card-bordered h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
+		@apply card-bordered card card-side card-compact h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
 
 		@media (hover: hover) {
 			&:hover {
-				@apply no-underline border-primary shadow-glow shadow-primary/10;
+				@apply border-primary no-underline shadow-glow shadow-primary/10;
 
 				& .external {
 					@apply opacity-100;
@@ -52,20 +52,20 @@
 		}
 
 		& figure {
-			@apply w-16 h-16 my-4 ml-4 aspect-square;
+			@apply my-4 ml-4 aspect-square h-16 w-16;
 
 			& > img {
-				@apply drop-shadow-sm shadow-primary;
+				@apply shadow-primary drop-shadow-sm;
 			}
 		}
 
 		& .external {
-			@apply hidden md:block absolute top-2 right-2 text-base-content opacity-0 transition-opacity duration-300 ease-out;
+			@apply absolute right-2 top-2 hidden text-base-content opacity-0 transition-opacity duration-300 ease-out md:block;
 		}
 
 		& .card-body {
 			& h4 {
-				@apply text-lg md:text-xl text-base-content font-futuristic text-shadow-glow shadow-primary;
+				@apply font-futuristic text-lg text-base-content shadow-primary text-shadow-glow md:text-xl;
 			}
 
 			& p {

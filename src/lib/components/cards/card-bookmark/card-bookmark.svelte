@@ -36,11 +36,11 @@
 <style lang="scss" global>
 	a.bookmark {
 		& > article {
-			@apply card card-compact card-bordered h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
+			@apply card-bordered card card-compact h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
 
 			@media (hover: hover) {
 				&:hover {
-					@apply no-underline border-primary shadow-glow shadow-primary/10;
+					@apply border-primary no-underline shadow-glow shadow-primary/10;
 
 					& figure {
 						@apply brightness-100 grayscale-0;
@@ -52,7 +52,7 @@
 				@apply relative h-48 border-b border-base-200 brightness-90 grayscale-[0.5] transition duration-300 ease-out;
 
 				& img {
-					@apply object-cover w-full h-full;
+					@apply h-full w-full object-cover;
 				}
 			}
 
@@ -63,7 +63,7 @@
 					@apply flex flex-col gap-2;
 
 					& h2 {
-						@apply text-lg text-base-content line-clamp-2 font-futuristic text-shadow-glow shadow-primary;
+						@apply line-clamp-2 font-futuristic text-lg text-base-content shadow-primary text-shadow-glow;
 					}
 
 					& .category {
@@ -72,7 +72,7 @@
 				}
 
 				& p {
-					@apply text-sm text-base-content line-clamp-2;
+					@apply line-clamp-2 text-sm text-base-content;
 				}
 			}
 		}

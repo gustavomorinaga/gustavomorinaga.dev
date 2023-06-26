@@ -25,10 +25,10 @@
 
 <style lang="scss" global>
 	.carousel {
-		@apply relative overflow-hidden w-full h-fit py-4;
+		@apply relative h-fit w-full overflow-hidden py-4;
 
 		& .carousel__wrapper {
-			@apply flex gap-20 w-full h-fit;
+			@apply flex h-fit w-full gap-20;
 			animation: scroll var(--speed) linear infinite;
 		}
 
