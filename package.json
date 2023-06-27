@@ -57,7 +57,7 @@
 		"detect-gpu": "5.0.30",
 		"eslint": "8.43.0",
 		"eslint-config-prettier": "8.8.0",
-		"eslint-plugin-svelte3": "4.0.0",
+		"eslint-plugin-svelte": "2.31.1",
 		"fast-xml-parser": "4.2.5",
 		"giscus": "1.2.8",
 		"html-minifier": "4.0.0",
