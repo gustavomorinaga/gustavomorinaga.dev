@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/gustavomorinaga/portfolio/compare/v1.1.6...v1.1.7) (2023-07-01)
+
+
+### Bug Fixes
+
+* postcss and cssnano config ([e69a27e](https://github.com/gustavomorinaga/portfolio/commit/e69a27eeeda92435d938b8bd50c8b8ba421dd15e))
+
 ### [1.1.6](https://github.com/gustavomorinaga/portfolio/compare/v1.1.5...v1.1.6) (2023-06-27)
 
 ### [1.1.5](https://github.com/gustavomorinaga/portfolio/compare/v1.1.4...v1.1.5) (2023-06-26)
