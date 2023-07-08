@@ -41,7 +41,7 @@
 
 <style lang="scss" global>
 	article.event {
-		@apply card-bordered card card-side card-compact bg-base-100/75 shadow-lg backdrop-blur-md;
+		@apply card-bordered card card-side card-compact bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200;
 
 		& > figure {
 			@apply py-4 pl-4 text-primary;
@@ -75,7 +75,7 @@
 
 	html.low__end {
 		& article.event {
-			@apply backdrop-blur-none;
+			@apply backdrop-blur-none backdrop-saturate-0;
 		}
 	}
 </style>

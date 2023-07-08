@@ -5,6 +5,6 @@ const config = {
 		require('autoprefixer'),
 		require('cssnano')({ preset: 'default' })
 	]
-}
+};
 
 module.exports = config;

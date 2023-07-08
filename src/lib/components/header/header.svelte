@@ -196,7 +196,7 @@
 		@apply relative z-40 h-[4.5rem];
 
 		& .header__wrapper {
-			@apply fixed left-0 right-0 top-0 z-50 border-b border-base-200 bg-base-100/75 shadow-lg backdrop-blur-md;
+			@apply fixed left-0 right-0 top-0 z-50 border-b border-base-200 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200;
 
 			& .header__content {
 				@apply min-h-16 mx-auto my-0 flex max-w-screen-lg items-center justify-between px-2 sm:justify-start sm:px-8 lg:px-0;
@@ -292,7 +292,7 @@
 	html.low__end {
 		& #header {
 			& .header__wrapper {
-				@apply bg-base-100 backdrop-blur-none;
+				@apply bg-base-100 backdrop-blur-none backdrop-saturate-0;
 			}
 		}
 	}

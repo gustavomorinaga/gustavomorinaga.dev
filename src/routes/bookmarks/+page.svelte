@@ -82,7 +82,7 @@
 		}
 
 		& .bookmarks__filters {
-			@apply card-bordered card card-compact sticky top-16 z-10 mb-8 bg-base-100/75 shadow-lg backdrop-blur-md md:top-[4.5rem];
+			@apply card-bordered card card-compact sticky top-16 z-10 mb-8 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:top-[4.5rem];
 
 			& .card-body {
 				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4 px-0 md:px-4;
@@ -119,7 +119,7 @@
 	html.low__end {
 		& section.bookmarks {
 			& .bookmarks__filters {
-				@apply bg-base-100 backdrop-blur-none;
+				@apply bg-base-100 backdrop-blur-none backdrop-saturate-0;
 			}
 		}
 	}

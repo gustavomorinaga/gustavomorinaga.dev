@@ -57,7 +57,7 @@
 			}
 
 			& .drawer-overlay {
-				@apply sticky inset-y-0 place-self-stretch bg-black/50 opacity-0 backdrop-blur-sm transition-opacity duration-500 ease-out;
+				@apply sticky inset-y-0 place-self-stretch bg-black/50 opacity-0 backdrop-blur-sm backdrop-saturate-150 transition-opacity duration-500 ease-out;
 			}
 
 			& .drawer-side-content {

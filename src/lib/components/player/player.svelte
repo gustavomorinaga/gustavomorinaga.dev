@@ -470,7 +470,7 @@
 
 <style lang="scss" global>
 	#player {
-		@apply fixed bottom-0 left-0 right-0 z-40 bg-base-100/75 shadow-lg backdrop-blur-md;
+		@apply fixed bottom-0 left-0 right-0 z-40 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200;
 
 		& .player__wrapper {
 			@apply flex items-center justify-between px-4 pb-4 pt-5 sm:gap-2;
@@ -612,7 +612,7 @@
 	}
 
 	#playlist__content {
-		@apply card-bordered card scrollbar__theme -bottom-3 left-0 right-0 z-30 h-96 -translate-y-24 overflow-y-auto border-x-0 border-b-0 border-white/10 bg-base-100/75 shadow-md backdrop-blur-md sm:bottom-3 sm:left-4 sm:right-4 md:left-auto md:w-96 md:border;
+		@apply card-bordered card scrollbar__theme -bottom-3 left-0 right-0 z-30 h-96 -translate-y-24 overflow-y-auto border-x-0 border-b-0 border-white/10 bg-base-100/75 shadow-md backdrop-blur-md backdrop-saturate-200 sm:bottom-3 sm:left-4 sm:right-4 md:left-auto md:w-96 md:border;
 
 		& .playlist__wrapper {
 			@apply flex flex-col;
@@ -669,7 +669,7 @@
 		}
 
 		& .overlay {
-			@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 ease-out;
+			@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm backdrop-saturate-150 transition-opacity duration-300 ease-out;
 
 			&.show {
 				@apply opacity-100;
@@ -713,7 +713,7 @@
 	}
 
 	.artwork__overlay {
-		@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm transition-opacity ease-out;
+		@apply absolute inset-0 grid place-items-center bg-black/50 opacity-0 backdrop-blur-sm backdrop-saturate-150 transition-opacity ease-out;
 	}
 
 	@keyframes bars {
@@ -737,12 +737,12 @@
 	html.low__end {
 		& #player {
 			& .player__wrapper {
-				@apply bg-base-100 backdrop-blur-none;
+				@apply bg-base-100 backdrop-blur-none backdrop-saturate-0;
 			}
 		}
 
 		& #playlist__content {
-			@apply bg-black backdrop-blur-none;
+			@apply bg-black backdrop-blur-none backdrop-saturate-0;
 		}
 	}
 </style>

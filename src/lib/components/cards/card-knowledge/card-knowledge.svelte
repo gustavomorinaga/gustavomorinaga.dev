@@ -25,7 +25,7 @@
 
 <style lang="scss" global>
 	article.knowledge {
-		@apply card-bordered card card-compact flex-auto bg-base-100/75 shadow-lg backdrop-blur-md md:card-normal;
+		@apply card-bordered card card-compact flex-auto bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
 
 		& > .card-body {
 			& h3 {
@@ -44,7 +44,7 @@
 
 	html.low__end {
 		& article.knowledge {
-			@apply backdrop-blur-none;
+			@apply backdrop-blur-none backdrop-saturate-0;
 		}
 	}
 </style>

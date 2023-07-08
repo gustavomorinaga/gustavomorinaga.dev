@@ -291,7 +291,7 @@
 	@import 'atropos/scss';
 
 	section#blurb {
-		@apply relative hero h-gutter-header -mt-4;
+		@apply hero relative -mt-4 h-gutter-header;
 		place-items: flex-start center;
 
 		@media (min-width: 640px) {
@@ -299,47 +299,47 @@
 		}
 
 		& .blurb__wrapper {
-			@apply hero-content flex-col md:flex-row-reverse items-start md:items-center gap-8 md:-mt-16 px-0 text-left;
+			@apply hero-content flex-col items-start gap-8 px-0 text-left md:-mt-16 md:flex-row-reverse md:items-center;
 
 			& .blurb__image {
 				@apply md:my-0;
 			}
 
 			& .blurb__content {
-				@apply relative before:absolute before:-z-10 before:inset-0 before:rounded-full before:bg-black/50 before:blur-xl;
+				@apply relative before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-black/50 before:blur-xl;
 
 				& h1 {
-					@apply flex flex-col text-2xl md:text-5xl font-futuristic md:leading-tight text-shadow-rgb mb-8;
+					@apply mb-8 flex flex-col font-futuristic text-2xl text-shadow-rgb md:text-5xl md:leading-tight;
 
 					& .name {
 						@apply relative w-fit pr-12 underline underline-offset-[7px];
 
 						& .btn__pronounce {
-							@apply absolute top-0 right-0 btn btn-outline btn-circle btn-sm w-8 p-0 text-primary border-primary hover:btn-primary;
+							@apply btn-outline btn-sm btn-circle btn absolute right-0 top-0 w-8 border-primary p-0 text-primary hover:btn-primary;
 						}
 					}
 				}
 
 				& p {
-					@apply text-base md:text-xl mb-12 md:mb-16;
+					@apply mb-12 text-base md:mb-16 md:text-xl;
 				}
 
 				& .socials {
-					@apply flex gap-2 items-center flex-wrap;
+					@apply flex flex-wrap items-center gap-2;
 
 					& .social {
-						@apply grid place-items-center w-full md:w-fit;
+						@apply grid w-full place-items-center md:w-fit;
 
 						&.cta {
-							@apply flex-grow md:flex-grow-0 mr-0 md:mr-3;
+							@apply mr-0 flex-grow md:mr-3 md:flex-grow-0;
 
 							& .btn__social {
-								@apply btn-block md:w-36 shadow-md lg:hover:shadow-lg;
+								@apply btn-block shadow-md md:w-36 lg:hover:shadow-lg;
 							}
 						}
 
 						&:not(.cta) {
-							@apply md:tooltip md:tooltip-bottom flex-1 md:flex-initial mt-2 md:mt-0;
+							@apply mt-2 flex-1 md:tooltip md:tooltip-bottom md:mt-0 md:flex-initial;
 
 							& .btn__social {
 								@apply btn-link btn-sm px-2 drop-shadow;
@@ -348,7 +348,7 @@
 					}
 
 					& .btn__social {
-						@apply btn btn-primary gap-2 md:hover:-translate-y-1;
+						@apply btn-primary btn gap-2 md:hover:-translate-y-1;
 					}
 				}
 			}
@@ -375,13 +375,13 @@
 		}
 
 		& .profile {
-			@apply relative z-auto w-96 h-96 bg-cover bg-no-repeat drop-shadow-md shadow-red-500 grayscale;
+			@apply relative z-auto h-96 w-96 bg-cover bg-no-repeat shadow-red-500 drop-shadow-md grayscale;
 			background-image: var(--profile-cropped);
 			clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 
 			&:after {
 				content: '';
-				@apply absolute inset-0 w-full h-full bg-cover bg-no-repeat drop-shadow-md opacity-0 mix-blend-hard-light transition-opacity ease-out;
+				@apply absolute inset-0 h-full w-full bg-cover bg-no-repeat opacity-0 mix-blend-hard-light drop-shadow-md transition-opacity ease-out;
 				background-image: var(--profile-cropped);
 				clip-path: polygon(32% 0, 85% 0, 82% 67%, 97.25% 97.5%, 0 97.5%, 22% 62%);
 			}
@@ -392,16 +392,16 @@
 		@apply block lg:hidden;
 
 		& .triangle {
-			@apply inset-auto w-40 md:w-52 h-40 md:h-52;
+			@apply inset-auto h-40 w-40 md:h-52 md:w-52;
 		}
 
 		& .profile {
-			@apply w-40 md:w-52 h-40 md:h-52;
+			@apply h-40 w-40 md:h-52 md:w-52;
 		}
 	}
 
 	.atropos__profile {
-		@apply hidden lg:block w-fit h-fit p-2 pointer-events-none md:pointer-events-auto;
+		@apply pointer-events-none hidden h-fit w-fit p-2 md:pointer-events-auto lg:block;
 
 		@media (min-width: 1024px) {
 			display: block !important;
@@ -410,11 +410,11 @@
 		@media (hover: hover) {
 			&:hover {
 				& .popup {
-					@apply before:animate-spin-background before:shadow-lg animate-none;
+					@apply animate-none before:animate-spin-background before:shadow-lg;
 
 					& .popup__content {
 						& .skill {
-							@apply max-w-fit ml-1 opacity-100;
+							@apply ml-1 max-w-fit opacity-100;
 						}
 					}
 				}
@@ -426,17 +426,17 @@
 		}
 
 		& .popup {
-			@apply absolute z-10 w-fit h-fit p-px overflow-hidden shadow-sm  animate-float;
+			@apply absolute z-10 h-fit w-fit animate-float overflow-hidden p-px  shadow-sm;
 
 			&::before {
 				content: '';
-				@apply absolute -z-10 -inset-10 bg-gradient-conic bg-no-repeat;
+				@apply absolute -inset-10 -z-10 bg-gradient-conic bg-no-repeat;
 				background-size: 50% 50%, 50% 50%;
 				background-position: 0 0, 100% 0, 100% 100%, 0 100%;
 			}
 
 			& .popup__content {
-				@apply inline-flex p-2 w-fit h-fit bg-black text-sm text-center overflow-hidden whitespace-nowrap;
+				@apply inline-flex h-fit w-fit overflow-hidden whitespace-nowrap bg-black p-2 text-center text-sm;
 
 				& .skill {
 					@apply block max-w-0 opacity-0 transition-all duration-200 ease-out;
@@ -451,50 +451,50 @@
 			@apply hidden;
 		}
 		& .atropos-shadow {
-			@apply w-[90%] h-[90%];
+			@apply h-[90%] w-[90%];
 		}
 	}
 
 	section#about {
-		@apply relative grid place-items-center min-h-screen;
+		@apply relative grid min-h-screen place-items-center;
 
 		& .about__card {
-			@apply card card-side card-bordered items-center w-full h-fit bg-cover bg-center bg-no-repeat bg-base-100/75 backdrop-blur-md shadow-lg;
+			@apply card-bordered card card-side h-fit w-full items-center bg-base-100/75 bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-md backdrop-saturate-200;
 			background-image: var(--curved-lines);
 
 			& > figure {
-				@apply relative hidden md:block w-60 h-[26rem] m-4 overflow-hidden rounded-box bg-cover bg-no-repeat lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
+				@apply rounded-box relative m-4 hidden h-[26rem] w-60 overflow-hidden bg-cover bg-no-repeat md:block lg:hover:after:max-h-full lg:hover:after:border-b-2 lg:hover:after:border-primary;
 				background-image: var(--profile);
 
 				&::before {
 					content: '';
-					@apply hidden lg:block absolute inset-0 z-10 backdrop-grayscale;
+					@apply absolute inset-0 z-10 hidden backdrop-grayscale lg:block;
 				}
 
 				&::after {
 					content: '';
-					@apply hidden lg:block absolute inset-0 z-20 max-h-0 bg-cover bg-no-repeat border-b-0 border-transparent backdrop-grayscale transition-all duration-1000 ease-smooth;
+					@apply absolute inset-0 z-20 hidden max-h-0 border-b-0 border-transparent bg-cover bg-no-repeat backdrop-grayscale transition-all duration-1000 ease-smooth lg:block;
 					background-image: var(--profile);
 				}
 			}
 
 			& .card-body {
-				@apply md:max-w-lg lg:max-w-2xl mr-auto p-4;
+				@apply mr-auto p-4 md:max-w-lg lg:max-w-2xl;
 
 				& h2 {
-					@apply mb-2 text-2xl md:text-4xl font-futuristic text-shadow-rgb;
+					@apply mb-2 font-futuristic text-2xl text-shadow-rgb md:text-4xl;
 				}
 
 				& h3 {
-					@apply mb-4 text-base md:text-xl text-white;
+					@apply mb-4 text-base text-white md:text-xl;
 				}
 
 				& blockquote {
-					@apply mt-2 p-4 italic rounded-box overflow-hidden border-l-2 border-primary bg-gradient-to-r from-stone-950/75 to-stone-950/50;
+					@apply rounded-box mt-2 overflow-hidden border-l-2 border-primary bg-gradient-to-r from-stone-950/75 to-stone-950/50 p-4 italic;
 
 					& footer {
 						& cite {
-							@apply link-primary link-hover text-sm not-italic;
+							@apply link-hover link-primary text-sm not-italic;
 						}
 					}
 				}
@@ -503,7 +503,7 @@
 					@apply mt-8;
 
 					& .cta {
-						@apply btn btn-primary btn-block md:btn-wide;
+						@apply btn-primary btn-block btn md:btn-wide;
 
 						@media (hover: hover) {
 							&:hover {
@@ -523,22 +523,22 @@
 	}
 
 	section#knowledge {
-		@apply relative grid place-items-center min-h-screen;
+		@apply relative grid min-h-screen place-items-center;
 
 		& .knowledge__content {
-			@apply absolute w-screen py-8 text-center bg-base-300 bg-cover bg-no-repeat bg-center bg-fixed bg-blend-hard-light border-y border-base-200 shadow-2xl;
+			@apply absolute w-screen border-y border-base-200 bg-base-300 bg-cover bg-fixed bg-center bg-no-repeat py-8 text-center bg-blend-hard-light shadow-2xl;
 			background-image: var(--low-poly-grid);
 
 			& h2 {
-				@apply text-2xl md:text-4xl font-futuristic mb-4 text-shadow-rgb;
+				@apply mb-4 font-futuristic text-2xl text-shadow-rgb md:text-4xl;
 			}
 
 			& p {
-				@apply text-base md:text-xl mb-4 px-4 md:px-0 text-shadow-md shadow-black;
+				@apply mb-4 px-4 text-base shadow-black text-shadow-md md:px-0 md:text-xl;
 			}
 
 			& .knowledge {
-				@apply grid place-items-center w-full h-full text-zinc-400 lg:hover:text-[var(--icon-color)] drop-shadow-lg lg:hover:scale-110 grayscale lg:hover:grayscale-0 ease-smooth;
+				@apply grid h-full w-full place-items-center text-zinc-400 drop-shadow-lg grayscale ease-smooth lg:hover:scale-110 lg:hover:text-[var(--icon-color)] lg:hover:grayscale-0;
 				transition: all 0.5s ease, opacity 0.5s, transform 1s, filter 1s;
 
 				@media (hover: hover) {
@@ -558,13 +558,13 @@
 
 					&::before {
 						content: '';
-						@apply absolute inset-3 block bg-white rounded-full blur-sm opacity-0 transition-opacity duration-700 ease-smooth;
+						@apply absolute inset-3 block rounded-full bg-white opacity-0 blur-sm transition-opacity duration-700 ease-smooth;
 					}
 				}
 			}
 
 			& .cta {
-				@apply btn btn-primary w-4/5 md:btn-wide mt-8;
+				@apply btn-primary btn mt-8 w-4/5 md:btn-wide;
 
 				@media (hover: hover) {
 					&:hover {
@@ -582,38 +582,38 @@
 	}
 
 	section#services {
-		@apply relative grid place-items-center min-h-[75vh];
+		@apply relative grid min-h-[75vh] place-items-center;
 
 		& .services__content {
-			@apply w-full mt-24 -mb-16 md:mt-0;
+			@apply -mb-16 mt-24 w-full md:mt-0;
 
 			& h2 {
-				@apply mb-8 text-2xl md:text-4xl text-center font-futuristic text-shadow-rgb;
+				@apply mb-8 text-center font-futuristic text-2xl text-shadow-rgb md:text-4xl;
 			}
 
 			& .services__list {
-				@apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8;
+				@apply grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8;
 
 				& li {
 					@apply col-auto transform-none;
 
 					& .service {
-						@apply card card-bordered w-full h-full bg-base-100/75 md:hover:border-primary backdrop-blur-md shadow-lg lg:hover:shadow-glow lg:hover:shadow-primary/10 transition duration-700 ease-smooth;
+						@apply card-bordered card h-full w-full bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition duration-700 ease-smooth md:hover:border-primary lg:hover:shadow-glow lg:hover:shadow-primary/10;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 
 						--perspective: 1000px;
 
 						& figure {
-							@apply w-12 md:w-16 h-12 md:h-16 mt-8 mx-8 aspect-square;
+							@apply mx-8 mt-8 aspect-square h-12 w-12 md:h-16 md:w-16;
 
 							& > img {
-								@apply drop-shadow-sm shadow-primary;
+								@apply shadow-primary drop-shadow-sm;
 							}
 						}
 
 						& h3 {
-							@apply text-xl md:text-2xl font-futuristic text-shadow-glow shadow-primary;
+							@apply font-futuristic text-xl shadow-primary text-shadow-glow md:text-2xl;
 						}
 
 						& p {
@@ -630,36 +630,28 @@
 
 						&:nth-child(1) .service {
 							--rotate-y: 3deg;
-							--rotate-y-lg:hover: 1deg;
 							--translate-x: 0.75rem;
-							--translate-x-lg:hover: 0.25rem;
 							--scale: 1.025;
 
 							transform-origin: left bottom;
 						}
 						&:nth-child(2) .service {
 							--rotate-y: -3deg;
-							--rotate-y-lg:hover: -1deg;
 							--translate-x: -0.75rem;
-							--translate-x-lg:hover: -0.25rem;
 							--scale: 1.025;
 
 							transform-origin: right bottom;
 						}
 						&:nth-child(3) .service {
 							--rotate-y: 3deg;
-							--rotate-y-lg:hover: 1deg;
 							--translate-x: 0.75rem;
-							--translate-x-lg:hover: 0.25rem;
 							--scale: 1.025;
 
 							transform-origin: left top;
 						}
 						&:nth-child(4) .service {
 							--rotate-y: -3deg;
-							--rotate-y-lg:hover: -1deg;
 							--translate-x: -0.75rem;
-							--translate-x-lg:hover: -0.25rem;
 							--scale: 1.025;
 
 							transform-origin: right top;
@@ -671,7 +663,7 @@
 	}
 
 	.scroll__to {
-		@apply absolute bottom-8 drop-shadow-md animate-bounce;
+		@apply absolute bottom-8 animate-bounce drop-shadow-md;
 	}
 
 	html.low__end {
@@ -685,13 +677,13 @@
 
 		& section#about {
 			& .about__card {
-				@apply backdrop-blur-none;
+				@apply backdrop-blur-none backdrop-saturate-0;
 			}
 		}
 
 		& section#knowledge {
 			& .knowledge__content {
-				@apply bg-none bg-base-100;
+				@apply bg-base-100 bg-none;
 
 				& > p {
 					@apply text-shadow-[none];

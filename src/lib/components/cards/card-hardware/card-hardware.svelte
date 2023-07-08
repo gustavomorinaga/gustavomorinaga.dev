@@ -39,7 +39,7 @@
 
 <style lang="scss" global>
 	a.hardware {
-		@apply card-bordered card card-side card-compact h-full bg-base-100/75 shadow-lg backdrop-blur-md transition duration-700 ease-smooth;
+		@apply card-bordered card card-side card-compact h-full bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition duration-700 ease-smooth;
 
 		@media (hover: hover) {
 			&:hover {
@@ -76,7 +76,7 @@
 
 	html.low__end {
 		& a.hardware {
-			@apply backdrop-blur-none;
+			@apply backdrop-blur-none backdrop-saturate-0;
 		}
 	}
 </style>

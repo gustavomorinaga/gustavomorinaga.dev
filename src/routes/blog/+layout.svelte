@@ -104,7 +104,7 @@
 
 				& > ul.menu {
 					@apply card-bordered rounded-box menu-horizontal scrollbar__theme w-full flex-nowrap overflow-hidden
-						overflow-x-auto bg-base-100/75 shadow-lg backdrop-blur-md scrollbar-track-base-200 md:menu-vertical md:max-w-none md:overflow-hidden;
+						overflow-x-auto bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 scrollbar-track-base-200 md:menu-vertical md:max-w-none md:overflow-hidden;
 					max-width: calc(100vw - 2rem);
 
 					& > li {
@@ -146,7 +146,7 @@
 			& > .blog__layout {
 				& > aside.filters {
 					& > ul.menu {
-						@apply backdrop-blur-none;
+						@apply backdrop-blur-none backdrop-saturate-0;
 					}
 				}
 			}

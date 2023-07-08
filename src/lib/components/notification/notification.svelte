@@ -33,7 +33,7 @@
 		@apply fixed right-0 top-0 z-50 flex flex-col-reverse gap-2 md:right-8 md:top-24;
 
 		& .notification {
-			@apply card-bordered card card-compact max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md transition-all duration-300 ease-out md:max-w-sm md:border;
+			@apply card-bordered card card-compact max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition-all duration-300 ease-out md:max-w-sm md:border;
 
 			& .card-body {
 				& header {

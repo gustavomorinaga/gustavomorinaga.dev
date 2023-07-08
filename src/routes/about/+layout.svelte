@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { page } from '$app/stores';
 	import { Icon, PageTransition } from '$lib/components';
 	import { profileJSON } from '$lib/databases';
 	import { IMAGES_WEBP, IMAGES_SVG } from '$lib/images';
@@ -170,7 +169,7 @@
 
 			& .details,
 			& .facts {
-				@apply card-bordered card card-compact h-fit shadow-lg backdrop-blur-md md:card-normal;
+				@apply card-bordered card card-compact h-fit shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
 
 				& figure {
 					@apply absolute -top-20 right-0 h-32 w-32 drop-shadow-lg md:h-40 md:w-40;

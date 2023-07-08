@@ -32,7 +32,7 @@
 
 <style lang="scss" global>
 	section#cookie-consent {
-		@apply card-bordered card card-compact fixed bottom-0 left-0 right-0 z-50 max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md transition-all duration-300 ease-out md:bottom-20 md:left-8 md:max-w-sm md:border;
+		@apply card-bordered card card-compact fixed bottom-0 left-0 right-0 z-50 max-w-full border-x-0 border-b-0 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition-all duration-300 ease-out md:bottom-20 md:left-8 md:max-w-sm md:border;
 
 		& .card-body {
 			& header {
