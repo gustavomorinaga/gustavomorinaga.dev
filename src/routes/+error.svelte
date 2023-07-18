@@ -76,7 +76,7 @@
 					@apply flex gap-2;
 
 					& a {
-						@apply btn-primary btn-block btn md:btn-wide;
+						@apply btn btn-primary btn-block md:btn-wide;
 
 						&:hover {
 							& .icon {

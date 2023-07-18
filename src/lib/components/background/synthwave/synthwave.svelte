@@ -37,7 +37,7 @@
 		new ShaderPass(RGBShiftShader),
 		new ShaderPass(GammaCorrectionShader),
 		new ShaderPass(VignetteShader),
-		new FilmPass(0.35, 0.025, 648, 0),
+		new FilmPass(0.35, 0.025, 648, false),
 		new GlitchPass(0.5)
 	];
 
@@ -48,7 +48,9 @@
 		width: browser ? window.innerWidth : 1,
 		height: browser ? window.innerHeight : 1
 	};
-	$: (filmFX as any).uniforms['grayscale'].value = Number(!!$page.error);
+	$: (filmFX.uniforms as { [key: string]: { value: number } })['grayscale'].value = Number(
+		!!$page.error
+	);
 
 	useFrame(() => {
 		if ($page.error || readMode) return;

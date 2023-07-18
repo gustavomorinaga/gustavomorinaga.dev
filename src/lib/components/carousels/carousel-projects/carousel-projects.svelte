@@ -176,7 +176,7 @@
 							@apply justify-end;
 
 							& > a {
-								@apply btn-outline btn-sm btn gap-1 border-base-200 text-primary
+								@apply btn btn-outline btn-sm gap-1 border-base-200 text-primary
 									hover:border-base-200 hover:bg-primary/10 hover:text-primary;
 							}
 						}

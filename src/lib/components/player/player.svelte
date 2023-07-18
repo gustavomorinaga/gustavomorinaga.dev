@@ -334,7 +334,7 @@
 				</div>
 
 				<div class="right-controls">
-					<div class="dropdown-hover dropdown-top dropdown">
+					<div class="dropdown-hover dropdown dropdown-top">
 						<label
 							class="btn__volume"
 							tabindex="-1"
@@ -540,7 +540,7 @@
 
 				& .btn__prev,
 				& .btn__next {
-					@apply btn-ghost btn-sm btn;
+					@apply btn btn-ghost btn-sm;
 				}
 
 				& .btn__prev {
@@ -551,7 +551,7 @@
 				}
 
 				& .btn__play {
-					@apply btn-primary btn-circle btn order-4 mx-2 sm:order-3;
+					@apply btn btn-circle btn-primary order-4 mx-2 sm:order-3;
 
 					&.loading {
 						@apply before:m-0;
@@ -560,7 +560,7 @@
 
 				& .btn__repeat,
 				& .btn__shuffle {
-					@apply btn-ghost btn-sm btn;
+					@apply btn btn-ghost btn-sm;
 
 					&.active {
 						@apply text-primary shadow-primary text-shadow-glow;
@@ -579,7 +579,7 @@
 				@apply flex items-center;
 
 				& .btn__volume {
-					@apply btn-ghost btn-sm btn hidden sm:inline-flex;
+					@apply btn btn-ghost btn-sm hidden sm:inline-flex;
 				}
 
 				& .volume__wrapper {
@@ -595,7 +595,7 @@
 				}
 
 				& .btn__collapse {
-					@apply btn-ghost btn-sm btn;
+					@apply btn btn-ghost btn-sm;
 				}
 			}
 		}
@@ -603,7 +603,7 @@
 
 	#playlist {
 		& .dropdown__trigger {
-			@apply btn-ghost btn-sm btn;
+			@apply btn btn-ghost btn-sm;
 
 			&.active {
 				@apply text-primary shadow-primary text-shadow-glow;
@@ -612,7 +612,7 @@
 	}
 
 	#playlist__content {
-		@apply card-bordered card scrollbar__theme -bottom-3 left-0 right-0 z-30 h-96 -translate-y-24 overflow-y-auto border-x-0 border-b-0 border-white/10 bg-base-100/75 shadow-md backdrop-blur-md backdrop-saturate-200 sm:bottom-3 sm:left-4 sm:right-4 md:left-auto md:w-96 md:border;
+		@apply card card-bordered scrollbar__theme -bottom-3 left-0 right-0 z-30 h-96 -translate-y-24 overflow-y-auto border-x-0 border-b-0 border-white/10 bg-base-100/75 shadow-md backdrop-blur-md backdrop-saturate-200 sm:bottom-3 sm:left-4 sm:right-4 md:left-auto md:w-96 md:border;
 
 		& .playlist__wrapper {
 			@apply flex flex-col;
@@ -676,7 +676,7 @@
 			}
 
 			& .btn__bar {
-				@apply btn-ghost btn-square btn grid h-full w-full place-items-center hover:border-transparent hover:bg-transparent;
+				@apply btn btn-square btn-ghost grid h-full w-full place-items-center hover:border-transparent hover:bg-transparent;
 
 				&::before {
 					margin: 0 !important;
@@ -690,7 +690,7 @@
 	}
 
 	.btn__player {
-		@apply btn-primary btn-sm btn fixed bottom-24 right-0 z-40 inline-flex rounded-l-full shadow-md outline outline-black md:btn-circle md:right-8 md:hidden lg:hover:before:text-primary-focus;
+		@apply btn btn-primary btn-sm fixed bottom-24 right-0 z-40 inline-flex rounded-l-full shadow-md outline outline-black md:btn-circle md:right-8 md:hidden lg:hover:before:text-primary-focus;
 
 		&::before {
 			content: '';

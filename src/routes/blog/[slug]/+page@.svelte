@@ -38,22 +38,18 @@
 	const sharePost = async () => await navigator.share(shareableData);
 
 	const registerView = async () => {
-		let postView = post?.postViews?.at(0);
+		const postView = post?.postViews?.at(0);
 		if (!postView) return;
 
 		await fetch(`/api/posts/${post.slug}/view`, {
 			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json'
-			},
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id: postView.id })
 		});
 	};
 
 	const loadRelatedPosts = async () => {
-		const query = {
-			tags: post.tags.map(t => t.value)
-		};
+		const query = { tags: post.tags.map(t => t.value) };
 
 		relatedPosts = await fetch(
 			`/api/posts/${post.slug}/related?${qs.stringify(query, {
@@ -268,7 +264,7 @@
 				@apply mx-auto block max-w-5xl;
 
 				& > a.btn__previous {
-					@apply btn-ghost btn-sm btn gap-1 shadow-black drop-shadow-lg text-shadow-lg;
+					@apply btn btn-ghost btn-sm gap-1 shadow-black drop-shadow-lg text-shadow-lg;
 				}
 
 				& > div {
@@ -351,7 +347,7 @@
 					& > li {
 						& > button,
 						& > a {
-							@apply btn-sm btn-block btn gap-1;
+							@apply btn btn-sm btn-block gap-1;
 						}
 
 						&.cta {

@@ -41,7 +41,7 @@
 
 <style lang="scss" global>
 	article.event {
-		@apply card-bordered card card-side card-compact bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200;
+		@apply card card-bordered card-side card-compact bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200;
 
 		& > figure {
 			@apply py-4 pl-4 text-primary;
@@ -66,7 +66,7 @@
 
 			& > .card-actions {
 				& > a {
-					@apply btn-outline btn-sm btn gap-1 border-base-200 text-primary
+					@apply btn btn-outline btn-sm gap-1 border-base-200 text-primary
 						hover:border-base-200 hover:bg-primary/10 hover:text-primary;
 				}
 			}

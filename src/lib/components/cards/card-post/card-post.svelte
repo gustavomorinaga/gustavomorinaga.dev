@@ -72,7 +72,7 @@
 
 <style lang="scss" global>
 	a.post {
-		@apply card-bordered card z-10 min-h-[10rem] overflow-hidden shadow-lg transition duration-700 ease-smooth;
+		@apply card card-bordered z-10 min-h-[10rem] overflow-hidden shadow-lg transition duration-700 ease-smooth;
 		&::before {
 			content: '';
 			@apply absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-smooth;

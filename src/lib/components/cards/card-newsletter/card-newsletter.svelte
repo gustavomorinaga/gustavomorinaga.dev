@@ -49,7 +49,7 @@
 
 		<form on:submit|preventDefault={handleSubmit}>
 			<div class="form-control">
-				<label class="join-vertical join md:join-horizontal">
+				<label class="join join-vertical md:join-horizontal">
 					<input
 						class="input join-item"
 						type="email"
@@ -96,7 +96,7 @@
 
 <style lang="scss" global>
 	section#newsletter {
-		@apply card-bordered card card-compact mb-16 bg-primary/5 md:card-normal;
+		@apply card card-bordered card-compact mb-16 bg-primary/5 md:card-normal;
 
 		&::before {
 			content: '';
@@ -129,7 +129,7 @@
 						}
 
 						& > button {
-							@apply btn-primary btn min-w-[10rem] rounded-t-none md:rounded-tr-box md:rounded-l-none;
+							@apply btn btn-primary min-w-[10rem] rounded-t-none md:rounded-tr-box md:rounded-l-none;
 						}
 					}
 				}

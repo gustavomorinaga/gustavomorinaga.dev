@@ -129,7 +129,7 @@
 				{/each}
 			</nav>
 
-			<div class="social dropdown-bottom dropdown-left dropdown-hover dropdown">
+			<div class="social dropdown dropdown-left dropdown-bottom dropdown-hover">
 				<label title="Social" aria-label="Social" tabindex="-1">
 					<input type="checkbox" hidden aria-hidden="true" />
 					<Icon icon="social" />
@@ -202,7 +202,7 @@
 				@apply min-h-16 mx-auto my-0 flex max-w-screen-lg items-center justify-between px-2 sm:justify-start sm:px-8 lg:px-0;
 
 				& .btn__drawer {
-					@apply btn-ghost btn inline-flex sm:hidden;
+					@apply btn btn-ghost inline-flex sm:hidden;
 
 					&.focus {
 						@apply btn-neutral;
@@ -265,13 +265,13 @@
 						@apply translate-x-20;
 
 						& ul {
-							@apply card-bordered card card-side mt-8 bg-base-100 p-2 shadow-lg;
+							@apply card card-bordered card-side mt-8 bg-base-100 p-2 shadow-lg;
 
 							& li {
 								@apply tooltip tooltip-bottom;
 
 								& a {
-									@apply btn-link btn-sm btn transition-transform duration-300 ease-out md:hover:-translate-y-1;
+									@apply btn btn-link btn-sm transition-transform duration-300 ease-out md:hover:-translate-y-1;
 								}
 							}
 						}

@@ -134,7 +134,7 @@
 					}
 
 					& button.btn__fetch {
-						@apply btn-wide btn mx-auto mt-8 flex;
+						@apply btn btn-wide mx-auto mt-8 flex;
 					}
 				}
 			}

@@ -23,17 +23,17 @@ const autolinkHeadings = () =>
 	});
 
 export const COMPILER_CONFIG = {
-	remarkPLugins: [remarkParse, remarkGfm] as Plugin[],
+	remarkPlugins: [remarkParse, remarkGfm] as Plugin[],
 	rehypePlugins: [rehypeFormat, rehypeSlug, autolinkHeadings] as Plugin[]
 };
 
 export const markdownProcessor = unified()
 	.data('settings', { fragment: true })
-	.use(COMPILER_CONFIG.remarkPLugins)
+	.use(COMPILER_CONFIG.remarkPlugins)
 	.use(remarkRehype, { allowDangerousHtml: true })
-	.use(rehypePrism, { ignoreMissing: true, alias: { markup: ['svelte'] } })
 	.use(COMPILER_CONFIG.rehypePlugins)
 	.use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] })
+	.use(rehypePrism, { ignoreMissing: true, alias: { markup: ['svelte'] } })
 	.use(rehypeStringify, { allowDangerousHtml: true });
 
 export const compileContent = async (content: string) => {

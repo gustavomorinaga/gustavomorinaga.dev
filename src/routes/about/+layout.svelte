@@ -169,7 +169,7 @@
 
 			& .details,
 			& .facts {
-				@apply card-bordered card card-compact h-fit shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
+				@apply card card-bordered card-compact h-fit shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
 
 				& figure {
 					@apply absolute -top-20 right-0 h-32 w-32 drop-shadow-lg md:h-40 md:w-40;
@@ -195,7 +195,7 @@
 							}
 
 							& .btn__pronounce {
-								@apply btn-outline btn-xs btn-circle btn ml-2 w-6 border-primary p-0 text-primary hover:btn-primary;
+								@apply btn btn-circle btn-outline btn-xs ml-2 w-6 border-primary p-0 text-primary hover:btn-primary;
 							}
 						}
 					}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade, type TransitionConfig } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { expoOut } from 'svelte/easing';
 	import Icon from '@iconify/svelte';
 	import type { IIcon } from '$lib/ts';
@@ -12,20 +12,17 @@
 	export let label = `${icon} icon`;
 	export let ariaHidden = false;
 	export let animate = false;
-	export let motionConfig: TransitionConfig & { fn: unknown } = {
-		fn: fade,
-		duration: 150,
-		easing: expoOut
-	};
+	export let effect = fade;
 
-	const motion = (node: Element, options: any) => animate && options.fn(node, options);
+	const motion = (node: Element) =>
+		animate ? effect(node, { duration: 150, easing: expoOut }) : {};
 </script>
 
 <div class="icon {size}">
 	{#key icon}
-		<div class="icon__wrapper" transition:motion|global={motionConfig}>
+		<div class="icon__wrapper" transition:motion>
 			<Icon
-				icon={`${collection}:${icon}`}
+				icon="{collection}:{icon}"
 				{width}
 				{height}
 				color="inherit"

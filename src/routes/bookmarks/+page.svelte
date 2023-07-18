@@ -82,7 +82,7 @@
 		}
 
 		& .bookmarks__filters {
-			@apply card-bordered card card-compact sticky top-16 z-10 mb-8 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:top-[4.5rem];
+			@apply card card-bordered card-compact sticky top-16 z-10 mb-8 bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:top-[4.5rem];
 
 			& .card-body {
 				@apply flex-row flex-wrap items-center gap-x-8 gap-y-4 px-0 md:px-4;
@@ -92,7 +92,7 @@
 
 					& > li {
 						& > a {
-							@apply btn-sm btn md:btn-md;
+							@apply btn btn-sm md:btn-md;
 
 							&.current {
 								@apply btn-primary;

@@ -25,7 +25,7 @@
 
 <style lang="scss" global>
 	article.knowledge {
-		@apply card-bordered card card-compact flex-auto bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
+		@apply card card-bordered card-compact flex-auto bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 md:card-normal;
 
 		& > .card-body {
 			& h3 {

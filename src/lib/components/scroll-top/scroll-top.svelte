@@ -30,7 +30,7 @@
 
 <style lang="scss" global>
 	button#btn-scroll-top {
-		@apply btn-sm btn pointer-events-none fixed bottom-40 right-0 z-30 rounded-l-full opacity-0 shadow-lg outline outline-black transition-opacity duration-300
+		@apply btn btn-sm pointer-events-none fixed bottom-40 right-0 z-30 rounded-l-full opacity-0 shadow-lg outline outline-black transition-opacity duration-300
 			ease-out md:btn-circle md:right-8 md:px-2 md:outline-none;
 
 		&.show {

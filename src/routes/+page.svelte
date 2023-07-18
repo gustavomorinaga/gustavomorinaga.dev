@@ -315,7 +315,7 @@
 						@apply relative w-fit pr-12 underline underline-offset-[7px];
 
 						& .btn__pronounce {
-							@apply btn-outline btn-sm btn-circle btn absolute right-0 top-0 w-8 border-primary p-0 text-primary hover:btn-primary;
+							@apply btn btn-circle btn-outline btn-sm absolute right-0 top-0 w-8 border-primary p-0 text-primary hover:btn-primary;
 						}
 					}
 				}
@@ -348,7 +348,7 @@
 					}
 
 					& .btn__social {
-						@apply btn-primary btn gap-2 md:hover:-translate-y-1;
+						@apply btn btn-primary gap-2 md:hover:-translate-y-1;
 					}
 				}
 			}
@@ -459,7 +459,7 @@
 		@apply relative grid min-h-screen place-items-center;
 
 		& .about__card {
-			@apply card-bordered card card-side h-fit w-full items-center bg-base-100/75 bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-md backdrop-saturate-200;
+			@apply card card-bordered card-side h-fit w-full items-center bg-base-100/75 bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-md backdrop-saturate-200;
 			background-image: var(--curved-lines);
 
 			& > figure {
@@ -503,7 +503,7 @@
 					@apply mt-8;
 
 					& .cta {
-						@apply btn-primary btn-block btn md:btn-wide;
+						@apply btn btn-primary btn-block md:btn-wide;
 
 						@media (hover: hover) {
 							&:hover {
@@ -564,7 +564,7 @@
 			}
 
 			& .cta {
-				@apply btn-primary btn mt-8 w-4/5 md:btn-wide;
+				@apply btn btn-primary mt-8 w-4/5 md:btn-wide;
 
 				@media (hover: hover) {
 					&:hover {
@@ -598,7 +598,7 @@
 					@apply col-auto transform-none;
 
 					& .service {
-						@apply card-bordered card h-full w-full bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition duration-700 ease-smooth md:hover:border-primary lg:hover:shadow-glow lg:hover:shadow-primary/10;
+						@apply card card-bordered h-full w-full bg-base-100/75 shadow-lg backdrop-blur-md backdrop-saturate-200 transition duration-700 ease-smooth md:hover:border-primary lg:hover:shadow-glow lg:hover:shadow-primary/10;
 						transform: perspective(var(--perspective)) rotateY(var(--rotate-y))
 							translateX(var(--translate-x));
 

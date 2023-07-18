@@ -8,7 +8,7 @@
 	export let ref: HTMLElement | null = null;
 	export let goTop = false;
 	export let animate = true;
-	export let trigger: any;
+	export let trigger: string | number | boolean;
 	export let effect = blur;
 	export let duration = 500;
 

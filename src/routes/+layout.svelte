@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
-	import { browser, dev } from '$app/environment';
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { Analytics, Background, Footer, Icon, PageTransition, Preload } from '$lib/components';
@@ -35,7 +35,7 @@
 			title: $LANG.header.blog,
 			path: '/blog',
 			icon: 'news',
-			active: dev,
+			active: true,
 			special: false
 		},
 		{
@@ -222,7 +222,7 @@
 			@apply flex flex-wrap justify-between;
 
 			& li {
-				@apply btn-link btn-sm btn px-2;
+				@apply btn btn-link btn-sm px-2;
 			}
 		}
 	}
