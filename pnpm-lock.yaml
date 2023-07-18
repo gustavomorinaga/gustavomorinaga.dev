@@ -155,6 +155,9 @@ devDependencies:
   rehype-format:
     specifier: 4.0.1
     version: 4.0.1
+  rehype-raw:
+    specifier: 6.1.1
+    version: 6.1.1
   rehype-slug:
     specifier: 5.1.0
     version: 5.1.0
@@ -6439,6 +6442,14 @@ packages:
       hast-util-whitespace: 2.0.1
       unified: 10.1.2
       unist-util-is: 5.2.1
+    dev: true
+
+  /rehype-raw@6.1.1:
+    resolution: {integrity: sha512-d6AKtisSRtDRX4aSPsJGTfnzrX2ZkHQLE5kiUuGOeEoLpbEulFF4hj0mLPbsa+7vmguDKOVVEQdHKDSwoaIDsQ==}
+    dependencies:
+      '@types/hast': 2.3.5
+      hast-util-raw: 7.2.3
+      unified: 10.1.2
     dev: true
 
   /rehype-slug@5.1.0:

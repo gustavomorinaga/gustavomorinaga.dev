@@ -7,6 +7,7 @@ import rehypeFormat from 'rehype-format';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
+import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 
 const autolinkHeadings = () =>
@@ -28,16 +29,16 @@ export const COMPILER_CONFIG = {
 };
 
 export const markdownProcessor = unified()
-	.data('settings', { fragment: true })
 	.use(COMPILER_CONFIG.remarkPlugins)
 	.use(remarkRehype, { allowDangerousHtml: true })
 	.use(COMPILER_CONFIG.rehypePlugins)
 	.use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] })
 	.use(rehypePrism, { ignoreMissing: true, alias: { markup: ['svelte'] } })
-	.use(rehypeStringify, { allowDangerousHtml: true });
+	.use(rehypeRaw)
+	.use(rehypeStringify);
 
 export const compileContent = async (content: string) => {
-	const compiledContent = await markdownProcessor.process(content);
+	const { value } = await markdownProcessor.process(content);
 
-	return compiledContent.value;
+	return String(value);
 };
