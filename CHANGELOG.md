@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/gustavomorinaga/portfolio/compare/v1.1.8...v1.1.9) (2023-07-18)
+
+
+### Bug Fixes
+
+* rollback isr configs ([b6f2f82](https://github.com/gustavomorinaga/portfolio/commit/b6f2f82d9d25a5806db5741d1bec2fc29ef88bc4))
+
 ### [1.1.8](https://github.com/gustavomorinaga/portfolio/compare/v1.1.7...v1.1.8) (2023-07-18)
 
 
