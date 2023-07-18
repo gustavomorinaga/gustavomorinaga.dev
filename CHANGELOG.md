@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/gustavomorinaga/portfolio/compare/v1.1.7...v1.1.8) (2023-07-18)
+
+
+### Bug Fixes
+
+* remove isr configs ([d77db31](https://github.com/gustavomorinaga/portfolio/commit/d77db3160cc53e782236f7dceaf82bcb324bd5a3))
+
+
+### Styles
+
+* glassmorphism saturation ([5135b3a](https://github.com/gustavomorinaga/portfolio/commit/5135b3a982ba2ae5e68f8649d13e62c685fb699d))
+
 ### [1.1.7](https://github.com/gustavomorinaga/portfolio/compare/v1.1.6...v1.1.7) (2023-07-01)
 
 
