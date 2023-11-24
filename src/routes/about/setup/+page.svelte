@@ -67,7 +67,7 @@
 		},
 		{
 			title: $LANG.about.setup.monitor,
-			description: 'SAMSUNG 24F390 24" FULL HD 4ms',
+			description: 'Dell 34 Curved Gaming Monitor S3422DWG',
 			icon: IMAGES_SVG.iconMonitor,
 			alt: 'Created by SAM Designs from Noun Project'
 		},
