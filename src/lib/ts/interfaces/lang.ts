@@ -172,13 +172,13 @@ export interface ILang {
 			runtime: string;
 			libs: string;
 			frameworks: string;
+			styling: string;
 			databases: string;
 			versionControl: string;
 			packageManagers: string;
 			platforms: string;
 			plugins: string;
 			bundlers: string;
-			compilers: string;
 			tools: string;
 		};
 

@@ -7,21 +7,21 @@
 	$: knowledges = [
 		{ title: $LANG.about.knowledge.languages, skills: getKnowledge('techs', 'language') },
 		{ title: $LANG.about.knowledge.runtime, skills: getKnowledge('techs', 'runtime') },
-		{ title: $LANG.about.knowledge.libs, skills: getKnowledge('techs', 'lib') },
 		{ title: $LANG.about.knowledge.frameworks, skills: getKnowledge('techs', 'framework') },
+		{ title: $LANG.about.knowledge.libs, skills: getKnowledge('techs', 'lib') },
 		{ title: $LANG.about.knowledge.databases, skills: getKnowledge('techs', 'database') },
-		{
-			title: $LANG.about.knowledge.versionControl,
-			skills: getKnowledge('tools', 'version-control')
-		},
+		{ title: $LANG.about.knowledge.styling, skills: getKnowledge('techs', 'styling') },
+		{ title: $LANG.about.knowledge.plugins, skills: getKnowledge('tools', 'plugin') },
 		{
 			title: $LANG.about.knowledge.packageManagers,
 			skills: getKnowledge('tools', 'package-manager')
 		},
-		{ title: $LANG.about.knowledge.platforms, skills: getKnowledge('tools', 'platform') },
-		{ title: $LANG.about.knowledge.plugins, skills: getKnowledge('tools', 'plugin') },
 		{ title: $LANG.about.knowledge.bundlers, skills: getKnowledge('tools', 'bundler') },
-		{ title: $LANG.about.knowledge.compilers, skills: getKnowledge('tools', 'compiler') },
+		{
+			title: $LANG.about.knowledge.versionControl,
+			skills: getKnowledge('tools', 'version-control')
+		},
+		{ title: $LANG.about.knowledge.platforms, skills: getKnowledge('tools', 'platform') },
 		{ title: $LANG.about.knowledge.tools, skills: getKnowledge('tools', 'tool') }
 	] satisfies IKnowledgePayload[];
 

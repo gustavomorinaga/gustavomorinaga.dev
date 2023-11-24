@@ -189,13 +189,13 @@ export const pt: ILang = {
 			runtime: 'Runtime',
 			libs: 'Bibliotecas',
 			frameworks: 'Frameworks',
+			styling: 'Estilização',
 			databases: 'Banco de dados',
-			versionControl: 'Controle de versão',
-			packageManagers: 'Gerenciadores de pacotes',
+			versionControl: 'Versionamento',
+			packageManagers: 'Gerenciadores',
 			platforms: 'Plataformas',
 			plugins: 'Plugins',
 			bundlers: 'Empacotadores',
-			compilers: 'Compiladores',
 			tools: 'Ferramentas'
 		},
 

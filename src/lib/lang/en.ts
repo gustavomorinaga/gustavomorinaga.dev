@@ -188,13 +188,13 @@ export const en: ILang = {
 			runtime: 'Runtime',
 			libs: 'Libs',
 			frameworks: 'Frameworks',
+			styling: 'Styling',
 			databases: 'Databases',
 			versionControl: 'Version control',
 			packageManagers: 'Package managers',
 			platforms: 'Platforms',
 			plugins: 'Plugins',
 			bundlers: 'Bundlers',
-			compilers: 'Compilers',
 			tools: 'Tools'
 		},
 
