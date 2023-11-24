@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/gustavomorinaga/gustavomorinaga.dev/compare/v1.1.9...v1.2.0) (2023-11-24)
+
+
+### Features
+
+* add styling field to lang interface and update language translations ([16243e9](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/16243e97c307bb901e81ca58e2d4fb3fd02d7d58))
+* update color of Angular icon ([76e9fa3](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/76e9fa38e221d353b1b8815dc2822a7ebfbe5820))
+* update profile.json with new runtime and database icons ([90c523e](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/90c523edae4fae01a6e64375b06e0b600003e75d))
+* update resume pdf files ([1f4961a](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/1f4961af63fee2941b37693b5937c94ef9406c63))
+
+
+### Improvements
+
+* update age in about paragraph ([3d38a04](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/3d38a0451bb58fb3c1e49ff9fa7a4e777366016d))
+* update monitor description in about setup page ([ee0f26e](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/ee0f26e90f675ffcb0a62e94ef590d8aa0f39c28))
+* update profile.json and language files ([6a33815](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/6a33815a64a223900c040286f4920cf7ebe02319))
+
 ### [1.1.9](https://github.com/gustavomorinaga/portfolio/compare/v1.1.8...v1.1.9) (2023-07-18)
 
 
