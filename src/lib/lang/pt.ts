@@ -300,6 +300,9 @@ export const pt: ILang = {
 			code: 'Código'
 		},
 
+		'matching-game': {
+			description: 'Um jogo de memória simples feito com SvelteKit e TypeScript.'
+		},
 		portfolio: {
 			description: 'Meu super portfólio desenvolvido com SvelteKit e hospedado na Vercel.'
 		},

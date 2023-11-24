@@ -299,6 +299,9 @@ export const en: ILang = {
 			code: 'Code'
 		},
 
+		'matching-game': {
+			description: 'a simple matching game made with SvelteKit and TypeScript.'
+		},
 		portfolio: {
 			description: 'My super portfolio built with SvelteKit and served on Vercel.'
 		},

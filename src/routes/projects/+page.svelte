@@ -8,7 +8,15 @@
 
 	$: projects = [
 		{
-			title: 'Portfolio',
+			title: 'Matching Game',
+			description: $LANG.projects['matching-game'].description,
+			previewImage: IMAGES_WEBP.previewMatchingGame,
+			repo: 'https://github.com/gustavomorinaga/matching-game',
+			deploy: 'https://matching-game-sveltekit.vercel.app',
+			tags: ['sveltekit', 'typescript', 'vite', 'sass']
+		},
+		{
+			title: 'gustavomorinaga.dev',
 			description: $LANG.projects.portfolio.description,
 			previewImage: IMAGES_WEBP.previewPortfolio,
 			repo: 'https://github.com/gustavomorinaga/portfolio',

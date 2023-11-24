@@ -244,6 +244,9 @@ export interface ILang {
 			code: string;
 		};
 
+		'matching-game': {
+			description: string;
+		};
 		portfolio: {
 			description: string;
 		};
