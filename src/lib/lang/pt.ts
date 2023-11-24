@@ -4,6 +4,7 @@ import type { ILang } from '$lib/ts';
 
 const year = new Date().getFullYear();
 const age = getAge(profileJSON.birthday);
+const yearsOfExperience = year - 2021; // 2021 = year of first job
 
 export const pt: ILang = {
 	code: 'pt',
@@ -39,7 +40,7 @@ export const pt: ILang = {
 				'Desenvolvedor full-stack criativo e apaixonado em criar soluções completas, eficientes e de alta tecnologia.',
 			skillDev: 'Dev Full-Stack',
 			skillDesign: 'UI/UX Designer',
-			skillExp: '+2 anos de experiência'
+			skillExp: `+${yearsOfExperience} anos de experiência`
 		},
 
 		about: {
