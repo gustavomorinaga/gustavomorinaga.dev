@@ -60,11 +60,11 @@ Este repositório é dedicado para mostrar os meus projetos, marcadores, postage
 
 ### Seções
 
-- **Início** - Contém uma breve apresentação
-- **Blog** - Onde todas as minhas postagens que escrevi para qualquer um poder ler
-- **Sobre mim** - Informações mais detalhadas e curiosidades sobre mim
-- **Projetos** - Uma vitrine de todos os meus projetos
-- **Marcadores** - Todos os marcadores que gosto e recomendo usar
+- [**Início**](https://gustavomorinaga.dev/) - Contém uma breve apresentação
+- [**Blog**](https://gustavomorinaga.dev/blog/) - Onde todas as minhas postagens que escrevi para qualquer um poder ler
+- [**Sobre mim**](https://gustavomorinaga.dev/about/) - Informações mais detalhadas e curiosidades sobre mim
+- [**Projetos**](https://gustavomorinaga.dev/projects/) - Uma vitrine de todos os meus projetos
+- [**Marcadores**](https://gustavomorinaga.dev/bookmarks/) - Todos os marcadores que gosto e recomendo usar
 
 <!-- License Section -->
 

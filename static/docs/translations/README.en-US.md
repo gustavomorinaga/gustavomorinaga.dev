@@ -60,11 +60,11 @@ This repo is dedicated to show my own projects, bookmarks, blog posts and fun fa
 
 ### Sections
 
-- **Home** - Contains a brief presentation
-- **Blog** - Where are all the posts I wrote for anyone to read
-- **About me** - More detailed information and fun facts about me
-- **Projects** - Showcase of all of my projects
-- **Bookmarks** - All bookmarks I like and recommend to use
+- [**Home**](https://gustavomorinaga.dev/) - Contains a brief presentation
+- [**Blog**](https://gustavomorinaga.dev/blog/) - Where are all the posts I wrote for anyone to read
+- [**About me**](https://gustavomorinaga.dev/about/) - More detailed information and fun facts about me
+- [**Projects**](https://gustavomorinaga.dev/projects/) - Showcase of all of my projects
+- [**Bookmarks**](https://gustavomorinaga.dev/bookmarks/) - All bookmarks I like and recommend to use
 
 <!-- License Section -->
 
