@@ -8,6 +8,14 @@
 
 	$: projects = [
 		{
+			title: 'Nostra',
+			description: $LANG.projects.nostra.description,
+			previewImage: IMAGES_WEBP.previewNostra,
+			repo: 'https://github.com/gustavomorinaga/nostra',
+			tags: ['medusajs', 'sveltekit', 'typescript', 'vite', 'tailwindcss', 'shadcn'],
+			wip: true
+		},
+		{
 			title: 'Matching Game',
 			description: $LANG.projects['matching-game'].description,
 			previewImage: IMAGES_WEBP.previewMatchingGame,

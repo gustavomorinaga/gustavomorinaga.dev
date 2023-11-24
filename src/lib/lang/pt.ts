@@ -297,9 +297,13 @@ export const pt: ILang = {
 
 		links: {
 			deploy: 'Demo',
-			code: 'Código'
+			code: 'Código',
+			wip: 'Em desenvolvimento'
 		},
 
+		nostra: {
+			description: 'Um e-commerce feito com MedusaJS, SvelteKit e TailwindCSS.'
+		},
 		'matching-game': {
 			description: 'Um jogo de memória simples feito com SvelteKit e TypeScript.'
 		},

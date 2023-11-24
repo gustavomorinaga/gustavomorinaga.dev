@@ -63,7 +63,7 @@
 </script>
 
 <swiper-container bind:this={swiperRef} init="false" class="projects">
-	{#each projects as { title, description, previewImage, tags, repo, deploy }}
+	{#each projects as { title, description, previewImage, tags, repo, deploy, wip }}
 		<swiper-slide>
 			<article class="project">
 				<figure class="preview">
@@ -81,15 +81,22 @@
 						<p use:balancer>{description}</p>
 
 						<div class="card-actions">
-							<a
-								href={deploy}
-								target="_blank"
-								rel="noopener noreferrer"
-								on:click={handleProjectAchievement}
-							>
-								<Icon icon="external-link" size="sm" />
-								{$LANG.projects.links.deploy}
-							</a>
+							{#if wip}
+								<span class="wip">
+									<Icon collection="emojione" icon="construction" size="sm" />
+									{$LANG.projects.links.wip}
+								</span>
+							{:else}
+								<a
+									href={deploy}
+									target="_blank"
+									rel="noopener noreferrer"
+									on:click={handleProjectAchievement}
+								>
+									<Icon icon="external-link" size="sm" />
+									{$LANG.projects.links.deploy}
+								</a>
+							{/if}
 
 							<a
 								href={repo}
@@ -178,6 +185,10 @@
 							& > a {
 								@apply btn btn-outline btn-sm gap-1 border-base-200 text-primary
 									hover:border-base-200 hover:bg-primary/10 hover:text-primary;
+							}
+
+							& > span.wip {
+								@apply rounded-box flex gap-2 bg-base-200 px-2 py-1;
 							}
 						}
 					}

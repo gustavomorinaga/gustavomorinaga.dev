@@ -3,6 +3,7 @@ export interface IProject {
 	description: string;
 	previewImage: string;
 	repo: string;
-	deploy: string;
 	tags: string[];
+	deploy?: string | null;
+	wip?: boolean;
 }

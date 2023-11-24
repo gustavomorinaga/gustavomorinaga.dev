@@ -242,8 +242,12 @@ export interface ILang {
 		links: {
 			deploy: string;
 			code: string;
+			wip: string;
 		};
 
+		nostra: {
+			description: string;
+		};
 		'matching-game': {
 			description: string;
 		};
