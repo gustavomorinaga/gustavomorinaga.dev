@@ -101,9 +101,17 @@
 			{
 				"title": "Node.js",
 				"url": "https://nodejs.org",
-				"icon": "nodejs",
+				"icon": "nodedotjs",
 				"collection": "simple-icons",
 				"color": "#339933",
+				"category": "runtime"
+			},
+			{
+				"title": "Bun",
+				"url": "https://bun.sh",
+				"icon": "bun",
+				"collection": "simple-icons",
+				"color": "#FFFFFF",
 				"category": "runtime"
 			},
 			{
@@ -121,14 +129,6 @@
 				"collection": "simple-icons",
 				"color": "#BA20D5",
 				"category": "lib"
-			},
-			{
-				"title": "PHP",
-				"url": "https://www.php.net",
-				"icon": "php",
-				"collection": "simple-icons",
-				"color": "#777BB4",
-				"category": "language"
 			},
 			{
 				"title": "MySQL",
@@ -160,6 +160,14 @@
 				"icon": "firebase",
 				"collection": "simple-icons",
 				"color": "#FFCA28",
+				"category": "database"
+			},
+			{
+				"title": "Supabase",
+				"url": "https://supabase.com",
+				"icon": "supabase",
+				"collection": "simple-icons",
+				"color": "#3FCF8E",
 				"category": "database"
 			},
 			{
@@ -206,7 +214,7 @@
 				"title": "Material UI",
 				"url": "https://mui.com",
 				"icon": "materialui",
-				"collection": "simple-icons",
+				"collection": "devicon-plain",
 				"color": "#007FFF",
 				"category": "lib"
 			},
