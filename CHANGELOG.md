@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/gustavomorinaga/gustavomorinaga.dev/compare/v1.2.0...v1.3.0) (2023-11-24)
+
+
+### Features
+
+* add certificates ([83703a9](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/83703a94946b8ce3ae3314243e0c94458f08ed16))
+* add nostra as new project and wip prop for project items ([a694cab](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/a694cab9e27e1522341b011b54682c79d7fbb1c5))
+* added matching-game project ([119cc52](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/119cc524ee235d3e699bc4ecfb8c983bd31f436d))
+
 ## [1.2.0](https://github.com/gustavomorinaga/gustavomorinaga.dev/compare/v1.1.9...v1.2.0) (2023-11-24)
 
 
