@@ -1,6 +1,9 @@
+import { profileJSON } from '$lib/databases';
+import { getAge } from '$lib/utils';
 import type { ILang } from '$lib/ts';
 
 const year = new Date().getFullYear();
+const age = getAge(profileJSON.birthday);
 
 export const pt: ILang = {
 	code: 'pt',
@@ -42,8 +45,7 @@ export const pt: ILang = {
 		about: {
 			title: 'Sobre mim',
 			subtitle: 'Full-Stack Developer & UI/UX Designer',
-			paragraph:
-				'Meu nome é Gustavo Morinaga, tenho 22 anos, sou desenvolvedor Full-Stack e UI/UX Designer. Desenvolvo sites e aplicações completas com as melhores tecnologias disponíveis no mercado. Sempre estou em constante aprendizado e com o objetivo de entregar a melhor experiência e performance possível.',
+			paragraph: `Meu nome é Gustavo Morinaga, tenho ${age} anos, sou desenvolvedor Full-Stack e UI/UX Designer. Desenvolvo sites e aplicações completas com as melhores tecnologias disponíveis no mercado. Sempre estou em constante aprendizado e com o objetivo de entregar a melhor experiência e performance possível.`,
 			quote: 'Não é a linguagem de programação que define o programador, mas sim sua lógica.',
 			moreDetails: 'Mais detalhes'
 		},

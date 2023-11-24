@@ -1,6 +1,9 @@
+import { profileJSON } from '$lib/databases';
+import { getAge } from '$lib/utils';
 import type { ILang } from '$lib/ts';
 
 const year = new Date().getFullYear();
+const age = getAge(profileJSON.birthday);
 
 export const en: ILang = {
 	code: 'en',
@@ -42,8 +45,7 @@ export const en: ILang = {
 		about: {
 			title: 'About me',
 			subtitle: 'Full-Stack Developer & UI/UX Designer',
-			paragraph:
-				"My name is Gustavo Morinaga, I'm 22 years old, I'm a Full-Stack developer and UI/UX Designer. I develop websites and complete applications with the best technologies available in the market. I'm always in constant learning and aiming to deliver the best experience and performance possible.",
+			paragraph: `My name is Gustavo Morinaga, I'm ${age} years old, I'm a Full-Stack developer and UI/UX Designer. I develop websites and complete applications with the best technologies available in the market. I'm always in constant learning and aiming to deliver the best experience and performance possible.`,
 			quote: "It's not the programming language that defines the programmer, but his logic.",
 			moreDetails: 'More details'
 		},
