@@ -1,17 +1,8 @@
 <script lang="ts">
-	import { browser, dev } from '$app/environment';
-	import { page } from '$app/stores';
-	import { webVitals } from '$lib/scripts';
-	import { inject } from '@vercel/analytics';
+	import { dev } from '$app/environment';
+	import { inject as injectAnalytics } from '@vercel/analytics';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
-	let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID as string;
-
-	$: if (browser && analyticsId)
-		webVitals({
-			path: $page.url.pathname,
-			params: $page.params,
-			analyticsId
-		});
-
-	inject({ mode: dev ? 'development' : 'production' });
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
+	injectSpeedInsights();
 </script>

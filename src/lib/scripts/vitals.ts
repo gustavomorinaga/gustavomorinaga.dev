@@ -56,6 +56,7 @@ const sendToAnalytics = (metric: Metric, options: IAnalyticsOptions) => {
 		});
 };
 
+/** @deprecated <https://vercel.com/docs/speed-insights/migrating-from-legacy> */
 export const webVitals = (options: IAnalyticsOptions) => {
 	try {
 		onFID(metric => sendToAnalytics(metric, options));
