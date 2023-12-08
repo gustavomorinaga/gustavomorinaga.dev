@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/gustavomorinaga/gustavomorinaga.dev/compare/v1.3.0...v1.3.1) (2023-12-08)
+
+
+### Features
+
+* migrating the old vercel web-vitals to @vercel/speed-insights ([a4b0bc8](https://github.com/gustavomorinaga/gustavomorinaga.dev/commit/a4b0bc88af3fdce2646be416a4f94c9696034cfb))
+
 ## [1.3.0](https://github.com/gustavomorinaga/gustavomorinaga.dev/compare/v1.2.0...v1.3.0) (2023-11-24)
 
 
