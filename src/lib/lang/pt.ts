@@ -301,6 +301,12 @@ export const pt: ILang = {
 			wip: 'Em desenvolvimento'
 		},
 
+		copyscotch: {
+			description: 'Uma implementação do Hoppscotch feita com SvelteKit.'
+		},
+		'google-like-search-engine': {
+			description: 'Um mecanismo de busca simples que imita o mecanismo de busca do Google.'
+		},
 		nostra: {
 			description: 'Um e-commerce feito com MedusaJS, SvelteKit e TailwindCSS.'
 		},

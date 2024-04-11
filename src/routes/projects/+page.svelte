@@ -8,6 +8,22 @@
 
 	$: projects = [
 		{
+			title: 'Copyscotch',
+			description: $LANG.projects['copyscotch'].description,
+			previewImage: IMAGES_WEBP.previewCopyscotch,
+			repo: 'https://github.com/gustavomorinaga/copyscotch',
+			deploy: 'https://copyscotch.vercel.app',
+			tags: ['sveltekit', 'typescript', 'vite', 'tailwindcss', 'shadcn']
+		},
+		{
+			title: 'Google-Like Search Engine',
+			description: $LANG.projects['google-like-search-engine'].description,
+			previewImage: IMAGES_WEBP.previewGoogleLikeSearchEngine,
+			repo: 'https://github.com/gustavomorinaga/google-like-search-engine',
+			deploy: 'https://google-like-search-engine.vercel.app',
+			tags: ['sveltekit', 'typescript', 'vite', 'tailwindcss', 'shadcn']
+		},
+		{
 			title: 'Nostra',
 			description: $LANG.projects.nostra.description,
 			previewImage: IMAGES_WEBP.previewNostra,

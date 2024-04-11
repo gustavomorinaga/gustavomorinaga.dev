@@ -5,6 +5,8 @@ export const IMAGES_WEBP = {
 	metalness: (await import('./texture-metalness.webp')).default,
 	noise: (await import('./texture-noise.webp')).default,
 	mockupPortfolio: (await import('./mockup-portfolio.webp')).default,
+	previewCopyscotch: (await import('./preview-copyscotch.webp')).default,
+	previewGoogleLikeSearchEngine: (await import('./preview-google-like-search-engine.webp')).default,
 	previewNostra: (await import('./preview-nostra.webp')).default,
 	previewMatchingGame: (await import('./preview-matching-game.webp')).default,
 	previewPortfolio: (await import('./preview-portfolio.webp')).default,

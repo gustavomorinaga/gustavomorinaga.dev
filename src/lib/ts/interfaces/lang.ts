@@ -245,6 +245,12 @@ export interface ILang {
 			wip: string;
 		};
 
+		copyscotch: {
+			description: string;
+		};
+		'google-like-search-engine': {
+			description: string;
+		},
 		nostra: {
 			description: string;
 		};

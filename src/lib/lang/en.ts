@@ -300,6 +300,12 @@ export const en: ILang = {
 			wip: 'WIP'
 		},
 
+		copyscotch: {
+			description: 'A SvelteKit implementation of Hoppscotch.'
+		},
+		"google-like-search-engine": {
+			description: 'Simple search engine that mimics the Google search engine.'
+		},
 		nostra: {
 			description: 'An ecommerce made with MedusaJS, SvelteKit and TailwindCSS.'
 		},
